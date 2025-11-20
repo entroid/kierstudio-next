@@ -78,7 +78,7 @@ function Group2() {
         <img
           alt=""
           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-          src={imgRecurso6DrcmB}
+          src={imgRecurso6DrcmB.src}
         />
       </div>
       <div
@@ -88,21 +88,21 @@ function Group2() {
         <img
           alt=""
           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-          src={imgLogoMercurioGroupWebGrises}
+          src={imgLogoMercurioGroupWebGrises.src}
         />
       </div>
       <div className="absolute h-[50px] left-[600px] top-[805px] w-[214px]" data-name="image 2">
         <img
           alt=""
           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-          src={imgImage2}
+          src={imgImage2.src}
         />
       </div>
       <div className="absolute h-[82px] left-[976px] top-[773px] w-[145px]" data-name="image 3">
         <img
           alt=""
           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-          src={imgImage3}
+          src={imgImage3.src}
         />
       </div>
     </div>
@@ -1290,7 +1290,7 @@ function Group15() {
     <div className="absolute contents left-[548px] top-[1896.09px]">
       <ol
         className="absolute block font-['Poppins:Medium',_sans-serif] leading-[0] left-[737px] list-decimal not-italic text-[24px] text-black text-center top-[1971px] translate-x-[-50%] w-[334px]"
-        start="5"
+        start={5}
       >
         <li className="list-inside ms-[36px]">
           <span className="leading-[1.1]">Tu identidad visual no refleja lo que haces hoy</span>
@@ -1325,7 +1325,7 @@ function Group16() {
     <div className="absolute contents left-[50px] top-[1896.09px]">
       <ol
         className="absolute block font-['Poppins:Medium',_sans-serif] leading-[0] left-[239px] list-decimal not-italic text-[24px] text-black text-center top-[1971px] translate-x-[-50%] w-[334px]"
-        start="4"
+        start={4}
       >
         <li className="list-inside ms-[36px]">
           <span className="leading-[1.1]">Tu equipo pierde tiempo en tareas repetitivas</span>
@@ -1360,7 +1360,7 @@ function Group17() {
     <div className="absolute contents left-[1029px] top-[1896.09px]">
       <ol
         className="absolute block font-['Poppins:Medium',_sans-serif] leading-[0] left-[1218px] list-decimal not-italic text-[24px] text-black text-center top-[1971px] translate-x-[-50%] w-[334px]"
-        start="6"
+        start={6}
       >
         <li className="list-inside ms-[36px]">
           <span className="leading-[1.1]">Lanzás rápido, pero sin validar</span>
@@ -1453,7 +1453,7 @@ export default function Wireframe1() {
         <img
           alt=""
           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-          src={imgImage4}
+          src={imgImage4.src}
         />
       </div>
       <p className="absolute font-['Inter:Regular',_sans-serif] font-normal leading-[normal] left-[33px] not-italic text-[#323232] text-[12px] text-nowrap top-[894px] whitespace-pre">
