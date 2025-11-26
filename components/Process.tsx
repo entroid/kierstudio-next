@@ -2,8 +2,10 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import { useLanguage } from "./LanguageContext";
 
 export function Process() {
+  const { t, translations } = useLanguage();
   const titleRef = useRef<HTMLHeadingElement>(null);
   const { scrollYProgress: titleProgress } = useScroll({
     target: titleRef,
@@ -12,32 +14,28 @@ export function Process() {
   const titleOpacity = useTransform(titleProgress, [0, 1], [0, 1]);
   const steps = [
     {
-      number: "01",
-      title: "DISCOVERY",
-      description:
-        "We understand your goals, target users, and unique business challenges through deep research and strategic analysis.",
-      services: ["Research", "Strategy", "Planning"],
+      number: translations.process.steps.discovery.number,
+      title: translations.process.steps.discovery.title,
+      description: translations.process.steps.discovery.description,
+      services: translations.process.steps.discovery.services,
     },
     {
-      number: "02",
-      title: "DESIGN",
-      description:
-        "We ideate and craft the experience through impactful visual solutions that communicate your message and emotionally connect with your audience.",
-      services: ["Information Architecture", "Wireframes", "Mockups", "Prototypes"],
+      number: translations.process.steps.design.number,
+      title: translations.process.steps.design.title,
+      description: translations.process.steps.design.description,
+      services: translations.process.steps.design.services,
     },
     {
-      number: "03",
-      title: "DEVELOP",
-      description:
-        "We transform designs into functional digital experiences using the latest technologies and best practices.",
-      services: ["Frontend", "Backend", "Testing"],
+      number: translations.process.steps.develop.number,
+      title: translations.process.steps.develop.title,
+      description: translations.process.steps.develop.description,
+      services: translations.process.steps.develop.services,
     },
     {
-      number: "04",
-      title: "DELIVER",
-      description:
-        "We launch your project to the world and provide ongoing support and refinement to ensure long-term success.",
-      services: ["Launch", "Support", "Optimization"],
+      number: translations.process.steps.deliver.number,
+      title: translations.process.steps.deliver.title,
+      description: translations.process.steps.deliver.description,
+      services: translations.process.steps.deliver.services,
     },
   ];
 
@@ -58,7 +56,7 @@ export function Process() {
             className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
             style={{ fontWeight: 400 }}
           >
-            (How We Work)
+            {t('process.tag')}
           </span>
 
           <motion.h2
@@ -70,14 +68,14 @@ export function Process() {
             className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900, opacity: titleOpacity }}
           >
-            PROCESS
+            {t('process.title')}
           </motion.h2>
 
           <p
             className="font-['Archivo',sans-serif] text-[18px] md:text-[28px] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
             style={{ fontWeight: 600 }}
           >
-            Our proven methodology ensures exceptional results every time.
+            {t('process.subtitle')}
           </p>
         </motion.div>
 
@@ -165,7 +163,7 @@ export function Process() {
             className="bg-[#D52169] text-white px-12 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
             style={{ fontWeight: 700 }}
           >
-            Let´s Start Your Project →
+            {t('process.ctaButton')}
           </motion.a>
         </motion.div>
       </div>

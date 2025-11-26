@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useLanguage } from "./LanguageContext";
 
 export function Partners() {
+  const { t } = useLanguage();
   const partners = [
     {
       src: "/partners/agrosapiens-logo.png",
@@ -53,20 +55,20 @@ export function Partners() {
             className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-8 block italic"
             style={{ fontWeight: 400 }}
           >
-            (About Us)
+            {t('partners.tag')}
           </span>
 
           <h2
             className="font-['Archivo',sans-serif] text-[64px] md:text-[96px] lg:text-[120px] leading-[0.9] tracking-[-0.03em] text-[#28292D] dark:text-white mb-12"
             style={{ fontWeight: 900 }}
           >
-            STRATEGIC
+            {t('partners.title1')}
             <br />
-            DESIGN.
+            {t('partners.title2')}
             <br />
-            POWERFUL
+            {t('partners.title3')}
             <br />
-            WEBSITES.
+            {t('partners.title4')}
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-[1100px]">
@@ -80,12 +82,11 @@ export function Partners() {
                 className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
                 style={{ fontWeight: 400 }}
               >
-                At Kier, our Argentina-based studio, we create digital experiences that inspire,
-                connect, and endure. We specialize in strategic{" "}
-                <b>design and development of digital products</b>, combining creativity with a
-                technological vision that drives your brand's growth.
+                {t('partners.description1').split(t('partners.description1Bold'))[0]}
+                <b>{t('partners.description1Bold')}</b>
+                {t('partners.description1').split(t('partners.description1Bold'))[1]}
                 <br />
-                (Strategy + UX/UI + Development)
+                {t('partners.description1Tag')}
               </p>
             </motion.div>
             <motion.div
@@ -98,7 +99,7 @@ export function Partners() {
                 className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
                 style={{ fontWeight: 400 }}
               >
-                With more then 10 years of experience in the IT industry, our team of passionate designers, digital architects, and complementary top-tier partners works closely with every client, fostering a collaborative process that prioritizes your objectives and brand essence. We believe the best results come from a deep understanding of each project's nuances and transforming them into purposeful digital solutions.
+                {t('partners.description2')}
               </p>
             </motion.div>
           </div>
@@ -115,7 +116,7 @@ export function Partners() {
             className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-12 block italic"
             style={{ fontWeight: 400 }}
           >
-            (Partnered With)
+            {t('partners.partnersTag')}
           </span>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
@@ -136,49 +137,49 @@ export function Partners() {
                   className="block"
                 >
                   <div className="bg-white dark:bg-[#1a1a1a] p-8 md:p-10 rounded-xl border border-[#28292D]/5 dark:border-white/5 hover:border-[#D52169]/30 dark:hover:border-[#D52169]/50 transition-all duration-500 h-[160px] flex flex-col justify-center items-center relative overflow-hidden">
-                  {/* Animated background */}
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileHover={{ scale: 1.4, opacity: 0.05 }}
-                    transition={{ duration: 0.35 }}
-                    className="absolute inset-0 bg-[#D52169]"
-                  />
+                    {/* Animated background */}
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileHover={{ scale: 1.4, opacity: 0.05 }}
+                      transition={{ duration: 0.35 }}
+                      className="absolute inset-0 bg-[#D52169]"
+                    />
 
-                  {/* Logo/Name */}
-                  <motion.div
-                    className="relative z-10 text-center"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 200 }}
-                  >
-                    <div className="mb-2 flex items-center justify-center">
-                      <img
-                        src={partner.src}
-                        alt="Partner logo"
-                        className="block dark:hidden h-12 md:h-14 w-auto opacity-90"
-                        loading="lazy"
-                      />
-                      <img
-                        src={partner.srcDark}
-                        alt="Partner logo"
-                        className="hidden dark:block h-12 md:h-14 w-auto opacity-100"
-                        loading="lazy"
-                      />
-                    </div>
-                    <p
-                      className="font-['Archivo',sans-serif] text-[10px] tracking-[0.15em] uppercase text-[#28292D]/40 dark:text-white/30 group-hover:text-[#D52169]/60 transition-colors duration-300"
-                      style={{ fontWeight: 500 }}
+                    {/* Logo/Name */}
+                    <motion.div
+                      className="relative z-10 text-center"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 200 }}
                     >
-                      {partner.tagline}
-                    </p>
-                  </motion.div>
+                      <div className="mb-2 flex items-center justify-center">
+                        <img
+                          src={partner.src}
+                          alt="Partner logo"
+                          className="block dark:hidden h-12 md:h-14 w-auto opacity-90"
+                          loading="lazy"
+                        />
+                        <img
+                          src={partner.srcDark}
+                          alt="Partner logo"
+                          className="hidden dark:block h-12 md:h-14 w-auto opacity-100"
+                          loading="lazy"
+                        />
+                      </div>
+                      <p
+                        className="font-['Archivo',sans-serif] text-[10px] tracking-[0.15em] uppercase text-[#28292D]/40 dark:text-white/30 group-hover:text-[#D52169]/60 transition-colors duration-300"
+                        style={{ fontWeight: 500 }}
+                      >
+                        {partner.tagline}
+                      </p>
+                    </motion.div>
 
-                  {/* Hover line decoration */}
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileHover={{ width: "80%" }}
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#D52169]"
-                    transition={{ duration: 0.3 }}
-                  />
+                    {/* Hover line decoration */}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileHover={{ width: "80%" }}
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#D52169]"
+                      transition={{ duration: 0.3 }}
+                    />
                   </div>
                 </a>
               </motion.div>

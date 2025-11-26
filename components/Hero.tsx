@@ -2,9 +2,11 @@
 
 import { motion } from "motion/react";
 import { useTheme } from "./ThemeContext";
+import { useLanguage } from "./LanguageContext";
 
 export function Hero() {
   const { accessibility } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <section
@@ -51,7 +53,7 @@ export function Hero() {
                   className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 italic"
                   style={{ fontWeight: 400 }}
                 >
-                  (Based in Rosario, Argentina)
+                  {t('hero.location')}
                 </span>
               </motion.div>
 
@@ -81,15 +83,17 @@ export function Hero() {
                   className="font-['Archivo',sans-serif] text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] text-[#28292D] dark:text-white/90 mb-6"
                   style={{ fontWeight: 600 }}
                 >
-                  We craft impactful SaaS and Websites for growth and success.
+                  {t('hero.subtitle')}
                 </h2>
                 <p
                   className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] max-w-[550px]"
                   style={{ fontWeight: 400 }}
                 >
-                  A comprehensive vision guiding your digital product.
+                  {t('hero.description')}
                   <br />
-                  We align your company’s goals, technology needs, and growth direction through <b>strategic design and development</b>.
+                  {t('hero.descriptionBold', { bold: "" }).split('{bold}')[0]}
+                  <b>{t('hero.descriptionBoldText')}</b>
+                  {t('hero.descriptionBold', { bold: "" }).split('{bold}')[1]}
                 </p>
               </motion.div>
 
@@ -106,7 +110,7 @@ export function Hero() {
                   className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
                   style={{ fontWeight: 700 }}
                 >
-                  Let's Talk →
+                  {t('hero.ctaTalk')}
                 </motion.a>
                 <motion.a
                   href="#proyectos"
@@ -115,7 +119,7 @@ export function Hero() {
                   className="px-10 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase border-2 text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D] transition-colors duration-300 cursor-pointer"
                   style={{ fontWeight: 700 }}
                 >
-                  View Work
+                  {t('hero.ctaWork')}
                 </motion.a>
               </motion.div>
             </div>

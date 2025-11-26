@@ -2,8 +2,10 @@
 
 import { motion } from "motion/react";
 import { Instagram, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
 
 export function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -14,12 +16,12 @@ export function Footer() {
   ];
 
   const footerLinks = {
-    Company: [
-      { label: "About Us", href: "#about" },
-      { label: "Services", href: "#servicios" },
-      { label: "Our Work", href: "#proyectos" },
-      { label: "Our Process", href: "#proceso" },
-      { label: "Contact Us", href: "#contacto" },
+    [t('footer.company')]: [
+      { label: t('footer.aboutUs'), href: "#about" },
+      { label: t('nav.services'), href: "#servicios" },
+      { label: t('footer.ourWork'), href: "#proyectos" },
+      { label: t('footer.ourProcess'), href: "#proceso" },
+      { label: t('footer.contactUs'), href: "#contacto" },
     ],
   } as const;
 
@@ -47,9 +49,9 @@ export function Footer() {
               className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-white/70 leading-[1.7] mb-8 max-w-[500px]"
               style={{ fontWeight: 400 }}
             >
-              Comprehensive strategy crafting your digital product.
+              {t('footer.description')}
               <br />
-              Based in Argentina, working globally.
+              {t('footer.location')}
             </p>
 
             {/* Contact Info */}
@@ -66,7 +68,7 @@ export function Footer() {
                   className="font-['Archivo',sans-serif] text-[14px]"
                   style={{ fontWeight: 400 }}
                 >
-                  Rosario, Argentina
+                  {t('footer.locationText')}
                 </span>
               </motion.a>
 
@@ -207,7 +209,7 @@ export function Footer() {
             className="font-['Archivo',sans-serif] text-[12px] text-white/40"
             style={{ fontWeight: 400 }}
           >
-            © {currentYear} Kier Studio. All rights reserved.
+            {t('footer.copyright', { year: currentYear })}
           </p>
 
           <div className="flex gap-6">
@@ -217,7 +219,7 @@ export function Footer() {
               className="font-['Archivo',sans-serif] text-[12px] text-white/40 hover:text-[#D52169] transition-colors cursor-pointer"
               style={{ fontWeight: 400 }}
             >
-              Privacy Policy
+              {t('footer.privacyPolicy')}
             </motion.a>
             <motion.a
               href="/terms"
@@ -225,7 +227,7 @@ export function Footer() {
               className="font-['Archivo',sans-serif] text-[12px] text-white/40 hover:text-[#D52169] transition-colors"
               style={{ fontWeight: 400 }}
             >
-              Terms of Service
+              {t('footer.termsOfService')}
             </motion.a>
             <motion.a
               href="/cookies"
@@ -233,7 +235,7 @@ export function Footer() {
               className="font-['Archivo',sans-serif] text-[12px] text-white/40 hover:text-[#D52169] transition-colors"
               style={{ fontWeight: 400 }}
             >
-              Cookie Policy
+              {t('footer.cookiePolicy')}
             </motion.a>
           </div>
         </div>

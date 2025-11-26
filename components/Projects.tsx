@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { X } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "./LanguageContext";
 
 interface Project {
   id: number;
@@ -18,6 +19,7 @@ interface Project {
 }
 
 export function Projects() {
+  const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showAll, setShowAll] = useState(false);
@@ -45,16 +47,16 @@ export function Projects() {
       category: "SaaS Platform, Mobile App",
       year: "2023",
       description:
-       "The MRAI Fleet SaaS platform and mobile app needed a new design to enhance user experience and streamline operations. The new design features a modern, professional aesthetic with a focus on usability and efficiency. We also implemented a custom catalog section powered by Strapi CMS, allowing the MRAI Fleet team to easily manage and publish content to boost visibility and SEO.",
+        "The MRAI Fleet SaaS platform and mobile app needed a new design to enhance user experience and streamline operations. The new design features a modern, professional aesthetic with a focus on usability and efficiency. We also implemented a custom catalog section powered by Strapi CMS, allowing the MRAI Fleet team to easily manage and publish content to boost visibility and SEO.",
       services: ["SaaS Platform", "Mobile App", "UX/UI", "Product Design"],
       image:
         "/projects/mrai/mrai-mock.jpg",
-        images: [
-          "/projects/mrai/04project.jpg",
-          "/projects/mrai/02-project.jpg",
-          "/projects/mrai/03project.jpg",
-          "/projects/mrai/01project.jpg",
-        ],
+      images: [
+        "/projects/mrai/04project.jpg",
+        "/projects/mrai/02-project.jpg",
+        "/projects/mrai/03project.jpg",
+        "/projects/mrai/01project.jpg",
+      ],
       url: "https://miraifleet.com",
     },
     {
@@ -67,14 +69,14 @@ export function Projects() {
       services: ["Ecommerce Setup & Launch", "Website Design", "Strategy"],
       image:
         "/projects/barriv/barri-mock.jpg",
-        images: [
-          "/projects/barriv/01.png",
-          "/projects/barriv/02.jpg",
-          "/projects/barriv/03.jpg",
-        ],
+      images: [
+        "/projects/barriv/01.png",
+        "/projects/barriv/02.jpg",
+        "/projects/barriv/03.jpg",
+      ],
       url: "https://barrivell.com.ar/",
     },
-      {
+    {
       id: 2,
       title: "TEAMIE.",
       category: "Team Communication - Website",
@@ -141,21 +143,21 @@ export function Projects() {
             className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
             style={{ fontWeight: 400 }}
           >
-            (Our Work)
+            {t('projects.tag')}
           </span>
 
           <h2
             className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900 }}
           >
-            PROJECTS
+            {t('projects.title')}
           </h2>
 
           <p
             className="font-['Archivo',sans-serif] text-[18px] md:text-[28px] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
             style={{ fontWeight: 600 }}
           >
-            Explore our portfolio of selected transformative digital experiences.
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -173,57 +175,57 @@ export function Projects() {
                 onClick={() => openModal(project)}
                 className="group cursor-pointer relative overflow-hidden"
               >
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#1a1a1a] min-h-[200px] sm:min-h-[240px] md:min-h-[280px]">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                {/* Gradient overlay for mock images - always visible for better text readability */}
-                {isMockImage(project.image) ? (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                ) : (
-                  <div className="absolute inset-0 bg-black/30 opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
-                )}
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#1a1a1a] min-h-[200px] sm:min-h-[240px] md:min-h-[280px]">
+                  <ImageWithFallback
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  {/* Gradient overlay for mock images - always visible for better text readability */}
+                  {isMockImage(project.image) ? (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  ) : (
+                    <div className="absolute inset-0 bg-black/30 opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+                  )}
 
-                {/* Project Info Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <motion.div initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }}>
-                    <span
-                      className="font-['Archivo',sans-serif] text-[10px] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
-                      style={{ fontWeight: 400 }}
+                  {/* Project Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <motion.div initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }}>
+                      <span
+                        className="font-['Archivo',sans-serif] text-[10px] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
+                        style={{ fontWeight: 400 }}
+                      >
+                        ({project.category} - {project.year})
+                      </span>
+                      <h3
+                        className="font-['Archivo',sans-serif] text-[42px] md:text-[52px] leading-[0.9] tracking-[-0.02em] text-white mb-2"
+                        style={{ fontWeight: 900 }}
+                      >
+                        {project.title}
+                      </h3>
+                    </motion.div>
+
+                    <motion.button
+                      whileHover={{ scale: 1.05, x: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-[#D52169] text-white px-6 py-3 font-['Archivo',sans-serif] text-[11px] tracking-[0.1em] uppercase mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer"
+                      style={{ fontWeight: 700 }}
                     >
-                      ({project.category} - {project.year})
-                    </span>
-                    <h3
-                      className="font-['Archivo',sans-serif] text-[42px] md:text-[52px] leading-[0.9] tracking-[-0.02em] text-white mb-2"
+                      {t('projects.viewProject')}
+                    </motion.button>
+                  </div>
+
+                  {/* Number */}
+                  <div className="absolute top-8 right-8">
+                    <span
+                      className="font-['Archivo',sans-serif] text-[64px] text-white/10 group-hover:text-white/20 transition-colors"
                       style={{ fontWeight: 900 }}
                     >
-                      {project.title}
-                    </h3>
-                  </motion.div>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05, x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-[#D52169] text-white px-6 py-3 font-['Archivo',sans-serif] text-[11px] tracking-[0.1em] uppercase mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer"
-                    style={{ fontWeight: 700 }}
-                  >
-                    View Project →
-                  </motion.button>
+                      {String(project.id).padStart(2, "0")}
+                    </span>
+                  </div>
                 </div>
-
-                {/* Number */}
-                <div className="absolute top-8 right-8">
-                  <span
-                    className="font-['Archivo',sans-serif] text-[64px] text-white/10 group-hover:text-white/20 transition-colors"
-                    style={{ fontWeight: 900 }}
-                  >
-                    {String(project.id).padStart(2, "0")}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
@@ -244,7 +246,7 @@ export function Projects() {
               onClick={() => setShowAll((prev) => !prev)}
               aria-expanded={showAll}
             >
-              {showAll ? 'Close Projects' : 'View All Projects →'}
+              {showAll ? t('projects.closeProjects') : t('projects.viewAll')}
             </motion.button>
           </motion.div>
         )}
@@ -273,7 +275,7 @@ export function Projects() {
                 whileTap={{ scale: 0.9 }}
                 onClick={closeModal}
                 className="absolute top-6 right-6 z-10 w-12 h-12 bg-[#D52169] hover:bg-[#28292D] rounded-full flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Close modal"
+                aria-label={t('projects.closeModal')}
               >
                 <X className="text-white" size={24} />
               </motion.button>
@@ -295,7 +297,7 @@ export function Projects() {
                         whileTap={{ scale: 0.9 }}
                         onClick={prevImage}
                         className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-[#D52169] backdrop-blur-sm rounded-full flex items-center justify-center transition-colors cursor-pointer"
-                        aria-label="Previous image"
+                        aria-label={t('projects.prevImage')}
                       >
                         <span className="text-white text-[24px]">←</span>
                       </motion.button>
@@ -304,7 +306,7 @@ export function Projects() {
                         whileTap={{ scale: 0.9 }}
                         onClick={nextImage}
                         className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-[#D52169] backdrop-blur-sm rounded-full flex items-center justify-center transition-colors cursor-pointer"
-                        aria-label="Next image"
+                        aria-label={t('projects.nextImage')}
                       >
                         <span className="text-white text-[24px]">→</span>
                       </motion.button>
@@ -351,7 +353,7 @@ export function Projects() {
                       className="font-['Archivo',sans-serif] text-[12px] tracking-[0.2em] uppercase text-[#28292D]/50 dark:text-white/50 mb-4"
                       style={{ fontWeight: 600 }}
                     >
-                      Services
+                      {t('projects.servicesLabel')}
                     </h4>
                     <div className="flex flex-wrap gap-3">
                       {selectedProject.services.map((service, index) => (
@@ -377,7 +379,7 @@ export function Projects() {
                       className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] w-fit cursor-pointer inline-block"
                       style={{ fontWeight: 700 }}
                     >
-                      Visit Website →
+                      {t('projects.visitWebsite')}
                     </motion.a>
                   )}
                 </div>

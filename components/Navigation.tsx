@@ -1,19 +1,21 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Menu, X } from "lucide-react"; 
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { LogoCompact } from "./Logo";
+import { useLanguage } from "./LanguageContext";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navItems = [
-    { label: "Start", href: "#inicio" },
-    { label: "Services", href: "#servicios" },
-    { label: "Work", href: "#proyectos" },
-    { label: "Process", href: "#proceso" },
-    { label: "Contact", href: "#contacto" },
+    { label: t('nav.start'), href: "#inicio" },
+    { label: t('nav.services'), href: "#servicios" },
+    { label: t('nav.work'), href: "#proyectos" },
+    { label: t('nav.process'), href: "#proceso" },
+    { label: t('nav.contact'), href: "#contacto" },
   ];
 
   return (
@@ -60,7 +62,7 @@ export function Navigation() {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden p-2 hover:bg-[#F5F5F5] rounded transition-colors cursor-pointer"
-          aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={mobileMenuOpen ? t('nav.menuClose') : t('nav.menuOpen')}
           aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
