@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { Quote } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
 
 interface Testimonial {
   id: number;
@@ -14,6 +15,7 @@ interface Testimonial {
 }
 
 export function Testimonial() {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials: Testimonial[] = [
@@ -71,14 +73,14 @@ export function Testimonial() {
             className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-white/50 mb-6 block italic"
             style={{ fontWeight: 400 }}
           >
-            (Client Stories)
+            {t('testimonials.tag')}
           </span>
 
           <h2
             className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-white mb-8"
             style={{ fontWeight: 900 }}
           >
-            TESTIMONIALS
+            {t('testimonials.title')}
           </h2>
         </motion.div>
 
@@ -141,7 +143,7 @@ export function Testimonial() {
                     className="font-['Archivo',sans-serif] text-[14px] text-white/60"
                     style={{ fontWeight: 400 }}
                   >
-                    {testimonials[currentIndex].role} at {testimonials[currentIndex].company}
+                    {testimonials[currentIndex].role} {t('testimonials.atLabel')} {testimonials[currentIndex].company}
                   </p>
                 </div>
               </motion.div>
@@ -157,7 +159,7 @@ export function Testimonial() {
                   whileTap={{ scale: 0.9 }}
                   onClick={prevTestimonial}
                   className="w-14 h-14 border-2 border-white/20 hover:border-[#D52169] hover:bg-[#D52169] rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
-                  aria-label="Previous testimonial"
+                  aria-label={t('testimonials.prevTestimonial')}
                 >
                   <span className="text-white text-[24px] group-hover:-translate-x-1 transition-transform">
                     ←
@@ -169,7 +171,7 @@ export function Testimonial() {
                   whileTap={{ scale: 0.9 }}
                   onClick={nextTestimonial}
                   className="w-14 h-14 border-2 border-white/20 hover:border-[#D52169] hover:bg-[#D52169] rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
-                  aria-label="Next testimonial"
+                  aria-label={t('testimonials.nextTestimonial')}
                 >
                   <span className="text-white text-[24px] group-hover:translate-x-1 transition-transform">
                     →
@@ -184,10 +186,9 @@ export function Testimonial() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
-                    index === currentIndex ? "bg-[#D52169] w-8" : "bg-white/20 hover:bg-white/40"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${index === currentIndex ? "bg-[#D52169] w-8" : "bg-white/20 hover:bg-white/40"
+                    }`}
+                  aria-label={`${t('testimonials.goToTestimonial')} ${index + 1}`}
                 />
               ))}
             </div>
@@ -202,10 +203,10 @@ export function Testimonial() {
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-32 pt-20 border-t border-white/10"
         >
           {[
-            { number: "50+", label: "Projects Completed" },
-            { number: "+32%", label: "Conversion Rates" },
-            { number: "10+", label: "Years Experience" },
-            { number: "100%", label: "Client Satisfaction" },
+            { number: "50+", label: t('testimonials.stats.projectsCompleted') },
+            { number: "+32%", label: t('testimonials.stats.conversionRates') },
+            { number: "10+", label: t('testimonials.stats.yearsExperience') },
+            { number: "100%", label: t('testimonials.stats.clientSatisfaction') },
           ].map((stat, index) => (
             <motion.div
               key={index}

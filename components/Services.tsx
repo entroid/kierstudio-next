@@ -3,8 +3,10 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useRef } from "react";
+import { useLanguage } from "./LanguageContext";
 
 export function Services() {
+  const { t, translations } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -18,45 +20,35 @@ export function Services() {
 
   const services = [
     {
-      title: "PRODUCT DESIGN",
-      subtitle: "End-to-end digital products: Strategy, user centered design and development.",
-      image:
-        "/services/product-design3.jpg",
-      services: ["Strategy", "UX/UI", "Development", "Conversions"],
-      tag: "Strategy + UX/UI + Development",
+      title: t('services.productDesign.title'),
+      subtitle: t('services.productDesign.subtitle'),
+      image: "/services/product-design3.jpg",
+      services: translations.services.productDesign.items,
+      tag: t('services.productDesign.tag'),
       bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
     },
     {
-      title: "WEBSITES",
-      subtitle:
-        "Your online presentation card. Custom & responsive websites that engage users and drive conversions.",
-      image:
-        "/services/website2.jpg",
-      services: ["Website Design & Development", "Support"],
-      tag: "Website Services",
+      title: t('services.websites.title'),
+      subtitle: t('services.websites.subtitle'),
+      image: "/services/website2.jpg",
+      services: translations.services.websites.items,
+      tag: t('services.websites.tag'),
       bgColor: "bg-[#28292D] dark:bg-black",
     },
     {
-      title: "ECOMMERCE",
-      subtitle: "Strategic design, setup, launch and support for your online store.",
-      image:
-        "/services/ecommerce.jpg",
-      services: ["Ecommerce Setup & Launch", "Shopify", "Tiendanube", "WooCommerce"],
-      tag: "Ecommerce Services",
+      title: t('services.ecommerce.title'),
+      subtitle: t('services.ecommerce.subtitle'),
+      image: "/services/ecommerce.jpg",
+      services: translations.services.ecommerce.items,
+      tag: t('services.ecommerce.tag'),
       bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
     },
     {
-      title: "PRODUCT DEVELOPMENT",
-      subtitle: "Build scalable content systems with headless CMS and seamless integrations.",
-      image:
-        "/services/dev.jpg",
-      services: [
-        "Headless CMS",
-        "Content Modeling",
-        "SaaS, B2B",
-        "Custom Software",
-      ],
-      tag: "Development",
+      title: t('services.development.title'),
+      subtitle: t('services.development.subtitle'),
+      image: "/services/dev.jpg",
+      services: translations.services.development.items,
+      tag: t('services.development.tag'),
       bgColor: "bg-[#28292D] dark:bg-black",
     },
   ];
@@ -80,7 +72,7 @@ export function Services() {
             className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
             style={{ fontWeight: 400 }}
           >
-            (What we do)
+            {t('services.tag')}
           </span>
 
           <motion.h2
@@ -92,7 +84,7 @@ export function Services() {
             className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900, opacity: titleOpacity }}
           >
-            SERVICES
+            {t('services.title')}
           </motion.h2>
 
           <motion.p
@@ -103,8 +95,7 @@ export function Services() {
             className="font-['Archivo',sans-serif] text-[18px] md:text-[28px] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
             style={{ fontWeight: 600 }}
           >
-            We combine strategy, creativity and technology to elevate your business and enhance your
-            users experience.
+            {t('services.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -135,9 +126,8 @@ export function Services() {
 
               {/* Content Side */}
               <div
-                className={`${service.bgColor} p-12 lg:p-16 flex flex-col justify-center transition-colors duration-500 ${
-                  index % 2 === 0 ? "lg:order-2" : "lg:order-1"
-                }`}
+                className={`${service.bgColor} p-12 lg:p-16 flex flex-col justify-center transition-colors duration-500 ${index % 2 === 0 ? "lg:order-2" : "lg:order-1"
+                  }`}
               >
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
@@ -146,11 +136,10 @@ export function Services() {
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
                   <span
-                    className={`font-['Archivo',sans-serif] text-[10px] tracking-[0.3em] uppercase mb-8 block italic ${
-                      service.bgColor.includes("28292D") || service.bgColor.includes("black")
-                        ? "text-white/50"
-                        : "text-[#28292D]/50 dark:text-white/50"
-                    }`}
+                    className={`font-['Archivo',sans-serif] text-[10px] tracking-[0.3em] uppercase mb-8 block italic ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                      ? "text-white/50"
+                      : "text-[#28292D]/50 dark:text-white/50"
+                      }`}
                     style={{ fontWeight: 400 }}
                   >
                     ({service.tag})
@@ -158,11 +147,10 @@ export function Services() {
 
                   {/* Animated Title */}
                   <h3
-                    className={`font-['Archivo',sans-serif] text-[48px] md:text-[64px] lg:text-[72px] leading-[0.9] tracking-[-0.02em] mb-6 ${
-                      service.bgColor.includes("28292D") || service.bgColor.includes("black")
-                        ? "text-white"
-                        : "text-[#28292D] dark:text-white"
-                    }`}
+                    className={`font-['Archivo',sans-serif] text-[48px] md:text-[64px] lg:text-[72px] leading-[0.9] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                      ? "text-white"
+                      : "text-[#28292D] dark:text-white"
+                      }`}
                     style={{ fontWeight: 900 }}
                   >
                     {service.title.split(" ").map((word, wordIndex) => (
@@ -184,11 +172,10 @@ export function Services() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.6 }}
-                    className={`font-['Archivo',sans-serif] text-[16px] md:text-[18px] leading-[1.7] mb-10 ${
-                      service.bgColor.includes("28292D") || service.bgColor.includes("black")
-                        ? "text-white/80"
-                        : "text-[#28292D]/70 dark:text-white/70"
-                    }`}
+                    className={`font-['Archivo',sans-serif] text-[16px] md:text-[18px] leading-[1.7] mb-10 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                      ? "text-white/80"
+                      : "text-[#28292D]/70 dark:text-white/70"
+                      }`}
                     style={{ fontWeight: 400 }}
                   >
                     {service.subtitle}
@@ -203,11 +190,10 @@ export function Services() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.7 + itemIndex * 0.1 }}
-                        className={`font-['Archivo',sans-serif] text-[13px] tracking-[0.05em] flex items-center gap-2 ${
-                          service.bgColor.includes("28292D") || service.bgColor.includes("black")
-                            ? "text-white/60"
-                            : "text-[#28292D]/60 dark:text-white/60"
-                        }`}
+                        className={`font-['Archivo',sans-serif] text-[13px] tracking-[0.05em] flex items-center gap-2 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                          ? "text-white/60"
+                          : "text-[#28292D]/60 dark:text-white/60"
+                          }`}
                         style={{ fontWeight: 500 }}
                       >
                         <span className="text-[#D52169]">▸</span>
@@ -224,11 +210,10 @@ export function Services() {
                       viewport={{ once: true }}
                       transition={{ delay: 1 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`font-['Archivo',sans-serif] text-[12px] tracking-[0.1em] uppercase px-8 py-4 border-2 transition-colors duration-300 ${
-                        service.bgColor.includes("28292D") || service.bgColor.includes("black")
-                          ? "border-white text-white hover:bg-white hover:text-[#28292D]"
-                          : "border-[#28292D] dark:border-white text-[#28292D] dark:text-white hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D]"
-                      }`}
+                      className={`font-['Archivo',sans-serif] text-[12px] tracking-[0.1em] uppercase px-8 py-4 border-2 transition-colors duration-300 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                        ? "border-white text-white hover:bg-white hover:text-[#28292D]"
+                        : "border-[#28292D] dark:border-white text-[#28292D] dark:text-white hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D]"
+                        }`}
                       style={{ fontWeight: 700 }}
                     >
                       Learn More →

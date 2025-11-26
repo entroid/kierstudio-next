@@ -3,8 +3,10 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { ArrowRight, Mail, Phone, CheckCircle, XCircle, Instagram, Loader2 } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
 
 export function CTA() {
+  const { t } = useLanguage();
   const [result, setResult] = useState<{ type: "success" | "error"; message: string } | null>(null);
   const [submitting, setSubmitting] = useState(false);
   return (
@@ -50,24 +52,23 @@ export function CTA() {
               className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-8 block italic"
               style={{ fontWeight: 400 }}
             >
-              (Let's Connect)
+              {t('cta.tag')}
             </span>
 
             <h2
               className="font-['Archivo',sans-serif] text-[64px] md:text-[96px] lg:text-[120px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
               style={{ fontWeight: 900 }}
             >
-              READY TO
+              {t('cta.title1')}
               <br />
-              <span className="text-[#D52169]">START?</span>
+              <span className="text-[#D52169]">{t('cta.title2')}</span>
             </h2>
 
             <p
               className="font-['Archivo',sans-serif] text-[18px] md:text-[24px] text-[#28292D]/70 dark:text-white/70 leading-[1.6] mb-12 max-w-[600px]"
               style={{ fontWeight: 400 }}
             >
-              Let's turn your idea into an exceptional digital experience. We are ready to bring
-              your next project to life.
+              {t('cta.subtitle')}
             </p>
 
             {/* Contact Methods */}
@@ -85,7 +86,7 @@ export function CTA() {
                     className="font-['Archivo',sans-serif] text-[11px] tracking-[0.2em] uppercase text-[#28292D]/50 dark:text-white/50"
                     style={{ fontWeight: 600 }}
                   >
-                    Email Us
+                    {t('cta.emailLabel')}
                   </p>
                   <p
                     className="font-['Archivo',sans-serif] text-[18px] text-[#28292D] dark:text-white"
@@ -111,7 +112,7 @@ export function CTA() {
                     className="font-['Archivo',sans-serif] text-[11px] tracking-[0.2em] uppercase text-[#28292D]/50 dark:text-white/50"
                     style={{ fontWeight: 600 }}
                   >
-                    WhatsApp
+                    {t('cta.whatsappLabel')}
                   </p>
                   <p
                     className="font-['Archivo',sans-serif] text-[18px] text-[#28292D] dark:text-white"
@@ -137,7 +138,7 @@ export function CTA() {
                     className="font-['Archivo',sans-serif] text-[11px] tracking-[0.2em] uppercase text-[#28292D]/50 dark:text-white/50"
                     style={{ fontWeight: 600 }}
                   >
-                    Instagram
+                    {t('cta.instagramLabel')}
                   </p>
                   <p
                     className="font-['Archivo',sans-serif] text-[18px] text-[#28292D] dark:text-white"
@@ -184,7 +185,7 @@ export function CTA() {
               className="font-['Archivo',sans-serif] text-[32px] md:text-[42px] text-[#28292D] dark:text-white mb-8"
               style={{ fontWeight: 800 }}
             >
-              Send us a message
+              {t('cta.formTitle')}
             </h3>
 
             <form
@@ -212,17 +213,17 @@ export function CTA() {
                   if (res.ok) {
                     setResult({
                       type: "success",
-                      message: "Thanks! Your message has been sent. We will get back to you soon.",
+                      message: t('cta.formSuccess.message'),
                     });
                     form.reset();
                   } else {
                     setResult({
                       type: "error",
-                      message: (json && (json.message || json.error)) || "Please try again later.",
+                      message: (json && (json.message || json.error)) || t('cta.formError.message'),
                     });
                   }
                 } catch (err) {
-                  setResult({ type: "error", message: "Please try again later." });
+                  setResult({ type: "error", message: t('cta.formError.message') });
                 }
               }}
             >
@@ -242,7 +243,7 @@ export function CTA() {
                   className="font-['Archivo',sans-serif] text-[11px] tracking-[0.15em] uppercase text-[#28292D]/70 dark:text-white/70 mb-2 block"
                   style={{ fontWeight: 600 }}
                 >
-                  Your Name
+                  {t('cta.formName')}
                 </label>
                 <input
                   type="text"
@@ -251,11 +252,11 @@ export function CTA() {
                   className="w-full bg-white dark:bg-[#28292D] border-2 border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] px-5 py-4 font-['Archivo',sans-serif] text-[14px] text-[#28292D] dark:text-white outline-none transition-colors"
                   required
                   onInvalid={(e) => {
-                    const t = e.target as HTMLInputElement;
-                    t.setCustomValidity(t.validity.valueMissing ? "Please enter your name." : "");
+                    const target = e.target as HTMLInputElement;
+                    target.setCustomValidity(target.validity.valueMissing ? t('cta.formValidation.nameRequired') : "");
                   }}
                   onInput={(e) => (e.currentTarget as HTMLInputElement).setCustomValidity("")}
-                  placeholder="John Doe"
+                  placeholder={t('cta.formNamePlaceholder')}
                   style={{ fontWeight: 400 }}
                 />
               </div>
@@ -266,7 +267,7 @@ export function CTA() {
                   className="font-['Archivo',sans-serif] text-[11px] tracking-[0.15em] uppercase text-[#28292D]/70 dark:text-white/70 mb-2 block"
                   style={{ fontWeight: 600 }}
                 >
-                  Email Address
+                  {t('cta.formEmail')}
                 </label>
                 <input
                   type="email"
@@ -275,16 +276,16 @@ export function CTA() {
                   className="w-full bg-white dark:bg-[#28292D] border-2 border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] px-5 py-4 font-['Archivo',sans-serif] text-[14px] text-[#28292D] dark:text-white outline-none transition-colors"
                   required
                   onInvalid={(e) => {
-                    const t = e.target as HTMLInputElement;
-                    const msg = t.validity.valueMissing
-                      ? "Please enter your email address."
-                      : t.validity.typeMismatch
-                        ? "Please enter a valid email address."
+                    const target = e.target as HTMLInputElement;
+                    const msg = target.validity.valueMissing
+                      ? t('cta.formValidation.emailRequired')
+                      : target.validity.typeMismatch
+                        ? t('cta.formValidation.emailInvalid')
                         : "";
-                    t.setCustomValidity(msg);
+                    target.setCustomValidity(msg);
                   }}
                   onInput={(e) => (e.currentTarget as HTMLInputElement).setCustomValidity("")}
-                  placeholder="john@example.com"
+                  placeholder={t('cta.formEmailPlaceholder')}
                   style={{ fontWeight: 400 }}
                 />
               </div>
@@ -295,7 +296,7 @@ export function CTA() {
                   className="font-['Archivo',sans-serif] text-[11px] tracking-[0.15em] uppercase text-[#28292D]/70 dark:text-white/70 mb-2 block"
                   style={{ fontWeight: 600 }}
                 >
-                  Project Type
+                  {t('cta.formProject')}
                 </label>
                 <select
                   id="project"
@@ -304,23 +305,23 @@ export function CTA() {
                   required
                   defaultValue=""
                   onInvalid={(e) => {
-                    const t = e.target as HTMLSelectElement;
-                    t.setCustomValidity(
-                      t.validity.valueMissing ? "Please select a project type." : "",
+                    const target = e.target as HTMLSelectElement;
+                    target.setCustomValidity(
+                      target.validity.valueMissing ? t('cta.formValidation.projectRequired') : "",
                     );
                   }}
                   onInput={(e) => (e.currentTarget as HTMLSelectElement).setCustomValidity("")}
                   style={{ fontWeight: 400 }}
                 >
                   <option value="" disabled>
-                    Select a project type…
+                    {t('cta.formProjectPlaceholder')}
                   </option>
-                  <option>SaaS</option>
-                  <option>Website</option>
-                  <option>E-commerce</option>
-                  <option>Mobile App</option>
-                  <option>UX/UI consulting</option>
-                  <option>Other</option>
+                  <option>{t('cta.formProjectOptions.saas')}</option>
+                  <option>{t('cta.formProjectOptions.website')}</option>
+                  <option>{t('cta.formProjectOptions.ecommerce')}</option>
+                  <option>{t('cta.formProjectOptions.mobileApp')}</option>
+                  <option>{t('cta.formProjectOptions.uxui')}</option>
+                  <option>{t('cta.formProjectOptions.other')}</option>
                 </select>
               </div>
 
@@ -330,7 +331,7 @@ export function CTA() {
                   className="font-['Archivo',sans-serif] text-[11px] tracking-[0.15em] uppercase text-[#28292D]/70 dark:text-white/70 mb-2 block"
                   style={{ fontWeight: 600 }}
                 >
-                  Tell us about your project
+                  {t('cta.formMessage')}
                 </label>
                 <textarea
                   id="message"
@@ -339,11 +340,11 @@ export function CTA() {
                   className="w-full bg-white dark:bg-[#28292D] border-2 border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] px-5 py-4 font-['Archivo',sans-serif] text-[14px] text-[#28292D] dark:text-white outline-none transition-colors resize-none"
                   required
                   onInvalid={(e) => {
-                    const t = e.target as HTMLTextAreaElement;
-                    t.setCustomValidity(t.validity.valueMissing ? "Please enter a message." : "");
+                    const target = e.target as HTMLTextAreaElement;
+                    target.setCustomValidity(target.validity.valueMissing ? t('cta.formValidation.messageRequired') : "");
                   }}
                   onInput={(e) => (e.currentTarget as HTMLTextAreaElement).setCustomValidity("")}
-                  placeholder="Share your vision with us..."
+                  placeholder={t('cta.formMessagePlaceholder')}
                   style={{ fontWeight: 400 }}
                 />
               </div>
@@ -354,10 +355,10 @@ export function CTA() {
                 aria-busy={submitting}
                 whileHover={{ scale: 1.02, x: 5 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] flex items-center justify-center gap-3 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full bg-[#D52169] text-white px-10 py-5 font-[' Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] flex items-center justify-center gap-3 group cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{ fontWeight: 700 }}
               >
-                Send Message
+                {t('cta.formSubmit')}
                 {submitting ? (
                   <Loader2 className="animate-spin" size={18} />
                 ) : (
@@ -378,8 +379,8 @@ export function CTA() {
                     style={{ fontWeight: 700 }}
                   >
                     {result.type === "success"
-                      ? "Message sent successfully"
-                      : "Something went wrong"}
+                      ? t('cta.formSuccess.title')
+                      : t('cta.formError.title')}
                   </h4>
                   <p
                     className="font-['Archivo',sans-serif] text-[14px] text-[#28292D]/70 dark:text-white/70 mb-6"
@@ -396,7 +397,7 @@ export function CTA() {
                     style={{ fontWeight: 700 }}
                     type="button"
                   >
-                    Close
+                    {t('cta.close')}
                   </button>
                 </div>
               </div>
