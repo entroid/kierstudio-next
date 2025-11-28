@@ -42,7 +42,7 @@ export function Process() {
   return (
     <section
       id="proceso"
-      className="py-32 bg-[#F5F5F5] dark:bg-[#0f0f0f] transition-colors duration-500"
+      className="py-16 md:py-32 bg-[#F5F5F5] dark:bg-[#0f0f0f] transition-colors duration-500"
     >
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         {/* Header */}
@@ -50,7 +50,7 @@ export function Process() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-10 md:mb-20"
         >
           <span
             className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
@@ -65,7 +65,7 @@ export function Process() {
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[56px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900, opacity: titleOpacity }}
           >
             {t('process.title')}
@@ -90,12 +90,12 @@ export function Process() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group border-b border-[#28292D]/10 dark:border-white/10 last:border-b-0"
             >
-              <div className="grid lg:grid-cols-12 gap-8 py-16 lg:py-20 items-start">
+              <div className="grid lg:grid-cols-12 gap-8 py-8 md:py-16 lg:py-20 items-start">
                 {/* Number */}
                 <div className="lg:col-span-2">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] leading-[0.9] tracking-[-0.02em] text-[#D52169] group-hover:text-[#28292D] dark:group-hover:text-white transition-colors duration-300"
+                    className="font-['Archivo',sans-serif] text-[48px] md:text-[120px] leading-[0.9] tracking-[-0.02em] text-[#D52169] group-hover:text-[#28292D] dark:group-hover:text-white transition-colors duration-300"
                     style={{ fontWeight: 900 }}
                   >
                     {step.number}
@@ -109,7 +109,7 @@ export function Process() {
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="font-['Archivo',sans-serif] text-[42px] md:text-[56px] lg:text-[64px] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
+                    className="font-['Archivo',sans-serif] text-[30px] md:text-[56px] lg:text-[64px] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
                     style={{ fontWeight: 900 }}
                   >
                     {step.title}

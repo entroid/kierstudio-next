@@ -41,7 +41,7 @@ export function Partners() {
   return (
     <section
       id="about"
-      className="py-32 bg-[#F5F5F5] dark:bg-[#0f0f0f] transition-colors duration-500"
+      className="py-16 md:py-32 bg-[#F5F5F5] dark:bg-[#0f0f0f] transition-colors duration-500"
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* About Us Section */}
@@ -59,7 +59,7 @@ export function Partners() {
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[64px] md:text-[96px] lg:text-[120px] leading-[0.9] tracking-[-0.03em] text-[#28292D] dark:text-white mb-12"
+            className="font-['Archivo',sans-serif] text-[42px] md:text-[96px] lg:text-[120px] leading-[0.9] tracking-[-0.03em] text-[#28292D] dark:text-white mb-12"
             style={{ fontWeight: 900 }}
           >
             {t('partners.title1')}

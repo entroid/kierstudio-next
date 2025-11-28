@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center pt-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
+      className="relative min-h-screen flex items-center py-16 md:pb-0 pt-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
     >
       <div className="max-w-[1800px] mx-auto w-full">
         <div className="grid lg:grid-cols-2 min-h-[calc(100vh-6rem)]">
@@ -40,7 +40,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="flex items-center justify-center px-8 lg:px-20 bg-white dark:bg-[#0a0a0a]"
+            className="flex items-center justify-center px-6 lg:px-20 bg-white dark:bg-[#0a0a0a]"
           >
             <div className="max-w-[700px]">
               <motion.div

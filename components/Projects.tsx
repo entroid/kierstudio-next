@@ -129,7 +129,7 @@ export function Projects() {
   return (
     <section
       id="proyectos"
-      className="py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
+      className="py-16 md:py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
     >
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         {/* Header */}
@@ -147,7 +147,7 @@ export function Projects() {
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[50px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900 }}
           >
             {t('projects.title')}
@@ -325,7 +325,7 @@ export function Projects() {
                 </div>
 
                 {/* Content Side */}
-                <div className="p-12 lg:p-16 flex flex-col justify-center">
+                <div className="p-12 px-6 md:px-12 lg:p-16 flex flex-col justify-center">
                   <span
                     className="font-['Archivo',sans-serif] text-[10px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
                     style={{ fontWeight: 400 }}
@@ -334,7 +334,7 @@ export function Projects() {
                   </span>
 
                   <h3
-                    className="font-['Archivo',sans-serif] text-[56px] md:text-[72px] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
+                    className="font-['Archivo',sans-serif] text-[38px] md:text-[72px] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
                     style={{ fontWeight: 900 }}
                   >
                     {selectedProject.title}

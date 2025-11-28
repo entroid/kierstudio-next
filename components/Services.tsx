@@ -57,7 +57,7 @@ export function Services() {
     <section
       ref={sectionRef}
       id="servicios"
-      className="py-32 bg-white dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-500"
+      className="py-16 md:py-32 bg-white dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-500"
     >
       {/* Animated background elements */}
       <motion.div
@@ -81,7 +81,7 @@ export function Services() {
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[56px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900, opacity: titleOpacity }}
           >
             {t('services.title')}
@@ -126,7 +126,7 @@ export function Services() {
 
               {/* Content Side */}
               <div
-                className={`${service.bgColor} p-12 lg:p-16 flex flex-col justify-center transition-colors duration-500 ${index % 2 === 0 ? "lg:order-2" : "lg:order-1"
+                className={`${service.bgColor} px-3 py-12 md:p-12 lg:p-16 flex flex-col justify-center transition-colors duration-500 ${index % 2 === 0 ? "lg:order-2" : "lg:order-1"
                   }`}
               >
                 <motion.div
@@ -147,7 +147,7 @@ export function Services() {
 
                   {/* Animated Title */}
                   <h3
-                    className={`font-['Archivo',sans-serif] text-[48px] md:text-[64px] lg:text-[72px] leading-[0.9] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                    className={`font-['Archivo',sans-serif] text-[40px] md:text-[64px] lg:text-[72px] leading-[0.9] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                       ? "text-white"
                       : "text-[#28292D] dark:text-white"
                       }`}
@@ -224,21 +224,6 @@ export function Services() {
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom number indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-right mt-12"
-        >
-          <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/30 dark:text-white/30 italic"
-            style={{ fontWeight: 400 }}
-          >
-            (02)
-          </span>
-        </motion.div>
       </div>
     </section>
   );
