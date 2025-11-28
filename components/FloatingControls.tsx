@@ -89,7 +89,7 @@ export function FloatingControls() {
   return (
     <>
       {/* Fixed container for stacked floating buttons */}
-      <div id="floating-controls" className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-5">
+      <div id="floating-controls" className="fixed bottom-8 right-4 md:right-8 z-50 flex flex-col items-end gap-5">
         {/* Chat Button */}
         <motion.div
           initial={{ scale: 0, opacity: 0 }}

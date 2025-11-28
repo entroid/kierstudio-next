@@ -12,7 +12,7 @@ export function CTA() {
   return (
     <section
       id="contacto"
-      className="py-32 bg-white dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-500"
+      className="py-16 md:py-32 bg-white dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-500"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-30">
@@ -56,7 +56,7 @@ export function CTA() {
             </span>
 
             <h2
-              className="font-['Archivo',sans-serif] text-[64px] md:text-[96px] lg:text-[120px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+              className="font-['Archivo',sans-serif] text-[56px] md:text-[96px] lg:text-[100px] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
               style={{ fontWeight: 900 }}
             >
               {t('cta.title1')}

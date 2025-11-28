@@ -10,23 +10,26 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-dark-gray: var(--dark-gray);
-  
+
   --font-sans: "Archivo", sans-serif;
   --font-archivo: "Archivo", sans-serif;
   --font-inter: "Inter", sans-serif;
-  
+
   /* Aquí registramos la utilidad personalizada */
-  --min-h-200: 200px; 
+  --min-h-200: 200px;
+
+  /* Custom breakpoints */
+  --breakpoint-lg: 1180px;
 }
 
 /* === Variables CSS === */
 :root {
   --font-size: 16px;
-  
+
   /* Colores Base */
   --background: #ffffff;
   --foreground: #171717;
-  
+
   /* Branding */
   --primary: #D52169;
   --primary-foreground: #ffffff;
@@ -60,7 +63,8 @@
   --card-foreground: #ededed;
   --popover: #0a0a0a;
   --popover-foreground: #ededed;
-  --primary: #D52169; /* Mantener color de marca o ajustar */
+  --primary: #D52169;
+  /* Mantener color de marca o ajustar */
   --primary-foreground: #ffffff;
   --secondary: #27272a;
   --secondary-foreground: #fafafa;

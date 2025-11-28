@@ -54,7 +54,7 @@ export function Testimonial() {
   };
 
   return (
-    <section className="py-32 bg-[#28292D] dark:bg-black relative overflow-hidden transition-colors duration-500">
+    <section className="py-16 md:py-32 bg-[#28292D] dark:bg-black relative overflow-hidden transition-colors duration-500">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-20 left-20 w-[400px] h-[400px] border border-white rounded-full" />
@@ -77,7 +77,7 @@ export function Testimonial() {
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[42px] md:text-[100px] lg:text-[160px] leading-[0.85] tracking-[-0.04em] text-white mb-8"
             style={{ fontWeight: 900 }}
           >
             {t('testimonials.title')}
@@ -102,7 +102,7 @@ export function Testimonial() {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="mb-8"
               >
-                <Quote className="text-[#D52169]" size={80} />
+                <Quote className="text-[#D52169]" size={50} />
               </motion.div>
 
               {/* Quote */}
@@ -110,8 +110,8 @@ export function Testimonial() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="font-['Archivo',sans-serif] text-[28px] md:text-[42px] lg:text-[48px] leading-[1.3] text-white mb-12"
-                style={{ fontWeight: 600 }}
+                className="font-['Archivo',sans-serif] text-[24px] md:text-[36px] lg:text-[40px] leading-[1.3] text-white mb-12"
+                style={{ fontWeight: 500 }}
               >
                 "{testimonials[currentIndex].quote}"
               </motion.blockquote>
