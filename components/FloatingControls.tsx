@@ -117,6 +117,7 @@ export function FloatingControls() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.3 }}
+          className="hidden md:block"
         >
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

@@ -136,7 +136,7 @@ export function Partners() {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <div className="bg-white dark:bg-[#1a1a1a] p-8 md:p-10 rounded-xl border border-[#28292D]/5 dark:border-white/5 hover:border-[#D52169]/30 dark:hover:border-[#D52169]/50 transition-all duration-500 h-[160px] flex flex-col justify-center items-center relative overflow-hidden">
+                  <div className="bg-white dark:bg-[#1a1a1a] p-4 md:p-10 rounded-xl border border-[#28292D]/5 dark:border-white/5 hover:border-[#D52169]/30 dark:hover:border-[#D52169]/50 transition-all duration-500 h-[160px] flex flex-col justify-center items-center relative overflow-hidden">
                     {/* Animated background */}
                     <motion.div
                       initial={{ scale: 0, opacity: 0 }}
@@ -155,7 +155,7 @@ export function Partners() {
                         <img
                           src={partner.src}
                           alt="Partner logo"
-                          className="block dark:hidden h-12 md:h-14 w-auto opacity-90"
+                          className="block dark:hidden h-auto md:h-14 w-auto opacity-90"
                           loading="lazy"
                         />
                         <img
