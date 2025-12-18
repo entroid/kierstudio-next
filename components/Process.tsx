@@ -44,7 +44,7 @@ export function Process() {
       id="proceso"
       className="py-16 md:py-32 bg-[#F5F5F5] dark:bg-[#0f0f0f] transition-colors duration-500"
     >
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -53,8 +53,8 @@ export function Process() {
           className="mb-10 md:mb-20"
         >
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
-            style={{ fontWeight: 400 }}
+            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+            style={{ fontWeight: 600 }}
           >
             {t('process.tag')}
           </span>

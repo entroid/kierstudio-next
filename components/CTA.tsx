@@ -49,8 +49,8 @@ export function CTA() {
             transition={{ duration: 0.8 }}
           >
             <span
-              className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-8 block italic"
-              style={{ fontWeight: 400 }}
+              className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+              style={{ fontWeight: 600 }}
             >
               {t('cta.tag')}
             </span>

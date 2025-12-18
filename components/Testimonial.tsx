@@ -70,7 +70,7 @@ export function Testimonial() {
           className="mb-20"
         >
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-white/50 mb-6 block italic"
+            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
             style={{ fontWeight: 400 }}
           >
             {t('testimonials.tag')}

@@ -57,7 +57,7 @@ export function Services() {
     <section
       ref={sectionRef}
       id="servicios"
-      className="py-16 md:py-32 bg-white dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-500"
+      className="py-16 md:pt-32 bg-white dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-500"
     >
       {/* Animated background elements */}
       <motion.div
@@ -65,12 +65,12 @@ export function Services() {
         className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#D52169]/5 rounded-full blur-3xl"
       />
 
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div className="mb-20">
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
-            style={{ fontWeight: 400 }}
+            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+            style={{ fontWeight: 600 }}
           >
             {t('services.tag')}
           </span>
@@ -224,6 +224,24 @@ export function Services() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-32 text-center"
+        >
+          <motion.a
+            href="#contacto"
+            whileHover={{ scale: 1.05, x: 5 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[#D52169] text-white px-12 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
+            style={{ fontWeight: 700 }}
+          >
+            {t('services.ctaButton')}
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

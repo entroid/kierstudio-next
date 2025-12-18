@@ -3,7 +3,7 @@ export const process = {
     title: "PROCESO",
     subtitle: "Nuestro proceso comprobado garantiza resultados excepcionales en todo momento.",
 
-    ctaButton: "Empecemos tu proyecto →",
+    ctaButton: "¿Empezamos? →",
 
     // Process steps
     steps: {

@@ -89,8 +89,8 @@ export function FloatingControls() {
   return (
     <>
       {/* Fixed container for stacked floating buttons */}
-      <div id="floating-controls" className="fixed bottom-8 right-4 md:right-8 z-50 flex flex-col items-end gap-5">
-        {/* Chat Button */}
+      <div id="floating-controls" className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-4">
+        {/* Chat Button - Separate row */}
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -105,12 +105,15 @@ export function FloatingControls() {
               boxShadow: '0 25px 50px -12px rgba(213, 33, 105, 0.4)'
             }}
             whileTap={{ scale: 0.9 }}
-            className="w-16 h-16 bg-[#D52169] hover:bg-[#28292D] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 cursor-pointer"
+            className="w-14 h-14 bg-[#D52169] hover:bg-[#28292D] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 cursor-pointer"
             aria-label="Toggle chat"
           >
             <MessageSquare className="text-white" size={24} />
           </motion.button>
         </motion.div>
+
+        {/* Other controls - Horizontal row */}
+        <div className="flex flex-row gap-4">
 
         {/* Scroll to top */}
         <motion.div
@@ -123,7 +126,7 @@ export function FloatingControls() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-16 h-16 bg-[#D52169] hover:bg-[#28292D] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 group cursor-pointer"
+            className="w-14 h-14 bg-[#28292D] hover:bg-[#D52169] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 group cursor-pointer"
             aria-label="Scroll to top"
           >
             <ArrowUp className="text-white" size={24} />
@@ -142,7 +145,7 @@ export function FloatingControls() {
               onClick={() => setAccessibilityOpen(!accessibilityOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="w-16 h-16 bg-[#28292D] hover:bg-[#D52169] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 cursor-pointer"
+              className="w-14 h-14 bg-[#28292D] hover:bg-[#D52169] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 cursor-pointer"
               aria-label="Abrir menú de accesibilidad"
               aria-expanded={accessibilityOpen}
             >
@@ -317,7 +320,7 @@ export function FloatingControls() {
             onClick={() => setLanguage(language === "en" ? "es" : "en")}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-16 h-16 bg-[#D52169] hover:bg-[#28292D] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 group cursor-pointer"
+            className="w-14 h-14 bg-[#28292D] hover:bg-[#D52169] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 group cursor-pointer"
             aria-label={t('controls.language.toggle')}
           >
             <AnimatePresence mode="wait">
@@ -345,7 +348,7 @@ export function FloatingControls() {
             onClick={toggleDarkMode}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-16 h-16 bg-[#D52169] hover:bg-[#28292D] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 group cursor-pointer"
+            className="w-14 h-14 bg-[#28292D] hover:bg-[#D52169] rounded-full shadow-2xl flex items-center justify-center transition-colors duration-300 group cursor-pointer"
             aria-label={darkMode ? t('controls.activateLightMode') : t('controls.activateDarkMode')}
           >
             <AnimatePresence mode="wait">
@@ -373,6 +376,7 @@ export function FloatingControls() {
             </AnimatePresence>
           </motion.button>
         </motion.div>
+        </div>
       </div>
     </>
   );

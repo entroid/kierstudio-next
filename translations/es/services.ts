@@ -32,4 +32,6 @@ export const services = {
     },
 
     learnMore: "Saber Más →",
+
+    ctaButton: "Contanos tu proyecto →",
 };
