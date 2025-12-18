@@ -13,5 +13,5 @@ export const about = {
 
     description3: "Si entendés que un buen producto digital empieza con buenas decisiones:",
 
-    ctaText: "Una buena Decisión →",
+    ctaText: "Tomá Una buena Decisión →",
 };

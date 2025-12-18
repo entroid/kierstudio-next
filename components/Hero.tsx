@@ -13,7 +13,7 @@ export function Hero() {
       id="inicio"
       className="relative min-h-screen flex items-center py-16 md:pb-0 pt-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
     >
-      <div className="max-w-[1800px] mx-auto w-full">
+      <div className=" mx-auto w-full">
         <div className="grid lg:grid-cols-2 min-h-[calc(100vh-6rem)]">
           {/* Left - Image */}
           <motion.div
@@ -113,7 +113,7 @@ export function Hero() {
                   href="#contacto"
                   whileHover={{ scale: 1.05, x: 5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
+                  className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase border-2 border-transparent transition-all duration-300 hover:bg-[#28292D] hover:border-[#28292D] cursor-pointer"
                   style={{ fontWeight: 700 }}
                 >
                   {t('hero.ctaTalk')}
@@ -122,7 +122,7 @@ export function Hero() {
                   href="#proyectos"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase border-2 text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D] transition-colors duration-300 cursor-pointer"
+                  className="px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase border-2 text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D] transition-all duration-300 cursor-pointer"
                   style={{ fontWeight: 700 }}
                 >
                   {t('hero.ctaWork')}
