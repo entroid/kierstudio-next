@@ -1,9 +1,8 @@
 @import "tailwindcss";
-
-@variant dark (&:where(.dark, .dark *));
-
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -19,6 +18,7 @@
   --min-h-200: 200px;
 
   /* Custom breakpoints */
+  --breakpoint-xs: 475px;
   --breakpoint-lg: 1180px;
 }
 

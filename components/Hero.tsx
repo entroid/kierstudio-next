@@ -50,8 +50,8 @@ export function Hero() {
                 className="mb-8"
               >
                 <span
-                  className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 italic"
-                  style={{ fontWeight: 400 }}
+                  className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                  style={{ fontWeight: 600 }}
                 >
                   {t('hero.location')}
                 </span>
@@ -64,12 +64,10 @@ export function Hero() {
                 className="mb-10"
               >
                 <h1
-                  className="font-['Archivo',sans-serif] text-[80px] md:text-[120px] lg:text-[140px] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white mb-6"
+                  className="font-['Archivo',sans-serif] text-[14vw] md:text-[96px] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white mb-6"
                   style={{ fontWeight: 900 }}
                 >
-                  ©KIER
-                  <br />
-                  STUDIO
+                  {t('hero.title')}
                 </h1>
               </motion.div>
 
@@ -80,12 +78,20 @@ export function Hero() {
                 className="mb-12"
               >
                 <h2
-                  className="font-['Archivo',sans-serif] text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] text-[#28292D] dark:text-white/90 mb-6"
+                  className="font-['Archivo',sans-serif] text-[4.5vw] md:text-[30px] leading-[1.2] text-[#28292D] dark:text-white/90 mb-6"
                   style={{ fontWeight: 600 }}
                 >
                   {t('hero.subtitle')}
                 </h2>
+
                 <p
+                  className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] "
+                  style={{ fontWeight: 400 }}
+                >
+                  {t('hero.description')}
+                </p>
+
+                {/* <p
                   className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] max-w-[550px]"
                   style={{ fontWeight: 400 }}
                 >
@@ -94,7 +100,7 @@ export function Hero() {
                   {t('hero.descriptionBold', { bold: "" }).split('{bold}')[0]}
                   <b>{t('hero.descriptionBoldText')}</b>
                   {t('hero.descriptionBold', { bold: "" }).split('{bold}')[1]}
-                </p>
+                </p> */}
               </motion.div>
 
               <motion.div
@@ -107,7 +113,7 @@ export function Hero() {
                   href="#contacto"
                   whileHover={{ scale: 1.05, x: 5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
+                  className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
                   style={{ fontWeight: 700 }}
                 >
                   {t('hero.ctaTalk')}
@@ -116,7 +122,7 @@ export function Hero() {
                   href="#proyectos"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-10 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase border-2 text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D] transition-colors duration-300 cursor-pointer"
+                  className="px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase border-2 text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D] transition-colors duration-300 cursor-pointer"
                   style={{ fontWeight: 700 }}
                 >
                   {t('hero.ctaWork')}

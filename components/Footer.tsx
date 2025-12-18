@@ -27,7 +27,7 @@ export function Footer() {
 
   return (
     <footer className="bg-[#28292D] dark:bg-black text-white pt-32 pb-8 transition-colors duration-500">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Top Section */}
         <div className="grid lg:grid-cols-2 gap-16 pb-20 border-b border-white/10">
           {/* Left - Brand */}
@@ -124,10 +124,10 @@ export function Footer() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12 justify-items-start lg:justify-items-end lg:justify-self-end lg:w-auto"
+            className="flex flex-wrap justify-end gap-8 lg:gap-12 md:w-auto"
           >
             {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
-              <div key={categoryIndex} className="justify-self-start lg:justify-self-end lg:w-auto">
+              <div key={categoryIndex} className="text-right lg:w-auto">
                 <h3
                   className="font-['Archivo',sans-serif] text-[13px] tracking-[0.15em] uppercase text-white mb-6 lg:text-right"
                   style={{ fontWeight: 700 }}
@@ -165,7 +165,7 @@ export function Footer() {
           <div className="grid md:grid-cols-2 gap-8 items-end">
             <div>
               <span
-                className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-white/50 mb-4 block italic"
+                className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                 style={{ fontWeight: 400 }}
               >
                 (Stay Updated)

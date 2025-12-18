@@ -3,6 +3,7 @@ import { hero } from './hero';
 import { services } from './services';
 import { contact } from './contact';
 import { partners } from './partners';
+import { about } from './about';
 import { projects } from './projects';
 import { process } from './process';
 import { testimonials } from './testimonials';
@@ -19,6 +20,7 @@ export const en = {
     services,
     cta: contact,
     partners,
+    about,
     projects,
     process,
     testimonials,
