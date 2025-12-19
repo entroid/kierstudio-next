@@ -11,39 +11,15 @@ interface Testimonial {
   author: string;
   role: string;
   company: string;
+  website?: string;
   image?: string;
 }
 
 export function Testimonial() {
-  const { t } = useLanguage();
+  const { t, translations } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      quote:
-        "Excelente experiencia trabajar con Kier Studio. Capturaron perfectamente mi visión y el estilo que estaba buscando. Impecable. 100% recomendado!",
-      author: "Alejandro C.",
-      role: "DUEÑO",
-      company: "Barrivell Gafas",
-    },
-    /*{
-      id: 2,
-      quote:
-        "El equipo de Kier Studio no solo creó un sitio web hermoso, sino que también entendió profundamente nuestro negocio y audiencia. Su experiencia en UX/UI se refleja en cada pixel del diseño final.",
-      author: "Carlos Martínez",
-      role: "Founder",
-      company: "Kanba SaaS",
-    },
-    {
-      id: 3,
-      quote:
-        "La profesionalidad y creatividad de Kier Studio es incomparable. Transformaron nuestra visión en una realidad digital impresionante que ha generado un impacto significativo en nuestro crecimiento.",
-      author: "Ana Rodríguez",
-      role: "Marketing Director",
-      company: "Goldline",
-    },*/
-  ];
+  const testimonials: Testimonial[] = translations.testimonials.items;
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -70,14 +46,14 @@ export function Testimonial() {
           className="mb-20"
         >
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+            className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
             style={{ fontWeight: 400 }}
           >
             {t('testimonials.tag')}
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[42px] md:text-[100px] lg:text-[120px] leading-[0.85] tracking-[-0.04em] text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[2.625rem] md:text-[6.25rem] lg:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-white mb-8"
             style={{ fontWeight: 900 }}
           >
             {t('testimonials.title')}
@@ -110,7 +86,7 @@ export function Testimonial() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="font-['Archivo',sans-serif] text-[24px] md:text-[36px] lg:text-[40px] leading-[1.3] text-white mb-12"
+                className="font-['Archivo',sans-serif] text-[1.375rem] md:text-[2.25rem] lg:text-[2.5rem] leading-[1.3] text-white mb-12"
                 style={{ fontWeight: 500 }}
               >
                 "{testimonials[currentIndex].quote}"
@@ -125,7 +101,7 @@ export function Testimonial() {
               >
                 <div className="w-16 h-16 bg-[#D52169] rounded-full flex items-center justify-center">
                   <span
-                    className="font-['Archivo',sans-serif] text-[24px] text-white"
+                    className="font-['Archivo',sans-serif] text-[1.5rem] text-white"
                     style={{ fontWeight: 900 }}
                   >
                     {testimonials[currentIndex].author.charAt(0)}
@@ -134,17 +110,30 @@ export function Testimonial() {
 
                 <div>
                   <p
-                    className="font-['Archivo',sans-serif] text-[20px] text-white mb-1"
+                    className="font-['Archivo',sans-serif] text-[1.25rem] text-white mb-1"
                     style={{ fontWeight: 700 }}
                   >
                     {testimonials[currentIndex].author}
                   </p>
                   <p
-                    className="font-['Archivo',sans-serif] text-[14px] text-white/60"
+                    className="font-['Archivo',sans-serif] text-[0.875rem] text-white/60 mb-1"
                     style={{ fontWeight: 400 }}
                   >
                     {testimonials[currentIndex].role} {t('testimonials.atLabel')} {testimonials[currentIndex].company}
                   </p>
+                  {testimonials[currentIndex].website && (
+                    <motion.a
+                      href={testimonials[currentIndex].website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="font-['Archivo',sans-serif] text-[0.875rem] text-[#D52169] hover:text-[#E54079] transition-colors duration-300"
+                      style={{ fontWeight: 600 }}
+                    >
+                      Visit Website →
+                    </motion.a>
+                  )}
                 </div>
               </motion.div>
             </motion.div>
@@ -161,7 +150,7 @@ export function Testimonial() {
                   className="w-14 h-14 border-2 border-white/20 hover:border-[#D52169] hover:bg-[#D52169] rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
                   aria-label={t('testimonials.prevTestimonial')}
                 >
-                  <span className="text-white text-[24px] group-hover:-translate-x-1 transition-transform">
+                  <span className="text-white text-[1.5rem] group-hover:-translate-x-1 transition-transform">
                     ←
                   </span>
                 </motion.button>
@@ -173,7 +162,7 @@ export function Testimonial() {
                   className="w-14 h-14 border-2 border-white/20 hover:border-[#D52169] hover:bg-[#D52169] rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
                   aria-label={t('testimonials.nextTestimonial')}
                 >
-                  <span className="text-white text-[24px] group-hover:translate-x-1 transition-transform">
+                  <span className="text-white text-[1.5rem] group-hover:translate-x-1 transition-transform">
                     →
                   </span>
                 </motion.button>
@@ -218,13 +207,13 @@ export function Testimonial() {
               className="text-center"
             >
               <div
-                className="font-['Archivo',sans-serif] text-[48px] md:text-[64px] text-[#D52169] mb-2"
+                className="font-['Archivo',sans-serif] text-[3rem] md:text-[4rem] text-[#D52169] mb-2"
                 style={{ fontWeight: 900 }}
               >
                 {stat.number}
               </div>
               <div
-                className="font-['Archivo',sans-serif] text-[12px] tracking-[0.1em] uppercase text-white/60"
+                className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase text-white/60"
                 style={{ fontWeight: 600 }}
               >
                 {stat.label}

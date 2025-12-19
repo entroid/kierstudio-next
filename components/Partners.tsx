@@ -50,7 +50,7 @@ export function Partners() {
           viewport={{ once: true }}
         >
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+            className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
             style={{ fontWeight: 600 }}
           >
             {t('partners.partnersTag')}
@@ -103,7 +103,7 @@ export function Partners() {
                         />
                       </div>
                       <p
-                        className="font-['Archivo',sans-serif] text-[10px] tracking-[0.15em] uppercase text-[#28292D]/60 dark:text-white/65 group-hover:text-[#D52169]/100 transition-colors duration-300"
+                        className="font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.15em] uppercase text-[#28292D]/60 dark:text-white/65 group-hover:text-[#D52169]/100 transition-colors duration-300"
                         style={{ fontWeight: 500 }}
                       >
                         {partner.tagline}

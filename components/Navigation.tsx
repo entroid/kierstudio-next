@@ -50,7 +50,7 @@ export function Navigation() {
             >
               <a
                 href={item.href}
-                className="font-['Archivo',sans-serif] text-[14px] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
+                className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#D52169] group-hover:w-full transition-all duration-300" />
@@ -83,7 +83,7 @@ export function Navigation() {
                   <a
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block py-4 font-['Archivo',sans-serif] text-[14px] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors cursor-pointer"
+                    className="block py-4 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors cursor-pointer"
                   >
                     {item.label}
                   </a>
