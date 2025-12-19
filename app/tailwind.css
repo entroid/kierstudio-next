@@ -17,9 +17,13 @@
   /* Aquí registramos la utilidad personalizada */
   --min-h-200: 200px;
 
-  /* Custom breakpoints */
-  --breakpoint-xs: 475px;
+  /* Reset all default breakpoints and define custom hierarchy */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 580px;
+  --breakpoint-md: 768px;
   --breakpoint-lg: 1180px;
+  --breakpoint-xl: 1360px;
+  --breakpoint-2xl: 1536px;
 }
 
 /* === Variables CSS === */

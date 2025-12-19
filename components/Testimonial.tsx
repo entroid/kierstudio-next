@@ -22,9 +22,9 @@ export function Testimonial() {
     {
       id: 1,
       quote:
-        "Excellent experience working with Kier Studio. They perfectly captured my vision and the style I was looking for. Impeccable. 100% recommended!",
+        "Excelente experiencia trabajar con Kier Studio. Capturaron perfectamente mi visión y el estilo que estaba buscando. Impecable. 100% recomendado!",
       author: "Alejandro C.",
-      role: "OWNER",
+      role: "DUEÑO",
       company: "Barrivell Gafas",
     },
     /*{
@@ -77,7 +77,7 @@ export function Testimonial() {
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[42px] md:text-[100px] lg:text-[160px] leading-[0.85] tracking-[-0.04em] text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[42px] md:text-[100px] lg:text-[120px] leading-[0.85] tracking-[-0.04em] text-white mb-8"
             style={{ fontWeight: 900 }}
           >
             {t('testimonials.title')}
