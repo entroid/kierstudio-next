@@ -53,7 +53,7 @@ export function Process() {
           className="mb-10 md:mb-20"
         >
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+            className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
             style={{ fontWeight: 600 }}
           >
             {t('process.tag')}
@@ -65,14 +65,14 @@ export function Process() {
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Archivo',sans-serif] text-[56px] md:text-[120px]  leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[3.5rem] md:text-[7.5rem]  leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900, opacity: titleOpacity }}
           >
             {t('process.title')}
           </motion.h2>
 
           <p
-            className="font-['Archivo',sans-serif] text-[18px] md:text-[24px] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
+            className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
             style={{ fontWeight: 600 }}
           >
             {t('process.subtitle')}
@@ -95,7 +95,7 @@ export function Process() {
                 <div className="lg:col-span-2">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className="font-['Archivo',sans-serif] text-[48px] md:text-[120px] leading-[0.9] tracking-[-0.02em] text-[#D52169] group-hover:text-[#28292D] dark:group-hover:text-white transition-colors duration-300"
+                    className="font-['Archivo',sans-serif] text-[3rem] md:text-[7.5rem] leading-[0.9] tracking-[-0.02em] text-[#D52169] group-hover:text-[#28292D] dark:group-hover:text-white transition-colors duration-300"
                     style={{ fontWeight: 900 }}
                   >
                     {step.number}
@@ -109,7 +109,7 @@ export function Process() {
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="font-['Archivo',sans-serif] text-[30px] md:text-[56px] lg:text-[64px] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
+                    className="font-['Archivo',sans-serif] text-[1.875rem] md:text-[3.5rem] lg:text-[4rem] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
                     style={{ fontWeight: 900 }}
                   >
                     {step.title}
@@ -120,7 +120,7 @@ export function Process() {
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
-                    className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/70 leading-[1.7] max-w-[600px]"
+                    className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/70 dark:text-white/70 leading-[1.7] max-w-[600px]"
                     style={{ fontWeight: 400 }}
                   >
                     {step.description}
@@ -137,7 +137,7 @@ export function Process() {
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 + serviceIndex * 0.1 }}
                       whileHover={{ scale: 1.05, y: -2 }}
-                      className="bg-white dark:bg-[#1a1a1a] border border-[#28292D]/10 dark:border-white/10 px-4 py-2 font-['Archivo',sans-serif] text-[11px] tracking-[0.1em] uppercase text-[#28292D] dark:text-white hover:border-[#D52169] hover:text-[#D52169] transition-all duration-300"
+                      className="bg-white dark:bg-[#1a1a1a] border border-[#28292D]/10 dark:border-white/10 px-4 py-2 font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.1em] uppercase text-[#28292D] dark:text-white hover:border-[#D52169] hover:text-[#D52169] transition-all duration-300"
                       style={{ fontWeight: 600 }}
                     >
                       {service}
@@ -160,7 +160,7 @@ export function Process() {
             href="#contacto"
             whileHover={{ scale: 1.05, x: 5 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-[#D52169] text-white px-12 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
+            className="bg-[#D52169] text-white px-12 py-5 font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
             style={{ fontWeight: 700 }}
           >
             {t('process.ctaButton')}

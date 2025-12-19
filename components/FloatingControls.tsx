@@ -164,7 +164,7 @@ export function FloatingControls() {
                   className="absolute bottom-20 right-0 w-[320px] bg-white dark:bg-[#1a1a1a] rounded-2xl shadow-2xl border border-[#28292D]/10 dark:border-white/10 p-6"
                 >
                   <h3
-                    className="font-['Archivo',sans-serif] text-[18px] text-[#28292D] dark:text-white mb-6"
+                    className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D] dark:text-white mb-6"
                     style={{ fontWeight: 700 }}
                   >
                     Opciones de Accesibilidad
@@ -173,7 +173,7 @@ export function FloatingControls() {
                   {/* Font Size */}
                   <div className="mb-6 pb-6 border-b border-[#28292D]/10 dark:border-white/10">
                     <label
-                      className="font-['Archivo',sans-serif] text-[12px] tracking-[0.1em] uppercase text-[#28292D]/70 dark:text-white/60 mb-3 block"
+                      className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/70 dark:text-white/60 mb-3 block"
                       style={{ fontWeight: 600 }}
                     >
                       Tamaño de fuente
@@ -189,7 +189,7 @@ export function FloatingControls() {
                         <Minus size={16} />
                       </motion.button>
                       <span
-                        className="font-['Archivo',sans-serif] text-[14px] text-[#28292D] dark:text-white min-w-[60px] text-center"
+                        className="font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white min-w-[60px] text-center"
                         style={{ fontWeight: 600 }}
                       >
                         {accessibility.fontSize}%
@@ -207,7 +207,7 @@ export function FloatingControls() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={resetFontSize}
-                        className="px-3 py-2 bg[#F5F5F5] dark:bg-[#28292D] rounded-lg font-['Archivo',sans-serif] text-[11px] hover:bg-[#D52169] hover:text-white transition-colors cursor-pointer"
+                        className="px-3 py-2 bg[#F5F5F5] dark:bg-[#28292D] rounded-lg font-['Archivo',sans-serif] text-[0.6875rem] hover:bg-[#D52169] hover:text-white transition-colors cursor-pointer"
                         style={{ fontWeight: 600 }}
                       >
                         Reset
@@ -228,7 +228,7 @@ export function FloatingControls() {
                       aria-pressed={accessibility.highContrast}
                     >
                       <span
-                        className="font-['Archivo',sans-serif] text-[13px] flex items-center gap-3"
+                        className="font-['Archivo',sans-serif] text-[0.8125rem] flex items-center gap-3"
                         style={{ fontWeight: 600 }}
                       >
                         {accessibility.highContrast ? <Eye size={18} /> : <EyeOff size={18} />}
@@ -258,7 +258,7 @@ export function FloatingControls() {
                       aria-pressed={accessibility.reducedMotion}
                     >
                       <span
-                        className="font-['Archivo',sans-serif] text-[13px] flex items-center gap-3"
+                        className="font-['Archivo',sans-serif] text-[0.8125rem] flex items-center gap-3"
                         style={{ fontWeight: 600 }}
                       >
                         <Maximize size={18} />
@@ -288,7 +288,7 @@ export function FloatingControls() {
                       aria-pressed={screenReaderEnabled}
                     >
                       <span
-                        className="font-['Archivo',sans-serif] text-[13px] flex items-center gap-3"
+                        className="font-['Archivo',sans-serif] text-[0.8125rem] flex items-center gap-3"
                         style={{ fontWeight: 600 }}
                       >
                         {screenReaderEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
@@ -330,7 +330,7 @@ export function FloatingControls() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="font-['Archivo',sans-serif] text-white text-[13px] font-bold tracking-wider"
+                className="font-['Archivo',sans-serif] text-white text-[0.8125rem] font-bold tracking-wider"
               >
                 {language === "en" ? "EN" : "ES"}
               </motion.div>

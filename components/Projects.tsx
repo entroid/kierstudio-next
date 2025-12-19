@@ -140,21 +140,21 @@ export function Projects() {
           className="mb-20"
         >
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+            className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
             style={{ fontWeight: 600 }}
           >
             {t('projects.tag')}
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[50px] md:text-[120px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[3.125rem] md:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900 }}
           >
             {t('projects.title')}
           </h2>
 
           <p
-            className="font-['Archivo',sans-serif] text-[18px] md:text-[24px] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
+            className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
             style={{ fontWeight: 600 }}
           >
             {t('projects.subtitle')}
@@ -192,13 +192,13 @@ export function Projects() {
                   <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <motion.div initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }}>
                       <span
-                        className="font-['Archivo',sans-serif] text-[10px] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
+                        className="font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
                         style={{ fontWeight: 400 }}
                       >
                         ({project.category} - {project.year})
                       </span>
                       <h3
-                        className="font-['Archivo',sans-serif] text-[42px] md:text-[52px] leading-[0.9] tracking-[-0.02em] text-white mb-2"
+                        className="font-['Archivo',sans-serif] text-[2.625rem] md:text-[3.25rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"
                         style={{ fontWeight: 900 }}
                       >
                         {project.title}
@@ -208,7 +208,7 @@ export function Projects() {
                     <motion.button
                       whileHover={{ scale: 1.05, x: 5 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-[#D52169] text-white px-6 py-3 font-['Archivo',sans-serif] text-[11px] tracking-[0.1em] uppercase mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer"
+                      className="bg-[#D52169] text-white px-6 py-3 font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.1em] uppercase mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer"
                       style={{ fontWeight: 700 }}
                     >
                       {t('projects.viewProject')}
@@ -218,7 +218,7 @@ export function Projects() {
                   {/* Number */}
                   <div className="absolute top-8 right-8">
                     <span
-                      className="font-['Archivo',sans-serif] text-[64px] text-white/10 group-hover:text-white/20 transition-colors"
+                      className="font-['Archivo',sans-serif] text-[4rem] text-white/10 group-hover:text-white/20 transition-colors"
                       style={{ fontWeight: 900 }}
                     >
                       {String(project.id).padStart(2, "0")}
@@ -241,7 +241,7 @@ export function Projects() {
             <motion.button
               whileHover={{ scale: 1.05, x: 5 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-[#28292D] dark:text-white border-2 border-[#28292D] dark:border-white px-12 py-5 hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D] font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 cursor-pointer"
+              className="bg-transparent text-[#28292D] dark:text-white border-2 border-[#28292D] dark:border-white px-12 py-5 hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D] font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 cursor-pointer"
               style={{ fontWeight: 700 }}
               onClick={() => setShowAll((prev) => !prev)}
               aria-expanded={showAll}
@@ -299,7 +299,7 @@ export function Projects() {
                         className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-[#D52169] backdrop-blur-sm rounded-full flex items-center justify-center transition-colors cursor-pointer"
                         aria-label={t('projects.prevImage')}
                       >
-                        <span className="text-white text-[24px]">←</span>
+                        <span className="text-white text-[1.5rem]">←</span>
                       </motion.button>
                       <motion.button
                         whileHover={{ scale: 1.1, x: 5 }}
@@ -308,7 +308,7 @@ export function Projects() {
                         className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-[#D52169] backdrop-blur-sm rounded-full flex items-center justify-center transition-colors cursor-pointer"
                         aria-label={t('projects.nextImage')}
                       >
-                        <span className="text-white text-[24px]">→</span>
+                        <span className="text-white text-[1.5rem]">→</span>
                       </motion.button>
                     </>
                   )}
@@ -316,7 +316,7 @@ export function Projects() {
                   {/* Image Counter */}
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
                     <span
-                      className="text-white font-['Archivo',sans-serif] text-[12px] tracking-[0.1em]"
+                      className="text-white font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em]"
                       style={{ fontWeight: 600 }}
                     >
                       {currentImageIndex + 1} / {selectedProject.images.length}
@@ -327,21 +327,21 @@ export function Projects() {
                 {/* Content Side */}
                 <div className="p-12 px-6 md:px-12 lg:p-16 flex flex-col justify-center">
                   <span
-                    className="font-['Archivo',sans-serif] text-[10px] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
+                    className="font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
                     style={{ fontWeight: 400 }}
                   >
                     ({selectedProject.category} - {selectedProject.year})
                   </span>
 
                   <h3
-                    className="font-['Archivo',sans-serif] text-[38px] md:text-[72px] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
+                    className="font-['Archivo',sans-serif] text-[2.375rem] md:text-[4.5rem] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
                     style={{ fontWeight: 900 }}
                   >
                     {selectedProject.title}
                   </h3>
 
                   <p
-                    className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/70 leading-[1.7] mb-10"
+                    className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/70 dark:text-white/70 leading-[1.7] mb-10"
                     style={{ fontWeight: 400 }}
                   >
                     {selectedProject.description}
@@ -350,7 +350,7 @@ export function Projects() {
                   {/* Services */}
                   <div className="mb-10">
                     <h4
-                      className="font-['Archivo',sans-serif] text-[12px] tracking-[0.2em] uppercase text-[#28292D]/50 dark:text-white/50 mb-4"
+                      className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase text-[#28292D]/50 dark:text-white/50 mb-4"
                       style={{ fontWeight: 600 }}
                     >
                       {t('projects.servicesLabel')}
@@ -359,7 +359,7 @@ export function Projects() {
                       {selectedProject.services.map((service, index) => (
                         <span
                           key={index}
-                          className="bg-[#F5F5F5] dark:bg-[#28292D] text-[#28292D] dark:text-white px-4 py-2 font-['Archivo',sans-serif] text-[11px] tracking-[0.05em] uppercase"
+                          className="bg-[#F5F5F5] dark:bg-[#28292D] text-[#28292D] dark:text-white px-4 py-2 font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.05em] uppercase"
                           style={{ fontWeight: 600 }}
                         >
                           {service}
@@ -376,7 +376,7 @@ export function Projects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05, x: 5 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] w-fit cursor-pointer inline-block"
+                      className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] w-fit cursor-pointer inline-block"
                       style={{ fontWeight: 700 }}
                     >
                       {t('projects.visitWebsite')}

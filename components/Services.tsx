@@ -69,7 +69,7 @@ export function Services() {
         {/* Header */}
         <motion.div className="mb-20">
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+            className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
             style={{ fontWeight: 600 }}
           >
             {t('services.tag')}
@@ -81,7 +81,7 @@ export function Services() {
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Archivo',sans-serif] text-[56px] md:text-[120px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[3.5rem] md:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900, opacity: titleOpacity }}
           >
             {t('services.title')}
@@ -92,7 +92,7 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            className="font-['Archivo',sans-serif] text-[18px] md:text-[24px] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
+            className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
             style={{ fontWeight: 600 }}
           >
             {t('services.subtitle')}
@@ -136,7 +136,7 @@ export function Services() {
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
                   <span
-                    className={`font-['Archivo',sans-serif] text-[10px] tracking-[0.3em] uppercase mb-8 block italic ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                    className={`font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.3em] uppercase mb-8 block italic ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                       ? "text-white/50"
                       : "text-[#28292D]/50 dark:text-white/50"
                       }`}
@@ -147,7 +147,7 @@ export function Services() {
 
                   {/* Animated Title */}
                   <h3
-                    className={`font-['Archivo',sans-serif] text-[40px] md:text-[64px] lg:text-[72px] leading-[0.9] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                    className={`font-['Archivo',sans-serif] text-[2.5rem] md:text-[4rem] lg:text-[4.5rem] leading-[0.9] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                       ? "text-white"
                       : "text-[#28292D] dark:text-white"
                       }`}
@@ -172,7 +172,7 @@ export function Services() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.6 }}
-                    className={`font-['Archivo',sans-serif] text-[16px] md:text-[18px] leading-[1.7] mb-10 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                    className={`font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] leading-[1.7] mb-10 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                       ? "text-white/80"
                       : "text-[#28292D]/70 dark:text-white/70"
                       }`}
@@ -190,7 +190,7 @@ export function Services() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.7 + itemIndex * 0.1 }}
-                        className={`font-['Archivo',sans-serif] text-[13px] tracking-[0.05em] flex items-center gap-2 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                        className={`font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.05em] flex items-center gap-2 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                           ? "text-white/60"
                           : "text-[#28292D]/60 dark:text-white/60"
                           }`}
@@ -210,7 +210,7 @@ export function Services() {
                       viewport={{ once: true }}
                       transition={{ delay: 1 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`font-['Archivo',sans-serif] text-[12px] tracking-[0.1em] uppercase px-8 py-4 border-2 transition-colors duration-300 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                      className={`font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase px-8 py-4 border-2 transition-colors duration-300 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                         ? "border-white text-white hover:bg-white hover:text-[#28292D]"
                         : "border-[#28292D] dark:border-white text-[#28292D] dark:text-white hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D]"
                         }`}
@@ -236,7 +236,7 @@ export function Services() {
             href="#contacto"
             whileHover={{ scale: 1.05, x: 5 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-[#D52169] text-white px-12 py-5 font-['Archivo',sans-serif] text-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
+            className="bg-[#D52169] text-white px-12 py-5 font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
             style={{ fontWeight: 700 }}
           >
             {t('services.ctaButton')}

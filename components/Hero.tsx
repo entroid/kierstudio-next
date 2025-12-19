@@ -50,7 +50,7 @@ export function Hero() {
                 className="mb-4"
               >
                 <span
-                  className="font-['Archivo',sans-serif] text-[12px] line-height-[12px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 block italic"
+                  className="font-['Archivo',sans-serif] text-[0.75rem] line-height-[0.75rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 block italic"
                   style={{ fontWeight: 600 }}
                 >
                   {t('hero.location')}
@@ -64,7 +64,7 @@ export function Hero() {
                 className="mb-4"
               >
                 <h1
-                  className="font-['Archivo',sans-serif] text-[14vw] line-height-[14vw] sm:text-[12vw] sm:line-height-[12vw] md:text-[94px] md:line-height-[94px] xl:text-[110px] xl:line-height-[110px] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white"
+                  className="font-['Archivo',sans-serif] text-[14vw] line-height-[14vw] sm:text-[12vw] sm:line-height-[12vw] md:text-[5.875rem] md:line-height-[5.875rem] xl:text-[6.875rem] xl:line-height-[6.875rem] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white"
                   style={{ fontWeight: 900 }}
                 >
                   {t('hero.title')}
@@ -78,21 +78,21 @@ export function Hero() {
                 className="mb-8"
               >
                 <h2
-                  className="font-['Archivo',sans-serif] text-[4.5vw] md:text-[26px] leading-[1.2] text-[#28292D] dark:text-white/90 mb-4"
+                  className="font-['Archivo',sans-serif] text-[1.625rem] md:text-[1.5rem] leading-[1.2] text-[#28292D] dark:text-white/90 mb-4"
                   style={{ fontWeight: 600 }}
                 >
                   {t('hero.subtitle')}
                 </h2>
 
                 <p
-                  className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] "
+                  className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/70 dark:text-white/60 leading-[1.7] "
                   style={{ fontWeight: 400 }}
                 >
                   {t('hero.description')}
                 </p>
 
                 {/* <p
-                  className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] max-w-[550px]"
+                  className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/70 dark:text-white/60 leading-[1.7] max-w-[550px]"
                   style={{ fontWeight: 400 }}
                 >
                   {t('hero.description')}
@@ -113,7 +113,7 @@ export function Hero() {
                   href="#contacto"
                   whileHover={{ scale: 1.05, x: 5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase border-2 border-transparent transition-all duration-300 hover:bg-[#28292D] hover:border-[#28292D] cursor-pointer"
+                  className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 border-transparent transition-all duration-300 hover:bg-[#28292D] hover:border-[#28292D] cursor-pointer"
                   style={{ fontWeight: 700 }}
                 >
                   {t('hero.ctaTalk')}
@@ -122,7 +122,7 @@ export function Hero() {
                   href="#proyectos"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase border-2 text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D] transition-all duration-300 cursor-pointer"
+                  className="px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D] transition-all duration-300 cursor-pointer"
                   style={{ fontWeight: 700 }}
                 >
                   {t('hero.ctaWork')}
