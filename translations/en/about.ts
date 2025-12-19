@@ -5,7 +5,10 @@ export const about = {
     title3: "POWERFUL",
     title4: "DEVELOPMENT.",
 
-    description1: "When business, design and technology are not aligned, digital products become confusing, costly to maintain. They don't convert, scale, or accurately reflect their true value. That's where we come in. We are a boutique design studio specialized in ",
+    description1: "When business, design and technology are not aligned, digital products become confusing, costly to maintain.",
+    
+    description1b: "They don't convert, scale, or accurately reflect their true value. That's where we come in. We are a boutique design studio specialized in ",
+
     description1Bold: "strategic design and development of digital products",
     description1Tag: "WE THINK (UX) + WE DESIGN (UI) + WE SCALE (DEV)",
 

@@ -16,14 +16,14 @@ export function About() {
           viewport={{ once: true }}
         >
           <span
-            className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+            className="font-['Archivo',sans-serif] text-[12px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
             style={{ fontWeight: 600 }}
           >
             {t('about.tag')}
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[42px] md:text-[96px] lg:text-[120px] leading-[0.9] tracking-[-0.03em] text-[#28292D] dark:text-white mb-12"
+            className="font-['Archivo',sans-serif] text-[42px] md:text-[88px] lg:text-[100px] leading-[0.9] tracking-[-0.03em] text-[#28292D] dark:text-white mb-12"
             style={{ fontWeight: 900 }}
           >
             {t('about.title1')}
@@ -44,11 +44,18 @@ export function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
+                <p
+                className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] mb-4"
+                style={{ fontWeight: 400 }}
+              >
+                {t('about.description1')}    
+              </p>
+
               <p
                 className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
                 style={{ fontWeight: 400 }}
               >
-                {t('about.description1').split(t('about.description1Bold'))[0]}
+                {t('about.description1b').split(t('about.description1Bold'))[0]}
                 <b>{t('about.description1Bold')}</b>
                 {t('about.description1').split(t('about.description1Bold'))[1]}                
               </p>

@@ -65,14 +65,14 @@ export function Process() {
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Archivo',sans-serif] text-[56px] md:text-[120px] lg:text-[180px] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[56px] md:text-[120px]  leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
             style={{ fontWeight: 900, opacity: titleOpacity }}
           >
             {t('process.title')}
           </motion.h2>
 
           <p
-            className="font-['Archivo',sans-serif] text-[18px] md:text-[28px] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
+            className="font-['Archivo',sans-serif] text-[18px] md:text-[24px] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
             style={{ fontWeight: 600 }}
           >
             {t('process.subtitle')}

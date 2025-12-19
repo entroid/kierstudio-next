@@ -5,7 +5,10 @@ export const about = {
     title3: "DESARROLLO",
     title4: "POTENTE.",
 
-    description1: "Cuando el negocio, el diseño y la tecnología no están alineados, los productos digitales se vuelven confusos, caros de mantener. No convierten, no escalan o no reflejan su verdadero valor. Ahí es donde entramos. Somos un estudio boutique especializado en ",
+    description1: "Cuando el negocio, el diseño y la tecnología no están alineados, los productos digitales se vuelven confusos, caros de mantener.",
+
+    description1b: "No convierten, no escalan o no reflejan su verdadero valor. Ahí es donde entramos. Somos un estudio boutique especializado en ",
+
     description1Bold: "diseño estratégico y desarrollo de productos digitales.",
     description1Tag: "PENSAMOS (UX) + CREAMOS (UI) + ESCALAMOS (DEV)",
 

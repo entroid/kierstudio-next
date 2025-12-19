@@ -47,10 +47,10 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="mb-8"
+                className="mb-4"
               >
                 <span
-                  className="font-['Archivo',sans-serif] text-[11px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                  className="font-['Archivo',sans-serif] text-[12px] line-height-[12px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 block italic"
                   style={{ fontWeight: 600 }}
                 >
                   {t('hero.location')}
@@ -61,10 +61,10 @@ export function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="mb-10"
+                className="mb-4"
               >
                 <h1
-                  className="font-['Archivo',sans-serif] text-[14vw] md:text-[96px] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white mb-6"
+                  className="font-['Archivo',sans-serif] text-[14vw] line-height-[14vw] sm:text-[12vw] sm:line-height-[12vw] md:text-[94px] md:line-height-[94px] xl:text-[110px] xl:line-height-[110px] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white"
                   style={{ fontWeight: 900 }}
                 >
                   {t('hero.title')}
@@ -75,10 +75,10 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
-                className="mb-12"
+                className="mb-8"
               >
                 <h2
-                  className="font-['Archivo',sans-serif] text-[4.5vw] md:text-[30px] leading-[1.2] text-[#28292D] dark:text-white/90 mb-6"
+                  className="font-['Archivo',sans-serif] text-[4.5vw] md:text-[26px] leading-[1.2] text-[#28292D] dark:text-white/90 mb-4"
                   style={{ fontWeight: 600 }}
                 >
                   {t('hero.subtitle')}
