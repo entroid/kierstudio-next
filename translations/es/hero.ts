@@ -1,10 +1,10 @@
 export const hero = {
-    location: "(Desde Rosario, Ar. Para el mundo.)",
+    location: "Desde Rosario, Ar. Para el mundo.",
     title: "ESTUDIO BOUTIQUE",
-    subtitle: "Creamos productos digitales impactantes orientados al crecimiento y el éxito.",
-    description: "Una visión integral desde la estrategia hasta la última línea de código.",
-    descriptionBold: "Alineamos los objetivos de tu empresa, las necesidades tecnológicas y la estrategia de crecimiento a través de {bold}",
-    descriptionBoldText: "diseño y desarrollo.",
+    subtitle: "Esas webs y apps no se van a hacer solas. Nosotros nos encargamos.",
+    description: "Un selecto equipo premium creando productos digitales con foco en ",
+    /*descriptionBold: "Alineamos los objetivos de tu empresa, las necesidades tecnológicas y la estrategia de crecimiento a través de {bold}",*/
+    descriptionBoldText: "estrategia, diseño y desarrollo.",
     ctaTalk: "Hablemos →",
-    ctaWork: "Ver Trabajo",
+    ctaWork: "Ver Trabajos",
 };

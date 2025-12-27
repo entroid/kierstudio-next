@@ -1,6 +1,6 @@
 export const projects = {
-    tag: "(Our Work)",
-    title: "PROJECTS",
+    tag: "PROJECTS",
+    title: "Our Work",
     subtitle: "Explore our portfolio of selected transformative digital experiences.",
 
     // UI Labels

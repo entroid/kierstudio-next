@@ -147,7 +147,7 @@ export function Projects() {
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[3.125rem] md:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[3.125rem] md:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
             style={{ fontWeight: 900 }}
           >
             {t('projects.title')}

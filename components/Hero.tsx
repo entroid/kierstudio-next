@@ -89,6 +89,7 @@ export function Hero() {
                   style={{ fontWeight: 400 }}
                 >
                   {t('hero.description')}
+                  <b>{t('hero.descriptionBoldText')}</b>
                 </p>
 
                 {/* <p

@@ -1,6 +1,6 @@
 export const services = {
-    tag: "(Lo que hacemos)",
-    title: "SERVICIOS",
+    tag: "Servicios",
+    title: "Qué hacemos",
     subtitle: "Combinamos estrategia, creatividad y tecnología para elevar tu negocio y mejorar la experiencia de tus usuarios.",
 
     productDesign: {

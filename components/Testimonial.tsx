@@ -53,7 +53,7 @@ export function Testimonial() {
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[2.625rem] md:text-[6.25rem] lg:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[2.625rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-white mb-8"
             style={{ fontWeight: 900 }}
           >
             {t('testimonials.title')}
@@ -86,7 +86,7 @@ export function Testimonial() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="font-['Archivo',sans-serif] text-[1.375rem] md:text-[2.25rem] lg:text-[2.5rem] leading-[1.3] text-white mb-12"
+                className="font-['Archivo',sans-serif] text-[1.1rem] md:text-[1.7rem] xl:text-[2rem] leading-[1.5] text-white mb-12"
                 style={{ fontWeight: 500 }}
               >
                 "{testimonials[currentIndex].quote}"
