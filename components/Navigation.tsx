@@ -12,11 +12,11 @@ export function Navigation() {
   const { t } = useLanguage();
 
   const navItems = [
-    { label: t('nav.start'), href: "#inicio" },
-    { label: t('nav.services'), href: "#servicios" },
-    { label: t('nav.work'), href: "#proyectos" },
-    { label: t('nav.process'), href: "#proceso" },
-    { label: t('nav.contact'), href: "#contacto" },
+    { label: t('nav.start'), href: "#inicio", rel: "noopener" },
+    { label: t('nav.services'), href: "#servicios", rel: "noopener" },
+    { label: t('nav.work'), href: "#proyectos", rel: "noopener" },
+    { label: t('nav.process'), href: "#proceso", rel: "noopener" },
+    { label: t('nav.contact'), href: "#contacto", rel: "noopener" },
   ];
 
   return (
@@ -50,6 +50,7 @@ export function Navigation() {
             >
               <a
                 href={item.href}
+                rel={item.rel}
                 className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
               >
                 {item.label}

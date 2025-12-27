@@ -9,7 +9,7 @@ import { CTA } from "@/components/CTA";
 
 export default function HomePage() {
   return (
-    <>
+    <main>
       <Hero />
       <About />
       <Partners />
@@ -18,6 +18,6 @@ export default function HomePage() {
       <Process />
       <Testimonial />
       <CTA />
-    </>
+    </main>
   );
 }

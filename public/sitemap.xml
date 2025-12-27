@@ -14,7 +14,7 @@
   
   <!-- Privacy Policy -->
   <url>
-    <loc>https://kierstudio.com/#/privacy</loc>
+    <loc>https://kierstudio.com/privacy</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -22,7 +22,7 @@
   
   <!-- Terms of Service -->
   <url>
-    <loc>https://kierstudio.com/#/terms</loc>
+    <loc>https://kierstudio.com/terms</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -30,7 +30,7 @@
   
   <!-- Cookie Policy -->
   <url>
-    <loc>https://kierstudio.com/#/cookies</loc>
+    <loc>https://kierstudio.com/cookies</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
