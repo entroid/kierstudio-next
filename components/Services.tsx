@@ -81,7 +81,7 @@ export function Services() {
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Archivo',sans-serif] text-[3.5rem] md:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8"
+            className="font-['Archivo',sans-serif] text-[3.5rem] md:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
             style={{ fontWeight: 900, opacity: titleOpacity }}
           >
             {t('services.title')}

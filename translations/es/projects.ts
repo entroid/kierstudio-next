@@ -1,7 +1,7 @@
 export const projects = {
-    tag: "(Nuestros Trabajos)",
-    title: "PROYECTOS",
-    subtitle: "Explora nuestro portafolio de experiencias digitales transformadoras seleccionadas.",
+    tag: "Nuestros proyectos",
+    title: "Trabajos",
+    subtitle: "Explora nuestra selección de experiencias digitales transformadoras.",
 
     // UI Labels
     viewProject: "Ver Proyecto →",

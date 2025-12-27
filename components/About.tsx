@@ -23,21 +23,21 @@ export function About() {
           </span>
 
           <h2
-            className="font-['Archivo',sans-serif] text-[42px] md:text-[88px] lg:text-[100px] leading-[0.9] tracking-[-0.03em] text-[#28292D] dark:text-white mb-12"
+            className="font-['Archivo',sans-serif] text-[42px] md:text-[88px] lg:text-[100px] leading-[0.9] tracking-[-0.03em] text-[#28292D] dark:text-white mb-12 uppercase"
             style={{ fontWeight: 900 }}
           >
             {t('about.title1')}
             <br />
-            <span className="text-[#D52169]">{t('about.title2')}</span>
-            <br />
+            <span className="text-[#D52169]">{t('about.title2')} </span>
+             
             {t('about.title3')}
-            <br />
-            {t('about.title4')}
+            {/*<br />
+            {t('about.title4')}*/}
           </h2>
 
           <h3 className="pb-4"><b>{t('about.description1Tag')}</b></h3>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-[1100px]">
+          <div className="grid md:grid-cols-2 gap-12 max-w-[1170px]">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}

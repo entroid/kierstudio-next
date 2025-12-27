@@ -1,9 +1,9 @@
 export const about = {
-    tag: "(About Us)",
-    title1: "STRATEGIC",
-    title2: "DESIGN.",
-    title3: "POWERFUL",
-    title4: "DEVELOPMENT.",
+    tag: "About Us",
+    title1: "Ready to",
+    title2: "Delight",
+    title3: "users?",
+    /*title4: "DEVELOPMENT.",*/
 
     description1: "When business, design and technology are not aligned, digital products become confusing, costly to maintain.",
     

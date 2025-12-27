@@ -1,9 +1,9 @@
 export const about = {
-    tag: "(Nosotros)",
-    title1: "DISEÑO",
-    title2: "ESTRATÉGICO.",
-    title3: "DESARROLLO",
-    title4: "POTENTE.",
+    tag: "Nosotros",
+    title1: "Listo para",
+    title2: "deleitar",
+    title3: "usuarios?",
+    /*title4: "usuarios?",*/
 
     description1: "Cuando el negocio, el diseño y la tecnología no están alineados, los productos digitales se vuelven confusos, caros de mantener.",
 
@@ -16,5 +16,5 @@ export const about = {
 
     description3: "Si entendés que un buen producto digital empieza con buenas decisiones:",
 
-    ctaText: "Tomá Una buena Decisión →",
+    ctaText: "Una buena Decisión →",
 };

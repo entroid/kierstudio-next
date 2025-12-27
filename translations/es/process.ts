@@ -1,7 +1,7 @@
 export const process = {
-    tag: "(Cómo Trabajamos)",
-    title: "PROCESO",
-    subtitle: "Nuestro proceso comprobado garantiza resultados excepcionales en todo momento.",
+    tag: "Cómo Trabajamos",
+    title: "Proceso",
+    subtitle: "Nuestra metodología comprobada garantiza resultados excepcionales en toda situación a velocidad record.",
 
     ctaButton: "¿Empezamos? →",
 
