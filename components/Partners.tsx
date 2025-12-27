@@ -41,13 +41,13 @@ export function Partners() {
   return (
     <section
       id="partners"
-      className="py-16 md:py-32 bg-[#F5F5F5] dark:bg-[#0f0f0f] transition-colors duration-500"
+      className="relative py-16 md:py-32 bg-[#F5F5F5] dark:bg-[#0f0f0f] transition-colors duration-500"
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           <span
             className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
@@ -62,7 +62,7 @@ export function Partners() {
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}
                 whileHover={{ y: -10, scale: 1.05 }}
                 className="group cursor-pointer"
@@ -93,13 +93,11 @@ export function Partners() {
                           src={partner.src}
                           alt="Partner logo"
                           className="block dark:hidden h-auto w-auto max-h-[90px]"
-                          loading="lazy"
                         />
                         <img
                           src={partner.srcDark}
                           alt="Partner logo"
                           className="hidden dark:block h-auto w-auto max-h-[90px]"
-                          loading="lazy"
                         />
                       </div>
                       <p
@@ -127,7 +125,7 @@ export function Partners() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             className="mt-20 overflow-hidden"
           >
             <motion.div

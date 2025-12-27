@@ -178,7 +178,7 @@ export function Projects() {
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#1a1a1a] min-h-[200px] sm:min-h-[240px] md:min-h-[280px]">
                   <ImageWithFallback
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} project by Kier Studio - ${project.category}`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Gradient overlay for mock images - always visible for better text readability */}
@@ -285,7 +285,7 @@ export function Projects() {
                 <div className="bg-[#0a0a0a] relative min-h-[400px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[600px]">
                   <ImageWithFallback
                     src={selectedProject.images[currentImageIndex]}
-                    alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
+                    alt={`${selectedProject.title} - Project gallery image ${currentImageIndex + 1} by Kier Studio`}
                     className="w-full h-full object-cover"
                   />
 

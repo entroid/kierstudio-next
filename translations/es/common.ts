@@ -23,7 +23,7 @@ export const common = {
         location: "Con sede en Argentina, trabajando globalmente.",
 
         locationText: "Rosario, Argentina",
-        email: "kierstudio.info@gmail.com.com",
+        email: "kierstudio.info@gmail.com",
         phone: "+54 9 341 7211814",
 
         company: "Empresa",

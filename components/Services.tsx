@@ -112,16 +112,15 @@ export function Services() {
             >
               {/* Image Side */}
               <motion.div
-                className={`relative overflow-hidden min-h-[200px] sm:min-h-[240px] md:min-h-[280px] ${index % 2 === 0 ? "lg:order-1" : "lg:order-2"}`}
+                className={`relative overflow-hidden h-full min-h-[200px] sm:min-h-[240px] md:min-h-[280px] ${index % 2 === 0 ? "lg:order-1" : "lg:order-2"}`}
               >
-                <div className="absolute inset-0">
-                  <ImageWithFallback
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#D52169]/30 to-transparent" />
-                </div>
+                <ImageWithFallback
+                  src={service.image}
+                  alt={`${service.title} - ${service.tag} service by Kier Studio`}
+                  className="w-full h-full object-cover absolute inset-0"
+                  style={{ height: '100%' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#D52169]/30 to-transparent" />
               </motion.div>
 
               {/* Content Side */}

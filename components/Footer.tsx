@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Instagram, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Facebook, MapPin, Phone, Mail } from "lucide-react";
 import { useLanguage } from "./LanguageContext";
 
 export function Footer() {
@@ -10,9 +10,7 @@ export function Footer() {
 
   const socialLinks = [
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/kierstudio_" },
-    /*{ icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-    { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
-    { icon: Mail, label: "Email", href: "mailto:hello@kierstudio.com" },*/
+    { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/kierstudio" },
   ];
 
   const footerLinks = {
