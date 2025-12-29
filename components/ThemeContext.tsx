@@ -45,7 +45,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
       const initialDark = stored ? stored === "dark" : isSystemDark;
       setDarkMode(initialDark);
-    } catch {}
+    } catch { }
   }, [mounted]);
 
   // Reflect theme on <html> and persist
@@ -57,12 +57,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.classList.add("dark");
       try {
         localStorage.setItem("theme", "dark");
-      } catch {}
+      } catch { }
     } else {
       root.classList.remove("dark");
       try {
         localStorage.setItem("theme", "light");
-      } catch {}
+      } catch { }
     }
   }, [darkMode, mounted]);
 
@@ -85,8 +85,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setAccessibility((prev) => ({ ...prev, ...settings }));
   };
 
-  // While waiting for mount, render nothing to avoid mismatches
-  if (!mounted) return null;
+  // While waiting for mount, we render children to allow SSR.
+  // The useEffects will handle client-side updates without blocking initial render.
 
   return (
     <ThemeContext.Provider
@@ -97,6 +97,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         updateAccessibility,
       }}
     >
+      {/* 
+        We use a wrapper to avoid flash of unstyled content if necessary, 
+        but for SSR we want content to be visible immediately. 
+        Theme application (dark mode) happens in useEffect.
+      */}
       {children}
     </ThemeContext.Provider>
   );

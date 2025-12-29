@@ -91,8 +91,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return value;
   };
 
-  // While waiting for mount, render nothing to avoid mismatches
-  if (!mounted) return null;
+  // While waiting for mount, we render children to allow SSR. 
+  // The useEffects will handle client-side updates without blocking initial render.
 
   return (
     <LanguageContext.Provider
@@ -103,7 +103,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         translations: translations[language],
       }}
     >
-      {children}
+      <div style={{ visibility: mounted ? 'visible' : 'visible' }}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 }
