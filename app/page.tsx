@@ -1,11 +1,11 @@
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Partners } from "@/components/Partners";
-import { Services } from "../components/Services";
-import { Projects } from "@/components/Projects";
-import { Process } from "@/components/Process";
-import { Testimonial } from "@/components/Testimonial";
-import { CTA } from "@/components/CTA";
+import { Hero } from "@/components/hero";
+import { About } from "@/components/about";
+import { Partners } from "@/components/partners";
+import { Services } from "@/components/services";
+import { Projects } from "@/components/projects";
+import { Process } from "@/components/process";
+import { Testimonial } from "@/components/testimonial";
+import { CTA } from "@/components/cta";
 
 export default function HomePage() {
   return (

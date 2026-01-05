@@ -7,10 +7,10 @@ export function Botpress() {
   const [isBotpressReady, setIsBotpressReady] = useState(false);
 
   // URL del script principal de Botpress
-  const injectScriptUrl = "https://cdn.botpress.cloud/webchat/v3.4/inject.js";
-  
+  const injectScriptUrl = "https://cdn.botpress.cloud/webchat/v3.5/inject.js";
+
   // URL de tu archivo de configuración específico
-  const configScriptUrl = "https://files.bpcontent.cloud/2025/11/14/13/20251114130044-ULXMIFPJ.js";
+  const configScriptUrl = "https://files.bpcontent.cloud/2025/11/11/14/20251111145623-6Q620I1O.js";
 
   return (
     <>

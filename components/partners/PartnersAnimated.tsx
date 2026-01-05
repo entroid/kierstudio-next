@@ -73,7 +73,7 @@ export function PartnersAnimated() {
                                     rel="noopener noreferrer"
                                     className="block"
                                 >
-                                    <div className="bg-white dark:bg-[#1a1a1a] p-4 md:p-6 rounded-xl border border-[#28292D]/5 dark:border-white/5 hover:border-[#D52169]/30 dark:hover:border-[#D52169]/50 transition-all duration-500 h-[160px] flex flex-col justify-center items-center relative overflow-hidden">
+                                    <div className="bg-white dark:bg-[#1a1a1a] p-4 md:p-6 border border-[#28292D]/5 dark:border-white/5 hover:border-[#D52169]/30 dark:hover:border-[#D52169]/50 transition-all duration-500 h-[160px] flex flex-col justify-center items-center relative overflow-hidden">
                                         <motion.div
                                             initial={{ scale: 0, opacity: 0 }}
                                             whileHover={{ scale: 1.4, opacity: 0.05 }}
