@@ -83,6 +83,7 @@ export function CTAAnimated() {
         <section
             id="contacto"
             className="py-16 md:py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
+            style={{ boxShadow: "inset 0 0 50px 20px rgba(255, 215, 0, 0.18)" }}
         >
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">

@@ -41,6 +41,7 @@ export function HeroAnimated() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="flex items-center justify-center px-6 lg:px-20 bg-white dark:bg-[#0a0a0a]"
+                        style={{ boxShadow: "inset 0 0 50px 20px rgba(255, 215, 0, 0.17)" }}
                     >
                         <div className="max-w-[700px]">
                             <motion.div
