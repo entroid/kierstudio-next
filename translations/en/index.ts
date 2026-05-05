@@ -7,6 +7,7 @@ import { about } from './about';
 import { projects } from './projects';
 import { process } from './process';
 import { testimonials } from './testimonials';
+import { accounting } from './accounting';
 
 export const en = {
     // Common elements (SEO, nav, footer, controls)
@@ -24,4 +25,7 @@ export const en = {
     projects,
     process,
     testimonials,
+
+    // Landing pages
+    accounting,
 };

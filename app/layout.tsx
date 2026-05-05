@@ -3,10 +3,6 @@ import "./tailwind.css";
 import "./performance.css";
 import { ThemeProvider } from "@/components/ThemeContext";
 import { LanguageProvider } from "@/components/LanguageContext";
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
-import { FloatingControls } from "@/components/FloatingControls";
-import { Botpress } from "@/components/Botpress";
 
 // SEO Metadata
 export const metadata: Metadata = {
@@ -109,11 +105,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <LanguageProvider>
-            <Navigation />
-            <main>{children}</main>
-            <Footer />
-            <FloatingControls />
-            <Botpress />
+            {children}
           </LanguageProvider>
         </ThemeProvider>
       </body>

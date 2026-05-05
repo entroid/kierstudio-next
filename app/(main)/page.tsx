@@ -10,13 +10,28 @@ import { CTA } from "@/components/cta";
 export default function HomePage() {
   return (
     <main>
+      {/* SECTION: HERO */}
       <Hero />
+      
+      {/* SECTION: ABOUT */}
       <About />
+      
+      {/* SECTION: PARTNERS */}
       <Partners />
+      
+      {/* SECTION: SERVICES */}
       <Services />
+      
+      {/* SECTION: PROJECTS */}
       <Projects />
+      
+      {/* SECTION: PROCESS */}
       <Process />
+      
+      {/* SECTION: TESTIMONIAL */}
       <Testimonial />
+      
+      {/* SECTION: CTA */}
       <CTA />
     </main>
   );
