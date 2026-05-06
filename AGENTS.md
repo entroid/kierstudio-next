@@ -159,6 +159,7 @@ kierstudio-next/
 - [x] Footer with social links
 - [x] Floating controls (chat, scroll-to-top, language, dark mode)
 - [x] Botpress chat integration
+- [x] Meta Pixel integration (ID: 2551501831869054)
 - [x] SEO metadata (title, description)
 
 ### 🎨 Design Features
@@ -647,8 +648,8 @@ If dynamic content needed:
 - [x] Alt text on images
 - [x] Descriptive link text
 - [ ] Open Graph tags (social sharing)
-- [ ] Sitemap.xml
-- [ ] Robots.txt
+- [x] Sitemap.xml
+- [x] Robots.txt
 
 ### Performance Optimizations
 - [x] Next.js automatic code splitting
@@ -690,6 +691,11 @@ If dynamic content needed:
    - Script loaded in `Botpress.tsx` component
    - Configuration in component file
 
+3. **Meta Pixel**
+   - Tracking and analytics
+   - Script loaded in global `layout.tsx` head
+   - ID: `2551501831869054`
+
 ### Future APIs
 - Analytics (Google Analytics, Plausible, etc.) - TBD
 - No other APIs planned at this time
@@ -712,10 +718,11 @@ If dynamic content needed:
 
 ### Technical Improvements
 - [ ] Open Graph meta tags for social sharing
-- [ ] Sitemap generation
-- [ ] Robots.txt file
+- [x] Sitemap generation
+- [x] Robots.txt file
 - [ ] Next.js Image component migration
-- [ ] Analytics integration
+- [x] Meta Pixel integration
+- [ ] Analytics integration (GA4/GTM)
 
 ---
 
