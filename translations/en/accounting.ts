@@ -131,6 +131,7 @@ export const accounting = {
         formSuccess: "Diagnostic requested successfully. We will be in touch shortly.",
         formError: "Something went wrong.",
         formValidationRequired: "Please fill out all required fields.",
+        formInvalidUrl: "Please enter a valid URL",
         whatsappLabel: "Or message us on WhatsApp",
         whatsappLink: "https://wa.me/5493417211814"
     }
