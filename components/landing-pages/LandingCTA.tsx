@@ -25,6 +25,7 @@ export interface LandingCTAProps {
   formSuccess: string;
   formError: string;
   formValidationRequired: string;
+  formInvalidUrl: string;
   whatsappLabel: string;
   whatsappLink: string;
 }
@@ -46,33 +47,52 @@ export function LandingCTA(props: LandingCTAProps) {
     const website = formData.get("website") as string;
     const challenge = formData.get("challenge") as string;
 
-    if (!name.trim() || !email.trim() || !website.trim()) {
+    // Enhanced validation matching main page logic
+    if (!name.trim()) {
       setResult({ type: "error", message: props.formValidationRequired });
       setSubmitting(false);
       return;
     }
 
+    if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email)) {
+      setResult({ type: "error", message: props.formValidationRequired });
+      setSubmitting(false);
+      return;
+    }
+
+    if (!website.trim()) {
+      setResult({ type: "error", message: props.formValidationRequired });
+      setSubmitting(false);
+      return;
+    }
+
+    // URL Validation: No spaces and must contain a dot followed by something (domain format)
+    if (website.includes(" ") || !/\.[a-zA-Z]{2,}/.test(website)) {
+      setResult({ type: "error", message: props.formInvalidUrl });
+      setSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://formsubmit.co/ajax/kierstudio.info@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "6262442e-161b-4340-9856-4277c0d7ace1",
           name,
           email,
           website,
           challenge,
-          subject: `Landing Page Diagnostic Request: ${name}`,
-          from_name: "Kier Studio Landing Page",
+          _subject: `Diagnostic Request: ${name} (${website})`,
+          _template: "table",
         }),
       });
 
       const json = await response.json();
 
-      if (response.status === 200) {
+      if (response.ok) {
         setResult({ type: "success", message: props.formSuccess });
         form.reset();
       } else {
@@ -157,19 +177,19 @@ export function LandingCTA(props: LandingCTAProps) {
                 <label htmlFor="name" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
                   {props.formName}
                 </label>
-                <input type="text" id="name" name="name" placeholder={props.formNamePlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
+                <input type="text" id="name" name="name" required placeholder={props.formNamePlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
               </div>
               <div>
                 <label htmlFor="email" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
                   {props.formEmail}
                 </label>
-                <input type="email" id="email" name="email" placeholder={props.formEmailPlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
+                <input type="email" id="email" name="email" required placeholder={props.formEmailPlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
               </div>
               <div>
                 <label htmlFor="website" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
                   {props.formWebsite}
                 </label>
-                <input type="url" id="website" name="website" placeholder={props.formWebsitePlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
+                <input type="text" id="website" name="website" required placeholder={props.formWebsitePlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
               </div>
               <div>
                 <label htmlFor="challenge" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>

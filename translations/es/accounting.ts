@@ -131,6 +131,7 @@ export const accounting = {
         formSuccess: "Diagnóstico solicitado con éxito. Nos pondremos en contacto a la brevedad.",
         formError: "Algo salió mal.",
         formValidationRequired: "Por favor, completa todos los campos requeridos.",
+        formInvalidUrl: "Ingrese una URL válida",
         whatsappLabel: "O escríbenos por WhatsApp",
         whatsappLink: "https://wa.me/5493417211814"
     }

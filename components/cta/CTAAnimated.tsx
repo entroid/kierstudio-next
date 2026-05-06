@@ -46,26 +46,25 @@ export function CTAAnimated() {
         }
 
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
+            const response = await fetch("https://formsubmit.co/ajax/kierstudio.info@gmail.com", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
                 },
                 body: JSON.stringify({
-                    access_key: "6262442e-161b-4340-9856-4277c0d7ace1", // Public Web3Forms key
                     name,
                     email,
                     projectType,
                     message,
-                    subject: `New Project Inquiry from ${name}`,
-                    from_name: "Kier Studio Website",
+                    _subject: `New Project Inquiry from ${name}`,
+                    _template: "table",
                 }),
             });
 
             const json = await response.json();
 
-            if (response.status === 200) {
+            if (response.ok) {
                 setResult({ type: "success", message: t('cta.formSuccess.message') });
                 form.reset();
             } else {
