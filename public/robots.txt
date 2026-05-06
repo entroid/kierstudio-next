@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /cookies
-Disallow: /privacy
-Disallow: /terms
-
-# Sitemap
-Sitemap: https://kierstudio.com/sitemap.xml
-
