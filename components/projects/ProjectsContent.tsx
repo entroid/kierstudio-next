@@ -1,13 +1,5 @@
 // Server Component - Renders static content for SEO
-interface Project {
-    id: number;
-    title: string;
-    category: string;
-    year: string;
-    description: string;
-    services: string[];
-    image: string;
-}
+import { Project } from "@/types/project";
 
 export interface ProjectsContentProps {
     tag: string;

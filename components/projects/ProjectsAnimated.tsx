@@ -6,87 +6,16 @@ import { X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "../LanguageContext";
 
-interface Project {
-    id: number;
-    title: string;
-    category: string;
-    year: string;
-    description: string;
-    services: string[];
-    image: string;
-    images: string[];
-    url?: string;
-}
+import { Project } from "@/types/project";
+
 
 export function ProjectsAnimated() {
-    const { t } = useLanguage();
+    const { t, translations } = useLanguage();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [showAll, setShowAll] = useState(false);
 
-    const projects: Project[] = [
-        {
-            id: 1,
-            title: "HOLY Beer Hotel",
-            category: "Hostel - Website",
-            year: "2025",
-            description:
-                "We redesigned the Holy Beer Hotel landing page to elevate its digital presence and drive higher conversions. The new design blends refined aesthetics, intuitive UI, and a strategic content structure that guides visitors through the brand story toward booking and engagement. Through clear hierarchy, optimized visuals, and persuasive sections, the new site captures the hotel's unique character while improving user flow and conversion performance.",
-            services: ["Website Design", "UX/UI", "Strategy"],
-            image: "/projects/holy-mock.png",
-            images: ["/projects/hero.png", "/projects/Landing0000.png"],
-            url: "https://beerhoteles.com/",
-        },
-        {
-            id: 3,
-            title: "MRAI FLEET",
-            category: "SaaS Platform, Mobile App",
-            year: "2023",
-            description:
-                "The MRAI Fleet SaaS platform and mobile app needed a new design to enhance user experience and streamline operations. The new design features a modern, professional aesthetic with a focus on usability and efficiency. We also implemented a custom catalog section powered by Strapi CMS, allowing the MRAI Fleet team to easily manage and publish content to boost visibility and SEO.",
-            services: ["SaaS Platform", "Mobile App", "UX/UI", "Product Design"],
-            image: "/projects/mrai/mrai-mock.jpg",
-            images: [
-                "/projects/mrai/04project.jpg",
-                "/projects/mrai/02-project.jpg",
-                "/projects/mrai/03project.jpg",
-                "/projects/mrai/01project.jpg",
-            ],
-            url: "https://miraifleet.com",
-        },
-        {
-            id: 4,
-            title: "Barrivell",
-            category: "Ecommerce, Website",
-            year: "2024",
-            description:
-                "We redesigned the Barrivell ecommerce website to enhance user experience and streamline operations. The new design features a modern, professional aesthetic with a focus on usability and efficiency. We also implemented a custom catalog section powered by Strapi CMS, allowing the Barrivell team to easily manage and publish content to boost visibility and SEO.",
-            services: ["Ecommerce Setup & Launch", "Website Design", "Strategy"],
-            image: "/projects/barriv/barri-mock.jpg",
-            images: [
-                "/projects/barriv/01.png",
-                "/projects/barriv/02.jpg",
-                "/projects/barriv/03.jpg",
-            ],
-            url: "https://barrivell.com.ar/",
-        },
-        {
-            id: 2,
-            title: "TEAMIE.",
-            category: "Team Communication - Website",
-            year: "2024",
-            description:
-                "We designed and developed the Teamie. landing page to support the launch of this new team collaboration startup. The goal was to present the product clearly and build credibility from day one. The site features a modern, startup-oriented design, with a strong focus on clarity, trust, and conversion. Additionally, we implemented a custom blog section powered by Strapi CMS, allowing the Teamie. team to easily manage and publish content to boost visibility and SEO.",
-            services: ["Visual Identity", "Website", "Blog CMS"],
-            image: "/projects/teamie/01-mock.jpg",
-            images: [
-                "/projects/teamie/01.png",
-                "/projects/teamie/02.png",
-                "/projects/teamie/05.png",
-            ],
-            url: "https://teamie-show.webflow.io/",
-        },
-    ];
+    const projects: Project[] = translations.projectsData;
 
     const isMockImage = (imagePath: string) => imagePath.toLowerCase().includes('-mock');
     const visibleProjects = showAll ? projects : projects.slice(0, 4);
@@ -264,7 +193,7 @@ export function ProjectsAnimated() {
                             </motion.button>
 
                             <div className="grid lg:grid-cols-2 gap-0">
-                                <div className="bg-[#0a0a0a] relative min-h-[400px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[600px]">
+                                <div className="bg-white relative min-h-[400px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[600px]">
                                     <ImageWithFallback
                                         src={selectedProject.images[currentImageIndex]}
                                         alt={`${selectedProject.title} - Project gallery image ${currentImageIndex + 1} by Kier Studio`}
@@ -280,7 +209,7 @@ export function ProjectsAnimated() {
                                                 className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-[#D52169] backdrop-blur-sm rounded-full flex items-center justify-center transition-colors cursor-pointer"
                                                 aria-label={t('projects.prevImage')}
                                             >
-                                                <span className="text-white text-[1.5rem]">←</span>
+                                                <span className="text-[1.5rem]">←</span>
                                             </motion.button>
                                             <motion.button
                                                 whileHover={{ scale: 1.1, x: 5 }}
@@ -289,7 +218,7 @@ export function ProjectsAnimated() {
                                                 className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-[#D52169] backdrop-blur-sm rounded-full flex items-center justify-center transition-colors cursor-pointer"
                                                 aria-label={t('projects.nextImage')}
                                             >
-                                                <span className="text-white text-[1.5rem]">→</span>
+                                                <span className="text-[1.5rem]">→</span>
                                             </motion.button>
                                         </>
                                     )}
