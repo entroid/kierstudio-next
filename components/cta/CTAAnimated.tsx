@@ -260,9 +260,10 @@ export function CTAAnimated() {
                                 <select
                                     id="projectType"
                                     name="projectType"
+                                    defaultValue=""
                                     className="w-full bg-white dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors"
                                 >
-                                    <option value="" disabled selected>
+                                    <option value="" disabled>
                                         {t('cta.formProjectPlaceholder')}
                                     </option>
                                     <option value="SaaS">{t('cta.formProjectOptions.saas')}</option>
