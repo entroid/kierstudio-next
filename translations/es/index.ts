@@ -8,6 +8,7 @@ import { projects } from './projects';
 import { process } from './process';
 import { testimonials } from './testimonials';
 import { accounting } from './accounting';
+import { saludybienestar } from './saludybienestar';
 import { projectsData } from './projectsData';
 
 export const es = {
@@ -30,4 +31,5 @@ export const es = {
 
     // Landing pages
     accounting,
+    saludybienestar,
 };

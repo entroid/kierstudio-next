@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useRef } from "react";
 import { useLanguage } from "../LanguageContext";
+import { CTAButton } from "@/components/cta/CTAButton";
+import { ArrowRight } from "lucide-react";
 
 export function ServicesAnimated() {
     const { t, translations } = useLanguage();
@@ -203,15 +205,7 @@ export function ServicesAnimated() {
                     viewport={{ once: true }}
                     className="mt-32 text-center"
                 >
-                    <motion.a
-                        href="#contacto"
-                        whileHover={{ scale: 1.05, x: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-[#D52169] text-white px-12 py-5 font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
-                        style={{ fontWeight: 700 }}
-                    >
-                        {t('services.ctaButton')}
-                    </motion.a>
+                    <CTAButton href="#contacto">{t('services.ctaButton')} <ArrowRight size={18} /></CTAButton>
                 </motion.div>
             </div>
         </section>

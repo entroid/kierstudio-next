@@ -31,7 +31,5 @@ export const services = {
         items: ["CMS Headless", "Modelado de Contenido", "SaaS, B2B", "Software Personalizado"],
     },
 
-    learnMore: "Saber Más →",
-
-    ctaButton: "Contanos tu proyecto →",
+    ctaButton: "Contanos tu proyecto",
 };

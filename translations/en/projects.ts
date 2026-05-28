@@ -5,9 +5,9 @@ export const projects = {
 
     // UI Labels
     viewProject: "View Project →",
-    viewAll: "View All Projects →",
-    closeProjects: "Close Projects",
-    visitWebsite: "Visit Website →",
+    viewAll: "View All Projects ↓",
+    closeProjects: "Close Projects ↑",
+    visitWebsite: "Visit Website",
     closeModal: "Close modal",
     prevImage: "Previous image",
     nextImage: "Next image",

@@ -2,8 +2,10 @@
 
 import { motion } from "motion/react";
 import { LogoCompact } from "@/components/Logo";
+import { useLanguage } from "@/components/LanguageContext";
 
 export function LandingHeader() {
+  const { t } = useLanguage();
   // SECTION: LANDING HEADER
   return (
     <motion.header
@@ -29,10 +31,10 @@ export function LandingHeader() {
           href="#form"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hidden md:inline-flex items-center gap-2 bg-white/10 hover:bg-white text-white hover:text-black px-6 py-3 rounded-full font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase transition-all duration-300"
+          className="hidden md:inline-flex items-center gap-2 bg-[#D52169] hover:bg-white/60 text-white hover:text-black px-6 py-3 rounded-full font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase transition-all duration-300"
           style={{ fontWeight: 700 }}
         >
-          Get Diagnostic
+          {t("nav.getDiagnostic")}
         </motion.a>
       </nav>
     </motion.header>

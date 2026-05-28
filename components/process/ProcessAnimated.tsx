@@ -2,7 +2,9 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import { CTAButton } from "@/components/cta/CTAButton";
 import { useLanguage } from "../LanguageContext";
+import { ArrowRight } from "lucide-react";
 
 export function ProcessAnimated() {
     const { t, translations } = useLanguage();
@@ -151,15 +153,7 @@ export function ProcessAnimated() {
                     viewport={{ once: true }}
                     className="mt-20 text-center"
                 >
-                    <motion.a
-                        href="#contacto"
-                        whileHover={{ scale: 1.05, x: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-[#D52169] text-white px-12 py-5 font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer"
-                        style={{ fontWeight: 700 }}
-                    >
-                        {t('process.ctaButton')}
-                    </motion.a>
+                    <CTAButton href="#contacto" >{t('process.ctaButton')} <ArrowRight size={18} /></CTAButton>
                 </motion.div>
             </div>
         </section>

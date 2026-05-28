@@ -3,7 +3,7 @@ export const process = {
     title: "Proceso",
     subtitle: "Nuestra metodología comprobada garantiza resultados excepcionales en toda situación a velocidad record.",
 
-    ctaButton: "¿Empezamos? →",
+    ctaButton: "¿Empezamos?",
 
     // Process steps
     steps: {
