@@ -1,158 +1,160 @@
 export const saludybienestar = {
   frictionCard: {
-    text: "These situations create friction, but they also have solutions. That's where we can help.",
-    cta: "Let's talk"
+    text: "These situations have solutions. We review your case at no cost.",
+    cta: "Request analysis"
   },
 
   hero: {
     tag: "For mental health, wellness and human care spaces",
-    title1: "We design digital experiences",
-    titleHighlight: "clearer and more human",
+    title1: "Your space takes good care of people.",
+    titleHighlight: "Does your digital experience too?",
     title2: "",
-    subtitle: "We help reduce the friction, chaos, and confusion that arise when a human care space is growing.",
-    ctaButton: "Tell us about your case",
-    scrollText: "How we can help",
+    subtitle: "We design the digital experience of health and wellness spaces so that guidance and contact are clear from the first moment.",
+    ctaButton: "Request free diagnosis",
+    scrollText: "How we help you",
     observationsTitle: "",
     observations: [
-      "Less friction in the first contact",
-      "More clarity for the people who arrive",
+      "More intuitive and close digital experiences",
       "Less chaos, more time for what matters",
-      "More intuitive and human digital experiences"
+      "Less friction in the first contact",
+      "We support your growth stage"
     ]
   },
   problems: {
     tag: "(What we usually find)",
-    title1: "Frequent obstacles",
-    titleHighlight: "in the first-contact experience",
-    subTitleSection: "We see these situations constantly. They aren't technical failures; they are human barriers in how information is presented and how people are guided.",
+    title1: "Situations that will probably",
+    titleHighlight: "feel familiar to you",
+    subTitleSection: "We see this almost always in these spaces. They're not usually technical failures; rather human barriers in the way information is presented and people are guided.",
     items: [
+      {
+        title: "People who leave before contacting",
+        body: "They arrive with a real need, but feel overwhelmed, confused, or unsure."
+      },
+      {
+        title: "Too much information, little guidance",
+        body: "Many services and specialties, but no clear guide."
+      },
+      {
+        title: "High dependence on Instagram and WhatsApp",
+        body: "Repeated inquiries, disorganized messages, and avalanche of notifications = constant administrative wear."
+      },
       {
         title: "It's not clear how to get started",
         body: "Too many steps, options, or doubts before the first step."
       },
       {
-        title: "Too much information, little guidance",
-        body: "Many services and specialties, but no clear path forward."
-      },
-      {
-        title: "Everything ends up on WhatsApp",
-        body: "Repeated inquiries, disorganized messages, and constant administrative drain."
-      },
-      {
         title: "Cold or confusing booking systems",
-        body: "Cold forms, rigid calendars, or automated responses that create a far-from-warm experience."
+        body: "Cold forms, rigid calendars, or automatic responses that generate a not-so-warm experience."
       },
       {
         title: "Disorganized and fragmented information",
-        body: "Key data scattered across social media, links, PDFs, and messages that get lost."
-      },
-      {
-        title: "People who leave before making contact",
-        body: "They arrive with a genuine need, but feel overwhelmed, confused, or unsure."
-      },
-    ]
-  },
-  howWeHelp: {
-    tag: "(How we help)",
-    title1: "We design digital solutions that create",
-    titleHighlight: "clarity, trust, and order",
-    subTitleSection: "We understand the real challenges faced by health and wellness spaces. That's why our solutions have a direct impact on the people you serve and on your team's day-to-day.",
-    helpCTA: "Get it Free",
-    items: [
-      {
-        title: "Clarity for first-time visitors",
-        body: "We reorganize sites, services, and professional profiles so people understand what you offer and how to get started.",
-        subtitle: "What we do:",
-        subitems: [
-          "Information architecture",
-          "Orientation pages",
-          "Onboarding improvement",
-          "Mobile-first experience"
-        ],
-        result: { bold: "Result: ", text: "oriented people, less doubt, more trust." }
-      },
-      {
-        title: "Less chaotic contact systems",
-        body: "We organize and automate incoming inquiries so your team has more time and less burnout.",
-        subtitle: "What we do:",
-        subitems: [
-          "Clear and intelligent forms",
-          "Gentle automations",
-          "Referral and routing systems",
-          "Automatic FAQ responses"
-        ],
-        result: {
-          bold: "Result: ", text: "organized inquiries, less chaos, more time."
-        }
-      },
-      {
-        title: "More human digital experiences",
-        body: "We design interfaces and flows that convey warmth, professionalism, and care in every detail.",
-        subtitle: "What we do:",
-        subitems: [
-          "People-centered UX/UI design",
-          "Clear and warm user journeys",
-          "Accessibility and usability",
-          "Structural copy and appropriate tone"
-        ],
-        result: { bold: "Result: ", text: "better experiences, more connection and trust." }
-      },
-      {
-        title: "Digital organization for growing spaces",
-        body: "As your space grows, we help you organize processes, channels, and systems so everything works better.",
-        subtitle: "What we do:",
-        subitems: [
-          "Internal flow mapping and design",
-          "Booking and scheduling systems",
-          "Information centralization",
-          "Integrations and automations"
-        ],
-        result: { bold: "Result: ", text: "internal order, less burnout, more scalability." }
+        body: "Key data scattered across networks, links, PDFs, and messages that get lost."
       }
     ]
   },
   approach: {
     tag: "(Our approach)",
-    title1: "No aggressive marketing,",
-    titleHighlight: "no generic formulas",
-    subtitle: "We understand that health and human care spaces operate under a different logic. Here, the priority isn't to 'sell more at any cost', but to accompany with respect.",
-    description: "First, we take the time to understand how people arrive at your space, where they experience confusion, and which inquiries cause the most administrative drain on your team. Only then do we propose realistic, custom-tailored improvements.",
+    title1: "Direct, concrete,",
+    titleHighlight: "tailored to you.",
+    subtitle: "We understand that health and human care spaces operate under a different logic. The priority isn't to sell more at any cost, but to accompany with respect.",
+    description: "We start by understanding how people arrive at your space, at what points they experience confusion, and which inquiries generate the most administrative wear on your team. Only then do we propose realistic and tailored improvements. Our solutions aim to generate a direct impact on people and on your team's day-to-day.",
     bullets: [
-      "No unnecessarily complex processes or corporate jargon.",
-      "No over-engineered solutions you won't be able to maintain tomorrow.",
-      "Without losing sight of the warmth, accessibility, and ethics of your space.",
-      "Strictly adapted to the current size and reality of your organization."
+      "Focused on what really stops people.",
+      "Without over-sized solutions.",
+      "Adapted to your size and current moment.",
+      "Without losing the closeness and ethics of your space."
+    ]
+  },
+  howWeHelp: {
+    tag: "(How we help)",
+    title1: "",
+    titleHighlight: "We start with the problem.",
+    subTitleSection: "Each space has its breaking point. We work from there, with a clear and strategic process.",
+    helpCTA: "Get it Free",
+    items: [
+      {
+        title: "Diagnosis: the first step",
+        body: "Before touching anything, we analyze how people who arrive at your space experience the experience. We detect where they get lost, where they get confused, and where they abandon.",
+        subtitle: "What we do:",
+        subitems: [
+          "Review of website, networks, and contact flow",
+          "Analysis of mobile experience",
+          "Evaluation of service clarity and guidance",
+          "Map of friction points and concrete opportunities"
+        ],
+        result: { bold: "Result: ", text: "Clear and actionable diagnosis that reveals what stops people before contacting you." }
+      },
+      {
+        title: "First contact experience",
+        body: "We reorganize the most critical moment: when someone arrives for the first time and needs to understand how to get started. Fewer steps, fewer doubts, more confidence from the first second.",
+        subtitle: "What we do:",
+        subitems: [
+          "Design of entry and guidance flow",
+          "Clear and well-hierarchized service pages",
+          "Forms and WhatsApp integrated with sense",
+          "Automatic messages that don't sound like a bot",
+          "Mobile-first design and development"
+        ],
+        result: {
+          bold: "Result: ", text: "Fewer lost inquiries and repetitive messages, more people arriving oriented and ready."
+        }
+      },
+      {
+        title: "Clear and institutional digital presence",
+        body: "When Instagram is no longer enough and you need your own place that well represents what you do. We design websites that convey trust, closeness, and professionalism without losing the warmth of the space.",
+        subtitle: "What we do:",
+        subitems: [
+          "UX/UI design focused on emotional experience",
+          "Organization of content and services",
+          "Structural copy with appropriate tone for the sector",
+          "Complete web development optimized for mobile",
+          "Integration of bookings, contact, and referrals"
+        ],
+        result: { bold: "Result: ", text: "A digital space that feels as human and clear as the work you do inside." }
+      },
+      {
+        title: "Organization and internal systems",
+        body: "For spaces that have grown and today sustain too much manually. We order processes, channels, and flows so the team spends less energy on administration and more on people.",
+        subtitle: "What we do:",
+        subitems: [
+          "Mapping and redesign of internal flows",
+          "Booking, agenda, and referral systems",
+          "Centralization of channels and simple automations",
+          "Clear structure for teams with several professionals"
+        ],
+        result: { bold: "Result: ", text: "Less operational wear, more order, and capacity to scale without losing quality." }
+      }
     ]
   },
   organizations: {
-    tag: "(Who we support)",
+    tag: "(Who we accompany)",
     title1: "Designed for spaces",
     titleHighlight: "committed to care",
-    subtitle: "We work with both independent therapists taking their first digital steps and established mental health and wellness institutions looking to bring order and clarity to their patient flow.",
+    subtitle: "We work both with independent therapists taking their first digital steps, and with established mental health and wellness institutions looking to bring order and clarity to their patient flow.",
     items: [
       "Psychology centers and mental health clinics",
-      "Wellness spaces, yoga, meditation, and somatic therapies",
-      "Interdisciplinary centers and shared practice offices",
-      "Humanitarian, social, and non-profit help organizations",
+      "Wellness spaces, yoga, meditation, and body therapies",
+      "Interdisciplinary centers and collective offices",
+      "Human, social, and aid organizations and foundations",
       "Therapists, facilitators, and independent professional teams",
       "Support, maternity, and human care spaces"
     ]
   },
   diagnostic: {
-    tag: "(Free initial diagnostic)",
+    tag: "(Free initial diagnosis)",
     title1: "A useful conversation,",
-    titleHighlight: "not a sales pitch",
-    subtitle: "To reduce risk and make sure we understand each other, we analyze your current digital presence and provide clarity before you decide to hire anyone.",
-    description: "We evaluate the path a person takes when interested in your space to identify where they get stuck, where they get confused, and what creates the most friction.",
+    titleHighlight: "not a sales meeting",
+    subtitle: "To reduce risk and ensure we understand each other, we analyze your current digital presence and give you clarity before you decide to hire anything.",
+    description: "We evaluate the journey a person interested in your space takes to identify where they get stuck, where they get confused, and what generates the most friction.",
     pointsTitle: "What we analyze in your current portal:",
     points: [
       "The clarity of the first message and patient guidance.",
-      "The ease of access to contact information and pricing.",
-      "The smoothness and warmth of inquiry forms or WhatsApp flows.",
+      "The ease of access to contact information and rates.",
+      "The fluidity and warmth in inquiry forms or WhatsApp.",
       "Accessibility and visual experience on mobile phones.",
       "The perception of trust, privacy, and human closeness."
     ],
-    deliverablesTitle: "What you get in your hands:",
+    deliverablesTitle: "What you take away:",
     deliverables: [
       {
         title: "Concrete observations",
@@ -164,47 +166,48 @@ export const saludybienestar = {
       },
       {
         title: "Clear priorities",
-        body: "A guide on what is most urgent to resolve and what can wait, tailored to the scale of your organization."
+        body: "A guide on what is most urgent to resolve and what can wait, adapted to the scale of your organization."
       }
     ],
-    ctaButton: "Request Experience Diagnostic"
+    ctaButton: "Request experience diagnosis"
   },
   cta: {
-    title1: "Less friction,",
-    titleHighlight: "more clarity",
-    title2: "for your space",
-    description: "Maybe your digital experience doesn't need \"more marketing.\" Maybe it needs more clarity, less friction, and a better way to support the people who arrive. Fill out this brief form and let's start talking with a free diagnostic.",
+    title1: "A useful conversation,",
+    titleHighlight: "not a sales meeting.",
+    title2: "",
+    description: "We return real observations about your current digital experience. No cost, no commitment, no a presentation prepared to impress you.",
+    description2: "Then, if it makes sense to continue working together, we move forward. If not, you leave with concrete information with actionables to improve.",
     steps: [
       {
-        title: "1. Tell us about your space",
-        description: "Fill out the form sharing your current site (or channels) and your biggest guidance challenges."
+        title: "1. Complete the form",
+        description: "Tell us briefly about your space and what worries you most."
       },
       {
-        title: "2. We study your case",
-        description: "We take our time reviewing how the first-contact experience feels and works through the patient's eyes."
+        title: "2. We review your case",
+        description: "We analyze your digital presence and map the main friction points."
       },
       {
-        title: "3. We discuss the findings",
-        description: "We share clear, actionable observations with you in a short video call focused entirely on delivering value."
+        title: "3. We share what we found",
+        description: "A call or document with concrete observations. No beating around the bush."
       }
     ],
     serviceBy: "A service designed by",
-    formTitle: "Request Your Free Diagnostic",
-    formName: "Full Name *",
-    formNamePlaceholder: "e.g. Dr. Laura Martinez",
+    formTitle: "Request Free Diagnosis",
+    formName: "Your Name *",
+    formNamePlaceholder: "e.g. Lic. Laura Martinez",
     formEmail: "Contact Email *",
     formEmailPlaceholder: "laura@yourspace.com",
-    formWebsite: "Website or Social Media Link *",
+    formWebsite: "Main Website or Social Network where people know you *",
     formWebsitePlaceholder: "https://www.yourspace.com (or Instagram link)",
-    formChallenge: "What is your biggest digital obstacle today? (Optional)",
-    formChallengePlaceholder: "e.g. We get too many generic questions that drain our time...",
-    formSubmit: "Request Initial Diagnostic",
+    formChallenge: "Details about your situation or space (Optional)",
+    formChallengePlaceholder: "e.g. We receive many generic inquiries that demand time...",
+    formSubmit: "Request Initial Diagnosis",
     formProcessing: "Processing request...",
-    formSuccess: "Thank you! We received your request. We'll take our time to analyze your space and contact you within 48 business hours.",
-    formError: "There was an error sending the form. Please try again or message us directly via WhatsApp.",
-    formValidationRequired: "Please fill out all required fields.",
-    formInvalidUrl: "Please enter a valid website address or social media link.",
-    whatsappLabel: "Message us directly via WhatsApp",
+    formSuccess: "Thank you! We received your request. We'll take the time to analyze your space and contact you within a maximum of 48 business hours.",
+    formError: "There was an error sending the form. Please try again or write to us directly via WhatsApp.",
+    formValidationRequired: "Please complete the required fields.",
+    formInvalidUrl: "Please enter a valid address or social network.",
+    whatsappLabel: "Or write to us directly via WhatsApp",
     whatsappLink: "https://wa.me/5493417211814"
   }
 };
