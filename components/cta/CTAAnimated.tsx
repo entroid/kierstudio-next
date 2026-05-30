@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { ArrowRight, Mail, Phone, CheckCircle, XCircle, Instagram, Loader2 } from "lucide-react";
+import { ArrowRight, Mail, Phone, CheckCircle, XCircle, Camera, Loader2 } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 
 export function CTAAnimated() {
@@ -178,7 +178,7 @@ export function CTAAnimated() {
                                 className="group flex items-center gap-4 p-6 border border-[#28292D]/10 dark:border-white/10 hover:border-[#D52169] transition-colors duration-300 backdrop-blur-sm"
                             >
                                 <div className="w-12 h-12 bg-[#28292D]/5 dark:bg-white/5 rounded-full flex items-center justify-center group-hover:bg-[#D52169] transition-colors duration-300">
-                                    <Instagram
+                                    <Camera
                                         className="text-[#28292D] dark:text-white group-hover:text-white"
                                         size={20}
                                     />
