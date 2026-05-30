@@ -23,6 +23,14 @@ export type CTAButtonProps = {
    * Content inside the button – can be text, icons, or any JSX.
    */
   children: ReactNode;
+  /**
+   * Link target attribute (e.g., "_blank" for opening in new tab).
+   */
+  target?: string;
+  /**
+   * Link rel attribute (e.g., "noopener noreferrer" for external links).
+   */
+  rel?: string;
 };
 
 /**
@@ -35,11 +43,13 @@ export function CTAButton({
   className = "",
   variant = "primary",
   children,
+  target,
+  rel,
 }: CTAButtonProps) {
   const baseClasses =
     "inline-flex items-center gap-3 px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 transition-all duration-300 cursor-pointer";
 
-  const variantMap: Record<CTAButtonProps["variant"], string> = {
+  const variantMap: Record<"primary" | "secondary", string> = {
     primary:
       "bg-[#D52169] text-white border-transparent hover:bg-[#28292D] hover:border-[#28292D]",
     secondary:
@@ -56,6 +66,8 @@ export function CTAButton({
     <motion.a
       href={href}
       aria-label={alt}
+      target={target}
+      rel={rel}
       whileTap={{ scale: 0.95 }}
       {...hoverProps}
       className={clsx(baseClasses, variantMap[variant], className)}
