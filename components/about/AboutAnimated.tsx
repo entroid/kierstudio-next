@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import { useLanguage } from "../LanguageContext";
+import { CTAButton } from "@/components/cta/CTAButton";
+import { ArrowRight } from "lucide-react";
 
 export function AboutAnimated() {
     const { t } = useLanguage();
@@ -85,15 +87,7 @@ export function AboutAnimated() {
                                 {t('about.description3')}
                             </p>
 
-                            <motion.a
-                                href="#contacto"
-                                whileHover={{ scale: 1.05, x: 5 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="bg-[#D52169] text-white mt-10 px-10 py-5 font-['Archivo',sans-serif] text-[13px] leading-[13px] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] cursor-pointer inline-block"
-                                style={{ fontWeight: 700 }}
-                            >
-                                {t('about.ctaText')}
-                            </motion.a>
+                            <CTAButton href="#contacto" alt={t('about.ctaText')} className="mt-10">{t('about.ctaText')} <ArrowRight size={18} /></CTAButton>
                         </motion.div>
                     </div>
                 </motion.div>

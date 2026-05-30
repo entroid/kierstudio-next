@@ -14,6 +14,7 @@ export const common = {
         contact: "Contacto",
         menuOpen: "Abrir menú",
         menuClose: "Cerrar menú",
+        getDiagnostic: "Obtener Diagnóstico",
     },
 
     // Footer

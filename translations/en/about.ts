@@ -6,7 +6,7 @@ export const about = {
     /*title4: "DEVELOPMENT.",*/
 
     description1: "When business, design and technology are not aligned, digital products become confusing, costly to maintain.",
-    
+
     description1b: "They don't convert, scale, or accurately reflect their true value. That's where we come in. We are a boutique design studio specialized in ",
 
     description1Bold: "strategic design and development of digital products",
@@ -16,5 +16,5 @@ export const about = {
 
     description3: "If you understand that a good digital product starts with good decisions:",
 
-    ctaText: "Take a Good Decision →",
+    ctaText: "Take a Good Decision",
 };

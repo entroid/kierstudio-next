@@ -2,9 +2,10 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
-import { X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "../LanguageContext";
+import { CTAButton } from "@/components/cta/CTAButton";
 
 import { Project } from "@/types/project";
 
@@ -120,14 +121,7 @@ export function ProjectsAnimated() {
                                             </h3>
                                         </motion.div>
 
-                                        <motion.button
-                                            whileHover={{ scale: 1.05, x: 5 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="bg-[#D52169] text-white px-6 py-3 font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.1em] uppercase mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer"
-                                            style={{ fontWeight: 700 }}
-                                        >
-                                            {t('projects.viewProject')}
-                                        </motion.button>
+                                        <CTAButton variant="primary" href="javascript:void(0)" className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">{t('projects.viewProject')} </CTAButton>
                                     </div>
 
                                     <div className="absolute top-8 right-8">
@@ -154,7 +148,7 @@ export function ProjectsAnimated() {
                         <motion.button
                             whileHover={{ scale: 1.05, x: 5 }}
                             whileTap={{ scale: 0.95 }}
-                            className="bg-transparent text-[#28292D] dark:text-white border-2 border-[#28292D] dark:border-white px-12 py-5 hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D] font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 cursor-pointer"
+                            className="inline-flex items-center gap-3 px-10 py-5 bg-transparent text-[#28292D] dark:text-white border-2 border-[#28292D] dark:border-white  hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D] font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 cursor-pointer"
                             style={{ fontWeight: 700 }}
                             onClick={() => setShowAll((prev) => !prev)}
                             aria-expanded={showAll}
@@ -276,17 +270,7 @@ export function ProjectsAnimated() {
                                     </div>
 
                                     {selectedProject.url && selectedProject.url.trim() !== "" && (
-                                        <motion.a
-                                            href={selectedProject.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05, x: 5 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#28292D] w-fit cursor-pointer inline-block"
-                                            style={{ fontWeight: 700 }}
-                                        >
-                                            {t('projects.visitWebsite')}
-                                        </motion.a>
+                                        <CTAButton href={selectedProject.url} target="_blank" rel="noopener noreferrer" variant="primary">{t('projects.visitWebsite')} <ArrowRight size={18} /></CTAButton>
                                     )}
                                 </div>
                             </div>

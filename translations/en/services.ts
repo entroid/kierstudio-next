@@ -31,7 +31,5 @@ export const services = {
         items: ["Headless CMS", "Content Modeling", "SaaS, B2B", "Custom Software"],
     },
 
-    learnMore: "Learn More →",
-
-    ctaButton: "Let´s talk →",
+    ctaButton: "Let´s talk",
 };

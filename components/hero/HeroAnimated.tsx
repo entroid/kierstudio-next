@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import { useLanguage } from "../LanguageContext";
+import { CTAButton } from "@/components/cta/CTAButton";
+import { ArrowRight } from "lucide-react";
 
 // Client component that adds animations on top of server-rendered content
 // Uses CSS animations or Framer Motion for entrance effects
@@ -100,24 +102,12 @@ export function HeroAnimated() {
                                 transition={{ delay: 0.9 }}
                                 className="flex flex-col sm:flex-row gap-4"
                             >
-                                <motion.a
-                                    href="#contacto"
-                                    whileHover={{ scale: 1.05, x: 5 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="bg-[#D52169] text-white px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 border-transparent transition-all duration-300 hover:bg-[#28292D] hover:border-[#28292D] cursor-pointer"
-                                    style={{ fontWeight: 700 }}
-                                >
-                                    {t('hero.ctaTalk')}
-                                </motion.a>
-                                <motion.a
-                                    href="#proyectos"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D] transition-all duration-300 cursor-pointer"
-                                    style={{ fontWeight: 700 }}
-                                >
+                                <CTAButton href="#contacto" variant="primary" className="shadow-xl">
+                                    {t('hero.ctaTalk')} <ArrowRight size={18} />
+                                </CTAButton>
+                                <CTAButton href="#proyectos" variant="secondary">
                                     {t('hero.ctaWork')}
-                                </motion.a>
+                                </CTAButton>
                             </motion.div>
                         </div>
                     </motion.div>
