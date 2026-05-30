@@ -1,42 +1,46 @@
 export const saludybienestar = {
   frictionCard: {
-    text: "Estas situaciones generan fricción, pero también tienen solución. Ahí es donde podemos ayudar.",
-    cta: "Hablemos"
+    text: "Estas situaciones tienen solución. Revisamos tu caso sin costo.",
+    cta: "Solicitar análisis"
   },
 
   hero: {
     tag: "Para espacios de salud mental, bienestar y cuidado humano",
-    title1: "Diseñamos experiencias digitales",
-    titleHighlight: "más claras y humanas",
+    title1: "Tu espacio cuida bien a las personas.",
+    titleHighlight: "¿Tu experiencia digital también?",
     title2: "",
-    subtitle: "Ayudamos a reducir la fricción, el caos y la confusión que aparece cuando un espacio de cuidado humano está creciendo.",
-    ctaButton: "Contanos tu caso",
+    subtitle: "Diseñamos la experiencia digital de espacios de salud y bienestar para que la orientación y el contacto sean claros desde el primer momento.",
+    ctaButton: "Solicitar diagnóstico gratis",
     scrollText: "Cómo te ayudamos",
     observationsTitle: "",
     observations: [
+      "Experiencias digitales más intuitivas y cercanas",
+      "Menos caos, más tiempo para lo importante",  
       "Menos fricción en el primer contacto",
-      "Más claridad para las personas que llegan",
-      "Menos caos, más tiempo para lo importante",
-      "Experiencias digitales más intuitivas y cercanas"
+      "Acompañamos tu etapa de crecimiento"        
     ]
   },
   problems: {
     tag: "(Lo que solemos encontrar)",
-    title1: "Obstáculos frecuentes",
-    titleHighlight: "en la experiencia de primer contacto",
-    subTitleSection: "Vemos estas situaciones constantemente. No suelen ser fallas técnicas; sino mas bien barreras humanas en la forma en que se presenta la información y se guía a las personas.",
-    items: [
+    title1: "Situaciones que probablemente te",
+    titleHighlight: "resulten familiares",
+    subTitleSection: "Lo vemos casi siempre en estos espacios. No suelen ser fallas técnicas; sino mas bien barreras humanas en la forma en que se presenta la información y se guía a las personas.",
+    items: [      
       {
-        title: "No queda claro cómo empezar",
-        body: "Demasiados pasos, opciones o dudas antes del primer paso."
+        title: "Personas que abandonan antes de contactar",
+        body: "Llegan con una necesidad real, pero se sienten abrumadas, confundidas o inseguras."
       },
       {
         title: "Exceso de informacion, poca orientación",
         body: "Muchos servicios y especialidades, pero ninguna guía clara."
       },
       {
-        title: "Todo termina en WhatsApp",
-        body: "Consultas repetidas, mensajes desordenados y desgaste administrativo constante."
+        title: "Alta dependencia de Instagram y WhatsApp",
+        body: "Consultas repetidas, mensajes desordenados y avalancha de notificaciones = desgaste administrativo constante."
+      },
+      {
+        title: "No queda claro cómo empezar",
+        body: "Demasiados pasos, opciones o dudas antes del primer paso."
       },
       {
         title: "Sistemas de turnos fríos o confusos",
@@ -45,48 +49,81 @@ export const saludybienestar = {
       {
         title: "Información desorganizada y fragmentada",
         body: "Datos clave repartidos entre redes, links, PDFs y mensajes que se pierden."
-      },
-      {
-        title: "Personas que abandonan antes de contactar",
-        body: "Llegan con una necesidad real, pero se sienten abrumadas, confundidas o inseguras."
-      },
-    ]
-  },
-  howWeHelp: {
-    tag: "(Cómo ayudamos)",
-    title1: "Diseñamos soluciones digitales que generan",
-    titleHighlight: "claridad, confianza y orden",
-    subTitleSection: "No te hablaremos de tecnicismos complejos de UX o desarrollo. Nuestro trabajo es simplificar, ordenar y humanizar tu portal digital.",
-    items: [
-      {
-        title: "Claridad y orientación",
-        body: "Ayudamos a que las personas entiendan rápidamente qué ofrece el espacio, cómo dar el primer paso, a quién escribir y qué tipo de servicio o profesional puede acompañarlas mejor."
-      },
-      {
-        title: "Mejora del primer contacto",
-        body: "Reducimos la fricción y la ansiedad en formularios, onboarding, canales de consulta y accesibilidad móvil, asegurando que escribirte sea un paso sencillo y seguro."
-      },
-      {
-        title: "Organización digital",
-        body: "A medida que tu espacio crece, organizamos tus flujos de información, centralizamos los puntos de contacto, simplificamos procesos y reducimos tu caos operativo diario."
-      },
-      {
-        title: "Recorridos más cálidos",
-        body: "Diseñamos interfaces que priorizan la claridad, la accesibilidad universal, la confianza y la calidez humana, transmitiendo tu ética de cuidado desde la primera pantalla."
       }
     ]
   },
   approach: {
     tag: "(Nuestro enfoque)",
-    title1: "Sin marketing agresivo,",
-    titleHighlight: "sin fórmulas genéricas",
-    subtitle: "Entendemos que los espacios de salud y cuidado humano operan bajo una lógica diferente. Aquí la prioridad no es 'vender más a cualquier costo', sino acompañar con respeto.",
-    description: "Primero nos tomamos el tiempo de entender cómo llegan las personas a tu espacio, en qué puntos experimentan confusión y qué consultas generan más desgaste administrativo en tu equipo. Recién entonces proponemos mejoras realistas y a tu medida.",
+    title1: "Directo, concreto,",
+    titleHighlight: "a tu medida.",
+    subtitle: "Entendemos que los espacios de salud y cuidado humano operan bajo una lógica diferente. La prioridad no es vender más a cualquier costo, sino acompañar con respeto.",
+    description: "Empezamos por entender cómo llegan las personas a tu espacio, en qué puntos experimentan confusión y qué consultas generan más desgaste administrativo en tu equipo. Recién entonces proponemos mejoras realistas y a tu medida. Nuestras soluciones apuntan a generar un impacto directo en las personas y en el día a día de tu equipo.",
     bullets: [
-      "Sin procesos innecesariamente complejos ni jerga corporativa.",
-      "Sin soluciones sobredimensionadas que no puedas mantener mañana.",
-      "Sin perder de vista la cercanía, la accesibilidad y la ética de tu espacio.",
-      "Adaptado estrictamente al tamaño y realidad actual de tu organización."
+      "Con foco en lo que realmente frena a las personas.",
+      "Sin soluciones sobredimensionadas.",
+      "Adaptado a tu tamaño y momento actual.",
+      "Sin perder la cercanía y la ética de tu espacio."
+    ]
+  },
+  howWeHelp: {
+    tag: "(Cómo ayudamos)",
+    title1: "",
+    titleHighlight: "Empezamos por el problema.",
+    subTitleSection: "Cada espacio tiene su punto de quiebre. Trabajamos desde ahi, con un proceso claro y estratégico.",
+    helpCTA: "Obtener Gratis",
+    items: [
+      {
+        title: "Diagnóstico: el primer paso",
+        body: "Antes de tocar nada, analizamos cómo viven la experiencia las personas que llegan a tu espacio. Detectamos dónde se pierden, dónde se confunden y dónde abandonan.",
+        subtitle: "Qué hacemos:",
+        subitems: [
+          "Revisión del sitio web, redes y flujo de contacto",
+          "Análisis de la experiencia móvil",
+          "Evaluación de claridad de servicios y orientación",
+          "Mapa de puntos de fricción y oportunidades concretas"
+        ],
+        result: { bold: "Resultado: ", text: "Diagnóstico claro y accionable que revela qué frena a las personas antes de contactarte." }
+      },
+      {
+        title: "Experiencia de primer contacto",
+        body: "Reorganizamos el momento más crítico: cuando alguien llega por primera vez y necesita entender cómo empezar. Menos pasos, menos dudas, más confianza desde el primer segundo.",
+        subtitle: "Qué hacemos:",
+        subitems: [
+          "Diseño del flujo de ingreso y orientación",
+          "Páginas de servicios claras y bien jerarquizadas",
+          "Formularios y WhatsApp integrados con sentido",
+          "Mensajes automáticos que no suenan a bot",
+          "Diseño y desarrollo mobile-first"
+        ],
+        result: {
+          bold: "Resultado: ", text: "Menos consultas perdidas y mensajes repetitivos, más personas que llegan orientadas y listas."
+        }
+      },
+      {
+        title: "Presencia digital clara e institucional",
+        body: "Cuando Instagram ya no alcanza y necesitás un lugar propio que represente bien lo que hacés. Diseñamos sitios web que transmiten confianza, cercanía y profesionalismo sin perder la calidez del espacio.",
+        subtitle: "Qué hacemos:",
+        subitems: [
+          "Diseño UX/UI centrado en la experiencia emocional",
+          "Organización de contenido y servicios",
+          "Copy estructural con tono adecuado al rubro",
+          "Desarrollo web completo y optimizado para móviles",
+          "Integración de turnos, contacto y derivación"
+        ],
+        result: { bold: "Resultado: ", text: "Un espacio digital que se siente tan humano y claro como el trabajo que hacés adentro." }
+      },
+      {
+        title: "Organización y sistemas internos",
+        body: "Para espacios que crecieron y hoy sostienen demasiado de forma manual. Ordenamos procesos, canales y flujos para que el equipo gaste menos energía en administración y más en las personas.",
+        subtitle: "Qué hacemos:",
+        subitems: [
+          "Mapeo y rediseño de flujos internos",
+          "Sistemas de turnos, agendas y derivaciones",
+          "Centralización de canales y automatizaciones simples",
+          "Estructura clara para equipos con varios profesionales"
+        ],
+        result: { bold: "Resultado: ", text: "Menos desgaste operativo, más orden y capacidad de escalar sin perder calidad." }
+      }
     ]
   },
   organizations: {
@@ -135,33 +172,34 @@ export const saludybienestar = {
     ctaButton: "Solicitar diagnóstico de experiencia"
   },
   cta: {
-    title1: "Menos fricción,",
-    titleHighlight: "más claridad",
-    title2: "para tu espacio",
-    description: "Tal vez su experiencia digital no necesite “más marketing”. Tal vez necesite más claridad, menos fricción y una mejor forma de acompañar a las personas que llegan. Completa este breve formulario y comencemos a conversar con un diagnóstico sin cargo.",
+    title1: "Una conversación útil,",
+    titleHighlight: "no una reunión de ventas.",
+    title2: "",
+    description: "Te devolvemos observaciones reales sobre tu experiencia digital actual. Sin costo, sin compromiso, sin una presentación armada para impresionarte.",
+    description2: "Luego, si tiene sentido seguir trabajando juntos, avanzamos. Si no, te vas con información concreta con accionables para mejorar.",
     steps: [
       {
-        title: "1. Cuéntanos sobre tu espacio",
-        description: "Completa el formulario indicando tu sitio actual (o tus canales) y tus mayores desafíos de orientación."
+        title: "1. Completá el formulario",
+        description: "Nos contás brevemente tu espacio y qué te preocupa más."
       },
       {
-        title: "2. Estudiamos tu caso",
-        description: "Revisamos con calma cómo se siente y cómo funciona la experiencia de primer contacto desde los ojos del paciente."
+        title: "2. Revisamos tu caso",
+        description: "Analizamos tu presencia digital y mapeamos los puntos de fricción principales."
       },
       {
-        title: "3. Conversamos sobre los hallazgos",
-        description: "Te entregamos observaciones claras y aplicables en una videollamada corta, enfocada exclusivamente en aportar valor."
+        title: "3. Te compartimos lo que encontramos",
+        description: "Una llamada o documento con observaciones concretas. Sin rodeos."
       }
     ],
     serviceBy: "Un servicio diseñado por",
     formTitle: "Solicitar Diagnóstico Sin Cargo",
-    formName: "Nombre Completo *",
+    formName: "Tu Nombre *",
     formNamePlaceholder: "Ej. Lic. Laura Martínez",
     formEmail: "Email de Contacto *",
     formEmailPlaceholder: "laura@tuespacio.com",
-    formWebsite: "Sitio Web o Red Social *",
+    formWebsite: "Sitio Web o Red Social principal por donde la gente te conoce *",
     formWebsitePlaceholder: "https://www.tuespacio.com (o enlace a Instagram)",
-    formChallenge: "¿Cuál es el mayor obstáculo digital en tu espacio hoy? (Opcional)",
+    formChallenge: "Detalles sobre tu situación o espacio (Opcional)",
     formChallengePlaceholder: "Ej. Nos escriben muchas consultas genéricas que demandan tiempo...",
     formSubmit: "Solicitar Diagnóstico Inicial",
     formProcessing: "Procesando solicitud...",
@@ -169,7 +207,7 @@ export const saludybienestar = {
     formError: "Hubo un error al enviar el formulario. Por favor, intenta de nuevo o escríbenos directamente por WhatsApp.",
     formValidationRequired: "Por favor, completa los campos obligatorios.",
     formInvalidUrl: "Por favor, ingresa una dirección o red social válida.",
-    whatsappLabel: "Escríbenos directamente por WhatsApp",
+    whatsappLabel: "O escribinos directamente por WhatsApp",
     whatsappLink: "https://wa.me/5493417211814"
   }
 };

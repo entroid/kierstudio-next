@@ -13,9 +13,9 @@ export function LandingHeader() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="absolute top-0 left-0 right-0 z-50 bg-transparent"
+      className="absolute top-0 left-0 right-0 z-50 bg-transparent px-6 lg:px-12"
     >
-      <nav className="max-w-[1400px] mx-auto px-6 lg:px-12 h-24 flex items-center justify-between">
+      <nav className="max-w-[1400px] mx-auto  h-24 flex items-center justify-between">
         <motion.a
           href="/"
           whileHover={{ scale: 1.05 }}
@@ -27,7 +27,7 @@ export function LandingHeader() {
           <LogoCompact className="h-10 w-auto text-white" />
         </motion.a>
 
-        <motion.a
+        {/* <motion.a
           href="#form"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -35,7 +35,7 @@ export function LandingHeader() {
           style={{ fontWeight: 700 }}
         >
           {t("nav.getDiagnostic")}
-        </motion.a>
+        </motion.a> */}
       </nav>
     </motion.header>
   );

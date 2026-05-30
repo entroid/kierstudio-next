@@ -6,21 +6,26 @@ import {
   ArrowRight,
   Check,
   CheckCircle,
-  XCircle,
   Loader2,
   Heart,
   Compass,
   ShieldCheck,
   Layers,
   Sparkles,
-  HelpCircle,
   AlertCircle,
-  ArrowDown
+  Smile, 
+  Search,
+  LogIn,
+  HouseHeart  
 } from "lucide-react";
 import { useLanguage } from "@/components/LanguageContext";
 import { LogoCompact } from "@/components/Logo";
 import { en } from "@/translations";
 import { CTAButton } from "@/components/cta/CTAButton";
+
+
+  // Helper icons array for the 4 simple pillars of help
+  const helperIcons = [Search, LogIn, HouseHeart, Sparkles];
 
 export default function SaludYBienestarLandingPage() {
   const { t, translations } = useLanguage();
@@ -101,8 +106,6 @@ export default function SaludYBienestarLandingPage() {
     }
   };
 
-  // Helper icons array for the 4 simple pillars of help
-  const helperIcons = [Compass, Sparkles, Layers, Heart];
 
   return (
     <div id="salud-y-bienestar-page" className="bg-white dark:bg-[#0a0a0a] text-[#28292D] dark:text-white min-h-screen transition-colors duration-500 overflow-x-hidden">
@@ -110,9 +113,9 @@ export default function SaludYBienestarLandingPage() {
       {/* SECTION 1: HERO - VALIDACIÓN INMEDIATA */}
       <section
         id="hero"
-        className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 pt-32 pb-24 border-b border-[#28292D]/5 dark:border-white/5 bg-[#FEF4EB] dark:from-[#111] dark:to-[#0a0a0a] transition-colors duration-500 bg-[right_center] lg:bg-[right_-12vh_center]"
+        className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 pt-32 pb-24 border-b border-[#28292D]/5 dark:border-white/5 bg-[#FEF4EB] dark:from-[#111] dark:to-[#0a0a0a] transition-colors duration-500 bg-[right_center]"
         style={{
-          backgroundImage: "linear-gradient(to right, rgba(254,244,235,0.9), rgba(254,244,235,0.1)), url('/landing/saludybienestar/000hero.jpg')",
+          backgroundImage: "linear-gradient(to right, rgba(254,244,235,0.9), rgba(254,244,235,0.1)), url('/landing/saludybienestar/0001hero.jpg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "auto 100%",
         }}
@@ -126,7 +129,7 @@ export default function SaludYBienestarLandingPage() {
             transition={{ duration: 0.5 }}
             className="mb-8"
           >
-            <span className="inline-flex items-center gap-2 bg-[#D52169]/5 dark:bg-[#D52169]/10 border border-[#D52169]/10 dark:border-[#D52169]/20 text-[#D52169] px-4 py-2 font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase" style={{ fontWeight: 600 }}>
+            <span className="inline-flex items-center gap-2 bg-[#D52169]/10 dark:bg-[#D52169]/10  border border-[#D52169]/10 dark:border-[#D52169]/20 text-[#D52169] px-4 py-2 font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase" style={{ fontWeight: 600 }}>
               <span className="w-1.5 h-1.5 rounded-full bg-[#D52169] animate-pulse" />
               {data.hero.tag}
             </span>
@@ -136,17 +139,17 @@ export default function SaludYBienestarLandingPage() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-['Bodoni+Moda',serif] text-[2.5rem] sm:text-[3.5rem] lg:text-[5.5rem] leading-[1.0] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 max-w-[900px]"
+            className="font-['Bodoni+Moda',serif] text-[2.5rem] sm:text-[3.5rem] lg:text-[5.5rem] leading-[1.0] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 md:max-w-[800px] lg:max-w-[1100px]"
             style={{ fontWeight: 900 }}
           >
-            {data.hero.title1} <span className="text-[#D52169] font-black">{data.hero.titleHighlight}</span> {data.hero.title2}
+            {data.hero.title1}  <span className="text-[#D52169] font-black">{data.hero.titleHighlight} </span> {data.hero.title2}
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="font-['Bodoni+Moda',serif] font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.375rem] text-[#28292D]/70 dark:text-white/70 max-w-[720px] leading-[1.6] mb-12"
+            className=" text-[1.125rem] md:text-[1.375rem] text-[#28292D]/70 dark:text-white/70 max-w-[720px] leading-[1.6] mb-12"
             style={{ fontWeight: 400 }}
           >
             {data.hero.subtitle}
@@ -162,9 +165,9 @@ export default function SaludYBienestarLandingPage() {
               {data.hero.ctaButton} <ArrowRight size={18} />
             </CTAButton>
 
-            <CTAButton variant="secondary" href="#como-ayudamos">
+            {/* <CTAButton className="" variant="secondary" href="#como-ayudamos">
               {data.hero.scrollText} <ArrowDown size={18} />
-            </CTAButton>
+            </CTAButton> */}
           </motion.div>
 
           {/* ELEMENTO CLAVE DEL HERO - OBSERVACIONES REALES */}
@@ -175,11 +178,11 @@ export default function SaludYBienestarLandingPage() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="pt-2"
           >
-            <h3 className="font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.15em] text-[#28292D]/40 dark:text-white/40 uppercase mb-6" style={{ fontWeight: 700 }}>
+            {/* <h3 className="font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.15em] text-[#28292D]/40 dark:text-white/40 uppercase mb-6" style={{ fontWeight: 700 }}>
               {data.hero.observationsTitle}
-            </h3>
+            </h3> 
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14 xl:gap-30">
               {data.hero.observations.map((obs: string, idx: number) => (
                 <motion.div
                   key={idx}
@@ -187,6 +190,20 @@ export default function SaludYBienestarLandingPage() {
                   className="bg-white/60 dark:bg-[#151515] p-5 border border-[#28292D]/5 dark:border-white/5 shadow-sm flex items-center justify-center transition-all duration-100"
                 >
                   <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/80 dark:text-white/80 text-center leading-[1.4] italic" style={{ fontWeight: 500 }}>
+                    {obs}
+                  </p>
+                </motion.div>
+              ))}
+            </div>*/}
+
+            <div className="bg-white/50 dark:bg-[#0a0a0a]/80 flex flex-col md:flex-row justify-center py-3 px-8 shadow-sm">
+              {data.hero.observations.map((obs: string, idx: number) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -4 }}
+                  className={`py-3 md:p-5 flex items-center md:justify-center transition-all duration-100 ${idx > 0 ? 'border-t md:border-t-0 md:border-l border-[#28292D]/5 dark:border-white/5' : ''}`}
+                >
+                  <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/70 dark:text-white/70 md:text-center leading-[1.4] italic" style={{ fontWeight: 600 }}>
                     {obs}
                   </p>
                 </motion.div>
@@ -212,10 +229,10 @@ export default function SaludYBienestarLandingPage() {
             <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
               {data.problems.tag}
             </span>
-            <h2 className="font-['Bodoni+Moda',serif] font-['Archivo',sans-serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 900 }}>
+            <h2 className="font-['Bodoni+Moda',serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 900 }}>
               {data.problems.title1} <span className="text-[#D52169] font-black">{data.problems.titleHighlight}</span>
             </h2>
-            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
+            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/60 dark:text-white/60 leading-[1.5]" style={{ fontWeight: 400 }}>
               {data.problems.subTitleSection}
             </p>
           </motion.div>
@@ -228,18 +245,20 @@ export default function SaludYBienestarLandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08, duration: 0.5 }}
-                className="bg-[#F5F5F5]/50 dark:bg-[#121212]/50 p-6 border border-[#28292D]/5 dark:border-white/5 hover:border-[#D52169]/30 dark:hover:border-[#D52169]/30 transition-all duration-300 flex flex-col justify-between"
+                className="bg-[#F5F5F5]/50 dark:bg-[#121212]/50 p-6 border border-[#28292D]/5 dark:border-white/5 hover:border-[#D52169]/30 dark:hover:border-[#D52169]/30 transition-all duration-300 flex flex-col md:flex-row  justify-between gap-4"
               >
-                <div>
-                  <div className="w-10 h-10 bg-[#D52169]/5 dark:bg-[#D52169]/10 text-[#D52169] flex items-center justify-center mb-6">
-                    <HelpCircle size={20} />
-                  </div>
-                  <h3 className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 700 }}>
-                    {item.title}
-                  </h3>
-                  <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/60 dark:text-white/60 leading-[1.6]" style={{ fontWeight: 400 }}>
-                    {item.body}
-                  </p>
+                
+                  {/* <div className="shrink-0 w-12 h-12 bg-[#D52169]/8 rounded-full dark:bg-[#D52169]/10 text-[#D52169] flex items-center justify-center mb-2">
+                     <AlertCircle size={24} strokeWidth={1.5} /> 
+                  </div> */}
+
+                  <div>
+                    <h3 className="text-[1.125rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 700 }}>
+                      {item.title}
+                    </h3>
+                    <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/60 dark:text-white/60 leading-[1.6]" style={{ fontWeight: 400 }}>
+                      {item.body}
+                    </p>
                 </div>
               </motion.div>
             ))}
@@ -247,8 +266,8 @@ export default function SaludYBienestarLandingPage() {
 
           {/* SECTION NEW: FRICCIÓN CARD */}
 
-          <div className="max-w-[1400px] mx-auto w-full flex justify-center mt-16">
-            <div className="w-full max-w-[800px] bg-[#FEF4EB] dark:bg-[#0a0a0a] border border-[#28292D]/5 dark:border-white/5 shadow-lg p-6 flex flex-col md:flex-row items-center gap-5">
+          <div className="max-w-[1400px] mx-auto w-full flex justify-center mt-20">
+            <div className="w-full max-w-[600px] bg-[#D52169]/10 dark:bg-[#D52169]/10 border border-[#28292D]/5 dark:border-white/5 shadow-lg p-6 flex flex-col md:flex-row items-center gap-5">
               <div className="flex flex-col md:flex-row items-center gap-3">
                 <div className="w-12 h-12 bg-[#D52169]/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                   <AlertCircle className="text-[#D52169]" size={24} />
@@ -258,7 +277,7 @@ export default function SaludYBienestarLandingPage() {
                 </p>
               </div>
 
-              <CTAButton href="#form" className="mt-4 md:mt-0 md:ml-4 shadow-xl">
+              <CTAButton href="#form"  className="flex-shrink-0 !py-3 !px-6">
                 {data.frictionCard.cta} <ArrowRight size={18} />
               </CTAButton>
             </div>
@@ -266,68 +285,12 @@ export default function SaludYBienestarLandingPage() {
         </div>
       </section>
 
-
-
-      {/* SECTION 3: "CÓMO AYUDAMOS" */}
-      <section
-        id="como-ayudamos"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-[#F5F5F5] dark:bg-[#121212] transition-colors duration-500"
-      >
-        <div className="max-w-[1400px] mx-auto w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-20 max-w-[900px]"
-          >
-            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
-              {data.howWeHelp.tag}
-            </span>
-            <h2 className="font-['Archivo',sans-serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 900 }}>
-              {data.howWeHelp.title1} <span className="text-[#D52169] font-black">{data.howWeHelp.titleHighlight}</span>
-            </h2>
-            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
-              {data.howWeHelp.subTitleSection}
-            </p>
-          </motion.div>
-
-          <div id="como-ayudamos-grid" className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {data.howWeHelp.items.map((item: any, idx: number) => {
-              const IconComponent = helperIcons[idx % helperIcons.length];
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  className="bg-white dark:bg-[#0a0a0a] p-8 border border-[#28292D]/5 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 flex gap-6"
-                >
-                  <div className="shrink-0 w-12 h-12 bg-[#D52169]/5 dark:bg-[#D52169]/10 text-[#D52169] flex items-center justify-center">
-                    <IconComponent size={22} />
-                  </div>
-                  <div>
-                    <h3 className="font-['Archivo',sans-serif] text-[1.25rem] text-[#28292D] dark:text-white mb-3" style={{ fontWeight: 700 }}>
-                      {item.title}
-                    </h3>
-                    <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/60 dark:text-white/60 leading-[1.6]" style={{ fontWeight: 400 }}>
-                      {item.body}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: "NUESTRO ENFOQUE" */}
-      <section
+ {/* SECTION 3: "NUESTRO ENFOQUE" */}
+      < section
         id="enfoque"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-white dark:bg-[#0a0a0a] border-b border-[#28292D]/5 dark:border-white/5 transition-colors duration-500"
+        className="py-20 md:py-28 px-6 lg:px-12 bg-[#F5F5F5] dark:bg-[#0a0a0a]/30  transition-colors duration-500"
       >
-        <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-[45%_1fr] gap-16 items-center">
+        <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-[60%_1fr] gap-16 items-center">
           <motion.div
             id="enfoque-text"
             initial={{ opacity: 0, x: -25 }}
@@ -338,19 +301,19 @@ export default function SaludYBienestarLandingPage() {
             <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
               {data.approach.tag}
             </span>
-            <h2 className="font-['Archivo',sans-serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 900 }}>
-              {data.approach.title1}<br />
-              <span className="text-[#D52169] font-black">{data.approach.titleHighlight}</span>
+            <h2 className="font-['Bodoni+Moda',serif]  text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 900 }}>
+              {data.approach.title1}
+              <span className="text-[#D52169] font-black"> {data.approach.titleHighlight}</span>
             </h2>
-            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/90 dark:text-white/95 leading-[1.6] mb-6" style={{ fontWeight: 600 }}>
+            <p className="text-[1.125rem] text-[#28292D]/90 dark:text-white/95 leading-[1.6] mb-6" style={{ fontWeight: 600 }}>
               {data.approach.subtitle}
             </p>
-            <p className="font-['Archivo',sans-serif] text-[1rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
+            <p className="text-[1rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
               {data.approach.description}
             </p>
           </motion.div>
 
-          <div id="enfoque-bullets" className="space-y-4">
+          <div id="enfoque-bullets" className="grid  grid-cols-2 lg:grid-cols-1 gap-4 md:gap-8 pt-8">
             {data.approach.bullets.map((bullet: string, idx: number) => (
               <motion.div
                 key={idx}
@@ -358,24 +321,105 @@ export default function SaludYBienestarLandingPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="flex items-center gap-5 p-6 bg-[#F5F5F5]/40 dark:bg-[#121212]/40 border border-[#28292D]/5 dark:border-white/5"
+                className="flex items-center gap-5 p-4 md:p-6 bg-white shadow-xs dark:bg-[#121212]/40 border border-[#28292D]/5 dark:border-white/5 flex-col md:flex-row"
               >
-                <div className="shrink-0 w-6 h-6 rounded-full bg-[#D52169]/10 dark:bg-[#D52169]/20 text-[#D52169] flex items-center justify-center">
+                <div className="shrink-0 w-6 h-6 rounded-full bg-[#D52169]/10 dark:bg-[#D52169]/20 text-[#D52169] flex items-center justify-center ">
                   <Check size={14} />
                 </div>
-                <p className="font-['Archivo',sans-serif] text-[0.9375rem] md:text-[1rem] text-[#28292D]/80 dark:text-white/80" style={{ fontWeight: 500 }}>
+                <p className="font-['Archivo',sans-serif] text-[0.875rem] md:text-[1rem] text-[#28292D]/80 dark:text-white/80 break-words word-wrap-anywhere" style={{ fontWeight: 500, wordBreak: 'break-word' }}>
                   {bullet}
                 </p>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
-      {/* SECTION 5: "A QUIÉN AYUDAMOS" / "TIPOS DE ORGANIZACIONES" */}
+
+      {/* SECTION 4: "CÓMO AYUDAMOS" */}
       <section
+        id="como-ayudamos"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-white dark:bg-[#0a0a0a]/80  transition-colors duration-500 border-b border-[#28292D]/5 dark:border-white/5"
+      >
+        <div className="max-w-[1400px] mx-auto w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-14 max-w-[900px]"
+          >
+            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
+              {data.howWeHelp.tag}
+            </span>
+            <h2 className="font-['Bodoni+Moda',serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-6" style={{ fontWeight: 900 }}>
+              {data.howWeHelp.title1} <span className="text-[#D52169] font-black">{data.howWeHelp.titleHighlight}</span>
+            </h2>
+            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
+              {data.howWeHelp.subTitleSection}
+            </p>
+          </motion.div>
+
+          <div id="como-ayudamos-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {data.howWeHelp.items.map((item: any, idx: number) => {
+              const IconComponent = helperIcons[idx % helperIcons.length];
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  className={`${idx === 0 ? 'bg-[#D52169]/10 dark:bg-[#D52169]/10 shadow-lg border-[#D52169]' : 'bg-white dark:bg-[#121212]/50 shadow-sm border-[#28292D]/10'} p-8 border  dark:border-white/5  hover:shadow-md transition-all duration-300 flex flex-col gap-6`}
+                >
+                  <div className="shrink-0 w-14 h-14 bg-[#D52169]/8 dark:bg-[#D52169]/10 text-[#D52169] flex items-center justify-center rounded-full">
+                    <IconComponent size={34} strokeWidth={1.3} />
+                  </div>
+                  <div>
+                    <h3 className=" text-[1.25rem] text-[#28292D] dark:text-white mb-3" style={{ fontWeight: 700 }}>
+                      {item.title}
+                    </h3>
+                    <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/60 dark:text-white/60 leading-[1.4]" style={{ fontWeight: 400 }}>
+                      {item.body}
+                    </p>
+                    <h4 className="text-[#28292D] mt-6 text-[0.875rem]" style={{ fontWeight: 600 }} >
+                      {item.subtitle}
+                    </h4>
+                    <div className="mt-2 space-y-2">
+                      {item.subitems.map((sub: string, subIdx: number) => (
+                        <div key={subIdx} className="flex items-start gap-2 text-[0.875rem] text-[#28292D]/80 dark:text-white/80 leading-[1.4]">
+                          <div className="shrink-0 w-5 h-5 rounded-full text-[#D52169] flex items-center justify-center mt-0.5">
+                            <Check size={18} strokeWidth={2.5} />
+                          </div>
+                          <span>{sub}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-6 flex items-center gap-3 rounded-xl bg-[#FEF4EB] dark:bg-[#0a0a0a]/30 p-3 text-[#28292D] text-[0.8rem] dark:text-white">
+                      <Smile size={26} strokeWidth={1.5} className="shrink-0 text-[#D52169]" />
+                      <p className="font-['Archivo',sans-serif]  leading-[1.2]" >
+                        <span className="font-bold">{item.result.bold}</span>{item.result.text}
+                      </p>
+                    </div>
+
+                    {idx === 0 && (
+                      <CTAButton href="#form" className="!px-6 !py-3 w-full !text-[0.7rem] justify-between shadow-xl mt-6">
+                        {data.howWeHelp.helpCTA} <ArrowRight size={18} />
+                      </CTAButton>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section >
+
+    
+      {/* SECTION 5: "A QUIÉN AYUDAMOS" / "TIPOS DE ORGANIZACIONES" */}
+      < section
         id="organizaciones"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-[#F5F5F5] dark:bg-[#121212] transition-colors duration-500"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-[#F5F5F5] dark:bg-[#121212] transition-colors duration-500 hidden"
       >
         <div className="max-w-[1400px] mx-auto w-full text-center mb-16">
           <motion.div
@@ -414,12 +458,12 @@ export default function SaludYBienestarLandingPage() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </section >
 
       {/* SECTION 6: "DIAGNÓSTICO / ENTRY OFFER" */}
-      <section
+      < section
         id="diagnostico"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-white dark:bg-[#0a0a0a] border-b border-[#28292D]/5 dark:border-white/5 transition-colors duration-500"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-white dark:bg-[#0a0a0a] border-b border-[#28292D]/5 dark:border-white/5 transition-colors duration-500 hidden"
       >
         <div className="max-w-[1400px] mx-auto w-full">
           <div id="diagnostico-main-grid" className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
@@ -514,13 +558,14 @@ export default function SaludYBienestarLandingPage() {
             </CTAButton>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* SECTION 7: CTA FINAL & FORMULARIO */}
-      <section
+      < section
         id="form"
         className="py-24 md:py-32 px-6 lg:px-12 bg-[#28292D] dark:bg-black text-white relative transition-colors duration-500 overflow-hidden"
-        style={{ boxShadow: "inset 0 0 100px 20px rgba(213, 33, 105, 0.03)" }}
+        style={{ boxShadow: "inset 0 0 100px 20px rgba(213, 33, 105, 0.03)" }
+        }
       >
         <div className="absolute bottom-0 left-0 w-full h-[400px] bg-gradient-to-t from-[#D52169]/5 to-transparent pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D52169] opacity-[0.02] rounded-full blur-[150px] pointer-events-none" />
@@ -534,7 +579,7 @@ export default function SaludYBienestarLandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-['Archivo',sans-serif] text-[2.5rem] md:text-[4rem] leading-[1.0] tracking-[-0.03em] text-white mb-8" style={{ fontWeight: 900 }}>
+            <h2 className="font-['Bodoni+Moda',serif] text-[2.5rem] md:text-[4rem] leading-[1.0] tracking-[-0.03em] text-white mb-8" style={{ fontWeight: 900 }}>
               {data.cta.title1} <span className="text-[#D52169] font-black">{data.cta.titleHighlight}</span><br />
               {data.cta.title2}
             </h2>
@@ -686,7 +731,7 @@ export default function SaludYBienestarLandingPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={submitting}
-                className="w-full bg-[#D52169] text-white py-4 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full bg-[#D52169] text-white py-4 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xl"
                 style={{ fontWeight: 700 }}
               >
                 {submitting ? (
@@ -699,8 +744,8 @@ export default function SaludYBienestarLandingPage() {
           </motion.div>
 
         </div>
-      </section>
+      </section >
 
-    </div>
+    </div >
   );
 }
