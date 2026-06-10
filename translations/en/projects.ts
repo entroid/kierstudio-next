@@ -12,7 +12,4 @@ export const projects = {
     prevImage: "Previous image",
     nextImage: "Next image",
     servicesLabel: "Services",
-
-    // Note: Project data (titles, descriptions, categories) should remain in the component
-    // They are client-specific content, not UI text
 };

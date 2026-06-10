@@ -12,25 +12,25 @@ export default function HomePage() {
     <main>
       {/* SECTION: HERO */}
       <Hero />
-      
+
       {/* SECTION: ABOUT */}
       <About />
-      
-      {/* SECTION: PARTNERS */}
-      <Partners />
-      
+
       {/* SECTION: SERVICES */}
       <Services />
-      
+
+      {/* SECTION: PARTNERS */}
+      <Partners />
+
       {/* SECTION: PROJECTS */}
       <Projects />
-      
+
       {/* SECTION: PROCESS */}
       <Process />
-      
+
       {/* SECTION: TESTIMONIAL */}
       <Testimonial />
-      
+
       {/* SECTION: CTA */}
       <CTA />
     </main>

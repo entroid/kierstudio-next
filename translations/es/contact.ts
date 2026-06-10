@@ -2,13 +2,13 @@ export const contact = {
     tag: "(Conectemos)",
     title1: "¿LISTO PARA",
     title2: "EMPEZAR?",
-    subtitle: "Transformemos tu idea en una experiencia digital excepcional. Estamos listos para dar vida a tu próximo proyecto.",
+    subtitle: "Si tu negocio está funcionando y querés que la tecnología trabaje para vos, podemos ayudarte. ¿Listo para llevarlo al siguiente nivel?",
 
     emailLabel: "Email",
     whatsappLabel: "WhatsApp",
     instagramLabel: "Instagram",
 
-    formTitle: "Contactanos",
+    formTitle: "Solicitá una consulta gratuita",
     formName: "Tu Nombre",
     formNamePlaceholder: "Juan Pérez",
     formEmail: "Correo Electrónico",

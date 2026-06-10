@@ -65,7 +65,7 @@ export function ProjectsAnimated() {
                     </span>
 
                     <h2
-                        className="font-['Archivo',sans-serif] text-[3.125rem] md:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="font-['Archivo',sans-serif] text-[#D52169] text-[3rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                         style={{ fontWeight: 900 }}
                     >
                         {t('projects.title')}
@@ -121,7 +121,7 @@ export function ProjectsAnimated() {
                                             </h3>
                                         </motion.div>
 
-                                        <CTAButton variant="primary" href="javascript:void(0)" className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">{t('projects.viewProject')} </CTAButton>
+                                        <CTAButton variant="primary" className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">{t('projects.viewProject')} </CTAButton>
                                     </div>
 
                                     <div className="absolute top-8 right-8">

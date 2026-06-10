@@ -2,13 +2,13 @@ export const contact = {
     tag: "(Let's Connect)",
     title1: "READY TO",
     title2: "START?",
-    subtitle: "Let's turn your idea into an exceptional digital experience. We are ready to bring your next project to life.",
+    subtitle: "If your business is working and you want technology to work for you, we can help. Ready to take it to the next level?",
 
     emailLabel: "Email Us",
     whatsappLabel: "WhatsApp",
     instagramLabel: "Instagram",
 
-    formTitle: "Send us a message",
+    formTitle: "Request a free consultation",
     formName: "Your Name",
     formNamePlaceholder: "John Doe",
     formEmail: "Email Address",

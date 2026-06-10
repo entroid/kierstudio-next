@@ -1,20 +1,30 @@
 export const about = {
-    tag: "Nosotros",
-    title1: "Listo para",
-    title2: "deleitar",
-    title3: "usuarios?",
-    /*title4: "usuarios?",*/
+    tag: "Qué hacemos",
+    title1: "Menos fricción,",
+    title2: "más resultados.",
+    /* title3: " para tu negocio.",
+    title4: "usuarios?",*/
 
-    description1: "Cuando el negocio, el diseño y la tecnología no están alineados, los productos digitales se vuelven confusos, caros de mantener.",
+    description1Tag: "Diseño y desarrollo digital estratégico, al servicio de tu negocio.",
 
-    description1b: "No convierten, no escalan o no reflejan su verdadero valor. Ahí es donde entramos. Somos un estudio boutique especializado en ",
+    description1: "Cuando un negocio crece, también crecen sus problemas: más consultas sin responder, procesos que se hacen a mano, una web antigua que no es funcional ni ya no representa lo que son.",
 
-    description1Bold: "diseño estratégico y desarrollo de productos digitales.",
-    description1Tag: "PENSAMOS (UX) + CREAMOS (UI) + ESCALAMOS (DEV)",
+    description1b: "",
 
-    description2: "Con más de 10 años de experiencia en la industria, combinamos estrategia, UX/UI y tecnología para transformar ideas y productos existentes en soluciones claras, escalables y orientadas a resultados. Trabajamos con negocios y equipos que ya tienen algo en marcha, pero sienten que su producto digital no está alineado con sus objetivos reales.",
+    description1Bold: "Eso tiene solución. Y no tiene que ser complicada.",
 
-    description3: "Si entendés que un buen producto digital empieza con buenas decisiones:",
 
-    ctaText: "Una buena Decisión",
+    description2: "No llegamos con una solución genérica. Primero entendemos cómo funciona tu negocio, dónde está la fricción y qué resultado querés lograr. Después diseñamos y construimos exactamente lo que necesitás, ni más ni menos.",
+
+    description3: "En la estrategia está la diferencia.",
+
+    ctaText: "Contanos dónde está el problema",
+
+    benefitsTitle: "Beneficios",
+    benefits: [
+        "Menos tiempo en tareas repetitivas — más tiempo para lo que importa",
+        "Menos consultas sin responder — más clientes que avanzan solos",
+        "Menos imagen desactualizada — más confianza en cada contacto",
+        "Menos dependencia técnica — más control sobre tu negocio"
+    ],
 };

@@ -4,7 +4,7 @@ export const projectsData: Project[] = [
     {
         id: 1,
         title: "Hard Rock Marketing Planner",
-        category: "Plataforma SaaS - Planificador de Marketing",
+        category: "Sistema de planificación de ofertas",
         year: "2026",
         description:
             "Lideramos el diseño y la experiencia de usuario (UX/UI) de esta herramienta web interna que centraliza y automatiza la planificación de campañas de marketing para múltiples casinos de Hard Rock International. Auditamos y rediseñamos flujos de trabajo complejos basados en Excel, transformándolos en un sistema escalable e intuitivo, con automatizaciones que reducen significativamente el tiempo de creación de campañas y los errores operativos. [Realizado a través de OZ Digital Agency]",
@@ -22,7 +22,7 @@ export const projectsData: Project[] = [
     {
         id: 2,
         title: "Muu",
-        category: "Marketplace Ganadero - App Móvil",
+        category: "App Móvil para Marketplace Ganadero",
         year: "2026",
         description:
             "Rediseño completo de Muu, una aplicación móvil de compra y venta de ganado. Actualizamos su aspecto visual antiguo y optimizamos los flujos de publicación de lotes, añadiendo además nuevas funciones de gestión. Al simplificar estos flujos de trabajo críticos e introducir una identidad visual profesional de alto contraste, optimizada para entornos rurales al aire libre, transformamos una experiencia obsoleta y frustrante en una plataforma móvil moderna e intuitiva. El rediseño aceleró significativamente la toma de decisiones de los usuarios y aumentó la confianza en la plataforma, logrando conectar el comercio agrícola tradicional con herramientas digitales de alta eficiencia.",
@@ -37,8 +37,8 @@ export const projectsData: Project[] = [
     },
     {
         id: 3,
-        title: "MRAI FLEET",
-        category: "Plataforma SaaS, App Móvil",
+        title: "MIRAI FLEET",
+        category: "Sistema de gestión de flotas",
         year: "2023",
         description:
             "La plataforma SaaS y app móvil de MRAI Fleet necesitaba un rediseño para mejorar la experiencia del usuario y optimizar las operaciones. El nuevo diseño presenta una estética moderna y profesional con foco en la usabilidad y la eficiencia. También implementamos una sección de catálogo personalizado impulsado por Strapi CMS, permitiendo al equipo de MRAI Fleet gestionar y publicar contenido fácilmente para aumentar su visibilidad y SEO.",
@@ -55,7 +55,7 @@ export const projectsData: Project[] = [
     {
         id: 4,
         title: "Barrivell",
-        category: "Ecommerce, Sitio Web",
+        category: "Tienda online de moda",
         year: "2024",
         description:
             "Rediseñamos el sitio web de e-commerce de Barrivell para mejorar la experiencia del usuario y optimizar sus operaciones. El nuevo diseño cuenta con una estética moderna y profesional enfocada en la usabilidad, conversión y eficiencia. También implementamos una sección de catálogo personalizado con Strapi CMS, permitiendo al equipo de Barrivell gestionar y publicar contenido de forma sencilla para potenciar la visibilidad y el SEO.",
@@ -71,7 +71,7 @@ export const projectsData: Project[] = [
     {
         id: 5,
         title: "HOLY Beer Hotel",
-        category: "Hostel - Sitio Web",
+        category: "Landing page para hostel temático",
         year: "2025",
         description:
             "Rediseñamos la landing page de Holy Beer Hotel para elevar su presencia digital e impulsar mayores conversiones. El nuevo diseño combina una estética refinada, una interfaz de usuario intuitiva y una estructura de contenido estratégica que guía a los visitantes a través de la historia de la marca hacia la reserva y el engagement. Mediante una jerarquía clara, imágenes optimizadas y secciones persuasivas, el nuevo sitio captura el carácter único del hotel a la vez que mejora el flujo de usuarios y el rendimiento de las conversiones.",
@@ -86,7 +86,7 @@ export const projectsData: Project[] = [
     {
         id: 6,
         title: "TEAMIE.",
-        category: "Comunicación de Equipos - Sitio Web",
+        category: "Landing page de presentación de producto",
         year: "2024",
         description:
             "Diseñamos y desarrollamos la landing page de Teamie. para apoyar el lanzamiento de esta nueva startup de colaboración en equipo. El objetivo era presentar el producto claramente y construir credibilidad desde el primer día. El sitio cuenta con un diseño moderno orientado a startups, con un fuerte enfoque en la claridad, la confianza y la conversión. Además, implementamos una sección de blog personalizada impulsada por Strapi CMS, permitiendo al equipo de Teamie. gestionar y publicar contenido fácilmente para aumentar la visibilidad y el SEO.",

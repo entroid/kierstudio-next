@@ -7,5 +7,5 @@ export const partners = {
     packagingDesign: "Packaging Design",
     branding: "Branding",
     aiAutomation: "AI Automation",
-    marketingCommunication: "Marketing - Comunication",
+    marketingCommunication: "Marketing - Communication",
 };

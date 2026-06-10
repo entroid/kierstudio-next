@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { LogoCompact } from "./Logo";
 import { useLanguage } from "./LanguageContext";
@@ -16,6 +16,13 @@ export function Navigation() {
     { label: t('nav.services'), href: "#servicios", rel: "noopener" },
     { label: t('nav.work'), href: "#proyectos", rel: "noopener" },
     { label: t('nav.process'), href: "#proceso", rel: "noopener" },
+    {
+      label: t('nav.moreDetails'),
+      dropdown: [
+        { label: t('nav.accounting'), href: "/accounting" },
+        { label: t('nav.healthAndWellness'), href: "/saludybienestar" }
+      ]
+    },
     { label: t('nav.contact'), href: "#contacto", rel: "noopener" },
   ];
 
@@ -47,15 +54,40 @@ export function Navigation() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
+              className={item.dropdown ? "relative group" : ""}
             >
-              <a
-                href={item.href}
-                rel={item.rel}
-                className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#D52169] group-hover:w-full transition-all duration-300" />
-              </a>
+              {item.dropdown ? (
+                <>
+                  <span className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative cursor-pointer flex items-center gap-1 group">
+                    {item.label}
+                    <ChevronDown size={14} className="mt-0.5" />
+                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#D52169] group-hover:w-full transition-all duration-300" />
+                  </span>
+                  <div className="absolute left-0 top-full pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <ul className="bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-md shadow-lg overflow-hidden w-48 flex flex-col">
+                      {item.dropdown.map((subItem) => (
+                        <li key={subItem.label}>
+                          <a
+                            href={subItem.href}
+                            className="block px-4 py-3 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1a1a1a] hover:text-[#D52169] transition-colors"
+                          >
+                            {subItem.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              ) : (
+                <a
+                  href={item.href}
+                  rel={item.rel}
+                  className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#D52169] group-hover:w-full transition-all duration-300" />
+                </a>
+              )}
             </motion.li>
           ))}
         </ul>
@@ -80,14 +112,36 @@ export function Navigation() {
           >
             <ul className="flex flex-col p-6">
               {navItems.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block py-4 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors cursor-pointer"
-                  >
-                    {item.label}
-                  </a>
+                <li key={item.label} className="py-1">
+                  {item.dropdown ? (
+                    <div className="flex flex-col">
+                      <span className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white py-3 flex items-center gap-2 ">
+                        {item.label}
+                        <ChevronDown size={14} />
+                      </span>
+                      <ul className="pl-4 flex flex-col border-l border-black/10 dark:border-white/10 ml-2 mb-2">
+                        {item.dropdown.map((subItem) => (
+                          <li key={subItem.label}>
+                            <a
+                              href={subItem.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="block py-3 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D]/70 dark:text-white/70 hover:text-[#D52169] transition-colors cursor-pointer"
+                            >
+                              {subItem.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <a
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-3 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors cursor-pointer"
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
