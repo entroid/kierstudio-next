@@ -1,20 +1,30 @@
 export const about = {
-    tag: "About Us",
-    title1: "Ready to",
-    title2: "Delight",
-    title3: "users?",
-    /*title4: "DEVELOPMENT.",*/
+    tag: "What we do",
+    title1: "Less friction,",
+    title2: "more results.",
+    /* title3: " for your business.",
+    title4: "users?",*/
 
-    description1: "When business, design and technology are not aligned, digital products become confusing, costly to maintain.",
+    description1Tag: "Strategic digital design and development, at the service of your business.",
 
-    description1b: "They don't convert, scale, or accurately reflect their true value. That's where we come in. We are a boutique design studio specialized in ",
+    description1: "When a business grows, so do its problems: more unanswered inquiries, manual processes, an old website that's no longer functional or no longer represents what they are.",
 
-    description1Bold: "strategic design and development of digital products",
-    description1Tag: "WE THINK (UX) + WE DESIGN (UI) + WE SCALE (DEV)",
+    description1b: "",
 
-    description2: "With over 10 years of experience in the industry, we combine strategy, UX/UI, and technology to transform existing ideas and products into clear, scalable, and result-oriented solutions. We work with businesses and teams that have something in motion, but feel that their digital product is not aligned with their real objectives.",
+    description1Bold: "That has a solution. And it doesn't have to be complicated.",
 
-    description3: "If you understand that a good digital product starts with good decisions:",
 
-    ctaText: "Take a Good Decision",
+    description2: "We don't arrive with a generic solution. First we understand how your business works, where the friction is, and what result you want to achieve. Then we design and build exactly what you need, no more, no less.",
+
+    description3: "The difference is in the strategy.",
+
+    ctaText: "Tell us where the problem is",
+
+    benefitsTitle: "Benefits",
+    benefits: [
+        "Less time on repetitive tasks — more time for what matters",
+        "Less unanswered queries — more clients moving forward on their own",
+        "Less outdated brand image — more trust in every touchpoint",
+        "Less technical dependency — more control over your business"
+    ],
 };

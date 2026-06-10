@@ -50,7 +50,7 @@ export function TestimonialAnimated() {
                     </span>
 
                     <h2
-                        className="font-['Archivo',sans-serif] text-[2.625rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-white mb-8"
+                        className="font-['Archivo',sans-serif] text-[2.5rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-white mb-8"
                         style={{ fontWeight: 900 }}
                     >
                         {t('testimonials.title')}
@@ -65,7 +65,7 @@ export function TestimonialAnimated() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -100 }}
                             transition={{ duration: 0.5 }}
-                            className="max-w-[1100px]"
+                            className="max-w-[800px]"
                         >
                             <motion.div
                                 initial={{ scale: 0, rotate: -180 }}
@@ -80,7 +80,7 @@ export function TestimonialAnimated() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="font-['Archivo',sans-serif] text-[1.1rem] md:text-[1.7rem] xl:text-[2rem] leading-[1.5] text-white mb-12"
+                                className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] leading-[1.5] text-white mb-12"
                                 style={{ fontWeight: 500 }}
                             >
                                 "{testimonials[currentIndex].quote}"

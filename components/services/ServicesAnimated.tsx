@@ -20,35 +20,35 @@ export function ServicesAnimated() {
 
     const services = [
         {
-            title: t('services.productDesign.title'),
-            subtitle: t('services.productDesign.subtitle'),
-            image: "/services/product-design3.jpg",
-            services: translations.services.productDesign.items,
-            tag: t('services.productDesign.tag'),
-            bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
-        },
-        {
             title: t('services.websites.title'),
             subtitle: t('services.websites.subtitle'),
             image: "/services/website2.jpg",
             services: translations.services.websites.items,
             tag: t('services.websites.tag'),
-            bgColor: "bg-[#28292D] dark:bg-black",
+            bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
         },
         {
             title: t('services.ecommerce.title'),
             subtitle: t('services.ecommerce.subtitle'),
-            image: "/services/ecommerce.jpg",
+            image: "/services/01.png",
             services: translations.services.ecommerce.items,
             tag: t('services.ecommerce.tag'),
+            bgColor: "bg-[#28292D] dark:bg-black",
+        },
+        {
+            title: t('services.customapp.title'),
+            subtitle: t('services.customapp.subtitle'),
+            image: "/services/0000.jpg",
+            services: translations.services.customapp.items,
+            tag: t('services.customapp.tag'),
             bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
         },
         {
-            title: t('services.development.title'),
-            subtitle: t('services.development.subtitle'),
-            image: "/services/dev.jpg",
-            services: translations.services.development.items,
-            tag: t('services.development.tag'),
+            title: t('services.strategy.title'),
+            subtitle: t('services.strategy.subtitle'),
+            image: "/services/02.jpg",
+            services: translations.services.strategy.items,
+            tag: t('services.strategy.tag'),
             bgColor: "bg-[#28292D] dark:bg-black",
         },
     ];
@@ -79,10 +79,12 @@ export function ServicesAnimated() {
                         whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="font-['Archivo',sans-serif] text-[3.5rem] md:text-[7.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="font-['Archivo',sans-serif] text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                         style={{ fontWeight: 900, opacity: titleOpacity }}
                     >
                         {t('services.title')}
+                        <br />
+                        <span className="text-[#D52169] text-[2.8rem] md:text-[6rem] lg:text-[7.3rem]">{t('services.title2')} </span>
                     </motion.h2>
 
                     <motion.p
@@ -120,7 +122,7 @@ export function ServicesAnimated() {
                             </motion.div>
 
                             <div
-                                className={`${service.bgColor} px-3 py-12 md:p-12 lg:p-16 flex flex-col justify-center transition-colors duration-500 ${index % 2 === 0 ? "lg:order-2" : "lg:order-1"
+                                className={`${service.bgColor} px-4 py-12 md:p-12 lg:p-16 flex flex-col justify-center transition-colors duration-500 ${index % 2 === 0 ? "lg:order-2" : "lg:order-1"
                                     }`}
                             >
                                 <motion.div
@@ -140,13 +142,14 @@ export function ServicesAnimated() {
                                     </span>
 
                                     <h3
-                                        className={`font-['Archivo',sans-serif] text-[2.5rem] md:text-[4rem] lg:text-[3.5rem] xl:text-[4rem] leading-[0.9] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`font-['Archivo',sans-serif] text-[2.5rem] md:text-[4rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white"
                                             : "text-[#28292D] dark:text-white"
                                             }`}
                                         style={{ fontWeight: 900 }}
                                     >
-                                        {service.title.split(" ").map((word, wordIndex) => (
+                                        {service.title}
+                                        {/* {service.title.split(" ").map((word, wordIndex) => (
                                             <div key={wordIndex}>
                                                 <motion.div
                                                     initial={{ y: 100 }}
@@ -157,7 +160,7 @@ export function ServicesAnimated() {
                                                     {word}
                                                 </motion.div>
                                             </div>
-                                        ))}
+                                        ))} */}
                                     </h3>
 
                                     <motion.p
@@ -174,7 +177,7 @@ export function ServicesAnimated() {
                                         {service.subtitle}
                                     </motion.p>
 
-                                    <div className="grid grid-cols-2 gap-4 mb-10">
+                                    <div className="grid grid-cols-2 gap-4">
                                         {service.services.map((item, itemIndex) => (
                                             <motion.div
                                                 key={itemIndex}
@@ -203,7 +206,7 @@ export function ServicesAnimated() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-32 text-center"
+                    className="mt-32 mb-8 text-center"
                 >
                     <CTAButton href="#contacto">{t('services.ctaButton')} <ArrowRight size={18} /></CTAButton>
                 </motion.div>

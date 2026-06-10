@@ -5,7 +5,14 @@ import clsx from "clsx";
 import type { ReactNode } from "react";
 
 export type CTAButtonProps = {
-  href: string;
+  /**
+   * Link destination. If provided, renders an <a> tag. If omitted, renders a <button>.
+   */
+  href?: string;
+  /**
+   * Optional click handler.
+   */
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   /**
    * Optional aria-label or alt text for accessibility.
    */
@@ -39,6 +46,7 @@ export type CTAButtonProps = {
  */
 export function CTAButton({
   href,
+  onClick,
   alt,
   className = "",
   variant = "primary",
@@ -62,18 +70,34 @@ export function CTAButton({
       ? { whileHover: { scale: 1.05, x: 5 } }
       : { whileHover: { scale: 1.05 } };
 
+  if (href) {
+    return (
+      <motion.a
+        href={href}
+        aria-label={alt}
+        target={target}
+        rel={rel}
+        onClick={onClick}
+        whileTap={{ scale: 0.95 }}
+        {...hoverProps}
+        className={clsx(baseClasses, variantMap[variant], className)}
+        style={{ fontWeight: 700 }}
+      >
+        {children}
+      </motion.a>
+    );
+  }
+
   return (
-    <motion.a
-      href={href}
+    <motion.button
       aria-label={alt}
-      target={target}
-      rel={rel}
+      onClick={onClick}
       whileTap={{ scale: 0.95 }}
       {...hoverProps}
       className={clsx(baseClasses, variantMap[variant], className)}
       style={{ fontWeight: 700 }}
     >
       {children}
-    </motion.a>
+    </motion.button>
   );
 }

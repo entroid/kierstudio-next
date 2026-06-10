@@ -1,10 +1,10 @@
 export const hero = {
-    location: "Crafted in Rosario, Ar. Deployed globally.",
-    title: "BOUTIQUE STUDIO",
-    subtitle: "Those new features won’t build themselves. We will.",
-    description: "A small, seasoned team building your digital products focused on ",
+    location: "Design · Strategy · Development",
+    title: "THE WORLD MOVES",
+    subtitle: "We make sure your business does not stay behind.",
+    description: "We design and develop sites, systems, and useful digital tools for businesses",
     /*descriptionBold: "We align your company's goals, technology needs, and growth direction through {bold}.",*/
-    descriptionBoldText: "strategy, design and development.",
-    ctaTalk: "Let's Talk",
-    ctaWork: "Our Work",
+    descriptionBoldText: " that want to grow.",
+    ctaTalk: "Reach out for free",
+    ctaWork: "View Work",
 };

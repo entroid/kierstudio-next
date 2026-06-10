@@ -53,7 +53,7 @@ export function HeroAnimated() {
                                 className="mb-4"
                             >
                                 <span
-                                    className="font-['Archivo',sans-serif] text-[0.75rem] line-height-[0.75rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 block italic"
+                                    className="font-['Archivo',sans-serif] text-[0.72rem] line-height-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/60 dark:text-white/60 block italic"
                                     style={{ fontWeight: 600 }}
                                 >
                                     {t('hero.location')}
@@ -81,7 +81,7 @@ export function HeroAnimated() {
                                 className="mb-8"
                             >
                                 <h2
-                                    className="font-['Archivo',sans-serif] text-[1.625rem] md:text-[1.5rem] leading-[1.2] text-[#28292D] dark:text-white/90 mb-4"
+                                    className="font-['Archivo',sans-serif] text-[1.5rem] md:text-[1.5rem] leading-[1.2] text-[#28292D] dark:text-white/90 mb-4"
                                     style={{ fontWeight: 600 }}
                                 >
                                     {t('hero.subtitle')}

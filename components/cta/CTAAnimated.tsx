@@ -34,11 +34,11 @@ export function CTAAnimated() {
             setSubmitting(false);
             return;
         }
-        if (!projectType || projectType === "") {
+        /* if (!projectType || projectType === "") {
             setResult({ type: "error", message: t('cta.formValidation.projectRequired') });
             setSubmitting(false);
             return;
-        }
+        } */
         if (!message.trim()) {
             setResult({ type: "error", message: t('cta.formValidation.messageRequired') });
             setSubmitting(false);
@@ -100,12 +100,12 @@ export function CTAAnimated() {
                             </span>
 
                             <h2
-                                className="font-['Archivo',sans-serif] text-[3.5rem] md:text-[6rem] lg:text-[7rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                                className="font-['Archivo',sans-serif] text-[2rem] md:text-[4.5rem] lg:text-[5.2rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                                 style={{ fontWeight: 900 }}
                             >
                                 {t('cta.title1')}
                                 <br />
-                                <span className="text-[#D52169]">{t('cta.title2')}</span>
+                                <span className="text-[#D52169] text-[2.5rem] md:text-[5.5rem] lg:text-[6.5rem]">{t('cta.title2')}</span>
                             </h2>
 
                             <p
@@ -247,7 +247,7 @@ export function CTAAnimated() {
                                 />
                             </div>
 
-                            <div>
+                            {/* <div>
                                 <label
                                     htmlFor="projectType"
                                     className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2"
@@ -271,7 +271,7 @@ export function CTAAnimated() {
                                     <option value="UX/UI">{t('cta.formProjectOptions.uxui')}</option>
                                     <option value="Other">{t('cta.formProjectOptions.other')}</option>
                                 </select>
-                            </div>
+                            </div> */}
 
                             <div>
                                 <label

@@ -1,34 +1,35 @@
 export const services = {
     tag: "Servicios",
-    title: "Qué hacemos",
-    subtitle: "Combinamos estrategia, creatividad y tecnología para elevar tu negocio y mejorar la experiencia de tus usuarios.",
-
-    productDesign: {
-        title: "DISEÑO DE PRODUCTO",
-        tag: "Estrategia + UX/UI + Desarrollo",
-        subtitle: "Productos digitales de principio a fin: Estrategia, diseño centrado en el usuario y desarrollo.",
-        items: ["Estrategia", "UX/UI", "Desarrollo", "Conversiones"],
-    },
+    title: "Nuestras ",
+    title2: "Soluciones",
+    subtitle: "Cada proyecto es diferente, pero el objetivo siempre es el mismo: que tu negocio funcione mejor.",
 
     websites: {
-        title: "SITIOS WEB",
-        tag: "Servicios Web",
-        subtitle: "Tu tarjeta de presentación en línea. Sitios web personalizados y responsivos que atraen usuarios e impulsan conversiones.",
-        items: ["Diseño y Desarrollo Web", "Soporte"],
+        title: "SITIO WEB",
+        tag: "Tu presencia digital que trabaja 24/7",
+        subtitle: "Tu primer punto de contacto con clientes nuevos. Diseñamos sitios que se ven bien, generan confianza y convierten visitas en consultas.",
+        items: ["Diseño a medida", "Rápido y optimizado", "Rediseños y actualizaciones"],
     },
 
     ecommerce: {
-        title: "ECOMMERCE",
-        tag: "Servicios de Ecommerce",
-        subtitle: "Diseño estratégico, configuración, lanzamiento y soporte para tu tienda en línea.",
-        items: ["Configuración y Lanzamiento Ecommerce", "Shopify", "Tiendanube", "WooCommerce"],
+        title: "TIENDA ONLINE",
+        tag: "Vendé mientras dormís",
+        subtitle: "Un canal de ventas que funciona. Nos encargamos del diseño, la configuración y el lanzamiento completo. Sin complicaciones técnicas de tu lado.",
+        items: ["Shopify", "Tiendanube", "WooCommerce", "Pasarelas de pago"],
     },
 
-    development: {
-        title: "DESARROLLO DE PRODUCTO",
-        tag: "Desarrollo",
-        subtitle: "Construye sistemas de contenido escalables con CMS headless e integraciones perfectas.",
-        items: ["CMS Headless", "Modelado de Contenido", "SaaS, B2B", "Software Personalizado"],
+    customapp: {
+        title: "SISTEMA O APLICACIÓN A MEDIDA",
+        tag: "Menos errores, más tiempo",
+        subtitle: "¿Manejás turnos por WhatsApp? ¿Tu equipo trabaja con planillas de Excel? Construimos herramientas digitales simples que automatizan lo que hoy hacés a mano.",
+        items: ["Paneles de gestión", "Sistemas de turnos", "Herramientas internas", "Portales para clientes"],
+    },
+
+    strategy: {
+        title: "CONSULTORÍA ESTRATÉGICA",
+        tag: "El mapa antes del viaje",
+        subtitle: "No todos los negocios necesitan lo mismo. Analizamos tu negocio, tu situación digital actual y te decimos exactamente qué tiene sentido hacer y en qué orden.",
+        items: ["Análisis y diagnóstico", "Estrategia", "Hoja de ruta digital"],
     },
 
     ctaButton: "Contanos tu proyecto",
