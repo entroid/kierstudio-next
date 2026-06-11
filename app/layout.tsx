@@ -6,9 +6,9 @@ import { LanguageProvider } from "@/components/LanguageContext";
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: "Kier Studio | SaaS & Web Development Agency",
-  description: "We craft impactful SaaS and Websites for growth and success. Strategic design and development services based in Rosario, Argentina.",
-  keywords: "SaaS development, web development, React, Next.js, Argentina, Rosario, digital agency, product design",
+  title: "Diseño Web y Sistemas a Medida | Kier Studio",
+  description: "¿Tu web no genera resultados o tus procesos internos son un caos? Diseñamos sitios y herramientas digitales que trabajan por tu negocio. Consultanos sin cargo.",
+  keywords: "diseño web profesional, páginas web para empresas, desarrollo web a medida, sistemas a medida Argentina, aplicaciones web para negocios, diseño web Argentina, hacer una página web para mi negocio, rediseño de sitio web, automatización de procesos digitales, agencia de diseño web Argentina",
   authors: [{ name: "Kier Studio" }],
   creator: "Kier Studio",
   publisher: "Kier Studio",
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://kierstudio.com",
-    title: "Kier Studio | SaaS & Web Development Agency",
-    description: "We craft impactful SaaS and Websites for growth and success. Strategic design and development services based in Rosario, Argentina.",
+    title: "Kier Studio — Diseño Web y Sistemas Digitales a Medida",
+    description: "Páginas web profesionales y sistemas a medida para negocios que quieren crecer. Trabajamos con negocios de todo el país. Consultanos sin cargo.",
     siteName: "Kier Studio",
     images: [
       {
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kier Studio | SaaS & Web Development Agency",
-    description: "We craft impactful SaaS and Websites for growth and success. Strategic design and development services based in Rosario, Argentina.",
+    title: "Kier Studio — Diseño Web y Sistemas Digitales a Medida",
+    description: "Páginas web profesionales y sistemas a medida para negocios que quieren crecer. Trabajamos con negocios de todo el país. Consultanos sin cargo.",
     images: ["/hero.png"],
     creator: "@kierstudio_",
   },
