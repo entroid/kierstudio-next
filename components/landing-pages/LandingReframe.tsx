@@ -24,7 +24,7 @@ export function LandingReframe({
 }: LandingReframeProps) {
   // SECTION: LANDING REFRAME
   return (
-    <section data-section="REFRAME" className="py-24 md:py-32 bg-[#28292D] dark:bg-black transition-colors duration-500 overflow-hidden">
+    <section data-section="REFRAME" className="py-24 md:py-32 bg-[#28292D] overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{opacity:0,x:-40}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.6}}>

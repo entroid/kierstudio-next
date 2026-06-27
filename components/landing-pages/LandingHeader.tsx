@@ -4,8 +4,24 @@ import { motion } from "motion/react";
 import { LogoCompact } from "@/components/Logo";
 import { useLanguage } from "@/components/LanguageContext";
 
-export function LandingHeader() {
+interface LandingHeaderProps {
+  /**
+   * "light" → white logo & icons (use on dark/dark-toned landing backgrounds)
+   * "dark"  → dark logo & icons  (use on light/white landing backgrounds)
+   * @default "light"
+   */
+  variant?: "light" | "dark";
+}
+
+export function LandingHeader({ variant = "light" }: LandingHeaderProps) {
   const { t } = useLanguage();
+
+  const logoColor = variant === "light" ? "#FFFFFF" : "#28292D";
+  const iconClass =
+    variant === "light"
+      ? "text-white hover:text-[#D52169] transition-colors duration-300"
+      : "text-[#28292D] hover:text-[#D52169] transition-colors duration-300";
+
   // SECTION: LANDING HEADER
   return (
     <motion.header
@@ -15,25 +31,25 @@ export function LandingHeader() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="absolute top-0 left-0 right-0 z-50 bg-transparent px-6 lg:px-12"
     >
-      <nav className="max-w-[1400px] mx-auto  h-24 flex items-center justify-between">
+      <nav className="max-w-[1400px] mx-auto h-24 flex items-center justify-between">
+        {/* Logo */}
         <motion.a
           href="/"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
           className="flex items-center cursor-pointer"
         >
-          {/* Using a solid color logo or white based on dark mode usually, 
-              but since hero is dark we might need to force the logo colors */}
-          <LogoCompact className="h-10 w-auto text-white" />
+          <LogoCompact className="h-10 w-auto" color={logoColor} />
         </motion.a>
 
+        {/* Instagram icon */}
         <motion.a
           href="https://www.instagram.com/kierstudio_"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1, color: "#D52169" }}
           whileTap={{ scale: 0.95 }}
-          className="text-white hover:text-[#D52169] transition-colors duration-300"
+          className={iconClass}
           aria-label="Instagram"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

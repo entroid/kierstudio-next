@@ -1,4 +1,3 @@
-import { LandingHeader } from "@/components/landing-pages/LandingHeader";
 import { LandingFooter } from "@/components/landing-pages/LandingFooter";
 import { LandingFloatingControls } from "@/components/landing-pages/LandingFloatingControls";
 
@@ -9,10 +8,7 @@ export default function LandingPagesLayout({
 }) {
   return (
     <>
-      {/* LANDING: HEADER */}
-      <LandingHeader />
-
-      {/* LANDING: PAGE CONTENT */}
+      {/* LANDING: PAGE CONTENT (header included in each page) */}
       <main>{children}</main>
 
       {/* LANDING: FOOTER */}
