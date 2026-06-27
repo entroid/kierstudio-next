@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/components/LanguageContext";
+import { LandingHeader } from "@/components/landing-pages/LandingHeader";
 import { LandingHero } from "@/components/landing-pages/LandingHero";
 import { LandingProblems } from "@/components/landing-pages/LandingProblems";
 import { LandingReframe } from "@/components/landing-pages/LandingReframe";
@@ -19,7 +20,10 @@ export default function AccountingLandingPage() {
   if (!data) return null; // Safe fallback while translations load
 
   return (
-    <div className="bg-white dark:bg-[#0a0a0a] min-h-screen">
+    <div className="bg-white  min-h-screen">
+      {/* SECTION: HEADER — variant="light" for dark hero background */}
+      <LandingHeader variant="light" />
+
       {/* SECTION: HERO */}
       <LandingHero {...data.hero} />
 

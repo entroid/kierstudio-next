@@ -108,7 +108,7 @@ export function LandingCTA(props: LandingCTAProps) {
 
   // SECTION: LANDING CTA
   return (
-    <section id="form" data-section="CTA" className="py-24 md:py-32 bg-[#28292D] dark:bg-black transition-colors duration-500 overflow-hidden relative" style={{ boxShadow: "inset 0 0 100px 20px rgba(213, 33, 105, 0.05)" }}>
+    <section id="form" data-section="CTA" className="py-24 md:py-32 bg-[#28292D] overflow-hidden relative" style={{ boxShadow: "inset 0 0 100px 20px rgba(213, 33, 105, 0.05)" }}>
       <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-[#D52169]/10 to-transparent pointer-events-none" />
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -168,38 +168,38 @@ export function LandingCTA(props: LandingCTAProps) {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-white dark:bg-[#1a1a1a] p-8 md:p-12 shadow-2xl">
-            <h3 className="font-['Archivo',sans-serif] text-[1.5rem] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 700 }}>
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-white p-8 md:p-12 shadow-2xl">
+            <h3 className="font-['Archivo',sans-serif] text-[1.5rem] text-[#28292D] mb-8" style={{ fontWeight: 700 }}>
               {props.formTitle}
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="name" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
                   {props.formName}
                 </label>
-                <input type="text" id="name" name="name" required placeholder={props.formNamePlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
+                <input type="text" id="name" name="name" required placeholder={props.formNamePlaceholder} className="w-full bg-[#F5F5F5] border border-[#28292D]/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] transition-colors" />
               </div>
               <div>
-                <label htmlFor="email" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="email" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
                   {props.formEmail}
                 </label>
-                <input type="email" id="email" name="email" required placeholder={props.formEmailPlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
+                <input type="email" id="email" name="email" required placeholder={props.formEmailPlaceholder} className="w-full bg-[#F5F5F5] border border-[#28292D]/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] transition-colors" />
               </div>
               <div>
-                <label htmlFor="website" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="website" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
                   {props.formWebsite}
                 </label>
-                <input type="text" id="website" name="website" required placeholder={props.formWebsitePlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors" />
+                <input type="text" id="website" name="website" required placeholder={props.formWebsitePlaceholder} className="w-full bg-[#F5F5F5] border border-[#28292D]/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] transition-colors" />
               </div>
               <div>
-                <label htmlFor="challenge" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="challenge" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
                   {props.formChallenge}
                 </label>
-                <textarea id="challenge" name="challenge" rows={3} placeholder={props.formChallengePlaceholder} className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors resize-none" />
+                <textarea id="challenge" name="challenge" rows={3} placeholder={props.formChallengePlaceholder} className="w-full bg-[#F5F5F5] border border-[#28292D]/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] transition-colors resize-none" />
               </div>
               <AnimatePresence>
                 {result && (
-                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className={`flex items-center gap-2 text-[0.875rem] font-medium ${result.type === "success" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className={`flex items-center gap-2 text-[0.875rem] font-medium ${result.type === "success" ? "text-green-600" : "text-red-600"}`}>
                     {result.type === "success" ? <CheckCircle size={16} /> : <XCircle size={16} />}
                     {result.message}
                   </motion.div>

@@ -20,7 +20,8 @@ export function Navigation() {
       label: t('nav.moreDetails'),
       dropdown: [
         { label: t('nav.accounting'), href: "/accounting" },
-        { label: t('nav.healthAndWellness'), href: "/saludybienestar" }
+        { label: t('nav.healthAndWellness'), href: "/saludybienestar" },
+        { label: t('nav.contact'), href: "/contacto" }
       ]
     },
     { label: t('nav.contact'), href: "#contacto", rel: "noopener" },

@@ -47,9 +47,9 @@ export function Logo({ className = "" }: { className?: string }) {
   );
 }
 
-export function LogoCompact({ className = "" }: { className?: string }) {
+export function LogoCompact({ className = "", color }: { className?: string; color?: string }) {
   const { darkMode } = useTheme();
-  const ierColor = darkMode ? "#FFFFFF" : "#28292D";
+  const ierColor = color ?? (darkMode ? "#FFFFFF" : "#28292D");
   return (
     <div className={`relative ${className}`}>
       <svg

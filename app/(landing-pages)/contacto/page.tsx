@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "@/components/LanguageContext";
 import { en } from "@/translations";
 import { CTAButton } from "@/components/cta/CTAButton";
+import { LandingHeader } from "@/components/landing-pages/LandingHeader";
 
 // Custom SVG WhatsApp icon
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -35,115 +36,120 @@ export default function ContactoLandingPage() {
     : en.contacto;
 
   return (
-    <div
-      className="relative min-h-[90vh] flex flex-col justify-center items-center text-white transition-colors duration-500 overflow-hidden px-6 lg:px-12 pt-32 pb-24 bg-cover bg-center"
-      style={{
-        backgroundImage: "url('/bkg-contact.jpg')"
-      }}
-    >
-      {/* Dark Overlay to make text pop and not distract */}
-      <div className="absolute inset-0 bg-[#0a0a0a]/75 pointer-events-none" />
+    <>
+      {/* SECTION: HEADER — variant="light" for dark photo+overlay background */}
+      <LandingHeader variant="light" />
 
-      {/* Decorative Grid Overlay */}
       <div
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        className="relative min-h-[90vh] flex flex-col justify-center items-center text-white transition-colors duration-500 overflow-hidden px-6 lg:px-12 pt-32 pb-24 bg-cover bg-center"
         style={{
-          backgroundImage:
-            "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundImage: "url('/bkg-contact.jpg')"
         }}
-      />
+      >
+        {/* Dark Overlay to make text pop and not distract */}
+        <div className="absolute inset-0 bg-[#0a0a0a]/75 pointer-events-none" />
 
-      {/* Decorative Radial Glowing Spot */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#D52169] opacity-[0.07] rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
+        {/* Decorative Grid Overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
 
-      <div className="relative max-w-[1000px] mx-auto w-full flex flex-col items-center text-center z-10">
-        {/* Category Tag */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <span
-            className="inline-flex items-center gap-2 bg-[#D52169]/20 border border-[#D52169]/40 text-[#ff4d91] px-4 py-2 font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase"
-            style={{ fontWeight: 600 }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff4d91] animate-pulse" />
-            {data.tag}
-          </span>
-        </motion.div>
+        {/* Decorative Radial Glowing Spot */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#D52169] opacity-[0.07] rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
 
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-['Archivo',sans-serif] text-[2rem] sm:text-[3.25rem] lg:text-[4.25rem] leading-[1.1] tracking-[-0.03em] uppercase max-w-[900px] mb-8 text-white"
-          style={{ fontWeight: 900 }}
-        >
-          {data.title}
-          <span className="text-[#ff4d91]">{data.title2}</span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-['Archivo',sans-serif] text-[1rem] sm:text-[1.125rem] text-white/85 max-w-[620px] leading-[1.6] mb-12 whitespace-pre-line"
-          style={{ fontWeight: 400 }}
-        >
-          {data.subtitle}
-        </motion.p>
-
-        {/* Big WhatsApp CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col items-center"
-        >
-          <CTAButton
-            href={data.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="!bg-[#25D366] hover:!bg-[#20ba59] !border-transparent text-white shadow-xl shadow-[#25D366]/20 py-6 px-12 text-[0.9375rem] font-bold tracking-[0.1em]"
-          >
-            <WhatsAppIcon className="w-5 h-5 shrink-0" />
-            {data.whatsappButton}
-          </CTAButton>
-        </motion.div>
-
-        {/* Infinite Scrolling Marquee Strip */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="w-full mt-20 overflow-hidden py-5 border-y border-white/10 bg-black/20 backdrop-blur-sm"
-        >
+        <div className="relative max-w-[1000px] mx-auto w-full flex flex-col items-center text-center z-10">
+          {/* Category Tag */}
           <motion.div
-            animate={{ x: [0, -1000] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="flex gap-16 whitespace-nowrap"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
           >
-            {[
-              ...data.marqueeItems,
-              ...data.marqueeItems,
-              ...data.marqueeItems,
-              ...data.marqueeItems,
-            ].map((item: string, index: number) => (
-              <span
-                key={index}
-                className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-white/70 tracking-[0.15em] uppercase font-bold"
-                style={{ fontWeight: 800 }}
-              >
-                {item}
-              </span>
-            ))}
+            <span
+              className="inline-flex items-center gap-2 bg-[#D52169]/20 border border-[#D52169]/40 text-[#ff4d91] px-4 py-2 font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase"
+              style={{ fontWeight: 600 }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff4d91] animate-pulse" />
+              {data.tag}
+            </span>
           </motion.div>
-        </motion.div>
+
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-['Archivo',sans-serif] text-[2rem] sm:text-[3.25rem] lg:text-[4.25rem] leading-[1.1] tracking-[-0.03em] uppercase max-w-[900px] mb-8 text-white"
+            style={{ fontWeight: 900 }}
+          >
+            {data.title}
+            <span className="text-[#ff4d91]">{data.title2}</span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-['Archivo',sans-serif] text-[1rem] sm:text-[1.125rem] text-white/85 max-w-[620px] leading-[1.6] mb-12 whitespace-pre-line"
+            style={{ fontWeight: 400 }}
+          >
+            {data.subtitle}
+          </motion.p>
+
+          {/* Big WhatsApp CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col items-center"
+          >
+            <CTAButton
+              href={data.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="!bg-[#25D366] hover:!bg-[#20ba59] !border-transparent text-white shadow-xl shadow-[#25D366]/20 py-6 px-12 text-[0.9375rem] font-bold tracking-[0.1em]"
+            >
+              <WhatsAppIcon className="w-5 h-5 shrink-0" />
+              {data.whatsappButton}
+            </CTAButton>
+          </motion.div>
+
+          {/* Infinite Scrolling Marquee Strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="w-full mt-20 overflow-hidden py-5 border-y border-white/10 bg-black/20 backdrop-blur-sm"
+          >
+            <motion.div
+              animate={{ x: [0, -1000] }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              className="flex gap-16 whitespace-nowrap"
+            >
+              {[
+                ...data.marqueeItems,
+                ...data.marqueeItems,
+                ...data.marqueeItems,
+                ...data.marqueeItems,
+              ].map((item: string, index: number) => (
+                <span
+                  key={index}
+                  className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-white/70 tracking-[0.15em] uppercase font-bold"
+                  style={{ fontWeight: 800 }}
+                >
+                  {item}
+                </span>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
-    </div>
-  );
+    </>
+      );
 }

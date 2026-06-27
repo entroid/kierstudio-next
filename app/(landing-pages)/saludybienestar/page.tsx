@@ -13,19 +13,20 @@ import {
   Layers,
   Sparkles,
   AlertCircle,
-  Smile, 
+  Smile,
   Search,
   LogIn,
-  HouseHeart  
+  HouseHeart
 } from "lucide-react";
 import { useLanguage } from "@/components/LanguageContext";
 import { LogoCompact } from "@/components/Logo";
 import { en } from "@/translations";
 import { CTAButton } from "@/components/cta/CTAButton";
+import { LandingHeader } from "@/components/landing-pages/LandingHeader";
 
 
-  // Helper icons array for the 4 simple pillars of help
-  const helperIcons = [Search, LogIn, HouseHeart, Sparkles];
+// Helper icons array for the 4 simple pillars of help
+const helperIcons = [Search, LogIn, HouseHeart, Sparkles];
 
 export default function SaludYBienestarLandingPage() {
   const { t, translations } = useLanguage();
@@ -108,12 +109,15 @@ export default function SaludYBienestarLandingPage() {
 
 
   return (
-    <div id="salud-y-bienestar-page" className="bg-white dark:bg-[#0a0a0a] text-[#28292D] dark:text-white min-h-screen transition-colors duration-500 overflow-x-hidden">
+    <div id="salud-y-bienestar-page" className="bg-white text-[#28292D] min-h-screen transition-colors duration-500 overflow-x-hidden">
+
+      {/* SECTION: HEADER — variant="dark" for light/warm hero background */}
+      <LandingHeader variant="dark" />
 
       {/* SECTION 1: HERO - VALIDACIÓN INMEDIATA */}
       <section
         id="hero"
-        className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 pt-32 pb-24 border-b border-[#28292D]/5 dark:border-white/5 bg-[#FEF4EB] dark:from-[#111] dark:to-[#0a0a0a] transition-colors duration-500 bg-[right_center]"
+        className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 pt-32 pb-24 border-b border-[#28292D]/5  bg-[#FEF4EB]  transition-colors duration-500 bg-[right_center]"
         style={{
           backgroundImage: "linear-gradient(to right, rgba(254,244,235,0.9), rgba(254,244,235,0.1)), url('/landing/saludybienestar/0001hero.jpg')",
           backgroundRepeat: "no-repeat",
@@ -129,7 +133,7 @@ export default function SaludYBienestarLandingPage() {
             transition={{ duration: 0.5 }}
             className="mb-8"
           >
-            <span className="inline-flex items-center gap-2 bg-[#D52169]/10 dark:bg-[#D52169]/10  border border-[#D52169]/10 dark:border-[#D52169]/20 text-[#D52169] px-4 py-2 font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase" style={{ fontWeight: 600 }}>
+            <span className="inline-flex items-center gap-2 bg-[#D52169]/10  border border-[#D52169]/10 text-[#D52169] px-4 py-2 font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase" style={{ fontWeight: 600 }}>
               <span className="w-1.5 h-1.5 rounded-full bg-[#D52169] animate-pulse" />
               {data.hero.tag}
             </span>
@@ -139,7 +143,7 @@ export default function SaludYBienestarLandingPage() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-['Bodoni+Moda',serif] text-[2.5rem] sm:text-[3.5rem] lg:text-[5.5rem] leading-[1.0] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 md:max-w-[800px] lg:max-w-[1100px]"
+            className="font-['Bodoni+Moda',serif] text-[2.5rem] sm:text-[3.5rem] lg:text-[5.5rem] leading-[1.0] tracking-[-0.03em] text-[#28292D] mb-8 md:max-w-[800px] lg:max-w-[1100px]"
             style={{ fontWeight: 900 }}
           >
             {data.hero.title1}  <span className="text-[#D52169] font-black">{data.hero.titleHighlight} </span> {data.hero.title2}
@@ -149,7 +153,7 @@ export default function SaludYBienestarLandingPage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className=" text-[1.125rem] md:text-[1.375rem] text-[#28292D]/70 dark:text-white/70 max-w-[720px] leading-[1.6] mb-12"
+            className=" text-[1.125rem] md:text-[1.375rem] text-[#28292D]/70  max-w-[720px] leading-[1.6] mb-12"
             style={{ fontWeight: 400 }}
           >
             {data.hero.subtitle}
@@ -196,14 +200,14 @@ export default function SaludYBienestarLandingPage() {
               ))}
             </div>*/}
 
-            <div className="bg-white/50 dark:bg-[#0a0a0a]/80 flex flex-col md:flex-row justify-center py-3 px-8 shadow-sm">
+            <div className="bg-white/50 flex flex-col md:flex-row justify-center py-3 px-8 shadow-sm">
               {data.hero.observations.map((obs: string, idx: number) => (
                 <motion.div
                   key={idx}
                   whileHover={{ y: -4 }}
-                  className={`py-3 md:p-5 flex items-center md:justify-center transition-all duration-100 ${idx > 0 ? 'border-t md:border-t-0 md:border-l border-[#28292D]/5 dark:border-white/5' : ''}`}
+                  className={`py-3 md:p-5 flex items-center md:justify-center transition-all duration-100 ${idx > 0 ? 'border-t md:border-t-0 md:border-l border-[#28292D]/5 ' : ''}`}
                 >
-                  <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/70 dark:text-white/70 md:text-center leading-[1.4] italic" style={{ fontWeight: 600 }}>
+                  <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/70 md:text-center leading-[1.4] italic" style={{ fontWeight: 600 }}>
                     {obs}
                   </p>
                 </motion.div>
@@ -216,7 +220,7 @@ export default function SaludYBienestarLandingPage() {
       {/* SECTION 2: "LO QUE SOLEMOS ENCONTRAR" - PROBLEMAS FRECUENTES */}
       <section
         id="problemas"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-white transition-colors duration-500"
       >
         <div className="max-w-[1400px] mx-auto w-full">
           <motion.div
@@ -226,13 +230,13 @@ export default function SaludYBienestarLandingPage() {
             transition={{ duration: 0.6 }}
             className="mb-16 max-w-[800px]"
           >
-            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
+            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40  mb-6 block" style={{ fontWeight: 600 }}>
               {data.problems.tag}
             </span>
-            <h2 className="font-['Bodoni+Moda',serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 900 }}>
+            <h2 className="font-['Bodoni+Moda',serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D]  mb-8" style={{ fontWeight: 900 }}>
               {data.problems.title1} <span className="text-[#D52169] font-black">{data.problems.titleHighlight}</span>
             </h2>
-            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/60 dark:text-white/60 leading-[1.5]" style={{ fontWeight: 400 }}>
+            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/60  leading-[1.5]" style={{ fontWeight: 400 }}>
               {data.problems.subTitleSection}
             </p>
           </motion.div>
@@ -245,20 +249,20 @@ export default function SaludYBienestarLandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08, duration: 0.5 }}
-                className="bg-[#F5F5F5]/50 dark:bg-[#121212]/50 p-6 border border-[#28292D]/5 dark:border-white/5 hover:border-[#D52169]/30 dark:hover:border-[#D52169]/30 transition-all duration-300 flex flex-col md:flex-row  justify-between gap-4"
+                className="bg-[#F5F5F5]/50  p-6 border border-[#28292D]/5  hover:border-[#D52169]/30 transition-all duration-300 flex flex-col md:flex-row  justify-between gap-4"
               >
-                
-                  {/* <div className="shrink-0 w-12 h-12 bg-[#D52169]/8 rounded-full dark:bg-[#D52169]/10 text-[#D52169] flex items-center justify-center mb-2">
+
+                {/* <div className="shrink-0 w-12 h-12 bg-[#D52169]/8 rounded-full dark:bg-[#D52169]/10 text-[#D52169] flex items-center justify-center mb-2">
                      <AlertCircle size={24} strokeWidth={1.5} /> 
                   </div> */}
 
-                  <div>
-                    <h3 className="text-[1.125rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 700 }}>
-                      {item.title}
-                    </h3>
-                    <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/60 dark:text-white/60 leading-[1.6]" style={{ fontWeight: 400 }}>
-                      {item.body}
-                    </p>
+                <div>
+                  <h3 className="text-[1.125rem] text-[#28292D]  mb-2" style={{ fontWeight: 700 }}>
+                    {item.title}
+                  </h3>
+                  <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/60  leading-[1.6]" style={{ fontWeight: 400 }}>
+                    {item.body}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -267,17 +271,17 @@ export default function SaludYBienestarLandingPage() {
           {/* SECTION NEW: FRICCIÓN CARD */}
 
           <div className="max-w-[1400px] mx-auto w-full flex justify-center mt-20">
-            <div className="w-full max-w-[600px] bg-[#D52169]/10 dark:bg-[#D52169]/10 border border-[#28292D]/5 dark:border-white/5 shadow-lg p-6 flex flex-col md:flex-row items-center gap-5">
+            <div className="w-full max-w-[600px] bg-[#D52169]/10  border border-[#28292D]/5  shadow-lg p-6 flex flex-col md:flex-row items-center gap-5">
               <div className="flex flex-col md:flex-row items-center gap-3">
                 <div className="w-12 h-12 bg-[#D52169]/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                   <AlertCircle className="text-[#D52169]" size={24} />
                 </div>
-                <p className="flex-1 font-['Archivo',sans-serif] text-[1rem] text-[#28292D] dark:text-white mb-4 md:mb-0">
+                <p className="flex-1 font-['Archivo',sans-serif] text-[1rem] text-[#28292D]   mb-4 md:mb-0">
                   {data.frictionCard.text}
                 </p>
               </div>
 
-              <CTAButton href="#form"  className="flex-shrink-0 !py-3 !px-6">
+              <CTAButton href="#form" className="flex-shrink-0 !py-3 !px-6">
                 {data.frictionCard.cta} <ArrowRight size={18} />
               </CTAButton>
             </div>
@@ -285,10 +289,10 @@ export default function SaludYBienestarLandingPage() {
         </div>
       </section>
 
- {/* SECTION 3: "NUESTRO ENFOQUE" */}
+      {/* SECTION 3: "NUESTRO ENFOQUE" */}
       < section
         id="enfoque"
-        className="py-20 md:py-28 px-6 lg:px-12 bg-[#F5F5F5] dark:bg-[#0a0a0a]/30  transition-colors duration-500"
+        className="py-20 md:py-28 px-6 lg:px-12 bg-[#F5F5F5]  transition-colors duration-500"
       >
         <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-[60%_1fr] gap-16 items-center">
           <motion.div
@@ -298,17 +302,17 @@ export default function SaludYBienestarLandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
+            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40   mb-6 block" style={{ fontWeight: 600 }}>
               {data.approach.tag}
             </span>
-            <h2 className="font-['Bodoni+Moda',serif]  text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 900 }}>
+            <h2 className="font-['Bodoni+Moda',serif]  text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D]   mb-8" style={{ fontWeight: 900 }}>
               {data.approach.title1}
               <span className="text-[#D52169] font-black"> {data.approach.titleHighlight}</span>
             </h2>
-            <p className="text-[1.125rem] text-[#28292D]/90 dark:text-white/95 leading-[1.6] mb-6" style={{ fontWeight: 600 }}>
+            <p className="text-[1.125rem] text-[#28292D]/90  leading-[1.6] mb-6" style={{ fontWeight: 600 }}>
               {data.approach.subtitle}
             </p>
-            <p className="text-[1rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
+            <p className="text-[1rem] text-[#28292D]/60  leading-[1.7]" style={{ fontWeight: 400 }}>
               {data.approach.description}
             </p>
           </motion.div>
@@ -321,12 +325,12 @@ export default function SaludYBienestarLandingPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="flex items-center gap-5 p-4 md:p-6 bg-white shadow-xs dark:bg-[#121212]/40 border border-[#28292D]/5 dark:border-white/5 flex-col md:flex-row"
+                className="flex items-center gap-5 p-4 md:p-6 bg-white shadow-xs  border border-[#28292D]/5  flex-col md:flex-row"
               >
-                <div className="shrink-0 w-6 h-6 rounded-full bg-[#D52169]/10 dark:bg-[#D52169]/20 text-[#D52169] flex items-center justify-center ">
+                <div className="shrink-0 w-6 h-6 rounded-full bg-[#D52169]/10  text-[#D52169] flex items-center justify-center ">
                   <Check size={14} />
                 </div>
-                <p className="font-['Archivo',sans-serif] text-[0.875rem] md:text-[1rem] text-[#28292D]/80 dark:text-white/80 break-words word-wrap-anywhere" style={{ fontWeight: 500, wordBreak: 'break-word' }}>
+                <p className="font-['Archivo',sans-serif] text-[0.875rem] md:text-[1rem] text-[#28292D]/80   break-words word-wrap-anywhere" style={{ fontWeight: 500, wordBreak: 'break-word' }}>
                   {bullet}
                 </p>
               </motion.div>
@@ -339,7 +343,7 @@ export default function SaludYBienestarLandingPage() {
       {/* SECTION 4: "CÓMO AYUDAMOS" */}
       <section
         id="como-ayudamos"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-white dark:bg-[#0a0a0a]/80  transition-colors duration-500 border-b border-[#28292D]/5 dark:border-white/5"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-white  transition-colors duration-500 border-b border-[#28292D]/5"
       >
         <div className="max-w-[1400px] mx-auto w-full">
           <motion.div
@@ -349,13 +353,13 @@ export default function SaludYBienestarLandingPage() {
             transition={{ duration: 0.6 }}
             className="mb-14 max-w-[900px]"
           >
-            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
+            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40  mb-6 block" style={{ fontWeight: 600 }}>
               {data.howWeHelp.tag}
             </span>
-            <h2 className="font-['Bodoni+Moda',serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-6" style={{ fontWeight: 900 }}>
+            <h2 className="font-['Bodoni+Moda',serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D]  mb-6" style={{ fontWeight: 900 }}>
               {data.howWeHelp.title1} <span className="text-[#D52169] font-black">{data.howWeHelp.titleHighlight}</span>
             </h2>
-            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
+            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/60  leading-[1.7]" style={{ fontWeight: 400 }}>
               {data.howWeHelp.subTitleSection}
             </p>
           </motion.div>
@@ -370,16 +374,16 @@ export default function SaludYBienestarLandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  className={`${idx === 0 ? 'bg-[#D52169]/10 dark:bg-[#D52169]/10 shadow-lg border-[#D52169]' : 'bg-white dark:bg-[#121212]/50 shadow-sm border-[#28292D]/10'} p-8 border  dark:border-white/5  hover:shadow-md transition-all duration-300 flex flex-col gap-6`}
+                  className={`${idx === 0 ? 'bg-[#D52169]/10  shadow-lg border-[#D52169]' : 'bg-white  shadow-sm border-[#28292D]/10'} p-8 border   hover:shadow-md transition-all duration-300 flex flex-col gap-6`}
                 >
-                  <div className="shrink-0 w-14 h-14 bg-[#D52169]/8 dark:bg-[#D52169]/10 text-[#D52169] flex items-center justify-center rounded-full">
+                  <div className="shrink-0 w-14 h-14 bg-[#D52169]/8  text-[#D52169] flex items-center justify-center rounded-full">
                     <IconComponent size={34} strokeWidth={1.3} />
                   </div>
                   <div>
-                    <h3 className=" text-[1.25rem] text-[#28292D] dark:text-white mb-3" style={{ fontWeight: 700 }}>
+                    <h3 className=" text-[1.25rem] text-[#28292D]  mb-3" style={{ fontWeight: 700 }}>
                       {item.title}
                     </h3>
-                    <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/60 dark:text-white/60 leading-[1.4]" style={{ fontWeight: 400 }}>
+                    <p className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/60  leading-[1.4]" style={{ fontWeight: 400 }}>
                       {item.body}
                     </p>
                     <h4 className="text-[#28292D] mt-6 text-[0.875rem]" style={{ fontWeight: 600 }} >
@@ -387,7 +391,7 @@ export default function SaludYBienestarLandingPage() {
                     </h4>
                     <div className="mt-2 space-y-2">
                       {item.subitems.map((sub: string, subIdx: number) => (
-                        <div key={subIdx} className="flex items-start gap-2 text-[0.875rem] text-[#28292D]/80 dark:text-white/80 leading-[1.4]">
+                        <div key={subIdx} className="flex items-start gap-2 text-[0.875rem] text-[#28292D]/80  leading-[1.4]">
                           <div className="shrink-0 w-5 h-5 rounded-full text-[#D52169] flex items-center justify-center mt-0.5">
                             <Check size={18} strokeWidth={2.5} />
                           </div>
@@ -395,7 +399,7 @@ export default function SaludYBienestarLandingPage() {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-6 flex items-center gap-3 rounded-xl bg-[#FEF4EB] dark:bg-[#0a0a0a]/30 p-3 text-[#28292D] text-[0.8rem] dark:text-white">
+                    <div className="mt-6 flex items-center gap-3 rounded-xl bg-[#FEF4EB]  p-3 text-[#28292D] text-[0.8rem] ">
                       <Smile size={26} strokeWidth={1.5} className="shrink-0 text-[#D52169]" />
                       <p className="font-['Archivo',sans-serif]  leading-[1.2]" >
                         <span className="font-bold">{item.result.bold}</span>{item.result.text}
@@ -415,11 +419,11 @@ export default function SaludYBienestarLandingPage() {
         </div>
       </section >
 
-    
+
       {/* SECTION 5: "A QUIÉN AYUDAMOS" / "TIPOS DE ORGANIZACIONES" */}
       < section
         id="organizaciones"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-[#F5F5F5] dark:bg-[#121212] transition-colors duration-500 hidden"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-[#F5F5F5]  transition-colors duration-500 hidden"
       >
         <div className="max-w-[1400px] mx-auto w-full text-center mb-16">
           <motion.div
@@ -429,13 +433,13 @@ export default function SaludYBienestarLandingPage() {
             transition={{ duration: 0.5 }}
             className="max-w-[800px] mx-auto"
           >
-            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
+            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40  mb-6 block" style={{ fontWeight: 600 }}>
               {data.organizations.tag}
             </span>
-            <h2 className="font-['Bodoni+Moda',serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-6" style={{ fontWeight: 900 }}>
+            <h2 className="font-['Bodoni+Moda',serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D]  mb-6" style={{ fontWeight: 900 }}>
               {data.organizations.title1} <span className="text-[#D52169] font-black">{data.organizations.titleHighlight}</span>
             </h2>
-            <p className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
+            <p className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/60  leading-[1.7]" style={{ fontWeight: 400 }}>
               {data.organizations.subtitle}
             </p>
           </motion.div>
@@ -449,10 +453,10 @@ export default function SaludYBienestarLandingPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05, duration: 0.4 }}
-              className="bg-white dark:bg-[#0a0a0a] p-8 border border-[#28292D]/5 dark:border-white/5 shadow-sm text-center flex flex-col justify-center items-center"
+              className="bg-white  p-8 border border-[#28292D]/5  shadow-sm text-center flex flex-col justify-center items-center"
             >
               <div className="w-2.5 h-2.5 rounded-full bg-[#D52169] mb-4" />
-              <p className="font-['Archivo',sans-serif] text-[1.0625rem] text-[#28292D] dark:text-white" style={{ fontWeight: 600 }}>
+              <p className="font-['Archivo',sans-serif] text-[1.0625rem] text-[#28292D]  " style={{ fontWeight: 600 }}>
                 {org}
               </p>
             </motion.div>
@@ -463,7 +467,7 @@ export default function SaludYBienestarLandingPage() {
       {/* SECTION 6: "DIAGNÓSTICO / ENTRY OFFER" */}
       < section
         id="diagnostico"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-white dark:bg-[#0a0a0a] border-b border-[#28292D]/5 dark:border-white/5 transition-colors duration-500 hidden"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-white border-b border-[#28292D]/5   transition-colors duration-500 hidden"
       >
         <div className="max-w-[1400px] mx-auto w-full">
           <div id="diagnostico-main-grid" className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
@@ -474,17 +478,17 @@ export default function SaludYBienestarLandingPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40 dark:text-white/40 mb-6 block" style={{ fontWeight: 600 }}>
+              <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/40  mb-6 block" style={{ fontWeight: 600 }}>
                 {data.diagnostic.tag}
               </span>
-              <h2 className="font-['Archivo',sans-serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 900 }}>
+              <h2 className="font-['Archivo',sans-serif] text-[2.25rem] md:text-[3.75rem] leading-[1.05] tracking-[-0.03em] text-[#28292D]  mb-8" style={{ fontWeight: 900 }}>
                 {data.diagnostic.title1}<br />
                 <span className="text-[#D52169] font-black">{data.diagnostic.titleHighlight}</span>
               </h2>
-              <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/80 dark:text-white/80 leading-[1.6] mb-6" style={{ fontWeight: 500 }}>
+              <p className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]/80  leading-[1.6] mb-6" style={{ fontWeight: 500 }}>
                 {data.diagnostic.subtitle}
               </p>
-              <p className="font-['Archivo',sans-serif] text-[1rem] text-[#28292D]/60 dark:text-white/60 leading-[1.7]" style={{ fontWeight: 400 }}>
+              <p className="font-['Archivo',sans-serif] text-[1rem] text-[#28292D]/60  leading-[1.7]" style={{ fontWeight: 400 }}>
                 {data.diagnostic.description}
               </p>
 
@@ -501,19 +505,19 @@ export default function SaludYBienestarLandingPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-[#F5F5F5]/60 dark:bg-[#121212]/60 p-8 md:p-12 border border-[#28292D]/5 dark:border-white/5"
+              className="bg-[#F5F5F5]/60 p-8 md:p-12 border border-[#28292D]/5 "
             >
-              <h3 className="font-['Archivo',sans-serif] text-[1.125rem] tracking-[0.15em] text-[#28292D]/50 dark:text-white/50 uppercase mb-8" style={{ fontWeight: 700 }}>
+              <h3 className="font-['Archivo',sans-serif] text-[1.125rem] tracking-[0.15em] text-[#28292D]/50  uppercase mb-8" style={{ fontWeight: 700 }}>
                 {data.diagnostic.pointsTitle}
               </h3>
 
               <div className="space-y-6">
                 {data.diagnostic.points.map((pt: string, idx: number) => (
                   <div key={idx} className="flex gap-4 items-start">
-                    <div className="shrink-0 w-5 h-5 rounded-full bg-[#D52169]/10 dark:bg-[#D52169]/20 text-[#D52169] flex items-center justify-center mt-1">
+                    <div className="shrink-0 w-5 h-5 rounded-full bg-[#D52169]/10  text-[#D52169] flex items-center justify-center mt-1">
                       <Check size={12} />
                     </div>
-                    <p className="font-['Archivo',sans-serif] text-[0.9375rem] md:text-[1rem] text-[#28292D]/80 dark:text-white/80 leading-[1.5]" style={{ fontWeight: 500 }}>
+                    <p className="font-['Archivo',sans-serif] text-[0.9375rem] md:text-[1rem] text-[#28292D]/80  leading-[1.5]" style={{ fontWeight: 500 }}>
                       {pt}
                     </p>
                   </div>
@@ -529,7 +533,7 @@ export default function SaludYBienestarLandingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-[#F5F5F5]/30 dark:bg-[#121212]/30 p-8 md:p-16 border border-[#28292D]/5 dark:border-white/5 mt-16"
+            className="bg-[#F5F5F5]/30  p-8 md:p-16 border border-[#28292D]/5  mt-16"
           >
             <h3 className="font-['Archivo',sans-serif] text-[1.75rem] md:text-[2.25rem] text-center text-[#D52169] mb-12" style={{ fontWeight: 800 }}>
               {data.diagnostic.deliverablesTitle}
@@ -537,14 +541,14 @@ export default function SaludYBienestarLandingPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {data.diagnostic.deliverables.map((del: any, idx: number) => (
-                <div key={idx} className="bg-white dark:bg-[#0a0a0a] p-8 border border-[#28292D]/5 dark:border-white/5 flex flex-col items-center text-center shadow-sm">
-                  <div className="w-10 h-10 rounded-full bg-[#D52169]/5 dark:bg-[#D52169]/10 text-[#D52169] flex items-center justify-center mb-6">
+                <div key={idx} className="bg-white  p-8 border border-[#28292D]/5  flex flex-col items-center text-center shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-[#D52169]/5   text-[#D52169] flex items-center justify-center mb-6">
                     <ShieldCheck size={20} />
                   </div>
-                  <h4 className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D] dark:text-white mb-3" style={{ fontWeight: 700 }}>
+                  <h4 className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D]  mb-3" style={{ fontWeight: 700 }}>
                     {del.title}
                   </h4>
-                  <p className="font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D]/60 dark:text-white/60 leading-[1.6]" style={{ fontWeight: 400 }}>
+                  <p className="font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D]/60   leading-[1.6]" style={{ fontWeight: 400 }}>
                     {del.body}
                   </p>
                 </div>
@@ -563,7 +567,7 @@ export default function SaludYBienestarLandingPage() {
       {/* SECTION 7: CTA FINAL & FORMULARIO */}
       < section
         id="form"
-        className="py-24 md:py-32 px-6 lg:px-12 bg-[#28292D] dark:bg-black text-white relative transition-colors duration-500 overflow-hidden"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-[#28292D]  text-white relative transition-colors duration-500 overflow-hidden"
         style={{ boxShadow: "inset 0 0 100px 20px rgba(213, 33, 105, 0.03)" }
         }
       >
@@ -649,15 +653,15 @@ export default function SaludYBienestarLandingPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white dark:bg-[#151515] text-[#28292D] dark:text-white p-8 md:p-12 shadow-2xl"
+            className="bg-white  text-[#28292D]   p-8 md:p-12 shadow-2xl"
           >
-            <h3 className="font-['Archivo',sans-serif] text-[1.5rem] text-[#28292D] dark:text-white mb-8" style={{ fontWeight: 700 }}>
+            <h3 className="font-['Archivo',sans-serif] text-[1.5rem] text-[#28292D]  mb-8" style={{ fontWeight: 700 }}>
               {data.cta.formTitle}
             </h3>
 
             <form id="contacto-form" onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="name" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D]   mb-2" style={{ fontWeight: 600 }}>
                   {data.cta.formName}
                 </label>
                 <input
@@ -666,12 +670,12 @@ export default function SaludYBienestarLandingPage() {
                   name="name"
                   required
                   placeholder={data.cta.formNamePlaceholder}
-                  className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors"
+                  className="w-full bg-[#F5F5F5]    focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D]     transition-colors"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="email" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D]    mb-2" style={{ fontWeight: 600 }}>
                   {data.cta.formEmail}
                 </label>
                 <input
@@ -680,12 +684,12 @@ export default function SaludYBienestarLandingPage() {
                   name="email"
                   required
                   placeholder={data.cta.formEmailPlaceholder}
-                  className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors"
+                  className="w-full bg-[#F5F5F5]  focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D]    transition-colors"
                 />
               </div>
 
               <div>
-                <label htmlFor="website" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="website" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D]    mb-2" style={{ fontWeight: 600 }}>
                   {data.cta.formWebsite}
                 </label>
                 <input
@@ -694,12 +698,12 @@ export default function SaludYBienestarLandingPage() {
                   name="website"
                   required
                   placeholder={data.cta.formWebsitePlaceholder}
-                  className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors"
+                  className="w-full bg-[#F5F5F5]     focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D]     transition-colors"
                 />
               </div>
 
               <div>
-                <label htmlFor="challenge" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="challenge" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D]   mb-2" style={{ fontWeight: 600 }}>
                   {data.cta.formChallenge}
                 </label>
                 <textarea
@@ -707,7 +711,7 @@ export default function SaludYBienestarLandingPage() {
                   name="challenge"
                   rows={3}
                   placeholder={data.cta.formChallengePlaceholder}
-                  className="w-full bg-[#F5F5F5] dark:bg-black border border-[#28292D]/10 dark:border-white/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] dark:text-white transition-colors resize-none"
+                  className="w-full bg-[#F5F5F5]   focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D]   transition-colors resize-none"
                 />
               </div>
 
@@ -717,7 +721,7 @@ export default function SaludYBienestarLandingPage() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className={`flex items-start gap-2.5 text-[0.875rem] font-medium leading-[1.4] ${result.type === "success" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}
+                    className={`flex items-start gap-2.5 text-[0.875rem] font-medium leading-[1.4] ${result.type === "success" ? "text-green-600 " : "text-red-600 "}`}
                   >
                     <div className="mt-0.5 shrink-0">
                       {result.type === "success" ? <CheckCircle size={16} /> : <AlertCircle size={16} />}
@@ -731,7 +735,7 @@ export default function SaludYBienestarLandingPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={submitting}
-                className="w-full bg-[#D52169] text-white py-4 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xl"
+                className="w-full bg-[#D52169] text-white border-2 border-black py-4 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xl"
                 style={{ fontWeight: 700 }}
               >
                 {submitting ? (
