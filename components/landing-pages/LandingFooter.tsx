@@ -23,7 +23,7 @@ export function LandingFooter() {
             <motion.a
               href="/privacy"
               whileHover={{ y: -2 }}
-              className="font-['Archivo',sans-serif] text-[0.75rem] text-white/40 hover:text-[#D52169] transition-colors"
+              className="font-['Archivo',sans-serif] text-[0.75rem] text-white/60 hover:text-[#D52169] transition-colors"
               style={{ fontWeight: 400 }}
             >
               Privacy Policy
@@ -31,17 +31,17 @@ export function LandingFooter() {
             <motion.a
               href="/terms"
               whileHover={{ y: -2 }}
-              className="font-['Archivo',sans-serif] text-[0.75rem] text-white/40 hover:text-[#D52169] transition-colors"
+              className="font-['Archivo',sans-serif] text-[0.75rem] text-white/60 hover:text-[#D52169] transition-colors"
               style={{ fontWeight: 400 }}
             >
               Terms of Service
             </motion.a>
           </div>
         </div>
-        
+
         <div className="mt-8 pt-8 border-t border-white/10 text-center md:text-left">
           <p
-            className="font-['Archivo',sans-serif] text-[0.75rem] text-white/40"
+            className="font-['Archivo',sans-serif] text-[0.75rem] text-white/60"
             style={{ fontWeight: 400 }}
           >
             © {currentYear} Kier Studio. All rights reserved.

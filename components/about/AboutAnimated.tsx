@@ -29,7 +29,7 @@ export function AboutAnimated() {
                     >
                         {t('about.title1')}
                         <br />
-                        <span className="text-[#D52169] text-[2.8rem] md:text-[6rem] lg:text-[7.3rem]">{t('about.title2')} </span>
+                        <span className="text-[#D52169] text-[2.5rem] md:text-[6rem] lg:text-[7.3rem]">{t('about.title2')} </span>
                         {/* {t('about.title3')} */}
                     </h2>
 

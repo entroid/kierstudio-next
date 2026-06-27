@@ -10,6 +10,7 @@ import { testimonials } from './testimonials';
 import { accounting } from './accounting';
 import { saludybienestar } from './saludybienestar';
 import { projectsData } from './projectsData';
+import { contacto } from './contacto';
 
 export const es = {
     // Common elements (SEO, nav, footer, controls)
@@ -32,4 +33,5 @@ export const es = {
     // Landing pages
     accounting,
     saludybienestar,
+    contacto,
 };

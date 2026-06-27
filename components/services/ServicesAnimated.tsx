@@ -142,7 +142,7 @@ export function ServicesAnimated() {
                                     </span>
 
                                     <h3
-                                        className={`font-['Archivo',sans-serif] text-[2.5rem] md:text-[4rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`font-['Archivo',sans-serif] text-[2.2rem] md:text-[4rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white"
                                             : "text-[#28292D] dark:text-white"
                                             }`}
