@@ -36,6 +36,12 @@ export function PartnersAnimated() {
             tagline: "Marketing - Comunication",
             href: "https://mercurio.group/",
         },
+        {
+            src: "/partners/logo-barba.svg",
+            srcDark: "/partners/logo-barba.svg",
+            tagline: "Branding",
+            href: "#",
+        },
     ];
 
     return (
@@ -82,20 +88,20 @@ export function PartnersAnimated() {
                                         />
 
                                         <motion.div
-                                            className="relative z-10 text-center"
+                                            className="relative z-10 text-center w-full"
                                             whileHover={{ scale: 1.1 }}
                                             transition={{ type: "spring", stiffness: 200 }}
                                         >
-                                            <div className="mb-2 flex items-center justify-center">
+                                            <div className="mb-2 flex items-center justify-center dark:bg-white dark:p-1 ">
                                                 <img
                                                     src={partner.src}
                                                     alt="Partner logo"
-                                                    className="block dark:hidden h-auto w-auto max-h-[90px]"
+                                                    className="block dark:hidden w-full h-full object-contain max-h-[90px]"
                                                 />
                                                 <img
                                                     src={partner.srcDark}
                                                     alt="Partner logo"
-                                                    className="hidden dark:block h-auto w-auto max-h-[90px]"
+                                                    className="hidden dark:block w-full h-full object-contain max-h-[90px]"
                                                 />
                                             </div>
                                             <p
