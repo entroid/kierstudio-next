@@ -1,7 +1,8 @@
 export const contacto = {
-    tag: "(Quick Contact)",
-    title: "Could your business sell more with a better digital presence?",
-    subtitle: "We design websites, systems, and automations for operating businesses that want to mature.\n\nIn 2 minutes, you can discover opportunities for improvement.",
+    tag: "CREATIVE STUDIO",
+    title: "Design, technology and strategy to ",
+    title2: "grow your business.",
+    subtitle: "We design and develop websites, applications and digital solutions tailored to each company's objectives.",
     whatsappButton: "Contact us without commitment",
     whatsappUrl: "https://wa.me/5493417211814",
     marqueeItems: [
@@ -9,7 +10,6 @@ export const contacto = {
         "Applications",
         "Strategy",
         "Automations",
-        "Apps",
-        "Digital products"
+        "Apps"
     ]
 };
