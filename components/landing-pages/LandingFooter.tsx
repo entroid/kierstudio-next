@@ -16,7 +16,7 @@ export function LandingFooter() {
             whileHover={{ scale: 1.05 }}
             className="flex items-center"
           >
-            <LogoCompact className="h-8 w-auto text-white" />
+            <LogoCompact className="h-8 w-auto text-white" color="#FFFFFF" />
           </motion.a>
 
           <div className="flex gap-6">
