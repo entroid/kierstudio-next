@@ -1,4 +1,4 @@
-export const contacto = {
+export const presentacion = {
     tag: "CREATIVE STUDIO",
     title: "Design, technology and strategy to ",
     title2: "grow your business.",
@@ -11,5 +11,7 @@ export const contacto = {
         "Strategy",
         "Automations",
         "Apps"
-    ]
+    ],
+    sectionTitle: "Some completed work",
+    ctaText: "View more work"
 };

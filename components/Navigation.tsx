@@ -21,7 +21,7 @@ export function Navigation() {
       dropdown: [
         { label: t('nav.accounting'), href: "/accounting" },
         { label: t('nav.healthAndWellness'), href: "/saludybienestar" },
-        { label: t('nav.contact'), href: "/contacto" }
+        { label: t('nav.contactLanding'), href: "/contacto" }
       ]
     },
     { label: t('nav.contact'), href: "#contacto", rel: "noopener" },

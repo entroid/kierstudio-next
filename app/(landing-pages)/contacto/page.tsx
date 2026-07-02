@@ -6,6 +6,8 @@ import { useLanguage } from "@/components/LanguageContext";
 import { en } from "@/translations";
 import { CTAButton } from "@/components/cta/CTAButton";
 import { LandingHeader } from "@/components/landing-pages/LandingHeader";
+import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
+import { Project } from "@/types/project";
 
 // Custom SVG WhatsApp icon
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -32,8 +34,15 @@ export default function ContactoLandingPage() {
   // Guarantee hydration matching by rendering from a known fallback on SSR, 
   // then shifting to active language on the client side.
   const data = mounted
-    ? ((translations as any).contacto || en.contacto)
-    : en.contacto;
+    ? ((translations as any).presentacion || en.presentacion)
+    : en.presentacion;
+
+  const projectsData = mounted
+    ? ((translations as any).projectsData || en.projectsData)
+    : en.projectsData;
+
+  // Get first 3 projects
+  const featuredProjects = projectsData.slice(0, 3);
 
   return (
     <>
@@ -150,6 +159,72 @@ export default function ContactoLandingPage() {
           </motion.div>
         </div>
       </div>
+
+      {/* SECTION: COMPLETED WORK */}
+      <section className="py-32 bg-[#0a0a0a] transition-colors duration-500">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          {/* Section Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-['Archivo',sans-serif] text-[1.75rem] sm:text-[2rem] lg:text-[2.5rem] leading-[1.1] tracking-[-0.03em] uppercase mb-16 text-white"
+            style={{ fontWeight: 800 }}
+          >
+            {data.sectionTitle}
+          </motion.h2>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {featuredProjects.map((project: Project, index: number) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="group cursor-pointer"
+              >
+                <div className="relative overflow-hidden bg-[#F5F5F5] dark:bg-[#1a1a1a] transition-colors duration-500">
+                  <ImageWithFallback
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <h3 className="font-['Archivo',sans-serif] text-[1.125rem] sm:text-[1.25rem] mt-4 text-white transition-colors duration-500"
+                  style={{ fontWeight: 600 }}
+                >
+                  {project.title}
+                </h3>
+                <p className="font-['Archivo',sans-serif] text-[0.875rem] sm:text-[1rem] mt-2 text-white/60 transition-colors duration-500"
+                  style={{ fontWeight: 400 }}
+                >
+                  {project.category}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="flex justify-center"
+          >
+            <CTAButton
+              href="/#proyectos"
+              variant="primary"
+              className="py-4 px-8 text-[0.9375rem] font-bold tracking-[0.1em]"
+            >
+              {data.ctaText}
+            </CTAButton>
+          </motion.div>
+        </div>
+      </section>
     </>
       );
 }
