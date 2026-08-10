@@ -3,6 +3,7 @@ import "./tailwind.css";
 import "./performance.css";
 import { ThemeProvider } from "@/components/ThemeContext";
 import { LanguageProvider } from "@/components/LanguageContext";
+import { PHProvider, PostHogPageViewWrapper } from "@/components/PostHogProvider";
 
 // SEO Metadata
 export const metadata: Metadata = {
@@ -130,11 +131,14 @@ export default function RootLayout({
         {/* End Meta Pixel Code */}
       </head>
       <body>
-        <ThemeProvider>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
-        </ThemeProvider>
+        <PHProvider>
+          <ThemeProvider>
+            <LanguageProvider>
+              <PostHogPageViewWrapper />
+              {children}
+            </LanguageProvider>
+          </ThemeProvider>
+        </PHProvider>
       </body>
     </html>
   );
