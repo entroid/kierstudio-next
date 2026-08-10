@@ -160,6 +160,7 @@ kierstudio-next/
 - [x] Floating controls (chat, scroll-to-top, language, dark mode)
 - [x] Botpress chat integration
 - [x] Meta Pixel integration (ID: 2551501831869054)
+- [x] PostHog analytics integration
 - [x] SEO metadata (title, description)
 
 ### 🎨 Design Features
@@ -696,6 +697,11 @@ If dynamic content needed:
    - Script loaded in global `layout.tsx` head
    - ID: `2551501831869054`
 
+4. **PostHog**
+   - Product analytics and event tracking
+   - Provider implemented in `components/PostHogProvider.tsx` and wrapped in global `layout.tsx`
+   - Configured via environment variables: `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST`
+
 ### Future APIs
 - Analytics (Google Analytics, Plausible, etc.) - TBD
 - No other APIs planned at this time
@@ -722,7 +728,7 @@ If dynamic content needed:
 - [x] Robots.txt file
 - [ ] Next.js Image component migration
 - [x] Meta Pixel integration
-- [ ] Analytics integration (GA4/GTM)
+- [x] Analytics integration (PostHog)
 
 ---
 
