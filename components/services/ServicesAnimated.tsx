@@ -20,22 +20,6 @@ export function ServicesAnimated() {
 
     const services = [
         {
-            title: t('services.websites.title'),
-            subtitle: t('services.websites.subtitle'),
-            image: "/services/website2.jpg",
-            services: translations.services.websites.items,
-            tag: t('services.websites.tag'),
-            bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
-        },
-        {
-            title: t('services.ecommerce.title'),
-            subtitle: t('services.ecommerce.subtitle'),
-            image: "/services/01.png",
-            services: translations.services.ecommerce.items,
-            tag: t('services.ecommerce.tag'),
-            bgColor: "bg-[#28292D] dark:bg-black",
-        },
-        {
             title: t('services.customapp.title'),
             subtitle: t('services.customapp.subtitle'),
             image: "/services/0000.jpg",
@@ -51,6 +35,23 @@ export function ServicesAnimated() {
             tag: t('services.strategy.tag'),
             bgColor: "bg-[#28292D] dark:bg-black",
         },
+        {
+            title: t('services.websites.title'),
+            subtitle: t('services.websites.subtitle'),
+            image: "/services/website2.jpg",
+            services: translations.services.websites.items,
+            tag: t('services.websites.tag'),
+            bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
+        },
+        {
+            title: t('services.ecommerce.title'),
+            subtitle: t('services.ecommerce.subtitle'),
+            image: "/services/01.png",
+            services: translations.services.ecommerce.items,
+            tag: t('services.ecommerce.tag'),
+            bgColor: "bg-[#28292D] dark:bg-black",
+        },
+
     ];
 
     return (
