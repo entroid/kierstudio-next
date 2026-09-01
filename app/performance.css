@@ -43,6 +43,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* El header es fixed (h-24 = 6rem): sin esto, la sección enlazada queda debajo. */
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   *,

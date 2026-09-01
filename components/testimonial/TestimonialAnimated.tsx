@@ -175,42 +175,6 @@ export function TestimonialAnimated() {
                     </div>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-32 pt-20 border-t border-white/10"
-                >
-                    {[
-                        { number: "50+", label: t('testimonials.stats.projectsCompleted') },
-                        { number: "+32%", label: t('testimonials.stats.conversionRates') },
-                        { number: "10+", label: t('testimonials.stats.yearsExperience') },
-                        { number: "100%", label: t('testimonials.stats.clientSatisfaction') },
-                    ].map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -5 }}
-                            className="text-center"
-                        >
-                            <div
-                                className="font-['Archivo',sans-serif] text-[3rem] md:text-[4rem] text-[#D52169] mb-2"
-                                style={{ fontWeight: 900 }}
-                            >
-                                {stat.number}
-                            </div>
-                            <div
-                                className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase text-white/60"
-                                style={{ fontWeight: 600 }}
-                            >
-                                {stat.label}
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
             </div>
         </section>
     );

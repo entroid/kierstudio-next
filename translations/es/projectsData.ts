@@ -33,7 +33,7 @@ export const projectsData: Project[] = [
             "/projects/muu/003.png",
             "/projects/muu/004.png",
         ],
-        url: "https://beerhoteles.com/",
+        url: "https://www.muumercadoganadero.com/",
     },
     {
         id: 3,
