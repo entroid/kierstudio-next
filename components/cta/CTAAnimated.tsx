@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { ArrowRight, Mail, Phone, CheckCircle, XCircle, Camera, Loader2 } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
+import { contactoEnviado, contactoIniciado, salidaExterna } from "@/lib/analytics";
 
 export function CTAAnimated() {
     const { t } = useLanguage();
@@ -65,6 +66,7 @@ export function CTAAnimated() {
             const json = await response.json();
 
             if (response.ok) {
+                contactoEnviado("contacto");
                 setResult({ type: "success", message: t('cta.formSuccess.message') });
                 form.reset();
             } else {
@@ -119,6 +121,7 @@ export function CTAAnimated() {
                         <div className="space-y-6">
                             <motion.a
                                 href="mailto:kierstudio.info@gmail.com"
+                                onClick={() => { contactoIniciado("contacto", "email"); salidaExterna("email", "contacto"); }}
                                 whileHover={{ x: 10 }}
                                 className="group flex items-center gap-4 p-6 border border-[#28292D]/10 dark:border-white/10 hover:border-[#D52169] transition-colors duration-300 backdrop-blur-sm"
                             >
@@ -145,6 +148,7 @@ export function CTAAnimated() {
                                 href="https://wa.me/5493417211814"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => { contactoIniciado("contacto", "whatsapp"); salidaExterna("whatsapp", "contacto"); }}
                                 whileHover={{ x: 10 }}
                                 className="group flex items-center gap-4 p-6 border border-[#28292D]/10 dark:border-white/10 hover:border-[#D52169] transition-colors duration-300 backdrop-blur-sm"
                             >
@@ -173,6 +177,7 @@ export function CTAAnimated() {
                                 href="https://www.instagram.com/kierstudio_"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => salidaExterna("instagram", "contacto")}
                                 whileHover={{ x: 10 }}
                                 className="group flex items-center gap-4 p-6 border border-[#28292D]/10 dark:border-white/10 hover:border-[#D52169] transition-colors duration-300 backdrop-blur-sm"
                             >

@@ -29,7 +29,9 @@ export function TestimonialAnimated() {
     };
 
     return (
-        <section className="py-16 md:py-32 bg-[#28292D] dark:bg-black relative overflow-hidden transition-colors duration-500">
+        <section
+            id="testimonios"
+            className="py-16 md:py-32 bg-[#28292D] dark:bg-black relative overflow-hidden transition-colors duration-500">
             <div className="absolute top-0 left-0 w-full h-full opacity-5">
                 <div className="absolute top-20 left-20 w-[400px] h-[400px] border border-white rounded-full" />
                 <div className="absolute bottom-20 right-20 w-[600px] h-[600px] border border-white rounded-full" />

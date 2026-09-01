@@ -102,7 +102,7 @@ export function HeroAnimated() {
                                 transition={{ delay: 0.9 }}
                                 className="flex flex-col sm:flex-row gap-4"
                             >
-                                <CTAButton href="#contacto" variant="primary" className="shadow-xl">
+                                <CTAButton href="#contacto" variant="primary" className="shadow-xl" origen="hero">
                                     {t('hero.ctaTalk')} <ArrowRight size={18} />
                                 </CTAButton>
                                 <CTAButton href="#proyectos" variant="secondary">

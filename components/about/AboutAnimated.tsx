@@ -114,7 +114,7 @@ export function AboutAnimated() {
 
 
 
-                            <CTAButton href="#contacto" alt={t('about.ctaText')} className="mt-8">{t('about.ctaText')} <ArrowRight size={18} /></CTAButton>
+                            <CTAButton href="#contacto" alt={t('about.ctaText')} className="mt-8" origen="que-hacemos">{t('about.ctaText')} <ArrowRight size={18} /></CTAButton>
                         </motion.div>
                     </div>
                 </motion.div>

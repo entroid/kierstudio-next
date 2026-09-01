@@ -153,7 +153,7 @@ export function ProcessAnimated() {
                     viewport={{ once: true }}
                     className="mt-20 text-center"
                 >
-                    <CTAButton href="#contacto" >{t('process.ctaButton')} <ArrowRight size={18} /></CTAButton>
+                    <CTAButton href="#contacto" origen="proceso">{t('process.ctaButton')} <ArrowRight size={18} /></CTAButton>
                 </motion.div>
             </div>
         </section>

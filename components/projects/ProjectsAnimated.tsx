@@ -5,6 +5,7 @@ import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { ArrowRight, X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "../LanguageContext";
+import { proyectoAbierto } from "@/lib/analytics";
 import { CTAButton } from "@/components/cta/CTAButton";
 
 import { Project } from "@/types/project";
@@ -22,6 +23,7 @@ export function ProjectsAnimated() {
     const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
     const openModal = (project: Project) => {
+        proyectoAbierto(project.title, "trabajos");
         setSelectedProject(project);
         setCurrentImageIndex(0);
     };

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Camera, Users, MapPin, Phone, Mail } from "lucide-react";
 import { useLanguage } from "./LanguageContext";
+import { contactoIniciado, salidaExterna } from "@/lib/analytics";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -72,6 +73,7 @@ export function Footer() {
 
               <motion.a
                 href="mailto:kierstudio.info@gmail.com"
+                onClick={() => { contactoIniciado("footer", "email"); salidaExterna("email", "footer"); }}
                 whileHover={{ x: 5 }}
                 className="flex items-center gap-3 text-white/60 hover:text-[#D52169] transition-colors cursor-pointer"
               >
@@ -88,6 +90,7 @@ export function Footer() {
                 href="https://wa.me/5493417211814?text=Hi%20Kier%20Studio.%20I%20am%20contacting%20through%20your%20website."
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => { contactoIniciado("footer", "whatsapp"); salidaExterna("whatsapp", "footer"); }}
                 whileHover={{ x: 5 }}
                 className="flex items-center gap-3 text-white/60 hover:text-[#D52169] transition-colors cursor-pointer"
               >
@@ -109,6 +112,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => { if (social.label === "Instagram") salidaExterna("instagram", "footer"); }}
                   whileHover={{ y: -2 }}
                   className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
                 >
