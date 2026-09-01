@@ -6,6 +6,7 @@ import { useState } from "react";
 import { LogoCompact } from "./Logo";
 import { useLanguage } from "./LanguageContext";
 import { useTheme } from "./ThemeContext";
+import { contactoIniciado } from "@/lib/analytics";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -83,6 +84,7 @@ export function Navigation() {
                 <a
                   href={item.href}
                   rel={item.rel}
+                  onClick={() => { if (item.href === "#contacto") contactoIniciado("nav", "form"); }}
                   className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
                 >
                   {item.label}
@@ -137,7 +139,10 @@ export function Navigation() {
                   ) : (
                     <a
                       href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={() => {
+                        if (item.href === "#contacto") contactoIniciado("nav", "form");
+                        setMobileMenuOpen(false);
+                      }}
                       className="block py-3 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors cursor-pointer"
                     >
                       {item.label}

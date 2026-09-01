@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auditoría inicial · Kier Studio · 2026-09-01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<!--
+  AUDITORÍA — KIER STUDIO — 2026-09-01
+  Documento de seguimiento. El estado canónico de cada punto vive en el
+  atributo data-done del array HALLAZGOS de abajo (true / false) y se commitea:
+  así el avance queda versionado en git y lo ven los dos.
+  Al tachar en el navegador se guarda en localStorage para feedback inmediato,
+  pero eso es personal y temporal — para que valga para el equipo, hay que
+  cambiar el data-done en el archivo y commitear. Ver auditorias/README.md.
+-->
+
+<style>
+  :root{
+    --paper:#FFFFFF; --paper-2:#F5F2F4; --paper-3:#EBE6E9;
+    --ink:#1B1C1F; --ink-2:#5B5A61; --ink-3:#8B8892;
+    --line:#DFD9DD; --line-2:#C9C2C7;
+    --accent:#D52169; --accent-wash:#FBEBF2;
+    --sev1:#D52169; --sev2:#A65200; --sev3:#6A6E76; --done:#2E7D4F;
+    --f-display:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --f-mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+    --measure:66ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0C0C0E; --paper-2:#141317; --paper-3:#1D1C21;
+      --ink:#F2EFF1; --ink-2:#A7A3AB; --ink-3:#77747D;
+      --line:#28262D; --line-2:#3A373F;
+      --accent:#F0397F; --accent-wash:#26101A;
+      --sev1:#F0397F; --sev2:#E09A3A; --sev3:#8D909A; --done:#6BBF8E;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0C0C0E; --paper-2:#141317; --paper-3:#1D1C21;
+    --ink:#F2EFF1; --ink-2:#A7A3AB; --ink-3:#77747D;
+    --line:#28262D; --line-2:#3A373F;
+    --accent:#F0397F; --accent-wash:#26101A;
+    --sev1:#F0397F; --sev2:#E09A3A; --sev3:#8D909A; --done:#6BBF8E;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .shell{max-width:1000px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+
+  header.masthead{border-bottom:2px solid var(--ink);padding:56px 0 28px}
+  .mast-top{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:baseline;justify-content:space-between;margin-bottom:36px}
+  h1{font-size:clamp(36px,6.8vw,68px);font-weight:900;line-height:.93;letter-spacing:-.035em;text-transform:uppercase;text-wrap:balance;margin:0 0 20px}
+  h1 .em{color:var(--accent)}
+  .thesis{max-width:var(--measure);font-size:clamp(17px,2.2vw,19px);line-height:1.55;font-weight:500;margin:0 0 8px}
+  .thesis-sub{max-width:var(--measure);color:var(--ink-2);margin:0}
+
+  .progress-wrap{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line);padding:12px 0}
+  .progress-inner{display:flex;align-items:center;gap:16px}
+  .progress-count{font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .progress-track{flex:1;height:4px;background:var(--paper-3);overflow:hidden}
+  .progress-fill{height:100%;width:0%;background:var(--done);transition:width .35s ease}
+
+  section.block{padding:52px 0}
+  .block+.block{border-top:1px solid var(--line)}
+  h2.block-title{font-size:clamp(24px,3.4vw,33px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;line-height:1.05;margin:10px 0;text-wrap:balance}
+  .block-lede{max-width:var(--measure);color:var(--ink-2);margin:0 0 34px}
+
+  .findings{display:flex;flex-direction:column;gap:1px;background:var(--line);border-block:1px solid var(--line)}
+  article.finding{background:var(--paper);padding:26px 24px 26px 26px;border-left:4px solid var(--sev);transition:background .2s ease}
+  article.finding[data-sev="1"]{--sev:var(--sev1)}
+  article.finding[data-sev="2"]{--sev:var(--sev2)}
+  article.finding[data-sev="3"]{--sev:var(--sev3)}
+  article.finding.done{background:var(--paper-2);border-left-color:var(--done)}
+
+  .f-head{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start}
+  .f-rank{font-family:var(--f-mono);font-size:13px;font-weight:600;color:var(--ink-3);font-variant-numeric:tabular-nums;padding-top:5px;letter-spacing:.04em}
+  .f-titlewrap{min-width:0}
+  .f-sev{display:inline-block;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sev);margin-bottom:5px}
+  article.finding.done .f-sev{color:var(--done)}
+  h3.f-title{margin:0;font-size:clamp(18px,2.3vw,21px);font-weight:700;line-height:1.25;letter-spacing:-.012em;text-wrap:balance}
+  article.finding.done h3.f-title{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--done);color:var(--ink-2)}
+
+  .f-check{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:26px;height:26px;margin:2px 0 0;border:2px solid var(--line-2);background:var(--paper);cursor:pointer;display:grid;place-items:center;transition:border-color .15s,background .15s}
+  .f-check:hover{border-color:var(--ink-2)}
+  .f-check:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .f-check:checked{background:var(--done);border-color:var(--done)}
+  .f-check:checked::after{content:"";width:12px;height:7px;border-left:2.5px solid var(--paper);border-bottom:2.5px solid var(--paper);transform:rotate(-45deg) translate(1px,-2px)}
+
+  .f-body{margin-top:16px;display:grid;gap:18px}
+  @media (min-width:760px){
+    .f-body{grid-template-columns:1fr 1fr;padding-left:41px}
+    .f-body .full{grid-column:1/-1}
+  }
+  .f-part h4{margin:0 0 6px;font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+  .f-part p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.6;max-width:var(--measure)}
+  .f-part p strong{color:var(--ink);font-weight:600}
+  article.finding.done .f-body{opacity:.55}
+  .f-files{margin-top:14px;font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);line-height:1.7;word-break:break-word}
+  @media (min-width:760px){.f-files{padding-left:41px}}
+  .f-resuelto{margin-top:12px;font-family:var(--f-mono);font-size:11.5px;color:var(--done);line-height:1.7}
+  @media (min-width:760px){.f-resuelto{padding-left:41px}}
+
+  code{font-family:var(--f-mono);font-size:.87em;background:var(--paper-3);padding:1px 5px;word-break:break-word}
+
+  .evidence{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .ev{background:var(--paper-2);padding:18px}
+  .ev dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+  .ev dd{margin:0;font-family:var(--f-mono);font-size:14px;font-weight:500;line-height:1.45;word-break:break-word}
+  .ev dd .bad{color:var(--sev1);font-weight:600}
+  .ev dd .fix{color:var(--done);font-weight:600}
+
+  .callout{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--accent-wash);padding:20px 22px;max-width:var(--measure)}
+  .callout p{margin:0;font-size:15.5px;line-height:1.6}
+  .callout p+p{margin-top:10px}
+
+  footer.foot{border-top:2px solid var(--ink);padding:26px 0 56px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-3);line-height:1.8}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <header class="masthead">
+    <div class="mast-top">
+      <span class="eyebrow">Auditoría de sitio · kierstudio.com</span>
+      <span class="eyebrow">2026-09-01 · auditoría #1</span>
+    </div>
+    <h1>12 cosas rotas<br>antes de<br><span class="em">reposicionar</span></h1>
+    <p class="thesis">El sitio no tiene un problema de conversión todavía. Tiene un problema de que casi nadie puede encontrarlo, compartirlo ni entrar a una sección directamente — y de que lo poco que pasa no queda registrado en ningún lado.</p>
+    <p class="thesis-sub">Todo verificado contra el HTML de producción y el código del repo, no inferido. Cada punto dice qué pasa, qué haría y qué arregla.</p>
+  </header>
+</div>
+
+<div class="progress-wrap">
+  <div class="shell">
+    <div class="progress-inner">
+      <span class="progress-count" id="progress-count">—</span>
+      <span class="progress-track"><span class="progress-fill" id="progress-fill"></span></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <section class="block">
+    <span class="eyebrow">Verificado en producción</span>
+    <h2 class="block-title">Los hechos, medidos el 1 de septiembre</h2>
+    <p class="block-lede">Respuestas del servidor y del DOM de <code>kierstudio.com</code>. En verde, lo que ya se corrigió desde entonces.</p>
+    <dl class="evidence">
+      <div class="ev"><dt>Imagen para compartir</dt><dd><span class="bad">404</span> en /hero.png → <span class="fix">corregido</span></dd></div>
+      <div class="ev"><dt>Idioma del HTML servido</dt><dd>lang="en" · <span class="bad">"THE WORLD MOVES"</span> → <span class="fix">español</span></dd></div>
+      <div class="ev"><dt>hreflang /en y /es</dt><dd><span class="bad">404</span> los dos → <span class="fix">eliminado</span></dd></div>
+      <div class="ev"><dt>www vs apex</dt><dd>200 y 200 → <span class="fix">308 permanente</span></dd></div>
+      <div class="ev"><dt>Deep link #servicios</dt><dd>quedaba en 217px de 2.213px → <span class="fix">salta</span></dd></div>
+      <div class="ev"><dt>Home: video autoplay</dt><dd>2.142 KB</dd></div>
+      <div class="ev"><dt>Uso de next/image</dt><dd><span class="bad">0</span> de 14 imágenes</dd></div>
+      <div class="ev"><dt>Eventos propios en PostHog</dt><dd><span class="bad">ninguno</span></dd></div>
+      <div class="ev"><dt>Componentes server para SEO</dt><dd>7 escritos · <span class="bad">0 usados</span></dd></div>
+    </dl>
+  </section>
+
+  <section class="block">
+    <span class="eyebrow">Bloque A · 4 puntos</span>
+    <h2 class="block-title">Por qué no llega nadie</h2>
+    <p class="block-lede">35 sesiones en tres semanas, casi todo tráfico directo. Cuatro cosas que hacían que el sitio fuera invisible o incompartible.</p>
+    <div class="findings" id="findings-a"></div>
+  </section>
+
+  <section class="block">
+    <span class="eyebrow">Bloque B · 5 puntos</span>
+    <h2 class="block-title">Por qué los que llegan no avanzan</h2>
+    <p class="block-lede">El mejor argumento para vender sistemas a medida ya está en el sitio, pero enterrado donde ni Google, ni un link, ni PostHog lo alcanzan.</p>
+    <div class="findings" id="findings-b"></div>
+  </section>
+
+  <section class="block">
+    <span class="eyebrow">Bloque C · 3 puntos</span>
+    <h2 class="block-title">Credibilidad y deuda</h2>
+    <p class="block-lede">Nada de esto tumba el negocio solo. Junto, construye la impresión de un estudio que no revisa su propio trabajo.</p>
+    <div class="findings" id="findings-c"></div>
+  </section>
+
+  <section class="block">
+    <div class="callout">
+      <p><strong>Una advertencia sobre el orden de causas.</strong> Con 18 visitantes únicos en tres semanas, ningún cambio de conversión va a ser medible. El cuello de botella hoy es adquisición, no el sitio.</p>
+      <p>Confirmado después con Search Console: 2 clics sobre 113 impresiones en 90 días, y las únicas consultas con volumen son de marca — con "kier" dominado por una constructora británica homónima. Los puntos 01 a 04 eran condición necesaria; no son suficientes.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    Auditoría #1 · Kier Studio · verificación en vivo contra kierstudio.com el 2026-09-01 · Next.js 14.2<br>
+    El estado de cada punto vive en <code>data-done</code> dentro de este archivo y se commitea. Tachar en el navegador sólo guarda una copia local para vos.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var HALLAZGOS = [
+    { id:"a1", g:"a", rank:"01", sev:1, sevLabel:"Crítico", done:true,
+      title:"Google indexa un sitio en inglés; tus clientes ven uno en español",
+      what:"El HTML del servidor traía <code>&lt;html lang=\"en\"&gt;</code> y <code>&lt;h1&gt;THE WORLD MOVES&lt;/h1&gt;</code>, mientras el <code>&lt;title&gt;</code> y la meta description estaban en español. El idioma se decidía después, en el navegador: <strong>LanguageContext</strong> arrancaba en <code>en</code>. Un crawler nunca llega a esa parte.",
+      fix:"Decidir el idioma en el servidor. Español como default del render, inglés detrás de la preferencia del visitante.",
+      impact:"Era la causa estructural de no rankear para nada en español. Medido antes del cambio: cero apariciones de \"sistema a medida\", \"automatización\", \"turnos\" o \"planilla\" en el HTML servido; sí de \"appointments\", \"spreadsheet\" e \"internal tool\".",
+      files:"components/LanguageContext.tsx · app/layout.tsx",
+      resuelto:"Resuelto el 2026-09-01 · commit a879f69 · 4.828 caracteres indexables en español" },
+
+    { id:"a2", g:"a", rank:"02", sev:1, sevLabel:"Crítico", done:true,
+      title:"Cada link compartido va sin preview: la og:image es un 404",
+      what:"<code>og:image</code> apuntaba a <code>/hero.png</code>, que respondía <strong>404</strong>. La imagen existía en <code>/projects/hero.png</code>, además de pesar 1,7 MB.",
+      fix:"Generar una og image propia de 1200×630 por debajo de 300 KB y validarla con el debugger de LinkedIn y de Facebook para forzar el refresco de caché.",
+      impact:"Todo link mandado por WhatsApp, LinkedIn o el DM de Instagram aparecía como tarjeta gris sin imagen. Con tráfico referido a mano, esa tarjeta es la primera impresión.",
+      files:"app/layout.tsx · public/og.png",
+      resuelto:"Resuelto el 2026-09-01 · commit f9bb5d2 · og.png de 153 KB" },
+
+    { id:"a3", g:"a", rank:"03", sev:2, sevLabel:"Alto", done:true,
+      title:"El hreflang le promete a Google dos URLs que no existen",
+      what:"El HTML declaraba <code>hreflang=\"en\" → /en</code> y <code>hreflang=\"es\" → /es</code>. Las dos devolvían <strong>404</strong>. El mismo bloque estaba duplicado en <code>lib/metadata.ts</code>, que no usaba nadie.",
+      fix:"Eliminar <code>alternates.languages</code> hasta que las rutas existan.",
+      impact:"Search Console lo confirmó después: 2 páginas en \"No encontrada (404)\", y son literalmente <code>/es</code> y <code>/en</code>, rastreadas hasta el 18 de agosto.",
+      files:"app/layout.tsx · lib/metadata.ts (eliminado)",
+      resuelto:"Resuelto el 2026-09-01 · commit f9bb5d2" },
+
+    { id:"a4", g:"a", rank:"04", sev:2, sevLabel:"Alto", done:true,
+      title:"www y el dominio raíz conviven, sin redirect entre ellos",
+      what:"<code>kierstudio.com</code> y <code>www.kierstudio.com</code> devolvían <strong>200 los dos</strong>. Para Google, dos sitios con contenido idéntico; para PostHog, dos hosts, con las sesiones partidas.",
+      fix:"Elegir uno —el apex, que es el que usa metadata, sitemap y schema— y redirigir el otro con 301/308 desde Vercel.",
+      impact:"Consolida la autoridad de dominio y arregla la calidad de los datos: sin esto, cualquier número de PostHog está dividido entre dos hosts.",
+      files:"Vercel → Domains (fuera del repo)",
+      resuelto:"Resuelto el 2026-09-01 · 308 permanente, conserva el path" },
+
+    { id:"b1", g:"b", rank:"05", sev:1, sevLabel:"Crítico", done:false,
+      title:"Los tres casos que justifican el reposicionamiento están en un modal sin URL",
+      what:"Hard Rock Marketing Planner (auditoría de flujos en Excel → sistema escalable), MIRAI Fleet (SaaS + app + CMS) y Muu (rediseño de flujos críticos) son exactamente \"sistemas a medida diseñados con proceso UX/UI\". Pero abren en un <strong>modal de React</strong>: no cambian la URL, no se pueden linkear, no se indexan y no generan ningún evento distinguible.",
+      fix:"Convertirlos en páginas <code>/trabajos/[slug]</code> con metadata y og:image propias, renderizadas en el servidor. Cortas: cuál era el problema, qué se hizo, qué cambió — no case studies largos.",
+      impact:"Tres cosas a la vez: es el único contenido indexable que se puede producir sin inventar nada; es el argumento de venta con evidencia en vez de adjetivos; y convierte \"vio trabajos\" en un pageview medible.",
+      files:"components/projects/ProjectsAnimated.tsx · translations/*/projectsData.ts · app/sitemap.ts",
+      resuelto:"" },
+
+    { id:"b2", g:"b", rank:"06", sev:1, sevLabel:"Crítico", done:true,
+      title:"Los links directos a una sección no funcionan",
+      what:"Abrir <code>kierstudio.com/#servicios</code> dejaba el scroll en <strong>217px</strong> cuando la sección arranca en 2.213px. El contenido se monta al hidratar, así que cuando el navegador busca el ancla todavía no existe.",
+      fix:"Resolver el hash después de hidratar y seguir corrigiendo mientras el layout se mueve. El scroll tiene que ser <code>instant</code>: con <code>scroll-behavior: smooth</code>, cada corrección reinicia la animación y nunca llega.",
+      impact:"Cualquier link a <code>#contacto</code> —bio de Instagram, campaña, firma de mail, propuesta— caía arriba de todo y obligaba a scrollear el argumento entero.",
+      files:"components/HashScroll.tsx · app/(main)/layout.tsx · app/performance.css",
+      resuelto:"Resuelto el 2026-09-01 · commit f9bb5d2 · aterriza a 96px del tope" },
+
+    { id:"b3", g:"b", rank:"07", sev:2, sevLabel:"Alto", done:false,
+      title:"En mobile, la sección de Servicios se ve como bloques negros vacíos",
+      what:"En un viewport de 375px, tras esperar 3 segundos con la sección en pantalla, la descripción de \"Sistema o aplicación a medida\" y sus cuatro ítems siguen en <code>opacity: 0</code>. Causa: tres niveles anidados de <code>whileInView</code> sobre una tarjeta <code>min-h-[600px]</code> que en mobile mide más que la pantalla.",
+      fix:"Dejar un solo <code>whileInView</code> por tarjeta, o animar por CSS. Regla general: si un bloque de texto es más alto que el viewport, no puede depender de \"entrar en viewport\" para hacerse visible.",
+      impact:"Instagram y WhatsApp son tráfico 100% mobile. Quien llega por ahí ve la sección donde explicás qué vendés como un rectángulo vacío.",
+      files:"components/services/ServicesAnimated.tsx:105-200",
+      resuelto:"" },
+
+    { id:"b4", g:"b", rank:"08", sev:2, sevLabel:"Alto", done:false,
+      title:"Cero eventos de conversión: el sitio no sabe si convierte",
+      what:"El formulario postea a <code>formsubmit.co</code> por fetch, muestra un mensaje inline y listo: no hay página de gracias, no hay <code>posthog.capture</code>, no hay cambio de URL. Los cinco CTA que llevan a contacto son indistinguibles entre sí. PostHog sólo tiene <code>$pageview</code> y <code>$autocapture</code>.",
+      fix:"Los cinco eventos del plan de medición: <code>seccion_vista</code>, <code>contacto_iniciado</code>, <code>contacto_enviado</code>, <code>proyecto_abierto</code>, <code>salida_externa</code>, con <code>origen</code> y <code>canal</code> como propiedades. Y encender session replay, que es un toggle.",
+      impact:"Es lo que convierte una auditoría en un ciclo repetible. Sin <code>contacto_iniciado</code> con <code>origen</code>, la pregunta \"¿qué parte del argumento genera contactos?\" no tiene respuesta posible.",
+      files:"components/cta/CTAAnimated.tsx · components/PostHogProvider.tsx",
+      resuelto:"" },
+
+    { id:"b5", g:"b", rank:"09", sev:3, sevLabel:"Medio", done:false,
+      title:"En mobile el CTA queda debajo del fold, y compite con cuatro botones flotantes",
+      what:"A 375×812 el primer viewport termina en \"que quieren crecer.\": el video ocupa el 40% de arriba y los dos botones quedan afuera. Abajo a la derecha conviven chat (con un pulso en un <code>while(true)</code> sin cleanup), idioma, dark mode y el widget de Botpress.",
+      fix:"En mobile, achicar el video a una banda o moverlo debajo del texto para que titular, subtítulo y botón entren en el primer viewport. Reducir los flotantes a uno.",
+      impact:"El CTA principal deja de depender de que la persona scrollee, y se quita el ruido visual justo en la esquina donde descansa el pulgar.",
+      files:"components/hero/HeroAnimated.tsx · components/FloatingControls.tsx:62-84",
+      resuelto:"" },
+
+    { id:"c1", g:"c", rank:"10", sev:2, sevLabel:"Alto", done:true,
+      title:"Tres errores de datos que se leen como descuido",
+      what:"El mail del footer decía <code>kierstudio.info@gmail.com<strong>.com</strong></code> y no era un enlace. El proyecto <strong>Muu</strong> enlazaba a <code>beerhoteles.com</code>, la URL del caso HOLY, en los dos idiomas. Y \"50+ proyectos\", \"+32% en conversión\" y \"100% de satisfacción\" estaban hardcodeados sin fuente.",
+      fix:"Corregir el mail y convertirlo en <code>mailto:</code>. Corregir la URL de Muu. Sacar las estadísticas sin dato atrás.",
+      impact:"Un mail roto es pérdida directa de consultas. Un caso que linkea al sitio equivocado es lo que mira un cliente mientras evalúa si sos prolijo. Y las métricas inventadas son el riesgo mayor: el diferencial que se va a vender es que medís.",
+      files:"components/Footer.tsx · translations/*/projectsData.ts · components/testimonial/TestimonialAnimated.tsx",
+      resuelto:"Resuelto el 2026-09-01 · commits f9bb5d2 y a879f69" },
+
+    { id:"c2", g:"c", rank:"11", sev:3, sevLabel:"Medio", done:false,
+      title:"La home pesa como una landing de 2015",
+      what:"Video de <strong>2.142 KB</strong> en autoplay arriba de todo, imágenes de servicios de 870 KB y 300 KB, <strong>cero</strong> uso de <code>next/image</code> (14 <code>&lt;img&gt;</code> crudos) y fuentes cargadas por <code>@import</code> de CSS, que bloquea el render, con dos familias completas. Hay además un <code>@font-face</code> cuyo <code>src</code> apunta a una URL de CSS: no hace nada.",
+      fix:"Migrar a <code>next/image</code> (la config ya tiene webp y avif), cargar fuentes con <code>next/font</code>, borrar el <code>@font-face</code> muerto y diferir el video o reemplazarlo por imagen en mobile.",
+      impact:"Mejora el LCP, que es señal de ranking y, con más peso, el motivo por el que alguien en 4G cierra antes de ver el titular.",
+      files:"app/tailwind.css · app/performance.css · public/",
+      resuelto:"" },
+
+    { id:"c3", g:"c", rank:"12", sev:3, sevLabel:"Medio", done:false,
+      title:"Contradicciones de configuración y código muerto",
+      what:"<code>robots.ts</code> bloqueaba <code>/cookies</code>, <code>/privacy</code> y <code>/terms</code> mientras el sitemap las ofrecía. El Meta Pixel dispara antes de cualquier consentimiento, con una política de cookies publicada. Y hay <strong>siete componentes <code>*Content.tsx</code></strong> —las versiones server para SEO— que no se renderizan en ningún lado.",
+      fix:"Alinear robots y sitemap. Decidir sobre el Pixel: banner de consentimiento o quitarlo. Y borrar los <code>*Content.tsx</code>, o usarlos.",
+      impact:"Ninguno mueve la aguja solo. Juntos son la diferencia entre un repo donde el próximo cambio es predecible y uno donde cada arreglo empieza con media hora de averiguar qué está vivo.",
+      files:"app/robots.ts · app/sitemap.ts · app/layout.tsx · components/*/[A-Z]*Content.tsx",
+      resuelto:"Parcial · robots y sitemap alineados el 2026-09-01 (commit a879f69). Falta el consentimiento del Pixel y el código muerto." }
+  ];
+
+  var LS = "kier-auditoria-2026-09-01";
+  var local = {};
+  try { local = JSON.parse(localStorage.getItem(LS) || "{}") || {}; } catch(e){ local = {}; }
+
+  function estado(f){
+    return Object.prototype.hasOwnProperty.call(local, f.id) ? !!local[f.id] : !!f.done;
+  }
+
+  function nodo(f){
+    var done = estado(f);
+    var art = document.createElement("article");
+    art.className = "finding" + (done ? " done" : "");
+    art.setAttribute("data-sev", f.sev);
+    art.setAttribute("data-done", f.done ? "true" : "false");
+    art.id = "h-" + f.id;
+
+    art.innerHTML =
+      '<div class="f-head">' +
+        '<span class="f-rank">' + f.rank + '</span>' +
+        '<div class="f-titlewrap">' +
+          '<span class="f-sev">' + (done ? "Resuelto" : f.sevLabel) + '</span>' +
+          '<h3 class="f-title">' + f.title + '</h3>' +
+        '</div>' +
+        '<input class="f-check" type="checkbox" aria-label="Marcar como resuelto: ' + f.title.replace(/"/g,"&quot;") + '">' +
+      '</div>' +
+      '<div class="f-body">' +
+        '<div class="f-part full"><h4>Qué pasa</h4><p>' + f.what + '</p></div>' +
+        '<div class="f-part"><h4>Qué haría</h4><p>' + f.fix + '</p></div>' +
+        '<div class="f-part"><h4>Qué arregla</h4><p>' + f.impact + '</p></div>' +
+      '</div>' +
+      (f.resuelto ? '<div class="f-resuelto">✓ ' + f.resuelto + '</div>' : '') +
+      '<div class="f-files">' + f.files + '</div>';
+
+    var box = art.querySelector(".f-check");
+    box.checked = done;
+    box.addEventListener("change", function(){
+      local[f.id] = box.checked;
+      try { localStorage.setItem(LS, JSON.stringify(local)); } catch(e){}
+      art.classList.toggle("done", box.checked);
+      art.querySelector(".f-sev").textContent = box.checked ? "Resuelto" : f.sevLabel;
+      progreso();
+    });
+    return art;
+  }
+
+  function progreso(){
+    var n = HALLAZGOS.filter(estado).length;
+    var t = HALLAZGOS.length;
+    document.getElementById("progress-count").textContent = n + " / " + t + " resueltos";
+    document.getElementById("progress-fill").style.width = (n / t * 100) + "%";
+  }
+
+  ["a","b","c"].forEach(function(g){
+    var host = document.getElementById("findings-" + g);
+    if(!host) return;
+    HALLAZGOS.filter(function(f){ return f.g === g; })
+             .forEach(function(f){ host.appendChild(nodo(f)); });
+  });
+  progreso();
+})();
+</script>
+</body>
+</html>

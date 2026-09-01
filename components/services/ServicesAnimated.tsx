@@ -209,7 +209,7 @@ export function ServicesAnimated() {
                     viewport={{ once: true }}
                     className="mt-32 mb-8 text-center"
                 >
-                    <CTAButton href="#contacto">{t('services.ctaButton')} <ArrowRight size={18} /></CTAButton>
+                    <CTAButton href="#contacto" origen="servicios">{t('services.ctaButton')} <ArrowRight size={18} /></CTAButton>
                 </motion.div>
             </div>
         </section>

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import clsx from "clsx";
 import type { ReactNode } from "react";
+import { contactoIniciado, type Canal, type Origen } from "@/lib/analytics";
 
 export type CTAButtonProps = {
   /**
@@ -38,6 +39,17 @@ export type CTAButtonProps = {
    * Link rel attribute (e.g., "noopener noreferrer" for external links).
    */
   rel?: string;
+  /**
+   * Sección desde la que se hizo el click. Si está presente, el botón reporta
+   * `contacto_iniciado` a analytics — es lo que después permite saber qué parte
+   * del argumento genera contactos.
+   */
+  origen?: Origen;
+  /**
+   * Canal por el que se intenta contactar. Por defecto "form", que es a donde
+   * llevan los CTA que bajan a la sección de contacto.
+   */
+  canal?: Canal;
 };
 
 /**
@@ -53,6 +65,8 @@ export function CTAButton({
   children,
   target,
   rel,
+  origen,
+  canal = "form",
 }: CTAButtonProps) {
   const baseClasses =
     "inline-flex items-center gap-3 px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 transition-all duration-300 cursor-pointer";
@@ -62,6 +76,11 @@ export function CTAButton({
       "bg-[#D52169] text-white border-transparent hover:bg-[#28292D] hover:border-[#28292D]",
     secondary:
       "bg-transparent text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D]",
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    if (origen) contactoIniciado(origen, canal);
+    onClick?.(e);
   };
 
   // Hover offset (x) only for the primary pink button – matches original design.
@@ -77,7 +96,7 @@ export function CTAButton({
         aria-label={alt}
         target={target}
         rel={rel}
-        onClick={onClick}
+        onClick={handleClick}
         whileTap={{ scale: 0.95 }}
         {...hoverProps}
         className={clsx(baseClasses, variantMap[variant], className)}
@@ -91,7 +110,7 @@ export function CTAButton({
   return (
     <motion.button
       aria-label={alt}
-      onClick={onClick}
+      onClick={handleClick}
       whileTap={{ scale: 0.95 }}
       {...hoverProps}
       className={clsx(baseClasses, variantMap[variant], className)}

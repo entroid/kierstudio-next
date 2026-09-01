@@ -6,10 +6,14 @@ import { Projects } from "@/components/projects";
 import { Process } from "@/components/process";
 import { Testimonial } from "@/components/testimonial";
 import { CTA } from "@/components/cta";
+import { SeccionVista } from "@/components/SeccionVista";
 
 export default function HomePage() {
   return (
     <main>
+      {/* ANALYTICS: profundidad de lectura por sección */}
+      <SeccionVista />
+
       {/* SECTION: HERO */}
       <Hero />
 
