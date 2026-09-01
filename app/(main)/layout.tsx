@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { FloatingControls } from "@/components/FloatingControls";
 import { Botpress } from "@/components/Botpress";
+import { HashScroll } from "@/components/HashScroll";
 
 export default function MainLayout({
   children,
@@ -10,6 +11,9 @@ export default function MainLayout({
 }) {
   return (
     <>
+      {/* GLOBAL: RESOLUCIÓN DE ANCLAS (#servicios, #contacto) POST-HIDRATACIÓN */}
+      <HashScroll />
+
       {/* GLOBAL: NAVIGATION */}
       <Navigation />
 

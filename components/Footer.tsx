@@ -70,7 +70,8 @@ export function Footer() {
                 </span>
               </motion.a>
 
-              <motion.div
+              <motion.a
+                href="mailto:kierstudio.info@gmail.com"
                 whileHover={{ x: 5 }}
                 className="flex items-center gap-3 text-white/60 hover:text-[#D52169] transition-colors cursor-pointer"
               >
@@ -79,9 +80,9 @@ export function Footer() {
                   className="font-['Archivo',sans-serif] text-[0.875rem]"
                   style={{ fontWeight: 400 }}
                 >
-                  kierstudio.info@gmail.com.com
+                  kierstudio.info@gmail.com
                 </span>
-              </motion.div>
+              </motion.a>
 
               <motion.a
                 href="https://wa.me/5493417211814?text=Hi%20Kier%20Studio.%20I%20am%20contacting%20through%20your%20website."

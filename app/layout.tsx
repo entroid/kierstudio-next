@@ -16,11 +16,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kierstudio.com"),
   alternates: {
     canonical: "/",
-    languages: {
-      "en": "/en",
-      "es": "/es",
-      "x-default": "/"
-    },
   },
   openGraph: {
     type: "website",
@@ -31,10 +26,10 @@ export const metadata: Metadata = {
     siteName: "Kier Studio",
     images: [
       {
-        url: "/hero.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Kier Studio - SaaS & Web Development Agency",
+        alt: "Kier Studio — Diseño web y sistemas a medida",
       },
     ],
   },
@@ -42,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kier Studio — Diseño Web y Sistemas Digitales a Medida",
     description: "Páginas web profesionales y sistemas a medida para negocios que quieren crecer. Trabajamos con negocios de todo el país. Consultanos sin cargo.",
-    images: ["/hero.png"],
+    images: ["/og.png"],
     creator: "@kierstudio_",
   },
   robots: {
