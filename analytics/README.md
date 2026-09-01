@@ -4,6 +4,13 @@ Un solo archivo, `reporte.html`, que acumula todas las mediciones. Se abre hacie
 
 No es un panel en vivo: un HTML del repo no puede consultar PostHog ni Search Console por su cuenta. Es una serie de fotos, y el valor está en la serie.
 
+## Ciclo abierto
+
+[`ciclo-2026-09.md`](./ciclo-2026-09.md) — línea de base congelada el 2026-09-01,
+revisión el **2026-09-15**. Mientras esté abierto, no se toca el sitio. Ese archivo
+tiene el traspaso completo: qué se instrumentó, contra qué se compara y las consultas
+exactas para la revisión.
+
 ## Cómo agregar una medición
 
 **No hace falta tocar el HTML.** Se agrega un objeto al array `mediciones` del bloque `<script id="mediciones" type="application/json">`, al principio del archivo. La página se dibuja sola a partir del último elemento y compara automáticamente contra el anterior.
