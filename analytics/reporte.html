@@ -134,6 +134,30 @@
   td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
   tr:last-child td{border-bottom:none}
 
+  /* ---------- tabs ---------- */
+  .tabs{
+    display:flex;flex-wrap:wrap;gap:2px;margin:0 0 2px;
+    border-bottom:2px solid var(--line);
+  }
+  .tab{
+    appearance:none;background:none;border:none;cursor:pointer;
+    font-family:var(--f-mono);font-size:11.5px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+    padding:13px 18px;position:relative;bottom:-2px;
+    border-bottom:2px solid transparent;transition:color .15s,border-color .15s;
+    display:inline-flex;align-items:center;gap:9px;white-space:nowrap;
+  }
+  .tab:hover{color:var(--ink-2)}
+  .tab:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+  .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+  .tab .tdot{width:7px;height:7px;border-radius:50%;flex:0 0 auto;background:currentColor}
+  .tab[data-health="ok"] .tdot{background:var(--ok)}
+  .tab[data-health="warn"] .tdot{background:var(--warn)}
+  .tab[data-health="bad"] .tdot{background:var(--bad)}
+  .panel[hidden]{display:none}
+  .panel{padding-top:8px}
+  .panel-lede{max-width:var(--measure);color:var(--ink-2);margin:22px 0 6px}
+
   /* ---------- status ---------- */
   .chip{
     display:inline-flex;align-items:center;gap:6px;
@@ -277,9 +301,18 @@
   </section>
 
   <section class="block">
-    <span class="eyebrow">Fuente 1 de 2</span>
-    <h2 class="block-title">PostHog</h2>
-    <p class="block-lede">Producto analytics del sitio. Es la única fuente que ve el comportamiento dentro de la página; hoy sólo con eventos automáticos.</p>
+    <span class="eyebrow">Fuentes</span>
+    <h2 class="block-title">De dónde salen los números</h2>
+    <p class="block-lede">Cada fuente responde una pregunta distinta y ninguna reemplaza a la otra. El punto de color indica si esa fuente está entregando lo que debería.</p>
+
+    <div class="tabs" role="tablist" aria-label="Fuentes de datos">
+      <button class="tab" role="tab" id="tab-posthog" aria-controls="panel-posthog" aria-selected="true" data-health="warn"><span class="tdot"></span>PostHog</button>
+      <button class="tab" role="tab" id="tab-buscador" aria-controls="panel-buscador" aria-selected="false" tabindex="-1" data-health="ok"><span class="tdot"></span>Search Console</button>
+      <button class="tab" role="tab" id="tab-meta" aria-controls="panel-meta" aria-selected="false" tabindex="-1" data-health="warn"><span class="tdot"></span>Meta Pixel</button>
+    </div>
+
+    <div class="panel" id="panel-posthog" role="tabpanel" aria-labelledby="tab-posthog" tabindex="0">
+    <p class="panel-lede">Producto analytics del sitio. Es la única fuente que ve el comportamiento dentro de la página; hoy sólo con eventos automáticos.</p>
 
     <div class="status-list" data-render id="ph-estado"></div>
 
@@ -306,12 +339,10 @@
 
     <h3 class="sub">Eventos recolectados (30 días)</h3>
     <div class="tw"><table data-render id="ph-eventos"></table></div>
-  </section>
+    </div><!-- /panel-posthog -->
 
-  <section class="block">
-    <span class="eyebrow">Fuente 2 de 2</span>
-    <h2 class="block-title">Google Search Console</h2>
-    <p class="block-lede">Cómo se ve el sitio desde el buscador. Es la fuente que explica la adquisición: PostHog sólo ve a quien ya llegó.</p>
+    <div class="panel" id="panel-buscador" role="tabpanel" aria-labelledby="tab-buscador" tabindex="0" hidden>
+    <p class="panel-lede">Cómo se ve el sitio desde el buscador. Es la fuente que explica la adquisición: PostHog sólo ve a quien ya llegó.</p>
 
     <div class="tiles" data-render id="gsc-tiles"></div>
 
@@ -320,13 +351,12 @@
 
     <h3 class="sub">Páginas no indexadas y por qué</h3>
     <div class="tw"><table data-render id="gsc-noindex"></table></div>
-  </section>
+    </div><!-- /panel-buscador -->
 
-  <section class="block">
-    <span class="eyebrow">Píxel</span>
-    <h2 class="block-title">Meta Pixel</h2>
-    <p class="block-lede">Instalado y disparando. Sin acceso programático desde acá: los números de campañas se leen en el Administrador de Eventos de Meta y se cargan a mano en el JSON si algún día hay pauta.</p>
+    <div class="panel" id="panel-meta" role="tabpanel" aria-labelledby="tab-meta" tabindex="0" hidden>
+    <p class="panel-lede">Instalado y disparando. Sin acceso programático desde acá: los números de campañas se leen en el Administrador de Eventos de Meta y se cargan a mano en el JSON si algún día hay pauta.</p>
     <div class="status-list" data-render id="meta-estado"></div>
+    </div><!-- /panel-meta -->
   </section>
 
   <section class="block">
@@ -558,6 +588,46 @@
     "Sólo envía " + m.eventos.join(", ") + ". Sin evento de contacto, una campaña no puede optimizar por resultado ni medir retorno.", "bad", "Ninguno");
   statusRow(me, "Consentimiento",
     "El píxel dispara antes de cualquier consentimiento, con una política de cookies publicada en el sitio.", "warn", "Sin banner");
+
+  /* ---------- tabs ---------- */
+  (function(){
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+    if(!tabs.length) return;
+    var LS = "kier-analytics-tab";
+
+    function activar(tab, mover){
+      tabs.forEach(function(t){
+        var sel = t === tab;
+        t.setAttribute("aria-selected", sel ? "true" : "false");
+        t.tabIndex = sel ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if(panel) panel.hidden = !sel;
+      });
+      if(mover) tab.focus();
+      try { localStorage.setItem(LS, tab.id); } catch(e){}
+    }
+
+    tabs.forEach(function(tab, i){
+      tab.addEventListener("click", function(){ activar(tab, false); });
+      tab.addEventListener("keydown", function(e){
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if(d){
+          e.preventDefault();
+          activar(tabs[(i + d + tabs.length) % tabs.length], true);
+        } else if(e.key === "Home"){
+          e.preventDefault(); activar(tabs[0], true);
+        } else if(e.key === "End"){
+          e.preventDefault(); activar(tabs[tabs.length - 1], true);
+        }
+      });
+    });
+
+    // Restaurar la última pestaña abierta (conveniencia personal, por navegador).
+    var guardada = null;
+    try { guardada = localStorage.getItem(LS); } catch(e){}
+    var inicial = guardada && document.getElementById(guardada);
+    activar(inicial && inicial.getAttribute("role") === "tab" ? inicial : tabs[0], false);
+  })();
 })();
 </script>
 </body>
