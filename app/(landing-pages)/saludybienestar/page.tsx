@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/components/LanguageContext";
 import { LogoCompact } from "@/components/Logo";
-import { en } from "@/translations";
+import { es } from "@/translations";
 import { CTAButton } from "@/components/cta/CTAButton";
 import { LandingHeader } from "@/components/landing-pages/LandingHeader";
 
@@ -38,9 +38,10 @@ export default function SaludYBienestarLandingPage() {
     setMounted(true);
   }, []);
 
-  // Force English on initial render (SSR + Hydration) to guarantee 100% hydration matching.
-  // Smoothly transition to active language (Spanish/English) after mounting.
-  const data = mounted ? ((translations as any).saludybienestar || en.saludybienestar) : en.saludybienestar;
+  // Español en el render inicial (SSR + hidratación): es el idioma que se indexa
+  // y garantiza que el HTML servido coincida con el primer render del cliente.
+  // Después del montaje pasa al idioma activo si el visitante eligió otro.
+  const data = mounted ? ((translations as any).saludybienestar || es.saludybienestar) : es.saludybienestar;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

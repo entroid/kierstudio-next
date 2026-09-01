@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "es_AR",
     url: "https://kierstudio.com",
     title: "Kier Studio — Diseño Web y Sistemas Digitales a Medida",
     description: "Páginas web profesionales y sistemas a medida para negocios que quieren crecer. Trabajamos con negocios de todo el país. Consultanos sin cargo.",
@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/k-logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -73,7 +73,8 @@ export default function RootLayout({
               "name": "Kier Studio",
               "url": "https://kierstudio.com",
               "logo": "https://kierstudio.com/k-logo.svg",
-              "description": "We craft impactful SaaS and Websites for growth and success. Strategic design and development services based in Rosario, Argentina.",
+              "description": "Diseñamos y desarrollamos sitios web, sistemas a medida y herramientas digitales para negocios que quieren crecer. Estudio de diseño y desarrollo con sede en Rosario, Argentina.",
+              "inLanguage": "es-AR",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Rosario",

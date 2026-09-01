@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/components/LanguageContext";
-import { en } from "@/translations";
+import { es } from "@/translations";
 import { CTAButton } from "@/components/cta/CTAButton";
 import { LandingHeader } from "@/components/landing-pages/LandingHeader";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
@@ -31,15 +31,15 @@ export default function ContactoLandingPage() {
     setMounted(true);
   }, []);
 
-  // Guarantee hydration matching by rendering from a known fallback on SSR, 
-  // then shifting to active language on the client side.
+  // Español como fallback de SSR para que el HTML servido —el que se indexa—
+  // coincida con el primer render del cliente. Después pasa al idioma activo.
   const data = mounted
-    ? ((translations as any).presentacion || en.presentacion)
-    : en.presentacion;
+    ? ((translations as any).presentacion || es.presentacion)
+    : es.presentacion;
 
   const projectsData = mounted
-    ? ((translations as any).projectsData || en.projectsData)
-    : en.projectsData;
+    ? ((translations as any).projectsData || es.projectsData)
+    : es.projectsData;
 
   // Get first 3 projects
   const featuredProjects = projectsData.slice(0, 3);
