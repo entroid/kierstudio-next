@@ -20,8 +20,13 @@ const translations = {
   es,
 };
 
+// El español es el idioma del render: es lo que sirve el servidor y, por lo
+// tanto, lo único que indexan los buscadores. El inglés existe como preferencia
+// del visitante (toggle o navegador), nunca como estado inicial.
+const DEFAULT_LANGUAGE: Language = "es";
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
+  const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE);
   const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch
@@ -34,23 +39,32 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (!mounted) return;
 
     try {
-      // Check localStorage first
+      // La preferencia explícita del visitante gana siempre.
       const stored = localStorage.getItem("language") as Language | null;
 
-      if (stored && (stored === "en" || stored === "es")) {
+      if (stored === "en" || stored === "es") {
         setLanguageState(stored);
-      } else {
-        // Detect browser language
-        const browserLang = navigator.language.toLowerCase();
-        const detectedLang = browserLang.startsWith("es") ? "es" : "en";
-        setLanguageState(detectedLang);
-        localStorage.setItem("language", detectedLang);
+        return;
+      }
+
+      // Sin preferencia guardada: sólo nos movemos del español si el navegador
+      // claramente no es hispanohablante. Así el visitante hispanohablante —que
+      // es el primario— nunca ve un cambio de idioma en pantalla.
+      const browserLang = (navigator.language || "").toLowerCase();
+      if (browserLang && !browserLang.startsWith("es")) {
+        setLanguageState("en");
       }
     } catch (error) {
-      // Fallback to English if error
-      setLanguageState("en");
+      // Ante cualquier error, nos quedamos en el idioma del render.
+      setLanguageState(DEFAULT_LANGUAGE);
     }
   }, [mounted]);
+
+  // Mantener <html lang> en sincronía con el idioma que se está mostrando.
+  useEffect(() => {
+    if (!mounted) return;
+    document.documentElement.lang = language;
+  }, [language, mounted]);
 
   // Persist language changes
   const setLanguage = (lang: Language) => {
