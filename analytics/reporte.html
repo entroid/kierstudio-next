@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analytics · Kier Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<!--
+  REPORTE DE ANALYTICS — KIER STUDIO
+  Archivo único y acumulativo. Cada medición se agrega como un objeto nuevo
+  al array "mediciones" del bloque JSON de abajo; la página se dibuja sola a
+  partir de ese array y compara automáticamente contra la medición anterior.
+  No hace falta tocar el HTML para agregar un reporte: sólo el JSON.
+  Ver analytics/README.md.
+-->
+
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --paper-2:#F5F2F4;
+    --paper-3:#EBE6E9;
+    --ink:#1B1C1F;
+    --ink-2:#5B5A61;
+    --ink-3:#8B8892;
+    --line:#DFD9DD;
+    --line-2:#C9C2C7;
+    --accent:#D52169;
+    --accent-wash:#FBEBF2;
+    --ok:#2E7D4F;
+    --warn:#A65200;
+    --bad:#D52169;
+    --f-display:'Archivo','Helvetica Neue',Arial,sans-serif;
+    --f-mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+    --measure:66ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0C0C0E; --paper-2:#141317; --paper-3:#1D1C21;
+      --ink:#F2EFF1; --ink-2:#A7A3AB; --ink-3:#77747D;
+      --line:#28262D; --line-2:#3A373F;
+      --accent:#F0397F; --accent-wash:#26101A;
+      --ok:#6BBF8E; --warn:#E09A3A; --bad:#F0397F;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0C0C0E; --paper-2:#141317; --paper-3:#1D1C21;
+    --ink:#F2EFF1; --ink-2:#A7A3AB; --ink-3:#77747D;
+    --line:#28262D; --line-2:#3A373F;
+    --accent:#F0397F; --accent-wash:#26101A;
+    --ok:#6BBF8E; --warn:#E09A3A; --bad:#F0397F;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--f-display); font-size:16px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .shell{max-width:1020px;margin:0 auto;padding:0 24px}
+
+  .eyebrow{
+    font-family:var(--f-mono); font-size:11px; font-weight:500;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3);
+  }
+
+  header.masthead{border-bottom:2px solid var(--ink); padding:56px 0 26px}
+  .mast-top{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:baseline;margin-bottom:32px}
+  h1{
+    font-size:clamp(34px,6.5vw,62px); font-weight:900; line-height:.94;
+    letter-spacing:-.035em; text-transform:uppercase; margin:0 0 18px; text-wrap:balance;
+  }
+  h1 .em{color:var(--accent)}
+  .lede{max-width:var(--measure);color:var(--ink-2);margin:0}
+
+  section.block{padding:52px 0;border-top:1px solid var(--line)}
+  section.block:first-of-type{border-top:none}
+  h2.block-title{
+    font-size:clamp(23px,3.2vw,32px); font-weight:900; letter-spacing:-.02em;
+    text-transform:uppercase; line-height:1.05; margin:10px 0 10px; text-wrap:balance;
+  }
+  h3.sub{
+    font-family:var(--f-mono); font-size:11px; font-weight:600; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--ink-3); margin:34px 0 12px;
+  }
+  .block-lede{max-width:var(--measure);color:var(--ink-2);margin:0 0 30px}
+
+  /* ---------- stat tiles ---------- */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .tile{background:var(--paper-2);padding:18px 18px 20px}
+  .tile .k{
+    font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:10px;display:block;
+  }
+  .tile .v{
+    font-size:34px;font-weight:900;letter-spacing:-.03em;line-height:1;
+    font-variant-numeric:tabular-nums;display:block;
+  }
+  .tile .d{
+    font-family:var(--f-mono);font-size:11px;margin-top:8px;display:block;
+    font-variant-numeric:tabular-nums;color:var(--ink-3);
+  }
+  .tile .d.up{color:var(--ok)} .tile .d.down{color:var(--bad)}
+
+  /* ---------- charts ---------- */
+  figure{margin:0 0 8px}
+  figcaption{
+    font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:14px;
+  }
+  .bars{display:flex;flex-direction:column;gap:8px}
+  .bar-row{display:grid;grid-template-columns:minmax(96px,168px) 1fr auto;gap:12px;align-items:center}
+  .bar-label{font-family:var(--f-mono);font-size:12px;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bar-track{background:var(--paper-3);height:18px;position:relative;border-radius:2px;overflow:hidden}
+  .bar-fill{background:var(--accent);height:100%;border-radius:0 4px 4px 0;min-width:2px}
+  .bar-val{font-family:var(--f-mono);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);min-width:3.5ch;text-align:right}
+
+  .cols{display:flex;align-items:flex-end;gap:2px;height:132px;padding-top:8px}
+  .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;min-width:0}
+  .col .cbar{width:100%;background:var(--accent);border-radius:4px 4px 0 0;min-height:2px}
+  .col .cval{font-family:var(--f-mono);font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .col .clab{font-family:var(--f-mono);font-size:10px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+  /* ---------- tables ---------- */
+  .tw{overflow-x:auto;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;min-width:440px;background:var(--paper-2)}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:14px}
+  th{
+    font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:600;
+  }
+  td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+  tr:last-child td{border-bottom:none}
+
+  /* ---------- status ---------- */
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;padding:3px 9px;border:1px solid currentColor;border-radius:2px;
+  }
+  .chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.bad{color:var(--bad)}
+  .chip .dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:0 0 auto}
+
+  .status-list{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .status-row{background:var(--paper-2);padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start}
+  .status-row .name{font-weight:700;font-size:15px;margin-bottom:3px}
+  .status-row .why{color:var(--ink-2);font-size:14px;margin:0;max-width:var(--measure)}
+
+  .callout{
+    border:1px solid var(--line);border-left:4px solid var(--accent);
+    background:var(--accent-wash);padding:18px 20px;max-width:var(--measure);
+  }
+  .callout p{margin:0;font-size:15px} .callout p+p{margin-top:9px}
+
+  ul.insights{list-style:none;margin:0;padding:0;display:grid;gap:20px}
+  ul.insights li{padding-left:22px;border-left:2px solid var(--accent);max-width:var(--measure)}
+  ul.insights h4{margin:0 0 5px;font-size:16.5px;font-weight:700;letter-spacing:-.01em}
+  ul.insights p{margin:0;color:var(--ink-2);font-size:15px}
+
+  code{font-family:var(--f-mono);font-size:.87em;background:var(--paper-3);padding:1px 5px}
+
+  footer.foot{
+    border-top:2px solid var(--ink);padding:24px 0 56px;
+    font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-3);line-height:1.8;
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<script id="mediciones" type="application/json">
+{
+  "mediciones": [
+    {
+      "fecha": "2026-09-01",
+      "periodo": "12 semanas (2026-06-09 → 2026-09-01)",
+      "nota": "Primera medición con línea de base registrada. Incluye tráfico de prueba propio del 1 de septiembre.",
+      "posthog": {
+        "pageviews": 51,
+        "visitantes": 21,
+        "sesiones": 40,
+        "sesiones_1_pageview": 33,
+        "eventos_propios": 0,
+        "session_replay": "desactivado",
+        "semanal": [
+          {"semana":"10 ago","pageviews":20,"visitantes":11,"sesiones":17},
+          {"semana":"17 ago","pageviews":5,"visitantes":2,"sesiones":5},
+          {"semana":"24 ago","pageviews":8,"visitantes":5,"sesiones":7},
+          {"semana":"31 ago","pageviews":18,"visitantes":6,"sesiones":11}
+        ],
+        "origenes": [
+          {"origen":"Directo","pageviews":45,"visitantes":16},
+          {"origen":"Facebook","pageviews":2,"visitantes":2},
+          {"origen":"Instagram","pageviews":2,"visitantes":2},
+          {"origen":"Autorreferencia","pageviews":2,"visitantes":1}
+        ],
+        "dispositivos": [
+          {"dispositivo":"Escritorio","pageviews":46,"visitantes":19},
+          {"dispositivo":"Móvil","pageviews":5,"visitantes":3}
+        ],
+        "rutas": [
+          {"ruta":"/","pageviews":47,"visitantes":20},
+          {"ruta":"/accounting","pageviews":2,"visitantes":2},
+          {"ruta":"/contacto","pageviews":2,"visitantes":2}
+        ],
+        "profundidad": [
+          {"pv":"1 pageview","sesiones":33},
+          {"pv":"2 pageviews","sesiones":5},
+          {"pv":"3 pageviews","sesiones":1},
+          {"pv":"5 pageviews","sesiones":1}
+        ],
+        "eventos_30d": [
+          {"evento":"$autocapture","n":90,"personas":6},
+          {"evento":"$pageview","n":51,"personas":21},
+          {"evento":"$pageleave","n":21,"personas":6},
+          {"evento":"$rageclick","n":1,"personas":1}
+        ]
+      },
+      "buscador": {
+        "clics": 2,
+        "impresiones": 113,
+        "ctr": 1.8,
+        "posicion": 7.3,
+        "paginas_indexadas": 3,
+        "paginas_no_indexadas": 8,
+        "consultas": [
+          {"consulta":"kier","impresiones":25,"clics":0},
+          {"consulta":"kier official website","impresiones":6,"clics":0},
+          {"consulta":"kier design","impresiones":2,"clics":0},
+          {"consulta":"esteticas cerca de mi","impresiones":1,"clics":0},
+          {"consulta":"estéticas cerca de mí","impresiones":1,"clics":0}
+        ],
+        "no_indexadas": [
+          {"motivo":"Bloqueada por robots.txt","paginas":3,"estado":"resuelto"},
+          {"motivo":"No encontrada (404) — /es y /en","paginas":2,"estado":"resuelto"},
+          {"motivo":"Página con redirección (www)","paginas":2,"estado":"esperado"},
+          {"motivo":"Canónica alternativa","paginas":1,"estado":"esperado"}
+        ]
+      },
+      "meta": {
+        "estado": "activo",
+        "version": "2.9.390",
+        "pixel_id": "2551501831869054",
+        "eventos": ["PageView"],
+        "eventos_conversion": 0,
+        "consentimiento": false
+      }
+    }
+  ]
+}
+</script>
+
+<div class="shell">
+  <header class="masthead">
+    <div class="mast-top">
+      <span class="eyebrow">Reporte de analytics · kierstudio.com</span>
+      <span class="eyebrow" data-render id="cab-fecha"></span>
+    </div>
+    <h1>Cómo viene<br><span class="em">performando</span></h1>
+    <p class="lede" data-render id="cab-lede"></p>
+  </header>
+
+  <section class="block">
+    <span class="eyebrow">Resumen</span>
+    <h2 class="block-title">Los números de este período</h2>
+    <p class="block-lede" data-render id="resumen-lede"></p>
+    <div class="tiles" data-render id="tiles"></div>
+  </section>
+
+  <section class="block">
+    <span class="eyebrow">Lectura</span>
+    <h2 class="block-title">Qué dicen los datos</h2>
+    <p class="block-lede">Tres lecturas que se sostienen con los números de arriba. Todo porcentaje va con su N al lado: con este volumen, un porcentaje solo engaña.</p>
+    <ul class="insights" data-render id="insights"></ul>
+  </section>
+
+  <section class="block">
+    <span class="eyebrow">Fuente 1 de 2</span>
+    <h2 class="block-title">PostHog</h2>
+    <p class="block-lede">Producto analytics del sitio. Es la única fuente que ve el comportamiento dentro de la página; hoy sólo con eventos automáticos.</p>
+
+    <div class="status-list" data-render id="ph-estado"></div>
+
+    <h3 class="sub">Tráfico por semana</h3>
+    <figure>
+      <figcaption>Pageviews de producción, por semana</figcaption>
+      <div class="cols" data-render id="ph-semanal"></div>
+    </figure>
+
+    <h3 class="sub">De dónde llegan</h3>
+    <figure><div class="bars" data-render id="ph-origenes"></div></figure>
+
+    <h3 class="sub">Con qué dispositivo</h3>
+    <figure><div class="bars" data-render id="ph-dispositivos"></div></figure>
+
+    <h3 class="sub">Profundidad por sesión</h3>
+    <figure>
+      <figcaption>Cuántas páginas ve cada sesión</figcaption>
+      <div class="bars" data-render id="ph-profundidad"></div>
+    </figure>
+
+    <h3 class="sub">Páginas vistas</h3>
+    <div class="tw"><table data-render id="ph-rutas"></table></div>
+
+    <h3 class="sub">Eventos recolectados (30 días)</h3>
+    <div class="tw"><table data-render id="ph-eventos"></table></div>
+  </section>
+
+  <section class="block">
+    <span class="eyebrow">Fuente 2 de 2</span>
+    <h2 class="block-title">Google Search Console</h2>
+    <p class="block-lede">Cómo se ve el sitio desde el buscador. Es la fuente que explica la adquisición: PostHog sólo ve a quien ya llegó.</p>
+
+    <div class="tiles" data-render id="gsc-tiles"></div>
+
+    <h3 class="sub">Consultas que muestran el sitio</h3>
+    <div class="tw"><table data-render id="gsc-consultas"></table></div>
+
+    <h3 class="sub">Páginas no indexadas y por qué</h3>
+    <div class="tw"><table data-render id="gsc-noindex"></table></div>
+  </section>
+
+  <section class="block">
+    <span class="eyebrow">Píxel</span>
+    <h2 class="block-title">Meta Pixel</h2>
+    <p class="block-lede">Instalado y disparando. Sin acceso programático desde acá: los números de campañas se leen en el Administrador de Eventos de Meta y se cargan a mano en el JSON si algún día hay pauta.</p>
+    <div class="status-list" data-render id="meta-estado"></div>
+  </section>
+
+  <section class="block">
+    <span class="eyebrow">Sobre este archivo</span>
+    <h2 class="block-title">Cómo se actualiza</h2>
+    <div class="callout">
+      <p>Este reporte es <strong>una foto, no un panel en vivo</strong>. Un HTML del repo no puede consultar PostHog ni Search Console por su cuenta.</p>
+      <p>Para agregar una medición nueva no hace falta tocar el HTML: se agrega un objeto al array <code>mediciones</code> del bloque JSON del principio y la página se redibuja sola, comparando contra la anterior. El historial queda versionado en git, así que el diff muestra exactamente qué se movió entre reportes.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    Kier Studio · reporte generado a partir de consultas directas a PostHog (proyecto 551218) y Google Search Console (propiedad de dominio kierstudio.com).<br>
+    Google Analytics no está instalado: decisión consciente del 2026-09-01 — PostHog ya cubre ese rol y una tercera fuente sólo agrega discrepancias que reconciliar.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA;
+  try { DATA = JSON.parse(document.getElementById("mediciones").textContent); }
+  catch(e){ return; }
+
+  var ms = (DATA && DATA.mediciones) || [];
+  if(!ms.length) return;
+
+  var cur = ms[ms.length - 1];
+  var prev = ms.length > 1 ? ms[ms.length - 2] : null;
+
+  function el(tag, cls, txt){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(txt !== undefined && txt !== null) n.textContent = txt;
+    return n;
+  }
+  function fmt(n){
+    return typeof n === "number" ? n.toLocaleString("es-AR") : n;
+  }
+
+  /* ---------- cabecera ---------- */
+  document.getElementById("cab-fecha").textContent = cur.fecha + " · " + ms.length + (ms.length === 1 ? " medición" : " mediciones");
+  document.getElementById("cab-lede").textContent =
+    "Período: " + cur.periodo + ". " + (cur.nota || "");
+
+  document.getElementById("resumen-lede").textContent = prev
+    ? "Comparado contra la medición del " + prev.fecha + "."
+    : "Primera medición: no hay período anterior contra el cual comparar todavía. Las variaciones aparecen a partir del segundo reporte.";
+
+  /* ---------- tiles ---------- */
+  function tile(host, k, v, prevV, invertir){
+    var t = el("div","tile");
+    t.appendChild(el("span","k",k));
+    t.appendChild(el("span","v",fmt(v)));
+    if(prevV !== undefined && prevV !== null && typeof v === "number" && typeof prevV === "number"){
+      var diff = v - prevV;
+      var cls = diff === 0 ? "" : ((diff > 0) !== !!invertir ? "up" : "down");
+      var signo = diff > 0 ? "+" : "";
+      t.appendChild(el("span","d " + cls, diff === 0 ? "sin cambio" : signo + fmt(diff) + " vs anterior"));
+    } else {
+      t.appendChild(el("span","d","—"));
+    }
+    host.appendChild(t);
+  }
+
+  var ph = cur.posthog, pph = prev && prev.posthog;
+  var bs = cur.buscador, pbs = prev && prev.buscador;
+
+  var tiles = document.getElementById("tiles");
+  tile(tiles, "Visitantes únicos", ph.visitantes, pph && pph.visitantes);
+  tile(tiles, "Pageviews", ph.pageviews, pph && pph.pageviews);
+  tile(tiles, "Sesiones", ph.sesiones, pph && pph.sesiones);
+  tile(tiles, "Clics desde búsqueda", bs.clics, pbs && pbs.clics);
+  tile(tiles, "Eventos propios", ph.eventos_propios, pph && pph.eventos_propios);
+
+  /* ---------- insights ---------- */
+  var unaSola = ph.sesiones_1_pageview;
+  var insights = [
+    {
+      t: "La adquisición es el cuello de botella, no la conversión",
+      p: "El sitio recibió " + fmt(bs.clics) + " clics desde búsqueda sobre " + fmt(bs.impresiones) +
+         " impresiones en 90 días. Las consultas con volumen son todas de marca — y \"kier\" lo domina una constructora británica homónima. " +
+         "Sin presencia en búsquedas comerciales, ningún trabajo sobre la conversión del sitio va a ser medible: no hay N."
+    },
+    {
+      t: "El " + Math.round(unaSola / ph.sesiones * 100) + "% de las sesiones ve una sola página (" + unaSola + " de " + ph.sesiones + ")",
+      p: "No es rebote: es la forma de un one-pager. Por eso los pageviews no miden interés acá. La profundidad real de lectura no existe como dato hasta que estén los eventos de sección."
+    },
+    {
+      t: "No se puede construir el embudo todavía",
+      p: "Hay " + ph.eventos_propios + " eventos propios y session replay " + ph.session_replay +
+         ". Es decir: se sabe cuánta gente llega, y nada de qué hace ni por qué se va. Es lo primero a resolver."
+    }
+  ];
+  var ih = document.getElementById("insights");
+  insights.forEach(function(i){
+    var li = el("li");
+    li.appendChild(el("h4",null,i.t));
+    li.appendChild(el("p",null,i.p));
+    ih.appendChild(li);
+  });
+
+  /* ---------- estado PostHog ---------- */
+  function statusRow(host, name, why, chipCls, chipTxt){
+    var r = el("div","status-row");
+    var left = el("div");
+    left.appendChild(el("div","name",name));
+    left.appendChild(el("p","why",why));
+    r.appendChild(left);
+    var c = el("span","chip " + chipCls);
+    c.appendChild(el("span","dot"));
+    c.appendChild(document.createTextNode(chipTxt));
+    r.appendChild(c);
+    host.appendChild(r);
+  }
+
+  var phe = document.getElementById("ph-estado");
+  statusRow(phe, "Recolección de datos",
+    "Recibe pageviews, autocapture y pageleave desde producción.", "ok", "Funcionando");
+  statusRow(phe, "Eventos propios",
+    "Ninguno. Sin ellos no hay evento de conversión y el embudo no se puede reconstruir.", "bad", "Pendiente");
+  statusRow(phe, "Session replay",
+    "Desactivado en todas las sesiones. Con este volumen, mirar diez grabaciones vale más que cualquier porcentaje.", "bad", "Desactivado");
+  statusRow(phe, "Separación de desarrollo",
+    "El tráfico de localhost entra al mismo proyecto y ensucia la línea de base.", "warn", "Mezclado");
+
+  /* ---------- barras ---------- */
+  function bars(hostId, rows, labelKey, valKey){
+    var host = document.getElementById(hostId);
+    if(!host) return;
+    var max = rows.reduce(function(m,r){ return Math.max(m, r[valKey]); }, 0) || 1;
+    rows.forEach(function(r){
+      var row = el("div","bar-row");
+      row.appendChild(el("div","bar-label", r[labelKey]));
+      var track = el("div","bar-track");
+      var fill = el("div","bar-fill");
+      fill.style.width = Math.max(2, (r[valKey] / max) * 100) + "%";
+      track.appendChild(fill);
+      row.appendChild(track);
+      row.appendChild(el("div","bar-val", fmt(r[valKey])));
+      host.appendChild(row);
+    });
+  }
+  bars("ph-origenes", ph.origenes, "origen", "pageviews");
+  bars("ph-dispositivos", ph.dispositivos, "dispositivo", "pageviews");
+  bars("ph-profundidad", ph.profundidad, "pv", "sesiones");
+
+  /* ---------- columnas semanales ---------- */
+  (function(){
+    var host = document.getElementById("ph-semanal");
+    var rows = ph.semanal || [];
+    var max = rows.reduce(function(m,r){ return Math.max(m, r.pageviews); }, 0) || 1;
+    rows.forEach(function(r){
+      var c = el("div","col");
+      c.appendChild(el("div","cval", fmt(r.pageviews)));
+      var b = el("div","cbar");
+      b.style.height = Math.max(2, (r.pageviews / max) * 92) + "px";
+      c.appendChild(b);
+      c.appendChild(el("div","clab", r.semana));
+      host.appendChild(c);
+    });
+  })();
+
+  /* ---------- tablas ---------- */
+  function table(id, cols, rows, keys, numFrom){
+    var t = document.getElementById(id);
+    if(!t) return;
+    var thead = el("thead"), trh = el("tr");
+    cols.forEach(function(c,i){
+      var th = el("th", i >= numFrom ? "num" : null, c);
+      trh.appendChild(th);
+    });
+    thead.appendChild(trh); t.appendChild(thead);
+    var tb = el("tbody");
+    rows.forEach(function(r){
+      var tr = el("tr");
+      keys.forEach(function(k,i){
+        tr.appendChild(el("td", i >= numFrom ? "num" : null, fmt(r[k])));
+      });
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+  }
+
+  table("ph-rutas", ["Ruta","Pageviews","Visitantes"], ph.rutas, ["ruta","pageviews","visitantes"], 1);
+  table("ph-eventos", ["Evento","Cantidad","Personas"], ph.eventos_30d, ["evento","n","personas"], 1);
+
+  /* ---------- buscador ---------- */
+  var gt = document.getElementById("gsc-tiles");
+  tile(gt, "Clics", bs.clics, pbs && pbs.clics);
+  tile(gt, "Impresiones", bs.impresiones, pbs && pbs.impresiones);
+  tile(gt, "CTR %", bs.ctr, pbs && pbs.ctr);
+  tile(gt, "Posición media", bs.posicion, pbs && pbs.posicion, true);
+  tile(gt, "Páginas indexadas", bs.paginas_indexadas, pbs && pbs.paginas_indexadas);
+
+  table("gsc-consultas", ["Consulta","Impresiones","Clics"], bs.consultas, ["consulta","impresiones","clics"], 1);
+
+  (function(){
+    var t = document.getElementById("gsc-noindex");
+    var thead = el("thead"), trh = el("tr");
+    ["Motivo","Páginas","Estado"].forEach(function(c,i){
+      trh.appendChild(el("th", i === 1 ? "num" : null, c));
+    });
+    thead.appendChild(trh); t.appendChild(thead);
+    var tb = el("tbody");
+    bs.no_indexadas.forEach(function(r){
+      var tr = el("tr");
+      tr.appendChild(el("td",null,r.motivo));
+      tr.appendChild(el("td","num",fmt(r.paginas)));
+      var td = el("td");
+      var cls = r.estado === "resuelto" ? "ok" : "warn";
+      var c = el("span","chip " + cls);
+      c.appendChild(el("span","dot"));
+      c.appendChild(document.createTextNode(r.estado));
+      td.appendChild(c);
+      tr.appendChild(td);
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+  })();
+
+  /* ---------- meta ---------- */
+  var me = document.getElementById("meta-estado");
+  var m = cur.meta;
+  statusRow(me, "Píxel instalado",
+    "Versión " + m.version + ", ID " + m.pixel_id + ". Cola drenada, dispara correctamente.", "ok", m.estado);
+  statusRow(me, "Eventos de conversión",
+    "Sólo envía " + m.eventos.join(", ") + ". Sin evento de contacto, una campaña no puede optimizar por resultado ni medir retorno.", "bad", "Ninguno");
+  statusRow(me, "Consentimiento",
+    "El píxel dispara antes de cualquier consentimiento, con una política de cookies publicada en el sitio.", "warn", "Sin banner");
+})();
+</script>
+</body>
+</html>
