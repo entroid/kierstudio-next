@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowRight, ArrowLeft } from "lucide-react";
@@ -167,13 +166,15 @@ export function ProjectCase({ slug }: { slug: string }) {
                 <section className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-24">
                     <Titulo>{t("projects.caseGallery")}</Titulo>
                     <div className="grid md:grid-cols-2 gap-6 mt-8">
+                        {/* Sin `whileInView`: la imagen no puede depender de que
+                            se detecte su entrada en pantalla para hacerse visible.
+                            Sumado a la carga diferida de next/image eran dos
+                            dependencias del viewport encadenadas, y si una fallaba
+                            la galería quedaba en blanco. Es el mismo error que la
+                            auditoría marcó en la sección de servicios. */}
                         {project.images.map((src, i) => (
-                            <motion.div
+                            <div
                                 key={src}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.1 }}
-                                transition={{ duration: 0.4 }}
                                 className="relative aspect-[4/3] overflow-hidden bg-[#1a1a1a]"
                             >
                                 <ImageWithFallback
@@ -182,7 +183,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                     className="object-cover"
                                 />
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
 
