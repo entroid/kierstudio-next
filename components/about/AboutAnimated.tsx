@@ -17,14 +17,14 @@ export function AboutAnimated() {
                     viewport={{ once: true }}
                 >
                     <span
-                        className="font-['Archivo',sans-serif] text-[12px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                        className="font-archivo text-[12px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                         style={{ fontWeight: 600 }}
                     >
                         {t('about.tag')}
                     </span>
 
                     <h2
-                        className="font-['Archivo',sans-serif] text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="font-archivo text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
                         style={{ fontWeight: 900 }}
                     >
                         {t('about.title1')}
@@ -43,14 +43,14 @@ export function AboutAnimated() {
                             transition={{ delay: 0.2 }}
                         >
                             <p
-                                className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] mb-4"
+                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] mb-4"
                                 style={{ fontWeight: 400 }}
                             >
                                 {t('about.description1')}
                             </p>
 
                             <p
-                                className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
+                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
                                 style={{ fontWeight: 400 }}
                             >
                                 {t('about.description1b').split(t('about.description1Bold'))[0]}
@@ -66,7 +66,7 @@ export function AboutAnimated() {
                             transition={{ delay: 0.3 }}
                         >
                             <p
-                                className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
+                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
                                 style={{ fontWeight: 400 }}
                             >
                                 {t('about.description2')}
@@ -82,14 +82,14 @@ export function AboutAnimated() {
                             className="md:col-start-2"
                         >
                             <p
-                                className="font-['Archivo',sans-serif] text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] mb-10"
+                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] mb-10"
                                 style={{ fontWeight: 600 }}
                             >
                                 {t('about.description3')}
                             </p>
 
                             <h4
-                                className="font-['Archivo',sans-serif] text-[18px] md:text-[20px] uppercase text-[#D52169] mb-2"
+                                className="font-archivo text-[18px] md:text-[20px] uppercase text-[#D52169] mb-2"
                                 style={{ fontWeight: 700 }}
                             >
                                 {translations.about.benefitsTitle}
@@ -103,7 +103,7 @@ export function AboutAnimated() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
-                                        className="font-['Archivo',sans-serif] text-[15px] md:text-[16px] text-[#28292D]/80 dark:text-white/80 leading-[1.5] flex items-start gap-3"
+                                        className="font-archivo text-[15px] md:text-[16px] text-[#28292D]/80 dark:text-white/80 leading-[1.5] flex items-start gap-3"
                                         style={{ fontWeight: 500 }}
                                     >
                                         <span className="text-[#D52169] text-[16px] md:text-[18px] select-none flex-shrink-0">✦</span>

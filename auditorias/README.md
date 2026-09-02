@@ -6,7 +6,11 @@ Auditorías del sitio, una por archivo, en HTML autocontenido. Se abren haciendo
 
 | Archivo | Fecha | Estado |
 |---|---|---|
-| `2026-09-01-auditoria-inicial.html` | 2026-09-01 | 9 de 12 resueltos |
+| `2026-09-01-auditoria-inicial.html` | 2026-09-01 | **Cerrada** · 12 de 12 (11 resueltos, 1 descartado) |
+
+Una auditoría **cerrada** no se reabre ni se sigue editando: si aparece algo
+nuevo, va en una auditoría nueva. Queda como registro de en qué estado estaba el
+sitio, qué se decidió y qué se hizo.
 
 ## Convención de nombres
 

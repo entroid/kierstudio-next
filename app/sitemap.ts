@@ -13,6 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
+  // Las legales (/privacy, /terms, /cookies) no van: se sirven con `noindex`
+  // porque no aportan nada a quien busca. Ofrecerlas en el sitemap y a la vez
+  // pedir que no se indexen son señales contradictorias.
   return [
     {
       url: BASE,
@@ -21,23 +24,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...trabajos,
-    {
-      url: `${BASE}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${BASE}/terms`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${BASE}/cookies`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
   ]
 }

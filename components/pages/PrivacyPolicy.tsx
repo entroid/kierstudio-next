@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
       <h2>Contact Us</h2>
       <p>
         If you have questions about this Privacy Policy, please contact us at{" "}
-        <a href="mailto:info@kierstudio.com">info@kierstudio.com</a>.
+        <a href="mailto:kierstudio.info@gmail.com">kierstudio.info@gmail.com</a>.
       </p>
 
       <h2>Changes to This Policy</h2>

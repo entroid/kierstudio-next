@@ -35,15 +35,15 @@ export function LandingDiagnostic({
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-[40%_1fr] gap-16 items-start mb-20">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <span className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/50 mb-8 block italic" style={{ fontWeight: 600 }}>
+            <span className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/50 mb-8 block italic" style={{ fontWeight: 600 }}>
               {tag}
             </span>
-            <h2 className="font-['Archivo',sans-serif] text-[2.5rem] md:text-[4rem] leading-[0.9] tracking-[-0.03em] text-[#28292D] mb-8 uppercase" style={{ fontWeight: 900 }}>
+            <h2 className="font-archivo text-[2.5rem] md:text-[4rem] leading-[0.9] tracking-[-0.03em] text-[#28292D] mb-8 uppercase" style={{ fontWeight: 900 }}>
               {title1}<br />
               <span className="text-[#D52169]">{titleHighlight}</span><br />
               {title2}
             </h2>
-            <p className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/70 leading-[1.8] mb-10" style={{ fontWeight: 400 }}>
+            <p className="font-archivo text-[1rem] md:text-[1.125rem] text-[#28292D]/70 leading-[1.8] mb-10" style={{ fontWeight: 400 }}>
               {description}
             </p>
           </motion.div>
@@ -56,10 +56,10 @@ export function LandingDiagnostic({
                     <IconComponent className="text-[#D52169] group-hover:text-white transition-colors duration-300" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-['Archivo',sans-serif] text-[1.2rem] text-[#28292D] mb-2" style={{ fontWeight: 700 }}>
+                    <h3 className="font-archivo text-[1.2rem] text-[#28292D] mb-2" style={{ fontWeight: 700 }}>
                       {item.title}
                     </h3>
-                    <p className="font-['Archivo',sans-serif] text-[1rem] text-[#28292D]/60 leading-[1.7]" style={{ fontWeight: 400 }}>
+                    <p className="font-archivo text-[1rem] text-[#28292D]/60 leading-[1.7]" style={{ fontWeight: 400 }}>
                       {item.body}
                     </p>
                   </div>
@@ -70,7 +70,7 @@ export function LandingDiagnostic({
         </div>
 
         <div className="flex justify-center mt-24 mb-24">
-          <motion.a href="#form" whileHover={{ scale: 1.03, x: 5 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-3 bg-[#D52169] text-white px-8 py-5 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-all duration-300 cursor-pointer" style={{ fontWeight: 700 }}>
+          <motion.a href="#form" whileHover={{ scale: 1.03, x: 5 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-3 bg-[#D52169] text-white px-8 py-5 font-archivo text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-all duration-300 cursor-pointer" style={{ fontWeight: 700 }}>
             {ctaButton} <ArrowRight size={18} />
           </motion.a>
         </div>
@@ -84,10 +84,10 @@ export function LandingDiagnostic({
           className="p-10 md:p-16 relative overflow-hidden bg-white/50"
         >
           <div className="relative z-10">
-            <h3 className="font-['Archivo',sans-serif] text-[2rem] md:text-[3rem] leading-[1.2] text-center mb-4 text-[#D52169]" style={{ fontWeight: 800 }}>
+            <h3 className="font-archivo text-[2rem] md:text-[3rem] leading-[1.2] text-center mb-4 text-[#D52169]" style={{ fontWeight: 800 }}>
               {outcomes.title}
             </h3>
-            <p className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/60 text-center leading-[1.8] mb-10" style={{ fontWeight: 400 }}>
+            <p className="font-archivo text-[1rem] md:text-[1.125rem] text-[#28292D]/60 text-center leading-[1.8] mb-10" style={{ fontWeight: 400 }}>
               {outcomes.subtitle}
             </p>
 
@@ -97,7 +97,7 @@ export function LandingDiagnostic({
                   <div className="w-6 h-6 rounded-full bg-[#D52169] flex items-center justify-center shrink-0 mt-1">
                     <Check size={14} className="text-white" />
                   </div>
-                  <p className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/60 leading-[1.5]" style={{ fontWeight: 500 }}>
+                  <p className="font-archivo text-[1rem] md:text-[1.125rem] text-[#28292D]/60 leading-[1.5]" style={{ fontWeight: 500 }}>
                     {item}
                   </p>
                 </div>

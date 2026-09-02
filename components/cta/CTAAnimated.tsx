@@ -95,14 +95,14 @@ export function CTAAnimated() {
                     >
                         <div className="mb-12">
                             <span
-                                className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                                className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                                 style={{ fontWeight: 600 }}
                             >
                                 {t('cta.tag')}
                             </span>
 
                             <h2
-                                className="font-['Archivo',sans-serif] text-[2rem] md:text-[4.5rem] lg:text-[5.2rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                                className="font-archivo text-[2rem] md:text-[4.5rem] lg:text-[5.2rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                                 style={{ fontWeight: 900 }}
                             >
                                 {t('cta.title1')}
@@ -111,7 +111,7 @@ export function CTAAnimated() {
                             </h2>
 
                             <p
-                                className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 leading-[1.4]"
+                                className="font-archivo text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 leading-[1.4]"
                                 style={{ fontWeight: 600 }}
                             >
                                 {t('cta.subtitle')}
@@ -130,13 +130,13 @@ export function CTAAnimated() {
                                 </div>
                                 <div>
                                     <div
-                                        className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/50 dark:text-white/50 mb-1"
+                                        className="font-archivo text-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/50 dark:text-white/50 mb-1"
                                         style={{ fontWeight: 600 }}
                                     >
                                         {t('cta.emailLabel')}
                                     </div>
                                     <div
-                                        className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D] dark:text-white"
+                                        className="font-archivo text-[1.125rem] text-[#28292D] dark:text-white"
                                         style={{ fontWeight: 500 }}
                                     >
                                         kierstudio.info@gmail.com
@@ -159,13 +159,13 @@ export function CTAAnimated() {
                                 </div>
                                 <div>
                                     <div
-                                        className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/50 dark:text-white/50 mb-1"
+                                        className="font-archivo text-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/50 dark:text-white/50 mb-1"
                                         style={{ fontWeight: 600 }}
                                     >
                                         {t('cta.whatsappLabel')}
                                     </div>
                                     <div
-                                        className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D] dark:text-white"
+                                        className="font-archivo text-[1.125rem] text-[#28292D] dark:text-white"
                                         style={{ fontWeight: 500 }}
                                     >
                                         +54 9 341 721 1814
@@ -188,13 +188,13 @@ export function CTAAnimated() {
                                 </div>
                                 <div>
                                     <div
-                                        className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/50 dark:text-white/50 mb-1"
+                                        className="font-archivo text-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/50 dark:text-white/50 mb-1"
                                         style={{ fontWeight: 600 }}
                                     >
                                         {t('cta.instagramLabel')}
                                     </div>
                                     <div
-                                        className="font-['Archivo',sans-serif] text-[1.125rem] text-[#28292D] dark:text-white"
+                                        className="font-archivo text-[1.125rem] text-[#28292D] dark:text-white"
                                         style={{ fontWeight: 500 }}
                                     >
                                         @kierstudio_
@@ -211,7 +211,7 @@ export function CTAAnimated() {
                         className="bg-[#F5F5F5] dark:bg-[#1a1a1a] p-8 md:p-12"
                     >
                         <h3
-                            className="font-['Archivo',sans-serif] text-[1.5rem] text-[#28292D] dark:text-white mb-8"
+                            className="font-archivo text-[1.5rem] text-[#28292D] dark:text-white mb-8"
                             style={{ fontWeight: 700 }}
                         >
                             {t('cta.formTitle')}
@@ -221,7 +221,7 @@ export function CTAAnimated() {
                             <div>
                                 <label
                                     htmlFor="name"
-                                    className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2"
+                                    className="block font-archivo text-[0.875rem] text-[#28292D] dark:text-white mb-2"
                                     style={{ fontWeight: 600 }}
                                 >
                                     {t('cta.formName')}
@@ -238,7 +238,7 @@ export function CTAAnimated() {
                             <div>
                                 <label
                                     htmlFor="email"
-                                    className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2"
+                                    className="block font-archivo text-[0.875rem] text-[#28292D] dark:text-white mb-2"
                                     style={{ fontWeight: 600 }}
                                 >
                                     {t('cta.formEmail')}
@@ -255,7 +255,7 @@ export function CTAAnimated() {
                             {/* <div>
                                 <label
                                     htmlFor="projectType"
-                                    className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2"
+                                    className="block font-archivo text-[0.875rem] text-[#28292D] dark:text-white mb-2"
                                     style={{ fontWeight: 600 }}
                                 >
                                     {t('cta.formProject')}
@@ -281,7 +281,7 @@ export function CTAAnimated() {
                             <div>
                                 <label
                                     htmlFor="message"
-                                    className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] dark:text-white mb-2"
+                                    className="block font-archivo text-[0.875rem] text-[#28292D] dark:text-white mb-2"
                                     style={{ fontWeight: 600 }}
                                 >
                                     {t('cta.formMessage')}
@@ -318,7 +318,7 @@ export function CTAAnimated() {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 disabled={submitting}
-                                className="w-full bg-[#D52169] text-white py-4 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                                className="w-full bg-[#D52169] text-white py-4 font-archivo text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer"
                                 style={{ fontWeight: 700 }}
                             >
                                 {submitting ? (

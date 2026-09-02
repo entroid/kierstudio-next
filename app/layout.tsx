@@ -1,9 +1,28 @@
 import type { Metadata } from "next";
+import { Archivo } from "next/font/google";
 import "./tailwind.css";
 import "./performance.css";
 import { ThemeProvider } from "@/components/ThemeContext";
 import { LanguageProvider } from "@/components/LanguageContext";
 import { PHProvider, PostHogPageViewWrapper } from "@/components/PostHogProvider";
+import { ConsentBanner } from "@/components/ConsentBanner";
+
+/**
+ * Archivo es la única fuente que el sitio usa de verdad (207 usos; las demás
+ * familias que aparecen en las clases vienen de exportar desde Figma con nombres
+ * tipo `Inter:Regular`, que no son CSS válido y nunca cargaron nada).
+ *
+ * Se carga con next/font en vez de un `@import` de CSS: el `@import` bloqueaba
+ * el render —el navegador tenía que ir a Google Fonts antes de pintar— y traía
+ * los nueve pesos. Esto la auto-hospeda, la sirve desde el mismo dominio y sólo
+ * con los pesos que se usan.
+ */
+const archivo = Archivo({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--fuente-archivo",
+});
 
 // SEO Metadata
 export const metadata: Metadata = {
@@ -59,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" className={archivo.variable} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/k-logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -98,33 +117,14 @@ export default function RootLayout({
             })
           }}
         />
-        {/* Meta Pixel Code */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-              n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];
-              s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '2551501831869054');
-              fbq('track', 'PageView');
-            `,
-          }}
-        />
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=2551501831869054&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-        {/* End Meta Pixel Code */}
+        {/* El Meta Pixel ya no vive acá.
+            Disparaba en el <head>, es decir antes de que el visitante pudiera
+            decidir nada, mientras el sitio publicaba una política de cookies.
+            Ahora lo carga <ConsentBanner /> y sólo después de un "aceptar"
+            explícito. Ver lib/consentimiento.ts.
+
+            El <img> de <noscript> se eliminó por lo mismo: disparaba sin
+            consentimiento posible y sin forma de condicionarlo. */}
       </head>
       <body>
         <PHProvider>
@@ -132,6 +132,7 @@ export default function RootLayout({
             <LanguageProvider>
               <PostHogPageViewWrapper />
               {children}
+              <ConsentBanner />
             </LanguageProvider>
           </ThemeProvider>
         </PHProvider>

@@ -265,13 +265,13 @@
       files:"components/cta/CTAAnimated.tsx · components/PostHogProvider.tsx",
       resuelto:"Resuelto el 2026-09-01 · commit b3d35c5 · los cinco eventos en lib/analytics.ts. Session replay activado el mismo día, todavía sin una grabación que lo confirme." },
 
-    { id:"b5", g:"b", rank:"09", sev:3, sevLabel:"Medio", done:false,
+    { id:"b5", g:"b", rank:"09", sev:3, sevLabel:"Medio", done:true,
       title:"En mobile el CTA queda debajo del fold, y compite con cuatro botones flotantes",
       what:"A 375×812 el primer viewport termina en \"que quieren crecer.\": el video ocupa el 40% de arriba y los dos botones quedan afuera. Abajo a la derecha conviven chat (con un pulso en un <code>while(true)</code> sin cleanup), idioma, dark mode y el widget de Botpress.",
       fix:"En mobile, achicar el video a una banda o moverlo debajo del texto para que titular, subtítulo y botón entren en el primer viewport. Reducir los flotantes a uno.",
       impact:"El CTA principal deja de depender de que la persona scrollee, y se quita el ruido visual justo en la esquina donde descansa el pulgar.",
       files:"components/hero/HeroAnimated.tsx · components/FloatingControls.tsx:62-84",
-      resuelto:"" },
+      resuelto:"Resuelto el 2026-09-01 · en mobile el video pasa debajo del texto, como banda de 220px: a 375×812 titular, subtítulo, descripción y los dos botones entran en el primer viewport. Los cuatro flotantes siguen ahí — es un cambio aparte." },
 
     { id:"c1", g:"c", rank:"10", sev:2, sevLabel:"Alto", done:true,
       title:"Tres errores de datos que se leen como descuido",
@@ -281,21 +281,21 @@
       files:"components/Footer.tsx · translations/*/projectsData.ts · components/testimonial/TestimonialAnimated.tsx",
       resuelto:"Resuelto el 2026-09-01 · commits f9bb5d2 y a879f69" },
 
-    { id:"c2", g:"c", rank:"11", sev:3, sevLabel:"Medio", done:false,
+    { id:"c2", g:"c", rank:"11", sev:3, sevLabel:"Medio", done:true,
       title:"La home pesa como una landing de 2015",
       what:"Video de <strong>2.142 KB</strong> en autoplay arriba de todo, imágenes de servicios de 870 KB y 300 KB, <strong>cero</strong> uso de <code>next/image</code> (14 <code>&lt;img&gt;</code> crudos) y fuentes cargadas por <code>@import</code> de CSS, que bloquea el render, con dos familias completas. Hay además un <code>@font-face</code> cuyo <code>src</code> apunta a una URL de CSS: no hace nada.",
       fix:"Migrar a <code>next/image</code> (la config ya tiene webp y avif), cargar fuentes con <code>next/font</code>, borrar el <code>@font-face</code> muerto y diferir el video o reemplazarlo por imagen en mobile.",
       impact:"Mejora el LCP, que es señal de ranking y, con más peso, el motivo por el que alguien en 4G cierra antes de ver el titular.",
       files:"app/tailwind.css · app/performance.css · public/",
-      resuelto:"" },
+      resuelto:"Resuelto el 2026-09-02 · las imágenes pasan por next/image y se sirven en avif: la grilla de trabajos bajó de ~6 MB a ~50 KB (hr-mp-00.jpg, 1.669 KB, se sirve en 9 KB). Archivo se carga con next/font, sin @import bloqueante ni llamadas a Google Fonts; el @font-face muerto se eliminó. En mobile el hero usa un mp4 de 789 KB en vez del webm de 2,1 MB. Se borraron 8 MB de assets sin referencia. Apareció y se corrigió una regla que dejaba invisible toda imagen lazy." },
 
-    { id:"c3", g:"c", rank:"12", sev:3, sevLabel:"Medio", done:false,
+    { id:"c3", g:"c", rank:"12", sev:3, sevLabel:"Medio", done:true,
       title:"Contradicciones de configuración y código muerto",
       what:"<code>robots.ts</code> bloqueaba <code>/cookies</code>, <code>/privacy</code> y <code>/terms</code> mientras el sitemap las ofrecía. El Meta Pixel dispara antes de cualquier consentimiento, con una política de cookies publicada. Y hay <strong>siete componentes <code>*Content.tsx</code></strong> —las versiones server para SEO— que no se renderizan en ningún lado.",
       fix:"Alinear robots y sitemap. Decidir sobre el Pixel: banner de consentimiento o quitarlo. Y borrar los <code>*Content.tsx</code>, o usarlos.",
       impact:"Ninguno mueve la aguja solo. Juntos son la diferencia entre un repo donde el próximo cambio es predecible y uno donde cada arreglo empieza con media hora de averiguar qué está vivo.",
       files:"app/robots.ts · app/sitemap.ts · app/layout.tsx · components/*/[A-Z]*Content.tsx",
-      resuelto:"Parcial · robots y sitemap alineados el 2026-09-01 (commit a879f69). Falta el consentimiento del Pixel y el código muerto." }
+      resuelto:"Resuelto el 2026-09-01 · las legales salen del sitemap y se sirven con noindex, sin bloquear el rastreo: bloquearlo impediría que Google leyera ese mismo noindex. El Pixel dejó de estar en el head — lo carga el banner de consentimiento y sólo tras un aceptar explícito. Los ocho *Content.tsx se borraron: nunca se renderizaron, y el HTML servido no cambió un byte." }
   ];
 
   var LS = "kier-auditoria-2026-09-01";

@@ -39,21 +39,21 @@ export function ProjectsAnimated() {
                     className="mb-20"
                 >
                     <span
-                        className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                         style={{ fontWeight: 600 }}
                     >
                         {t('projects.tag')}
                     </span>
 
                     <h2
-                        className="font-['Archivo',sans-serif] text-[#D52169] text-[3rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="font-archivo text-[#D52169] text-[3rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                         style={{ fontWeight: 900 }}
                     >
                         {t('projects.title')}
                     </h2>
 
                     <p
-                        className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
+                        className="font-archivo text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
                         style={{ fontWeight: 600 }}
                     >
                         {t('projects.subtitle')}
@@ -84,8 +84,8 @@ export function ProjectsAnimated() {
                                         <ImageWithFallback
                                             src={project.image}
                                             alt={`${project.title} project by Kier Studio - ${project.category}`}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            style={{ height: '100%' }}
+                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                            className="object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
                                         {isMockImage(project.image) ? (
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -96,13 +96,13 @@ export function ProjectsAnimated() {
                                         <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                             <motion.div initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }}>
                                                 <span
-                                                    className="font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
+                                                    className="font-archivo text-[0.625rem] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
                                                     style={{ fontWeight: 400 }}
                                                 >
                                                     ({project.category} - {project.year})
                                                 </span>
                                                 <h3
-                                                    className="font-['Archivo',sans-serif] text-[2.625rem] md:text-[3.25rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"
+                                                    className="font-archivo text-[2.625rem] md:text-[3.25rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"
                                                     style={{ fontWeight: 900 }}
                                                 >
                                                     {project.title}
@@ -115,7 +115,7 @@ export function ProjectsAnimated() {
 
                                         <div className="absolute top-8 right-8">
                                             <span
-                                                className="font-['Archivo',sans-serif] text-[4rem] text-white/10 group-hover:text-white/20 transition-colors"
+                                                className="font-archivo text-[4rem] text-white/10 group-hover:text-white/20 transition-colors"
                                                 style={{ fontWeight: 900 }}
                                             >
                                                 {String(project.id).padStart(2, "0")}
@@ -138,7 +138,7 @@ export function ProjectsAnimated() {
                         <motion.button
                             whileHover={{ scale: 1.05, x: 5 }}
                             whileTap={{ scale: 0.95 }}
-                            className="inline-flex items-center gap-3 px-10 py-5 bg-transparent text-[#28292D] dark:text-white border-2 border-[#28292D] dark:border-white  hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D] font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 cursor-pointer"
+                            className="inline-flex items-center gap-3 px-10 py-5 bg-transparent text-[#28292D] dark:text-white border-2 border-[#28292D] dark:border-white  hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D] font-archivo text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 cursor-pointer"
                             style={{ fontWeight: 700 }}
                             onClick={() => setShowAll((prev) => !prev)}
                             aria-expanded={showAll}

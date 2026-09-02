@@ -68,7 +68,7 @@ export function ServicesAnimated() {
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
                 <motion.div className="mb-20">
                     <span
-                        className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                         style={{ fontWeight: 600 }}
                     >
                         {t('services.tag')}
@@ -80,7 +80,7 @@ export function ServicesAnimated() {
                         whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="font-['Archivo',sans-serif] text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="font-archivo text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                         style={{ fontWeight: 900, opacity: titleOpacity }}
                     >
                         {t('services.title')}
@@ -93,7 +93,7 @@ export function ServicesAnimated() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.5 }}
-                        className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
+                        className="font-archivo text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.4]"
                         style={{ fontWeight: 600 }}
                     >
                         {t('services.subtitle')}
@@ -116,8 +116,7 @@ export function ServicesAnimated() {
                                 <ImageWithFallback
                                     src={service.image}
                                     alt={`${service.title} - ${service.tag} service by Kier Studio`}
-                                    className="w-full h-full object-cover absolute inset-0"
-                                    style={{ height: '100%' }}
+                                    className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-br from-[#D52169]/30 to-transparent" />
                             </motion.div>
@@ -133,7 +132,7 @@ export function ServicesAnimated() {
                                     transition={{ delay: 0.3, duration: 0.6 }}
                                 >
                                     <span
-                                        className={`font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.3em] uppercase mb-8 block italic ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`font-archivo text-[0.625rem] tracking-[0.3em] uppercase mb-8 block italic ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white/50"
                                             : "text-[#28292D]/50 dark:text-white/50"
                                             }`}
@@ -143,7 +142,7 @@ export function ServicesAnimated() {
                                     </span>
 
                                     <h3
-                                        className={`font-['Archivo',sans-serif] text-[2.2rem] md:text-[4rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`font-archivo text-[2.2rem] md:text-[4rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white"
                                             : "text-[#28292D] dark:text-white"
                                             }`}
@@ -169,7 +168,7 @@ export function ServicesAnimated() {
                                         whileInView={{ opacity: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.6 }}
-                                        className={`font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] leading-[1.7] mb-10 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`font-archivo text-[1rem] md:text-[1.125rem] leading-[1.7] mb-10 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white/80"
                                             : "text-[#28292D]/70 dark:text-white/70"
                                             }`}
@@ -186,7 +185,7 @@ export function ServicesAnimated() {
                                                 whileInView={{ opacity: 1, x: 0 }}
                                                 viewport={{ once: true }}
                                                 transition={{ delay: 0.7 + itemIndex * 0.1 }}
-                                                className={`font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.05em] flex items-center gap-2 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                                className={`font-archivo text-[0.8125rem] tracking-[0.05em] flex items-center gap-2 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                                     ? "text-white/60"
                                                     : "text-[#28292D]/60 dark:text-white/60"
                                                     }`}

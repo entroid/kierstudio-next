@@ -31,7 +31,7 @@ export function LandingFloatingControls() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="font-['Archivo',sans-serif] text-white text-[0.75rem] font-bold tracking-wider"
+              className="font-archivo text-white text-[0.75rem] font-bold tracking-wider"
             >
               {language === "en" ? "EN" : "ES"}
             </motion.div>
