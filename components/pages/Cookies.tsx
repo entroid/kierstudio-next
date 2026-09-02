@@ -1,40 +1,52 @@
+"use client";
+
 import { InfoPage } from "@/components/InfoPage";
+import { useLanguage } from "@/components/LanguageContext";
 
+/**
+ * Política de cookies.
+ *
+ * Se sirve en español —el idioma del render— con el inglés como preferencia,
+ * igual que el resto del sitio. Antes estaba sólo en inglés y con un mail de
+ * contacto que no existe.
+ *
+ * El contenido describe lo que el sitio hace de verdad: es la página que
+ * enlaza el banner de consentimiento, así que si se desincroniza del código
+ * el consentimiento deja de significar algo. Ver lib/consentimiento.ts.
+ */
 export default function Cookies() {
+  const { translations } = useLanguage();
+  const { legal } = translations;
+  const c = legal.cookies;
+
   return (
-    <InfoPage title="Cookie Policy" backHref="/" backLabel="Back to Home">
-      <h2>What Are Cookies</h2>
-      <p>
-        Cookies are small text files that are placed on your device to help the site provide a
-        better user experience. They are widely used to remember user preferences, store
-        information, and provide anonymized tracking data to third-party applications.
-      </p>
+    <InfoPage
+      title={c.title}
+      backHref="/"
+      backLabel={legal.backHome}
+      lastUpdatedLabel={legal.lastUpdated}
+    >
+      <h2>{c.whatTitle}</h2>
+      <p>{c.whatText}</p>
 
-      <h2>How We Use Cookies</h2>
-      <p>
-        We use cookies to remember your preferences (like theme), maintain session information, and
-        analyze site traffic to improve our services.
-      </p>
+      <h2>{c.ownTitle}</h2>
+      <p>{c.ownText}</p>
+      <ul>
+        {c.ownItems.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
 
-      <h2>Managing Cookies</h2>
-      <p>
-        You can control and/or delete cookies as you wish. You can delete all cookies that are
-        already on your device and set most browsers to prevent them from being placed. If you do
-        this, however, you may have to manually adjust some preferences every time you visit the
-        site and some services and functionalities may not work.
-      </p>
+      <h2>{c.thirdTitle}</h2>
+      <p>{c.thirdText}</p>
 
-      <h2>Third-Party Cookies</h2>
-      <p>
-        Some cookies may be set by third-party services that appear on our pages. We do not control
-        the operation of these cookies. Please check the relevant third-party website for details of
-        their cookie policy.
-      </p>
+      <h2>{c.changeTitle}</h2>
+      <p>{c.changeText}</p>
 
-      <h2>Contact</h2>
+      <h2>{c.contactTitle}</h2>
       <p>
-        If you have any questions about our Cookie Policy, contact us at{" "}
-        <a href="mailto:info@kierstudio.com">info@kierstudio.com</a>.
+        {c.contactText}{" "}
+        <a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a>.
       </p>
     </InfoPage>
   );

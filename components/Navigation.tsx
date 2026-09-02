@@ -60,7 +60,7 @@ export function Navigation() {
             >
               {item.dropdown ? (
                 <>
-                  <span className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative cursor-pointer flex items-center gap-1 group">
+                  <span className="font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative cursor-pointer flex items-center gap-1 group">
                     {item.label}
                     <ChevronDown size={14} className="mt-0.5" />
                     <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#D52169] group-hover:w-full transition-all duration-300" />
@@ -71,7 +71,7 @@ export function Navigation() {
                         <li key={subItem.label}>
                           <a
                             href={subItem.href}
-                            className="block px-4 py-3 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1a1a1a] hover:text-[#D52169] transition-colors"
+                            className="block px-4 py-3 font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1a1a1a] hover:text-[#D52169] transition-colors"
                           >
                             {subItem.label}
                           </a>
@@ -85,7 +85,7 @@ export function Navigation() {
                   href={item.href}
                   rel={item.rel}
                   onClick={() => { if (item.href === "#contacto") contactoIniciado("nav", "form"); }}
-                  className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
+                  className="font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#D52169] group-hover:w-full transition-all duration-300" />
@@ -118,7 +118,7 @@ export function Navigation() {
                 <li key={item.label} className="py-1">
                   {item.dropdown ? (
                     <div className="flex flex-col">
-                      <span className="font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white py-3 flex items-center gap-2 ">
+                      <span className="font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white py-3 flex items-center gap-2 ">
                         {item.label}
                         <ChevronDown size={14} />
                       </span>
@@ -128,7 +128,7 @@ export function Navigation() {
                             <a
                               href={subItem.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="block py-3 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D]/70 dark:text-white/70 hover:text-[#D52169] transition-colors cursor-pointer"
+                              className="block py-3 font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D]/70 dark:text-white/70 hover:text-[#D52169] transition-colors cursor-pointer"
                             >
                               {subItem.label}
                             </a>
@@ -143,7 +143,7 @@ export function Navigation() {
                         if (item.href === "#contacto") contactoIniciado("nav", "form");
                         setMobileMenuOpen(false);
                       }}
-                      className="block py-3 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors cursor-pointer"
+                      className="block py-3 font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors cursor-pointer"
                     >
                       {item.label}
                     </a>

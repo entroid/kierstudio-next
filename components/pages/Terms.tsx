@@ -39,7 +39,7 @@ export default function Terms() {
       <h2>Contact Us</h2>
       <p>
         For questions about these Terms, contact us at{" "}
-        <a href="mailto:info@kierstudio.com">info@kierstudio.com</a>.
+        <a href="mailto:kierstudio.info@gmail.com">kierstudio.info@gmail.com</a>.
       </p>
     </InfoPage>
   );

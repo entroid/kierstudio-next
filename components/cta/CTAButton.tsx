@@ -75,7 +75,7 @@ export function CTAButton({
   proyecto,
 }: CTAButtonProps) {
   const baseClasses =
-    "inline-flex items-center gap-3 px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 transition-all duration-300 cursor-pointer";
+    "inline-flex items-center gap-3 px-10 py-5 font-archivo text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 transition-all duration-300 cursor-pointer";
 
   const variantMap: Record<"primary" | "secondary", string> = {
     primary:

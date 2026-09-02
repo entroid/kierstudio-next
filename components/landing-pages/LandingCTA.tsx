@@ -113,12 +113,12 @@ export function LandingCTA(props: LandingCTAProps) {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <h2 className="font-['Archivo',sans-serif] text-[3rem] md:text-[5rem] leading-[0.9] tracking-[-0.03em] text-white mb-8 uppercase" style={{ fontWeight: 900 }}>
+            <h2 className="font-archivo text-[3rem] md:text-[5rem] leading-[0.9] tracking-[-0.03em] text-white mb-8 uppercase" style={{ fontWeight: 900 }}>
               {props.title1}<br />
               <span className="text-[#D52169]">{props.titleHighlight}</span><br />
               {props.title2}
             </h2>
-            <p className="font-['Archivo',sans-serif] text-[1.125rem] text-white/70 leading-[1.6] mb-8 max-w-[500px]" style={{ fontWeight: 400 }}>
+            <p className="font-archivo text-[1.125rem] text-white/70 leading-[1.6] mb-8 max-w-[500px]" style={{ fontWeight: 400 }}>
               {props.description}
             </p>
 
@@ -129,8 +129,8 @@ export function LandingCTA(props: LandingCTAProps) {
                     <span className="text-[#D52169] font-bold">{index + 1}</span>
                   </div>
                   <div>
-                    <h4 className="font-['Archivo',sans-serif] text-[1rem] text-white mb-1" style={{ fontWeight: 700 }}>{step.title}</h4>
-                    <p className="font-['Archivo',sans-serif] text-[0.875rem] text-white/50" style={{ fontWeight: 400 }}>{step.description}</p>
+                    <h4 className="font-archivo text-[1rem] text-white mb-1" style={{ fontWeight: 700 }}>{step.title}</h4>
+                    <p className="font-archivo text-[0.875rem] text-white/50" style={{ fontWeight: 400 }}>{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -143,7 +143,7 @@ export function LandingCTA(props: LandingCTAProps) {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-3 text-white transition-colors mb-12 font-['Archivo',sans-serif] text-[1rem]"
+                className="inline-flex items-center gap-3 text-white transition-colors mb-12 font-archivo text-[1rem]"
                 style={{ fontWeight: 400 }}
               >
                 <div className="w-12 h-12 rounded-full bg-[#25D366]/20  text-[#25D366] flex items-center justify-center">
@@ -161,38 +161,38 @@ export function LandingCTA(props: LandingCTAProps) {
                   <LogoCompact className="w-full h-full text-black" />
                 </div>
                 <div>
-                  <p className="font-['Archivo',sans-serif] text-[0.75rem] text-white/50 uppercase tracking-widest" style={{ fontWeight: 700 }}>{props.serviceBy}</p>
-                  <p className="font-['Archivo',sans-serif] text-[1rem] text-white group-hover:text-[#D52169] transition-colors" style={{ fontWeight: 900 }}>Kier Studio</p>
+                  <p className="font-archivo text-[0.75rem] text-white/50 uppercase tracking-widest" style={{ fontWeight: 700 }}>{props.serviceBy}</p>
+                  <p className="font-archivo text-[1rem] text-white group-hover:text-[#D52169] transition-colors" style={{ fontWeight: 900 }}>Kier Studio</p>
                 </div>
               </a>
             </div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-white p-8 md:p-12 shadow-2xl">
-            <h3 className="font-['Archivo',sans-serif] text-[1.5rem] text-[#28292D] mb-8" style={{ fontWeight: 700 }}>
+            <h3 className="font-archivo text-[1.5rem] text-[#28292D] mb-8" style={{ fontWeight: 700 }}>
               {props.formTitle}
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="name" className="block font-archivo text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
                   {props.formName}
                 </label>
                 <input type="text" id="name" name="name" required placeholder={props.formNamePlaceholder} className="w-full bg-[#F5F5F5] border border-[#28292D]/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] transition-colors" />
               </div>
               <div>
-                <label htmlFor="email" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="email" className="block font-archivo text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
                   {props.formEmail}
                 </label>
                 <input type="email" id="email" name="email" required placeholder={props.formEmailPlaceholder} className="w-full bg-[#F5F5F5] border border-[#28292D]/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] transition-colors" />
               </div>
               <div>
-                <label htmlFor="website" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="website" className="block font-archivo text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
                   {props.formWebsite}
                 </label>
                 <input type="text" id="website" name="website" required placeholder={props.formWebsitePlaceholder} className="w-full bg-[#F5F5F5] border border-[#28292D]/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] transition-colors" />
               </div>
               <div>
-                <label htmlFor="challenge" className="block font-['Archivo',sans-serif] text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
+                <label htmlFor="challenge" className="block font-archivo text-[0.875rem] text-[#28292D] mb-2" style={{ fontWeight: 600 }}>
                   {props.formChallenge}
                 </label>
                 <textarea id="challenge" name="challenge" rows={3} placeholder={props.formChallengePlaceholder} className="w-full bg-[#F5F5F5] border border-[#28292D]/10 focus:border-[#D52169] outline-none px-4 py-3 text-[#28292D] transition-colors resize-none" />
@@ -205,7 +205,7 @@ export function LandingCTA(props: LandingCTAProps) {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} disabled={submitting} className="w-full bg-[#D52169] text-white py-4 font-['Archivo',sans-serif] text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer" style={{ fontWeight: 700 }}>
+              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} disabled={submitting} className="w-full bg-[#D52169] text-white py-4 font-archivo text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer" style={{ fontWeight: 700 }}>
                 {submitting ? (
                   <><Loader2 className="animate-spin" size={18} /> {props.formProcessing}</>
                 ) : (

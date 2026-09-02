@@ -55,7 +55,7 @@ export function ProcessAnimated() {
                     className="mb-10 md:mb-20"
                 >
                     <span
-                        className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                         style={{ fontWeight: 600 }}
                     >
                         {t('process.tag')}
@@ -67,14 +67,14 @@ export function ProcessAnimated() {
                         whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="font-['Archivo',sans-serif] text-[#D52169]  text-[3rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="font-archivo text-[#D52169]  text-[3rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                         style={{ fontWeight: 900, opacity: titleOpacity }}
                     >
                         {t('process.title')}
                     </motion.h2>
 
                     <p
-                        className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[1100px] leading-[1.4]"
+                        className="font-archivo text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white/90 max-w-[1100px] leading-[1.4]"
                         style={{ fontWeight: 600 }}
                     >
                         {t('process.subtitle')}
@@ -95,7 +95,7 @@ export function ProcessAnimated() {
                                 <div className="lg:col-span-2">
                                     <motion.div
                                         whileHover={{ scale: 1.1 }}
-                                        className="font-['Archivo',sans-serif] text-[3rem] md:text-[7.5rem] leading-[0.9] tracking-[-0.02em] text-[#D52169] group-hover:text-[#28292D] dark:group-hover:text-white transition-colors duration-300"
+                                        className="font-archivo text-[3rem] md:text-[7.5rem] leading-[0.9] tracking-[-0.02em] text-[#D52169] group-hover:text-[#28292D] dark:group-hover:text-white transition-colors duration-300"
                                         style={{ fontWeight: 900 }}
                                     >
                                         {step.number}
@@ -108,7 +108,7 @@ export function ProcessAnimated() {
                                         whileInView={{ x: 0, opacity: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.2 }}
-                                        className="font-['Archivo',sans-serif] text-[1.875rem] md:text-[3.5rem] lg:text-[4rem] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
+                                        className="font-archivo text-[1.875rem] md:text-[3.5rem] lg:text-[4rem] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
                                         style={{ fontWeight: 900 }}
                                     >
                                         {step.title}
@@ -119,7 +119,7 @@ export function ProcessAnimated() {
                                         whileInView={{ x: 0, opacity: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.3 }}
-                                        className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/70 dark:text-white/70 leading-[1.7] max-w-[600px]"
+                                        className="font-archivo text-[1rem] md:text-[1.125rem] text-[#28292D]/70 dark:text-white/70 leading-[1.7] max-w-[600px]"
                                         style={{ fontWeight: 400 }}
                                     >
                                         {step.description}
@@ -135,7 +135,7 @@ export function ProcessAnimated() {
                                             viewport={{ once: true }}
                                             transition={{ delay: 0.4 + serviceIndex * 0.1 }}
                                             whileHover={{ scale: 1.05, y: -2 }}
-                                            className="bg-white dark:bg-[#1a1a1a] border border-[#28292D]/10 dark:border-white/10 px-4 py-2 font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.1em] uppercase text-[#28292D] dark:text-white hover:border-[#D52169] hover:text-[#D52169] transition-all duration-300"
+                                            className="bg-white dark:bg-[#1a1a1a] border border-[#28292D]/10 dark:border-white/10 px-4 py-2 font-archivo text-[0.6875rem] tracking-[0.1em] uppercase text-[#28292D] dark:text-white hover:border-[#D52169] hover:text-[#D52169] transition-all duration-300"
                                             style={{ fontWeight: 600 }}
                                         >
                                             {service}

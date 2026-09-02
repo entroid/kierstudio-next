@@ -36,7 +36,7 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <motion.h2
-              className="font-['Archivo',sans-serif] text-[4rem] md:text-[6rem] leading-[0.85] tracking-[-0.03em] text-white mb-8"
+              className="font-archivo text-[4rem] md:text-[6rem] leading-[0.85] tracking-[-0.03em] text-white mb-8"
               style={{ fontWeight: 900 }}
             >
               ©KIER
@@ -45,7 +45,7 @@ export function Footer() {
             </motion.h2>
 
             <p
-              className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-white/70 leading-[1.7] mb-8 max-w-[500px]"
+              className="font-archivo text-[1rem] md:text-[1.125rem] text-white/70 leading-[1.7] mb-8 max-w-[500px]"
               style={{ fontWeight: 400 }}
             >
               {t('footer.description')}
@@ -64,7 +64,7 @@ export function Footer() {
               >
                 <MapPin size={18} />
                 <span
-                  className="font-['Archivo',sans-serif] text-[0.875rem]"
+                  className="font-archivo text-[0.875rem]"
                   style={{ fontWeight: 400 }}
                 >
                   {t('footer.locationText')}
@@ -79,7 +79,7 @@ export function Footer() {
               >
                 <Mail size={18} />
                 <span
-                  className="font-['Archivo',sans-serif] text-[0.875rem]"
+                  className="font-archivo text-[0.875rem]"
                   style={{ fontWeight: 400 }}
                 >
                   kierstudio.info@gmail.com
@@ -96,7 +96,7 @@ export function Footer() {
               >
                 <Phone size={18} />
                 <span
-                  className="font-['Archivo',sans-serif] text-[0.875rem]"
+                  className="font-archivo text-[0.875rem]"
                   style={{ fontWeight: 400 }}
                 >
                   +54 9 341 7211814
@@ -132,7 +132,7 @@ export function Footer() {
             {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
               <div key={categoryIndex} className="text-right lg:w-auto">
                 <h3
-                  className="font-['Archivo',sans-serif] text-[0.8125rem] tracking-[0.15em] uppercase text-white mb-6 lg:text-right"
+                  className="font-archivo text-[0.8125rem] tracking-[0.15em] uppercase text-white mb-6 lg:text-right"
                   style={{ fontWeight: 700 }}
                 >
                   {category}
@@ -144,7 +144,7 @@ export function Footer() {
                       <motion.li key={linkIndex} whileHover={{ x: 5 }}>
                         <a
                           href={item.href}
-                          className="font-['Archivo',sans-serif] text-[0.875rem] text-white/60 hover:text-[#D52169] transition-colors cursor-pointer"
+                          className="font-archivo text-[0.875rem] text-white/60 hover:text-[#D52169] transition-colors cursor-pointer"
                           style={{ fontWeight: 400 }}
                         >
                           {item.label}
@@ -168,19 +168,19 @@ export function Footer() {
           <div className="grid md:grid-cols-2 gap-8 items-end">
             <div>
               <span
-                className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                 style={{ fontWeight: 400 }}
               >
                 (Stay Updated)
               </span>
               <h3
-                className="font-['Archivo',sans-serif] text-[2rem] md:text-[3rem] text-white leading-[1.1] mb-3"
+                className="font-archivo text-[2rem] md:text-[3rem] text-white leading-[1.1] mb-3"
                 style={{ fontWeight: 800 }}
               >
                 Subscribe to our newsletter
               </h3>
               <p
-                className="font-['Archivo',sans-serif] text-[0.875rem] text-white/60"
+                className="font-archivo text-[0.875rem] text-white/60"
                 style={{ fontWeight: 400 }}
               >
                 Get the latest updates on design trends and our work.
@@ -191,13 +191,13 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="flex-1 bg-white/10 border-2 border-white/20 focus:border-[#D52169] px-6 py-4 font-['Archivo',sans-serif] text-[0.875rem] text-white placeholder:text-white/40 outline-none transition-colors"
+                className="flex-1 bg-white/10 border-2 border-white/20 focus:border-[#D52169] px-6 py-4 font-archivo text-[0.875rem] text-white placeholder:text-white/40 outline-none transition-colors"
                 style={{ fontWeight: 400 }}
               />
               <motion.button
                 whileHover={{ scale: 1.05, x: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#D52169] text-white px-8 py-4 font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em] uppercase hover:bg-white hover:text-[#28292D] transition-all duration-300 cursor-pointer"
+                className="bg-[#D52169] text-white px-8 py-4 font-archivo text-[0.75rem] tracking-[0.1em] uppercase hover:bg-white hover:text-[#28292D] transition-all duration-300 cursor-pointer"
                 style={{ fontWeight: 700 }}
               >
                 Subscribe →
@@ -209,7 +209,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p
-            className="font-['Archivo',sans-serif] text-[0.75rem] text-white/40"
+            className="font-archivo text-[0.75rem] text-white/40"
             style={{ fontWeight: 400 }}
           >
             {t('footer.copyright', { year: currentYear })}
@@ -219,7 +219,7 @@ export function Footer() {
             <motion.a
               href="/privacy"
               whileHover={{ y: -2 }}
-              className="font-['Archivo',sans-serif] text-[0.75rem] text-white/40 hover:text-[#D52169] transition-colors cursor-pointer"
+              className="font-archivo text-[0.75rem] text-white/40 hover:text-[#D52169] transition-colors cursor-pointer"
               style={{ fontWeight: 400 }}
             >
               {t('footer.privacyPolicy')}
@@ -227,7 +227,7 @@ export function Footer() {
             <motion.a
               href="/terms"
               whileHover={{ y: -2 }}
-              className="font-['Archivo',sans-serif] text-[0.75rem] text-white/40 hover:text-[#D52169] transition-colors"
+              className="font-archivo text-[0.75rem] text-white/40 hover:text-[#D52169] transition-colors"
               style={{ fontWeight: 400 }}
             >
               {t('footer.termsOfService')}
@@ -235,7 +235,7 @@ export function Footer() {
             <motion.a
               href="/cookies"
               whileHover={{ y: -2 }}
-              className="font-['Archivo',sans-serif] text-[0.75rem] text-white/40 hover:text-[#D52169] transition-colors"
+              className="font-archivo text-[0.75rem] text-white/40 hover:text-[#D52169] transition-colors"
               style={{ fontWeight: 400 }}
             >
               {t('footer.cookiePolicy')}

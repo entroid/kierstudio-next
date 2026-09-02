@@ -80,7 +80,7 @@ export default function ContactoLandingPage() {
             className="mb-8"
           >
             <span
-              className="inline-flex items-center gap-2 bg-[#D52169]/20 border border-[#D52169]/40 text-[#ff4d91] px-4 py-2 font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase"
+              className="inline-flex items-center gap-2 bg-[#D52169]/20 border border-[#D52169]/40 text-[#ff4d91] px-4 py-2 font-archivo text-[0.75rem] tracking-[0.2em] uppercase"
               style={{ fontWeight: 600 }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#ff4d91] animate-pulse" />
@@ -93,7 +93,7 @@ export default function ContactoLandingPage() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-['Archivo',sans-serif] text-[2rem] sm:text-[3.25rem] lg:text-[4.25rem] leading-[1.1] tracking-[-0.03em] uppercase max-w-[900px] mb-8 text-white"
+            className="font-archivo text-[2rem] sm:text-[3.25rem] lg:text-[4.25rem] leading-[1.1] tracking-[-0.03em] uppercase max-w-[900px] mb-8 text-white"
             style={{ fontWeight: 900 }}
           >
             {data.title}
@@ -105,7 +105,7 @@ export default function ContactoLandingPage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="font-['Archivo',sans-serif] text-[1rem] sm:text-[1.125rem] text-white/85 max-w-[620px] leading-[1.6] mb-12 whitespace-pre-line"
+            className="font-archivo text-[1rem] sm:text-[1.125rem] text-white/85 max-w-[620px] leading-[1.6] mb-12 whitespace-pre-line"
             style={{ fontWeight: 400 }}
           >
             {data.subtitle}
@@ -149,7 +149,7 @@ export default function ContactoLandingPage() {
               ].map((item: string, index: number) => (
                 <span
                   key={index}
-                  className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-white/70 tracking-[0.15em] uppercase font-bold"
+                  className="font-archivo text-[1rem] md:text-[1.125rem] text-white/70 tracking-[0.15em] uppercase font-bold"
                   style={{ fontWeight: 800 }}
                 >
                   {item}
@@ -169,7 +169,7 @@ export default function ContactoLandingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Archivo',sans-serif] text-[1.75rem] sm:text-[2rem] lg:text-[2.5rem] leading-[1.1] tracking-[-0.03em] uppercase mb-16 text-white"
+            className="font-archivo text-[1.75rem] sm:text-[2rem] lg:text-[2.5rem] leading-[1.1] tracking-[-0.03em] uppercase mb-16 text-white"
             style={{ fontWeight: 800 }}
           >
             {data.sectionTitle}
@@ -186,19 +186,23 @@ export default function ContactoLandingPage() {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 className="group cursor-pointer"
               >
-                <div className="relative overflow-hidden bg-[#F5F5F5] dark:bg-[#1a1a1a] transition-colors duration-500">
+                {/* La proporción vive en el contenedor y no en la imagen:
+                    con `fill`, la imagen se estira al padre y el padre necesita
+                    altura propia o colapsa a cero. */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F5F5] dark:bg-[#1a1a1a] transition-colors duration-500">
                   <ImageWithFallback
                     src={project.image}
                     alt={project.title}
-                    className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <h3 className="font-['Archivo',sans-serif] text-[1.125rem] sm:text-[1.25rem] mt-4 text-white transition-colors duration-500"
+                <h3 className="font-archivo text-[1.125rem] sm:text-[1.25rem] mt-4 text-white transition-colors duration-500"
                   style={{ fontWeight: 600 }}
                 >
                   {project.title}
                 </h3>
-                <p className="font-['Archivo',sans-serif] text-[0.875rem] sm:text-[1rem] mt-2 text-white/60 transition-colors duration-500"
+                <p className="font-archivo text-[0.875rem] sm:text-[1rem] mt-2 text-white/60 transition-colors duration-500"
                   style={{ fontWeight: 400 }}
                 >
                   {project.category}

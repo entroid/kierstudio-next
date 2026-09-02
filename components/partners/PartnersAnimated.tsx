@@ -56,7 +56,7 @@ export function PartnersAnimated() {
                     viewport={{ once: true, amount: 0.1 }}
                 >
                     <span
-                        className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                         style={{ fontWeight: 600 }}
                     >
                         {t('partners.partnersTag')}
@@ -92,20 +92,35 @@ export function PartnersAnimated() {
                                             whileHover={{ scale: 1.1 }}
                                             transition={{ type: "spring", stiffness: 200 }}
                                         >
+                                            {/* Estos quedan como <img> a propósito: pesan entre 6 y 47 KB,
+                                                así que optimizarlos no mueve la aguja, y uno es SVG —
+                                                next/image lo rechaza salvo que se habilite dangerouslyAllowSVG,
+                                                que es un riesgo real a cambio de nada. Se difieren y se les
+                                                fija tamaño para que no provoquen saltos de layout. */}
                                             <div className="mb-2 flex items-center justify-center dark:bg-white dark:p-1 ">
+                                                {/* eslint-disable @next/next/no-img-element */}
                                                 <img
                                                     src={partner.src}
-                                                    alt="Partner logo"
+                                                    alt={`Logo de ${partner.tagline}`}
+                                                    width={160}
+                                                    height={90}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                     className="block dark:hidden w-full h-full object-contain max-h-[90px]"
                                                 />
                                                 <img
                                                     src={partner.srcDark}
-                                                    alt="Partner logo"
+                                                    alt={`Logo de ${partner.tagline}`}
+                                                    width={160}
+                                                    height={90}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                     className="hidden dark:block w-full h-full object-contain max-h-[90px]"
                                                 />
+                                                {/* eslint-enable @next/next/no-img-element */}
                                             </div>
                                             <p
-                                                className="font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.15em] uppercase text-[#28292D]/60 dark:text-white/65 group-hover:text-[#D52169]/100 transition-colors duration-300"
+                                                className="font-archivo text-[0.625rem] tracking-[0.15em] uppercase text-[#28292D]/60 dark:text-white/65 group-hover:text-[#D52169]/100 transition-colors duration-300"
                                                 style={{ fontWeight: 500 }}
                                             >
                                                 {partner.tagline}
@@ -139,7 +154,7 @@ export function PartnersAnimated() {
                             {[...partners, ...partners, ...partners].map((partner, index) => (
                                 <span
                                     key={index}
-                                    className="font-['Archivo',sans-serif] text-[0.85rem] text-[#28292D]/40 dark:text-white/40 tracking-[0.2em] uppercase"
+                                    className="font-archivo text-[0.85rem] text-[#28292D]/40 dark:text-white/40 tracking-[0.2em] uppercase"
                                     style={{ fontWeight: 700 }}
                                 >
                                     {partner.tagline}

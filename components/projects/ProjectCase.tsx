@@ -54,7 +54,7 @@ export function ProjectCase({ slug }: { slug: string }) {
             <header className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-32 md:pt-40 pb-12">
                 <Link
                     href="/#proyectos"
-                    className="inline-flex items-center gap-2 font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.2em] uppercase text-[#28292D]/60 dark:text-white/60 hover:text-[#D52169] dark:hover:text-[#D52169] transition-colors mb-12"
+                    className="inline-flex items-center gap-2 font-archivo text-[0.6875rem] tracking-[0.2em] uppercase text-[#28292D]/60 dark:text-white/60 hover:text-[#D52169] dark:hover:text-[#D52169] transition-colors mb-12"
                     style={{ fontWeight: 600 }}
                 >
                     <ArrowLeft size={14} />
@@ -62,21 +62,21 @@ export function ProjectCase({ slug }: { slug: string }) {
                 </Link>
 
                 <span
-                    className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-6 block italic"
+                    className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-6 block italic"
                     style={{ fontWeight: 600 }}
                 >
                     ({project.category} - {project.year})
                 </span>
 
                 <h1
-                    className="font-['Archivo',sans-serif] text-[2.75rem] md:text-[6rem] lg:text-[7.3rem] leading-[0.95] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                    className="font-archivo text-[2.75rem] md:text-[6rem] lg:text-[7.3rem] leading-[0.95] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                     style={{ fontWeight: 900 }}
                 >
                     {project.title}
                 </h1>
 
                 <p
-                    className="font-['Archivo',sans-serif] text-[1.25rem] md:text-[1.75rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.35]"
+                    className="font-archivo text-[1.25rem] md:text-[1.75rem] text-[#28292D] dark:text-white/90 max-w-[900px] leading-[1.35]"
                     style={{ fontWeight: 600 }}
                 >
                     {project.summary}
@@ -86,7 +86,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                     {project.services.map((service) => (
                         <span
                             key={service}
-                            className="bg-[#F5F5F5] dark:bg-[#28292D] text-[#28292D] dark:text-white px-4 py-2 font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.05em] uppercase"
+                            className="bg-[#F5F5F5] dark:bg-[#28292D] text-[#28292D] dark:text-white px-4 py-2 font-archivo text-[0.6875rem] tracking-[0.05em] uppercase"
                             style={{ fontWeight: 600 }}
                         >
                             {service}
@@ -101,8 +101,9 @@ export function ProjectCase({ slug }: { slug: string }) {
                     <ImageWithFallback
                         src={project.image}
                         alt={`${project.title} — ${project.category}`}
-                        className="w-full h-full object-cover"
-                        style={{ height: "100%" }}
+                        sizes="(max-width: 1180px) 100vw, 1400px"
+                        priority
+                        className="object-cover"
                     />
                 </div>
             </div>
@@ -116,13 +117,13 @@ export function ProjectCase({ slug }: { slug: string }) {
                         {project.metrics.map((metric) => (
                             <div key={metric.label}>
                                 <span
-                                    className="font-['Archivo',sans-serif] block text-[3rem] md:text-[4rem] leading-[1] tracking-[-0.04em] text-[#D52169] mb-3"
+                                    className="font-archivo block text-[3rem] md:text-[4rem] leading-[1] tracking-[-0.04em] text-[#D52169] mb-3"
                                     style={{ fontWeight: 900 }}
                                 >
                                     {metric.value}
                                 </span>
                                 <span
-                                    className="font-['Archivo',sans-serif] text-[0.9375rem] text-[#28292D]/70 dark:text-white/70 leading-[1.4] block"
+                                    className="font-archivo text-[0.9375rem] text-[#28292D]/70 dark:text-white/70 leading-[1.4] block"
                                     style={{ fontWeight: 600 }}
                                 >
                                     {metric.label}
@@ -132,7 +133,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                     </div>
                     {project.metricsNota && (
                         <p
-                            className="font-['Archivo',sans-serif] text-[0.75rem] text-[#28292D]/50 dark:text-white/50 mt-4 italic"
+                            className="font-archivo text-[0.75rem] text-[#28292D]/50 dark:text-white/50 mt-4 italic"
                             style={{ fontWeight: 400 }}
                         >
                             {project.metricsNota}
@@ -145,7 +146,7 @@ export function ProjectCase({ slug }: { slug: string }) {
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12 grid lg:grid-cols-[1fr_2fr] gap-x-16 gap-y-6 mb-24">
                 <Bloque titulo={t("projects.caseProblem")}>
                     <p
-                        className="font-['Archivo',sans-serif] text-[1.0625rem] md:text-[1.1875rem] text-[#28292D]/80 dark:text-white/75 leading-[1.7]"
+                        className="font-archivo text-[1.0625rem] md:text-[1.1875rem] text-[#28292D]/80 dark:text-white/75 leading-[1.7]"
                         style={{ fontWeight: 400 }}
                     >
                         {project.problema}
@@ -178,8 +179,8 @@ export function ProjectCase({ slug }: { slug: string }) {
                                 <ImageWithFallback
                                     src={src}
                                     alt={`${project.title} — ${i + 1}`}
-                                    className="w-full h-full object-cover"
-                                    style={{ height: "100%" }}
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    className="object-cover"
                                 />
                             </motion.div>
                         ))}
@@ -205,13 +206,13 @@ export function ProjectCase({ slug }: { slug: string }) {
                 <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <h2
-                            className="font-['Archivo',sans-serif] text-[2rem] md:text-[3rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-4 uppercase"
+                            className="font-archivo text-[2rem] md:text-[3rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-4 uppercase"
                             style={{ fontWeight: 900 }}
                         >
                             {t("projects.caseCtaTitle")}
                         </h2>
                         <p
-                            className="font-['Archivo',sans-serif] text-[1.0625rem] text-[#28292D]/70 dark:text-white/70 leading-[1.6] mb-8 max-w-[520px]"
+                            className="font-archivo text-[1.0625rem] text-[#28292D]/70 dark:text-white/70 leading-[1.6] mb-8 max-w-[520px]"
                             style={{ fontWeight: 400 }}
                         >
                             {t("projects.caseCtaText")}
@@ -234,13 +235,13 @@ export function ProjectCase({ slug }: { slug: string }) {
                         className="group block lg:justify-self-end"
                     >
                         <span
-                            className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-3 block italic"
+                            className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-3 block italic"
                             style={{ fontWeight: 600 }}
                         >
                             {t("projects.caseNext")}
                         </span>
                         <span
-                            className="font-['Archivo',sans-serif] text-[2rem] md:text-[3rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white group-hover:text-[#D52169] transition-colors uppercase block"
+                            className="font-archivo text-[2rem] md:text-[3rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white group-hover:text-[#D52169] transition-colors uppercase block"
                             style={{ fontWeight: 900 }}
                         >
                             {next.title}
@@ -255,7 +256,7 @@ export function ProjectCase({ slug }: { slug: string }) {
 function Titulo({ children }: { children: React.ReactNode }) {
     return (
         <h2
-            className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.25em] uppercase text-[#D52169] mb-4"
+            className="font-archivo text-[0.75rem] tracking-[0.25em] uppercase text-[#D52169] mb-4"
             style={{ fontWeight: 700 }}
         >
             {children}
@@ -281,7 +282,7 @@ function Lista({ items }: { items: string[] }) {
             {items.map((item) => (
                 <li
                     key={item}
-                    className="font-['Archivo',sans-serif] text-[1.0625rem] md:text-[1.1875rem] text-[#28292D]/80 dark:text-white/75 leading-[1.6] pl-6 relative"
+                    className="font-archivo text-[1.0625rem] md:text-[1.1875rem] text-[#28292D]/80 dark:text-white/75 leading-[1.6] pl-6 relative"
                     style={{ fontWeight: 400 }}
                 >
                     <span className="absolute left-0 top-[0.6em] w-2 h-2 bg-[#D52169] rounded-full" />

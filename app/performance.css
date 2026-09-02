@@ -4,14 +4,14 @@ img {
   height: auto;
 }
 
-img[loading="lazy"] {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
+/* Acá había un fade-in casero: toda imagen con loading="lazy" arrancaba en
+   opacity 0 y volvía a 1 al recibir la clase `.loaded`. Nada en el proyecto
+   agregaba esa clase, así que la segunda regla no se cumplía nunca.
 
-img[loading="lazy"].loaded {
-  opacity: 1;
-}
+   No se notaba porque casi ninguna imagen era lazy. Al pasar a next/image
+   —que marca lazy por defecto— la trampa se activó y las imágenes quedaron
+   invisibles: cargaban y no se veían. next/image ya maneja su propia
+   transición de carga, así que la regla se elimina en vez de completarse. */
 
 /* Core Web Vitals optimization */
 .hero-video {
@@ -29,13 +29,6 @@ img[loading="lazy"].loaded {
 @keyframes loading {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
-}
-
-/* Font loading optimization */
-@font-face {
-  font-family: 'Archivo';
-  font-display: swap;
-  src: url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&display=swap');
 }
 
 /* Smooth scrolling */

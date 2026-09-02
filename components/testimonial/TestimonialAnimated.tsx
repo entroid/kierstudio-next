@@ -45,14 +45,14 @@ export function TestimonialAnimated() {
                     className="mb-20"
                 >
                     <span
-                        className="font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
                         style={{ fontWeight: 400 }}
                     >
                         {t('testimonials.tag')}
                     </span>
 
                     <h2
-                        className="font-['Archivo',sans-serif] text-[2.5rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-white mb-8"
+                        className="font-archivo text-[2.5rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-white mb-8"
                         style={{ fontWeight: 900 }}
                     >
                         {t('testimonials.title')}
@@ -82,7 +82,7 @@ export function TestimonialAnimated() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="font-['Archivo',sans-serif] text-[1.125rem] md:text-[1.5rem] leading-[1.5] text-white mb-12"
+                                className="font-archivo text-[1.125rem] md:text-[1.5rem] leading-[1.5] text-white mb-12"
                                 style={{ fontWeight: 500 }}
                             >
                                 "{testimonials[currentIndex].quote}"
@@ -96,7 +96,7 @@ export function TestimonialAnimated() {
                             >
                                 <div className="w-16 h-16 bg-[#D52169] rounded-full flex items-center justify-center">
                                     <span
-                                        className="font-['Archivo',sans-serif] text-[1.5rem] text-white"
+                                        className="font-archivo text-[1.5rem] text-white"
                                         style={{ fontWeight: 900 }}
                                     >
                                         {testimonials[currentIndex].author.charAt(0)}
@@ -105,13 +105,13 @@ export function TestimonialAnimated() {
 
                                 <div>
                                     <p
-                                        className="font-['Archivo',sans-serif] text-[1.25rem] text-white mb-1"
+                                        className="font-archivo text-[1.25rem] text-white mb-1"
                                         style={{ fontWeight: 700 }}
                                     >
                                         {testimonials[currentIndex].author}
                                     </p>
                                     <p
-                                        className="font-['Archivo',sans-serif] text-[0.875rem] text-white/60 mb-1"
+                                        className="font-archivo text-[0.875rem] text-white/60 mb-1"
                                         style={{ fontWeight: 400 }}
                                     >
                                         {testimonials[currentIndex].role} {t('testimonials.atLabel')} {testimonials[currentIndex].company}
@@ -123,7 +123,7 @@ export function TestimonialAnimated() {
                                             rel="noopener noreferrer"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
-                                            className="font-['Archivo',sans-serif] text-[0.875rem] text-[#D52169] hover:text-[#E54079] transition-colors duration-300"
+                                            className="font-archivo text-[0.875rem] text-[#D52169] hover:text-[#E54079] transition-colors duration-300"
                                             style={{ fontWeight: 600 }}
                                         >
                                             Visit Website →
