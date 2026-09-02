@@ -2,12 +2,18 @@
 
 import { motion } from "motion/react";
 import { Camera, Users, MapPin, Phone, Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "./LanguageContext";
 import { contactoIniciado, salidaExterna } from "@/lib/analytics";
+import { enlaceSeccion } from "@/lib/enlaces";
 
 export function Footer() {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+
+  // Ver Navigation: estos enlaces también van a secciones del home.
+  const pathname = usePathname();
+  const enlace = (href: string) => enlaceSeccion(href, pathname);
 
   const socialLinks = [
     { icon: Camera, label: "Instagram", href: "https://www.instagram.com/kierstudio_" },
@@ -143,7 +149,7 @@ export function Footer() {
                     return (
                       <motion.li key={linkIndex} whileHover={{ x: 5 }}>
                         <a
-                          href={item.href}
+                          href={enlace(item.href)}
                           className="font-archivo text-[0.875rem] text-white/60 hover:text-[#D52169] transition-colors cursor-pointer"
                           style={{ fontWeight: 400 }}
                         >

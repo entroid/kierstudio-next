@@ -3,14 +3,21 @@
 import { motion } from "motion/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { LogoCompact } from "./Logo";
 import { useLanguage } from "./LanguageContext";
 import { useTheme } from "./ThemeContext";
 import { contactoIniciado } from "@/lib/analytics";
+import { enlaceSeccion } from "@/lib/enlaces";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
+
+  // Los items apuntan a secciones del home. Fuera del home, un hash suelto es
+  // relativo a la página actual y el link no lleva a ninguna parte.
+  const pathname = usePathname();
+  const enlace = (href: string) => enlaceSeccion(href, pathname);
 
   const navItems = [
     { label: t('nav.start'), href: "#inicio", rel: "noopener" },
@@ -40,7 +47,7 @@ export function Navigation() {
         aria-label="Navegación principal"
       >
         <motion.a
-          href="#inicio"
+          href={enlace("#inicio")}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
           className="flex items-center cursor-pointer"
@@ -70,7 +77,7 @@ export function Navigation() {
                       {item.dropdown.map((subItem) => (
                         <li key={subItem.label}>
                           <a
-                            href={subItem.href}
+                            href={enlace(subItem.href)}
                             className="block px-4 py-3 font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#1a1a1a] hover:text-[#D52169] transition-colors"
                           >
                             {subItem.label}
@@ -82,7 +89,7 @@ export function Navigation() {
                 </>
               ) : (
                 <a
-                  href={item.href}
+                  href={enlace(item.href)}
                   rel={item.rel}
                   onClick={() => { if (item.href === "#contacto") contactoIniciado("nav", "form"); }}
                   className="font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D] dark:text-white hover:text-[#D52169] transition-colors duration-300 relative group cursor-pointer"
@@ -126,7 +133,7 @@ export function Navigation() {
                         {item.dropdown.map((subItem) => (
                           <li key={subItem.label}>
                             <a
-                              href={subItem.href}
+                              href={enlace(subItem.href)}
                               onClick={() => setMobileMenuOpen(false)}
                               className="block py-3 font-archivo text-[0.875rem] tracking-[0.05em] uppercase text-[#28292D]/70 dark:text-white/70 hover:text-[#D52169] transition-colors cursor-pointer"
                             >
@@ -138,7 +145,7 @@ export function Navigation() {
                     </div>
                   ) : (
                     <a
-                      href={item.href}
+                      href={enlace(item.href)}
                       onClick={() => {
                         if (item.href === "#contacto") contactoIniciado("nav", "form");
                         setMobileMenuOpen(false);
