@@ -6,7 +6,7 @@ Auditorías del sitio, una por archivo, en HTML autocontenido. Se abren haciendo
 
 | Archivo | Fecha | Estado |
 |---|---|---|
-| `2026-09-01-auditoria-inicial.html` | 2026-09-01 | 6 de 12 resueltos |
+| `2026-09-01-auditoria-inicial.html` | 2026-09-01 | 9 de 12 resueltos |
 
 ## Convención de nombres
 
