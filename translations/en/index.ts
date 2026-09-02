@@ -11,6 +11,8 @@ import { accounting } from './accounting';
 import { saludybienestar } from './saludybienestar';
 import { projectsData } from './projectsData';
 import { presentacion } from './presentacion';
+import { consent } from './consent';
+import { legal } from './legal';
 
 export const en = {
     // Common elements (SEO, nav, footer, controls)
@@ -18,6 +20,8 @@ export const en = {
     nav: common.nav,
     footer: common.footer,
     controls: common.controls,
+    consent,
+    legal,
 
     // Page sections
     hero,
