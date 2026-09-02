@@ -105,9 +105,13 @@ export function seccionVista(seccion: Seccion) {
 /**
  * Alguien hizo click en algo que lleva a contactar. Responde la pregunta
  * central: qué parte del argumento genera contactos, y por qué canal.
+ *
+ * `proyecto` sólo viaja cuando el click sale de una página de caso. Sin él,
+ * los seis trabajos caen todos en `origen: "trabajos"` y la pregunta pasa a
+ * ser "¿los casos generan contactos?" en vez de "¿cuál?", que es la útil.
  */
-export function contactoIniciado(origen: Origen, canal: Canal) {
-  capturar("contacto_iniciado", { origen, canal });
+export function contactoIniciado(origen: Origen, canal: Canal, proyecto?: string) {
+  capturar("contacto_iniciado", proyecto ? { origen, canal, proyecto } : { origen, canal });
 }
 
 /** El formulario se envió correctamente. Es la conversión. */
@@ -115,9 +119,59 @@ export function contactoEnviado(origen: Origen) {
   capturar("contacto_enviado", { origen });
 }
 
-/** Se abrió el detalle de un trabajo. */
-export function proyectoAbierto(proyecto: string, origen: Origen) {
-  capturar("proyecto_abierto", { proyecto, origen });
+/* --- Casos: /trabajos/[slug] ------------------------------------------- */
+
+/**
+ * De dónde salió la visita a un caso. No es un `Origen`: un caso no se abre
+ * desde una sección del argumento, se abre desde una página.
+ *
+ * - `trabajos`: desde la grilla del home.
+ * - `caso`: desde el link "siguiente trabajo" de otro caso.
+ * - `directo`: buscador, link compartido, o cualquier entrada que no pasó por
+ *   el sitio. Es el caso que justifica que estas páginas existan, así que es
+ *   el que no se puede perder.
+ */
+export type OrigenCaso = "trabajos" | "caso" | "directo";
+
+const CLAVE_ORIGEN_CASO = "kier:origen_caso";
+
+/**
+ * Se llama al hacer click en un link a un caso, antes de navegar.
+ *
+ * El origen no se puede deducir en destino: con navegación de cliente
+ * `document.referrer` no se actualiza, así que una entrada desde el home
+ * quedaría indistinguible de una entrada desde Google. Por eso lo dejamos
+ * escrito antes de irnos.
+ */
+export function marcarOrigenCaso(origen: OrigenCaso) {
+  try {
+    sessionStorage.setItem(CLAVE_ORIGEN_CASO, origen);
+  } catch {
+    // Sin sessionStorage la visita cuenta como directa. Preferimos un origen
+    // impreciso antes que perder el evento.
+  }
+}
+
+/** Lee y limpia la marca. Sin marca previa, la entrada fue directa. */
+function consumirOrigenCaso(): OrigenCaso {
+  try {
+    const valor = sessionStorage.getItem(CLAVE_ORIGEN_CASO);
+    sessionStorage.removeItem(CLAVE_ORIGEN_CASO);
+    if (valor === "trabajos" || valor === "caso") return valor;
+  } catch {
+    // Ver marcarOrigenCaso.
+  }
+  return "directo";
+}
+
+/**
+ * Se vio un caso. Dispara al montarse la página, no en el click del link:
+ * desde que los casos tienen URL propia se puede llegar desde un buscador o
+ * un link compartido, y contar sólo los clicks del home mediría justo el
+ * camino viejo. Una vez por visita a la página, venga de donde venga.
+ */
+export function proyectoAbierto(proyecto: string) {
+  capturar("proyecto_abierto", { proyecto, origen: consumirOrigenCaso() });
 }
 
 /**

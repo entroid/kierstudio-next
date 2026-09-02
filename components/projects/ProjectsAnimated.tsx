@@ -1,51 +1,30 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
+import Link from "next/link";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
-import { ArrowRight, X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "../LanguageContext";
-import { proyectoAbierto } from "@/lib/analytics";
+import { marcarOrigenCaso } from "@/lib/analytics";
 import { CTAButton } from "@/components/cta/CTAButton";
 
 import { Project } from "@/types/project";
 
-
+/**
+ * Grilla de trabajos del home.
+ *
+ * Cada tarjeta lleva a /trabajos/[slug]. Antes abría un modal: no cambiaba la
+ * URL, no se podía compartir y no se indexaba, así que los tres casos que
+ * sostienen el argumento de venta eran invisibles para un buscador.
+ */
 export function ProjectsAnimated() {
     const { t, translations } = useLanguage();
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [showAll, setShowAll] = useState(false);
 
     const projects: Project[] = translations.projectsData;
 
     const isMockImage = (imagePath: string) => imagePath.toLowerCase().includes('-mock');
     const visibleProjects = showAll ? projects : projects.slice(0, 4);
-
-    const openModal = (project: Project) => {
-        proyectoAbierto(project.title, "trabajos");
-        setSelectedProject(project);
-        setCurrentImageIndex(0);
-    };
-
-    const closeModal = () => {
-        setSelectedProject(null);
-        setCurrentImageIndex(0);
-    };
-
-    const nextImage = () => {
-        if (selectedProject) {
-            setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
-        }
-    };
-
-    const prevImage = () => {
-        if (selectedProject) {
-            setCurrentImageIndex(
-                (prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length,
-            );
-        }
-    };
 
     return (
         <section
@@ -91,50 +70,59 @@ export function ProjectsAnimated() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 30 }}
                                 transition={{ duration: 0.5 }}
-                                onClick={() => openModal(project)}
-                                className="group cursor-pointer relative overflow-hidden"
+                                className="group relative overflow-hidden"
                             >
-                                <div className="relative aspect-[4/3] overflow-hidden bg-[#1a1a1a] min-h-[200px] sm:min-h-[240px] md:min-h-[280px]">
-                                    <ImageWithFallback
-                                        src={project.image}
-                                        alt={`${project.title} project by Kier Studio - ${project.category}`}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                        style={{ height: '100%' }}
-                                    />
-                                    {isMockImage(project.image) ? (
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                                    ) : (
-                                        <div className="absolute inset-0 bg-black/30 opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
-                                    )}
+                                <Link
+                                    href={`/trabajos/${project.slug}`}
+                                    // El evento lo dispara la página de caso, que es
+                                    // el único lugar por el que pasan todas las visitas.
+                                    // Acá sólo dejamos anotado de dónde salió.
+                                    onClick={() => marcarOrigenCaso("trabajos")}
+                                    className="block cursor-pointer"
+                                >
+                                    <div className="relative aspect-[4/3] overflow-hidden bg-[#1a1a1a] min-h-[200px] sm:min-h-[240px] md:min-h-[280px]">
+                                        <ImageWithFallback
+                                            src={project.image}
+                                            alt={`${project.title} project by Kier Studio - ${project.category}`}
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            style={{ height: '100%' }}
+                                        />
+                                        {isMockImage(project.image) ? (
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                                        ) : (
+                                            <div className="absolute inset-0 bg-black/30 opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+                                        )}
 
-                                    <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                        <motion.div initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }}>
+                                        <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                            <motion.div initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }}>
+                                                <span
+                                                    className="font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
+                                                    style={{ fontWeight: 400 }}
+                                                >
+                                                    ({project.category} - {project.year})
+                                                </span>
+                                                <h3
+                                                    className="font-['Archivo',sans-serif] text-[2.625rem] md:text-[3.25rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"
+                                                    style={{ fontWeight: 900 }}
+                                                >
+                                                    {project.title}
+                                                </h3>
+                                            </motion.div>
+
+                                            {/* Señal visual, no un control: el link es la tarjeta entera. */}
+                                            <CTAButton variant="primary" className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">{t('projects.viewProject')} </CTAButton>
+                                        </div>
+
+                                        <div className="absolute top-8 right-8">
                                             <span
-                                                className="font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
-                                                style={{ fontWeight: 400 }}
-                                            >
-                                                ({project.category} - {project.year})
-                                            </span>
-                                            <h3
-                                                className="font-['Archivo',sans-serif] text-[2.625rem] md:text-[3.25rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"
+                                                className="font-['Archivo',sans-serif] text-[4rem] text-white/10 group-hover:text-white/20 transition-colors"
                                                 style={{ fontWeight: 900 }}
                                             >
-                                                {project.title}
-                                            </h3>
-                                        </motion.div>
-
-                                        <CTAButton variant="primary" className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">{t('projects.viewProject')} </CTAButton>
+                                                {String(project.id).padStart(2, "0")}
+                                            </span>
+                                        </div>
                                     </div>
-
-                                    <div className="absolute top-8 right-8">
-                                        <span
-                                            className="font-['Archivo',sans-serif] text-[4rem] text-white/10 group-hover:text-white/20 transition-colors"
-                                            style={{ fontWeight: 900 }}
-                                        >
-                                            {String(project.id).padStart(2, "0")}
-                                        </span>
-                                    </div>
-                                </div>
+                                </Link>
                             </motion.div>
                         ))}
                     </AnimatePresence>
@@ -160,126 +148,6 @@ export function ProjectsAnimated() {
                     </motion.div>
                 )}
             </div>
-
-            {/* Modal Gallery */}
-            <AnimatePresence>
-                {selectedProject && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={closeModal}
-                        className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4 md:p-8"
-                    >
-                        <motion.div
-                            initial={{ scale: 0.9, y: 50 }}
-                            animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 50 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="bg-white dark:bg-[#1a1a1a] max-w-[1400px] w-full max-h-[90vh] overflow-y-auto rounded-xl relative"
-                        >
-                            <motion.button
-                                whileHover={{ scale: 1.1, rotate: 90 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={closeModal}
-                                className="absolute top-6 right-6 z-10 w-12 h-12 bg-[#D52169] hover:bg-[#28292D] rounded-full flex items-center justify-center transition-colors cursor-pointer"
-                                aria-label={t('projects.closeModal')}
-                            >
-                                <X className="text-white" size={24} />
-                            </motion.button>
-
-                            <div className="grid lg:grid-cols-2 gap-0">
-                                <div className="bg-white relative min-h-[400px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[600px]">
-                                    <ImageWithFallback
-                                        src={selectedProject.images[currentImageIndex]}
-                                        alt={`${selectedProject.title} - Project gallery image ${currentImageIndex + 1} by Kier Studio`}
-                                        className="w-full h-full object-cover"
-                                    />
-
-                                    {selectedProject.images.length > 1 && (
-                                        <>
-                                            <motion.button
-                                                whileHover={{ scale: 1.1, x: -5 }}
-                                                whileTap={{ scale: 0.9 }}
-                                                onClick={prevImage}
-                                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-[#D52169] backdrop-blur-sm rounded-full flex items-center justify-center transition-colors cursor-pointer"
-                                                aria-label={t('projects.prevImage')}
-                                            >
-                                                <span className="text-[1.5rem]">←</span>
-                                            </motion.button>
-                                            <motion.button
-                                                whileHover={{ scale: 1.1, x: 5 }}
-                                                whileTap={{ scale: 0.9 }}
-                                                onClick={nextImage}
-                                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-[#D52169] backdrop-blur-sm rounded-full flex items-center justify-center transition-colors cursor-pointer"
-                                                aria-label={t('projects.nextImage')}
-                                            >
-                                                <span className="text-[1.5rem]">→</span>
-                                            </motion.button>
-                                        </>
-                                    )}
-
-                                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
-                                        <span
-                                            className="text-white font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.1em]"
-                                            style={{ fontWeight: 600 }}
-                                        >
-                                            {currentImageIndex + 1} / {selectedProject.images.length}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div className="p-12 px-6 md:px-12 lg:p-16 flex flex-col justify-center">
-                                    <span
-                                        className="font-['Archivo',sans-serif] text-[0.625rem] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-6 block italic"
-                                        style={{ fontWeight: 400 }}
-                                    >
-                                        ({selectedProject.category} - {selectedProject.year})
-                                    </span>
-
-                                    <h3
-                                        className="font-['Archivo',sans-serif] text-[2.375rem] md:text-[4.5rem] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
-                                        style={{ fontWeight: 900 }}
-                                    >
-                                        {selectedProject.title}
-                                    </h3>
-
-                                    <p
-                                        className="font-['Archivo',sans-serif] text-[1rem] md:text-[1.125rem] text-[#28292D]/70 dark:text-white/70 leading-[1.7] mb-10"
-                                        style={{ fontWeight: 400 }}
-                                    >
-                                        {selectedProject.description}
-                                    </p>
-
-                                    <div className="mb-10">
-                                        <h4
-                                            className="font-['Archivo',sans-serif] text-[0.75rem] tracking-[0.2em] uppercase text-[#28292D]/50 dark:text-white/50 mb-4"
-                                            style={{ fontWeight: 600 }}
-                                        >
-                                            {t('projects.servicesLabel')}
-                                        </h4>
-                                        <div className="flex flex-wrap gap-3">
-                                            {selectedProject.services.map((service, index) => (
-                                                <span
-                                                    key={index}
-                                                    className="bg-[#F5F5F5] dark:bg-[#28292D] text-[#28292D] dark:text-white px-4 py-2 font-['Archivo',sans-serif] text-[0.6875rem] tracking-[0.05em] uppercase"
-                                                    style={{ fontWeight: 600 }}
-                                                >
-                                                    {service}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {selectedProject.url && selectedProject.url.trim() !== "" && (
-                                        <CTAButton href={selectedProject.url} target="_blank" rel="noopener noreferrer" variant="primary">{t('projects.visitWebsite')} <ArrowRight size={18} /></CTAButton>
-                                    )}
-                                </div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </section>
     );
 }

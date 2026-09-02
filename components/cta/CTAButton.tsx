@@ -50,6 +50,11 @@ export type CTAButtonProps = {
    * llevan los CTA que bajan a la sección de contacto.
    */
   canal?: Canal;
+  /**
+   * Slug del caso, cuando el botón vive en una página de trabajo. Permite
+   * saber qué caso genera contactos, y no sólo que los casos los generan.
+   */
+  proyecto?: string;
 };
 
 /**
@@ -67,6 +72,7 @@ export function CTAButton({
   rel,
   origen,
   canal = "form",
+  proyecto,
 }: CTAButtonProps) {
   const baseClasses =
     "inline-flex items-center gap-3 px-10 py-5 font-['Archivo',sans-serif] text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 transition-all duration-300 cursor-pointer";
@@ -79,7 +85,7 @@ export function CTAButton({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (origen) contactoIniciado(origen, canal);
+    if (origen) contactoIniciado(origen, canal, proyecto);
     onClick?.(e);
   };
 

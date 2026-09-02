@@ -42,6 +42,28 @@ GROUP BY semana ORDER BY semana DESC
 
 **No está instalado, y es una decisión, no un olvido** (2026-09-01). PostHog ya cubre ese rol para este sitio. Una tercera fuente significa tres números distintos para la misma pregunta y tiempo gastado en reconciliarlos en vez de decidir. Si algún día entra pauta que lo justifique, se revisa.
 
+## Los eventos propios
+
+Cinco, definidos en [`../lib/analytics.ts`](../lib/analytics.ts). Cada uno existe
+para responder una pregunta concreta; si un evento no tiene pregunta atrás, es deuda.
+
+| Evento | Propiedades | Pregunta que responde |
+|---|---|---|
+| `seccion_vista` | `seccion` | ¿Hasta dónde del argumento llegan? |
+| `contacto_iniciado` | `origen`, `canal`, `proyecto?` | ¿Qué parte genera contactos, y por qué canal? |
+| `contacto_enviado` | `origen` | ¿Cuántos completan? |
+| `proyecto_abierto` | `proyecto`, `origen` | ¿Qué caso se ve, y por dónde entraron? |
+| `salida_externa` | `canal`, `origen` | ¿Quién se fue a escribir por WhatsApp? |
+
+Dos detalles que no se deducen del nombre:
+
+- **`proyecto_abierto.origen` no es una sección**, es `trabajos` \| `caso` \|
+  `directo`. Dice si la visita al caso vino de la grilla del home, del link
+  "siguiente trabajo" de otro caso, o de afuera del sitio.
+- **`contacto_iniciado.proyecto` sólo viaja desde una página de caso.** En los CTA
+  del home no está, y esa ausencia es informativa: distingue un contacto nacido de
+  un caso de uno nacido del argumento del home.
+
 ## La regla de lectura
 
 - **Ningún porcentaje sin su N al lado.** "3 de 18", no "17%".
