@@ -127,7 +127,7 @@ def render_tabla(cuentas):
             f'<td class="eje">{e(ejes.get(k, "–"))}</td>' for k, _l, _p, _a in EJES
         )
         ver = c['_veredicto']
-        marca = ' ★' if c.get('dossier') else ''
+        marca = ' ★' if lleva_desglose(c) else ''
         filas.append(
             f'<tr>'
             f'<td class="rank">{i}</td>'
@@ -185,6 +185,26 @@ def render_metricas(firmo):
     return f'<div class="metricas">{"".join(bloques)}</div>{pie}'
 
 
+BASE_DOLOR = {
+    'citada': ('Cita', 'Se apoya en algo que la empresa o la prensa publicó sobre ella'),
+    'inferida': ('Rubro', 'Se deduce de cómo funciona el rubro, sin evidencia propia de la empresa'),
+}
+
+
+def badge_base(base):
+    """Distingue la hipótesis apoyada en evidencia propia de la deducida del rubro.
+
+    Las dos son hipótesis y la sección lo dice, pero no valen lo mismo en una reunión:
+    una se puede citar y la otra hay que preguntarla. Sin la marca, las cuarenta se leen
+    con la misma solidez.
+    """
+    base = (base or '').lower()
+    if base not in BASE_DOLOR:
+        return ''
+    etiqueta, titulo = BASE_DOLOR[base]
+    return f'<span class="base base-{e(base)}" title="{e(titulo)}">{e(etiqueta)}</span>'
+
+
 def render_dolores(dolores):
     if not dolores:
         return ''
@@ -194,17 +214,23 @@ def render_dolores(dolores):
         esf = d.get('esfuerzo', '')
         filas.append(
             f'<tr><td class="num">{i}</td>'
-            f'<td><strong>{e(d.get("proceso"))}</strong>'
+            f'<td><strong>{e(d.get("proceso"))}</strong> {badge_base(d.get("base"))}'
             f'<span class="sub">{e(d.get("descripcion"))}</span></td>'
             f'<td class="just">{e(d.get("justificacion"))}</td>'
             f'<td class="carnada">{e(d.get("carnada"))}</td>'
             f'<td class="ie">{e(imp)}/{e(esf)}</td></tr>'
         )
+    hay_marcas = any((d.get('base') or '').lower() in BASE_DOLOR for d in dolores)
+    leyenda = ''
+    if hay_marcas:
+        leyenda = ('<p class="leyenda leyenda-dolor">Cita: se apoya en algo publicado por la empresa '
+                   'o por la prensa sobre ella. Rubro: se deduce de cómo opera el sector, sin evidencia '
+                   'propia — hay que confirmarlo antes de usarlo como argumento.</p>')
     return f'''<h3>Hipótesis de dolor</h3>
 <table class="dolores"><thead><tr>
 <th class="num"></th><th>Proceso candidato</th><th>Justificación</th>
 <th>Carnada</th><th class="ie" title="Impacto / Esfuerzo, 1-5">I/E</th>
-</tr></thead><tbody>{''.join(filas)}</tbody></table>'''
+</tr></thead><tbody>{''.join(filas)}</tbody></table>{leyenda}'''
 
 
 def render_estrategia(est):
@@ -239,21 +265,59 @@ def render_fuentes(fuentes):
     return f'<h3 class="h-fuentes">Fuentes consultadas</h3><ol class="fuentes">{"".join(items)}</ol>'
 
 
-def render_indice(dossiers, hay_resto):
+def veredicto_cuenta(c):
+    """El veredicto de una cuenta, se haya calculado ya o no.
+
+    `validar()` corre antes de que el render asigne los campos calculados, así que esto
+    no puede depender de `_veredicto`: lo recalcula cuando hace falta.
+    """
+    if c.get('_veredicto'):
+        return c['_veredicto']
+    return (c.get('veredicto') or veredicto_de(calcular_score(c))).lower()
+
+
+def lleva_desglose(c):
+    """Una cuenta se desglosa salvo que esté descartada.
+
+    Descartar una cuenta es una conclusión corta: alcanza con el motivo y con qué haría
+    falta para reconsiderarla. Todo lo demás —lo que se va a trabajar y lo que está a un
+    dato de distancia de trabajarse— merece la página entera. El campo `dossier` sigue
+    funcionando como override explícito cuando el criterio general no aplica.
+    """
+    if 'dossier' in c:
+        return bool(c['dossier'])
+    return veredicto_cuenta(c) != 'descartar'
+
+
+def render_indice(grupos, hay_resto):
     """Índice con anclas internas. Chrome las convierte en links navegables del PDF,
     que es lo que vuelve usable un informe de veinte páginas."""
-    items = [
-        '<li><a href="#comparativa">Comparativa de la cartera</a></li>'
-    ]
-    for i, c in enumerate(dossiers, 1):
-        items.append(
-            f'<li><a href="#d{i}"><span class="ix-num">{i}</span>'
-            f'<span class="ix-nombre">{e(c.get("empresa"))}</span>'
-            f'<span class="ix-score ver-{e(c["_veredicto"])}">{c["_score"]:g}</span></a></li>'
-        )
+    items = ['<li class="ix-seccion"><a href="#comparativa">Comparativa de la cartera</a></li>']
+    pos = 0
+    for clave, titulo, cuentas in grupos:
+        if not cuentas:
+            continue
+        items.append(f'<li class="ix-seccion"><a href="#g-{e(clave)}">{e(titulo)}</a></li>')
+        for c in cuentas:
+            pos += 1
+            items.append(
+                f'<li><a href="#d{pos}"><span class="ix-num">{pos}</span>'
+                f'<span class="ix-nombre">{e(c.get("empresa"))}</span>'
+                f'<span class="ix-score ver-{e(c["_veredicto"])}">{c["_score"]:g}</span></a></li>'
+            )
     if hay_resto:
-        items.append('<li><a href="#resto">Resto de la cartera</a></li>')
+        items.append('<li class="ix-seccion"><a href="#resto">Resto de la cartera</a></li>')
     return f'<nav class="indice"><h2>Contenido</h2><ol>{"".join(items)}</ol></nav>'
+
+
+def render_separador(clave, titulo, bajada, cuentas):
+    """Portadilla de grupo: separa lo que se trabaja de lo que se evalúa."""
+    nombres = ' · '.join(e(c.get('empresa')) for c in cuentas)
+    return f'''<section class="grupo grupo--{e(clave)}" id="g-{e(clave)}">
+<h2>{e(titulo)}</h2>
+<p class="grupo-bajada">{e(bajada)}</p>
+<p class="grupo-lista">{nombres}</p>
+</section>'''
 
 
 def render_resto(cuentas):
@@ -282,12 +346,12 @@ def render_resto(cuentas):
             f'</div>{resumen}{desbloqueo}</div>'
         )
     return (f'<section class="resto" id="resto"><h2>Resto de la cartera</h2>'
-            f'<p class="leyenda">Las cuentas que no llegaron al desglose: qué se encontró, '
-            f'qué no, y qué haría falta para que cambien de lugar.</p>'
+            f'<p class="grupo-bajada">Las cuentas descartadas: qué se encontró, qué no, '
+            f'y qué haría falta para volver a considerarlas.</p>'
             f'{"".join(bloques)}</section>')
 
 
-def render_dossier(c, pos):
+def render_dossier(c, pos, nivel='primario'):
     contacto = c.get('contacto') or {}
     datos_contacto = ' · '.join(
         e(v) for v in [contacto.get('nombre'), contacto.get('cargo'),
@@ -301,7 +365,7 @@ def render_dossier(c, pos):
     riesgo = ''
     if c.get('riesgo'):
         riesgo = f'<p class="riesgo"><strong>Riesgo / contra-argumento:</strong> {e(c["riesgo"])}</p>'
-    return f'''<section class="dossier" id="d{pos}">
+    return f'''<section class="dossier dossier--{e(nivel)}" id="d{pos}">
 <div class="dossier-head">
   <div>
     <span class="pos">#{pos}</span>
@@ -331,7 +395,7 @@ def render_html(data, css):
         c['_veredicto'] = (c.get('veredicto') or veredicto_de(c['_score'])).lower()
     cuentas.sort(key=lambda c: -c['_score'])
 
-    dossiers = [c for c in cuentas if c.get('dossier')]
+    dossiers = [c for c in cuentas if lleva_desglose(c)]
     conteo = {}
     for c in cuentas:
         conteo[c['_veredicto']] = conteo.get(c['_veredicto'], 0) + 1
@@ -342,8 +406,28 @@ def render_html(data, css):
     hallazgos = ''.join(f'<li>{e(h)}</li>' for h in (data.get('hallazgos') or []))
     bloque_hallazgos = f'<ul class="hallazgos">{hallazgos}</ul>' if hallazgos else ''
 
-    resto = [c for c in cuentas if not c.get('dossier')]
-    indice = render_indice(dossiers, bool(resto)) if dossiers else ''
+    resto = [c for c in cuentas if not lleva_desglose(c)]
+    grupos = [
+        ('primario', 'Mayor potencial',
+         'Donde el potencial y el acceso se dan juntos. Son las cuentas que justifican '
+         'trabajo esta semana.',
+         [c for c in dossiers if c['_veredicto'] == 'priorizar']),
+        ('secundario', 'A evaluar',
+         'Potencial real con algo que todavía no cierra — casi siempre, el acceso. Cada '
+         'una dice qué le falta para moverse al grupo de arriba.',
+         [c for c in dossiers if c['_veredicto'] != 'priorizar']),
+    ]
+    grupos = [g for g in grupos if g[3]]
+    indice = render_indice([(k, t, cs) for k, t, _b, cs in grupos], bool(resto)) if dossiers else ''
+
+    cuerpo = []
+    pos = 0
+    for clave, titulo, bajada, cs in grupos:
+        cuerpo.append(render_separador(clave, titulo, bajada, cs))
+        for c in cs:
+            pos += 1
+            cuerpo.append(render_dossier(c, pos, clave))
+    desgloses = ''.join(cuerpo)
 
     leyenda_ejes = ' · '.join(f'{label} {peso}%' for _k, label, peso, _a in EJES)
     nota = data.get('nota_metodo') or (
@@ -375,11 +459,11 @@ def render_html(data, css):
 
 <h2 class="h-tabla" id="comparativa">Comparativa</h2>
 <p class="leyenda">Score 0-100 ponderado: {e(leyenda_ejes)}. Cada eje se puntúa 1-5.
-Las cuentas marcadas con ★ tienen desglose al final.</p>
+Las cuentas marcadas con ★ tienen desglose al final; las descartadas van resumidas.</p>
 {render_tabla(cuentas)}
 <p class="nota-metodo">{e(nota)}</p>
 
-{''.join(render_dossier(c, i + 1) for i, c in enumerate(dossiers))}
+{desgloses}
 {render_resto(resto)}
 </body></html>'''
 
@@ -400,9 +484,13 @@ def validar(data):
             d = dato((c.get('firmografia') or {}).get(key))
             if d['valor'] and not d['fuente']:
                 avisos.append(f'{nombre}: "{key}" tiene valor sin fuente citada')
-        if c.get('dossier') and not c.get('dolores'):
+        if lleva_desglose(c) and not c.get('dolores'):
             avisos.append(f'{nombre}: marcada para desglose pero sin hipótesis de dolor')
-        if not c.get('dossier'):
+        for d in c.get('dolores') or []:
+            if (d.get('base') or '').lower() not in BASE_DOLOR:
+                avisos.append(f'{nombre}: la hipótesis "{d.get("proceso")}" no dice si se apoya en '
+                              f'evidencia propia ("citada") o en el rubro ("inferida")')
+        if not lleva_desglose(c):
             # Sin desglose, el resumen y el desbloqueo son lo único que explica el score.
             if not c.get('resumen'):
                 avisos.append(f'{nombre}: sin desglose y sin resumen — queda como un número sin explicación')

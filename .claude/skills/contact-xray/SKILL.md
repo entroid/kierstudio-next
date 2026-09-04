@@ -36,6 +36,17 @@ tienen que ser específicas de esa empresa**. "Podrían automatizar procesos" no
 hay carga manual de partes todos los días" es una excusa para pedir una reunión. La
 diferencia siempre viene de algo que efectivamente leíste sobre ellos.
 
+Y como no todas van a tener ese respaldo, cada hipótesis declara en qué se apoya con el
+campo `base`: `"citada"` cuando hay algo publicado por la empresa o por la prensa sobre
+ella, `"inferida"` cuando se deduce de cómo opera el rubro. Las dos son legítimas y las
+dos aparecen en el informe, pero no valen lo mismo en una reunión: una se puede citar y
+la otra hay que preguntarla. Sin la marca, veinte hipótesis se leen todas con la misma
+solidez y la primera que se caiga arrastra a las demás.
+
+La misma disciplina vale para todo el resto del informe: cuando un dato no existe, el
+campo va vacío y se dice; cuando es una estimación propia, se declara el método en la
+`fuente` y la confianza baja. Nunca completes un hueco con algo verosímil.
+
 ## Flujo
 
 ### 1. Leer el listado
@@ -129,15 +140,22 @@ el mail directo del dueño", "aclarar internamente de qué empresa se trata", "c
 objetivo: como cuenta comercial no cierra". También va en las descartadas: saber por qué
 se descarta algo evita volver a investigarlo dentro de tres meses.
 
-## Marcá 5 a 8 cuentas para desglose
+## Cómo se reparte el informe
 
-Menos de 5 y el informe no justifica el esfuerzo; más de 8 y deja de ser una
-priorización — el punto es que el usuario sepa por dónde empezar el lunes.
+El script arma tres bloques y no hay que decidir nada a mano: se desglosa todo lo que no
+esté descartado, agrupado en **Mayor potencial** (las priorizadas) y **A evaluar** (el
+resto), y las descartadas van resumidas al final en **Resto de la cartera**.
 
-Elegí por score, pero con criterio: si dos cuentas del mismo grupo económico dan
-parecido, desglosá una sola y mencioná la otra dentro. Y si una cuenta puntúa alto solo
-por tamaño y no encontraste ni una hipótesis de dolor concreta, no la desgloses: una
-página que dice "podrían optimizar procesos" resta credibilidad al resto del informe.
+La lógica es que descartar una cuenta es una conclusión corta —alcanza el motivo y qué
+haría falta para reconsiderarla— mientras que todo lo que se puede llegar a trabajar
+merece la página entera. El campo `dossier` sigue funcionando como override cuando el
+criterio general no aplique a un caso puntual.
+
+Eso sí: una cuenta que llega al desglose necesita hipótesis de dolor de verdad. Si
+puntuó alto solo por tamaño y no encontraste ni un proceso concreto, revisá el eje de
+densidad de dolor antes que el informe — una página que dice "podrían optimizar
+procesos" resta credibilidad a todo lo demás. Y si dos cuentas del mismo grupo económico
+dan casi igual, desglosá la más accesible y mencioná la otra adentro.
 
 ## Cerrá con el usuario, no con el archivo
 
