@@ -1,0 +1,403 @@
+/* Hoja de estilo del Contact X-Ray.
+   Pensada para papel: densa, sin adornos, legible en blanco y negro. Los veredictos
+   se distinguen por borde y peso tipografico ademas de por color, para que el informe
+   siga funcionando impreso en una laser monocroma. */
+
+@page {
+  size: A4;
+  margin: 14mm 13mm 12mm 13mm;
+}
+
+:root {
+  --tinta: #16191d;
+  --tinta-media: #4a5058;
+  --tinta-suave: #7b828b;
+  --linea: #d8dbe0;
+  --linea-fuerte: #9aa0a8;
+  --fondo-suave: #f4f5f7;
+  --alto: #1f6f4a;
+  --medio: #8a6a12;
+  --bajo: #8c3b3b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--tinta);
+  font: 9pt/1.42 "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.01em; }
+
+/* ---------- Encabezado ---------- */
+
+.portada { border-bottom: 2px solid var(--tinta); padding-bottom: 8px; margin-bottom: 12px; }
+
+.marca {
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--tinta-suave);
+  margin-bottom: 4px;
+}
+
+.portada h1 { font-size: 19pt; line-height: 1.15; }
+
+.bajada { margin: 4px 0 0; font-size: 10pt; color: var(--tinta-media); max-width: 62ch; }
+
+.meta { margin: 6px 0 0; font-size: 8pt; color: var(--tinta-suave); }
+
+/* ---------- Resumen ejecutivo ---------- */
+
+.resumen-ejecutivo { margin-bottom: 14px; }
+
+.chips { margin-bottom: 8px; }
+
+.chip {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-right: 6px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 10px;
+  font-size: 8pt;
+  text-transform: capitalize;
+}
+
+.hallazgos { margin: 0; padding-left: 16px; font-size: 9.2pt; color: var(--tinta-media); }
+.hallazgos li { margin-bottom: 3px; }
+.hallazgos strong { color: var(--tinta); }
+
+/* ---------- Índice ---------- */
+
+.indice {
+  border: 1px solid var(--linea);
+  border-left: 2.5px solid var(--tinta);
+  padding: 8px 12px 10px;
+  margin-bottom: 14px;
+  break-inside: avoid;
+}
+
+.indice h2 {
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tinta-suave);
+  margin-bottom: 6px;
+}
+
+.indice ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* Dos columnas: el índice no debería costar media página. */
+  column-count: 2;
+  column-gap: 24px;
+}
+
+.indice li { break-inside: avoid; margin-bottom: 2px; }
+
+.indice a {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--tinta);
+  text-decoration: none;
+  font-size: 8.6pt;
+}
+
+.indice .ix-num {
+  min-width: 12px;
+  color: var(--tinta-suave);
+  font-size: 7.4pt;
+}
+
+/* La línea de puntos que conecta el nombre con su score, como en un índice impreso. */
+.indice .ix-nombre {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.indice .ix-nombre::after {
+  content: " ....................................................";
+  color: var(--linea);
+  letter-spacing: 1px;
+}
+
+.indice .ix-score { font-weight: 600; font-size: 8pt; }
+
+/* ---------- Comparativa ---------- */
+
+.h-tabla { font-size: 12pt; margin-bottom: 2px; }
+
+.leyenda, .nota-metodo {
+  font-size: 7.6pt;
+  color: var(--tinta-suave);
+  margin: 2px 0 8px;
+  max-width: 100%;
+}
+
+.nota-metodo {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--linea);
+}
+
+table { width: 100%; border-collapse: collapse; }
+
+.comparativa { font-size: 8pt; }
+
+.comparativa th {
+  text-align: left;
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--tinta-media);
+  font-weight: 600;
+  padding: 4px 4px 3px;
+  border-bottom: 1.5px solid var(--tinta);
+  white-space: nowrap;
+}
+
+.comparativa td {
+  padding: 4px;
+  border-bottom: 1px solid var(--linea);
+  vertical-align: top;
+}
+
+.comparativa tr:nth-child(even) td { background: var(--fondo-suave); }
+
+.comparativa .rank { width: 18px; color: var(--tinta-suave); text-align: right; }
+.comparativa .empresa { width: 27%; }
+.comparativa .empresa .sub { display: block; color: var(--tinta-suave); font-size: 7.2pt; }
+.comparativa .eje { width: 26px; text-align: center; color: var(--tinta-media); }
+.comparativa .score { width: 34px; text-align: right; font-weight: 600; font-size: 9pt; }
+.comparativa .ver { width: 58px; font-size: 7.6pt; }
+.comparativa .contacto { width: 52px; font-size: 7.4pt; }
+
+.nowrap { white-space: nowrap; }
+
+.vacio { color: var(--tinta-suave); }
+.ok { color: var(--alto); }
+.warn { color: var(--medio); }
+.bad { color: var(--bajo); }
+
+.ver-priorizar { color: var(--alto); font-weight: 600; }
+.ver-evaluar { color: var(--medio); }
+.ver-descartar { color: var(--tinta-suave); }
+
+.chip.ver-priorizar { border-color: var(--alto); }
+.chip.ver-evaluar { border-color: var(--medio); }
+
+/* Marca de confianza del dato: A / M / B */
+.conf {
+  display: inline-block;
+  min-width: 11px;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-size: 6.4pt;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: 1.5px;
+  border: 1px solid currentColor;
+}
+.conf-alta { color: var(--alto); }
+.conf-media { color: var(--medio); }
+.conf-baja { color: var(--bajo); }
+
+/* ---------- Desglose por cuenta ---------- */
+
+.dossier {
+  break-before: page;
+  page-break-before: always;
+  break-inside: avoid-page;
+}
+
+.dossier-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 2px solid var(--tinta);
+  padding-bottom: 6px;
+}
+
+.dossier-head h2 { font-size: 15pt; display: inline; }
+.dossier-head .pos {
+  font-size: 8pt;
+  color: var(--tinta-suave);
+  margin-right: 6px;
+  vertical-align: 3px;
+}
+.dossier-head .sub { margin: 2px 0 0; font-size: 8.4pt; color: var(--tinta-suave); }
+
+.score-box { text-align: right; min-width: 62px; }
+.score-num { font-size: 21pt; font-weight: 600; line-height: 1; }
+.score-cap { font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.resumen {
+  margin: 8px 0 10px;
+  font-size: 9.6pt;
+  color: var(--tinta-media);
+  max-width: 68ch;
+}
+
+.metricas {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.metrica {
+  flex: 1;
+  border: 1px solid var(--linea);
+  border-left: 2.5px solid var(--linea-fuerte);
+  padding: 6px 8px;
+  min-width: 0;
+}
+
+.metrica-val { font-size: 12pt; font-weight: 600; line-height: 1.15; word-wrap: break-word; }
+.metrica-label {
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tinta-suave);
+  margin-top: 3px;
+}
+
+.fuente { font-size: 7.2pt; color: var(--tinta-suave); margin: 4px 0 10px; }
+
+.contacto-linea, .ejes-linea { font-size: 8.4pt; margin: 0 0 4px; }
+.ejes-linea { color: var(--tinta-suave); font-size: 7.6pt; margin-bottom: 12px; }
+.mini-eje { margin-right: 10px; }
+.mini-eje b { color: var(--tinta); }
+
+.dossier h3 {
+  font-size: 9.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tinta-media);
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+}
+
+.dolores { font-size: 8.2pt; margin-bottom: 12px; }
+.dolores th {
+  text-align: left;
+  font-size: 7pt;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  font-weight: 600;
+  padding: 0 5px 3px;
+  border-bottom: 1px solid var(--linea);
+}
+.dolores td { padding: 5px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+.dolores .num { width: 14px; color: var(--tinta-suave); }
+.dolores .sub { display: block; color: var(--tinta-media); font-size: 7.8pt; margin-top: 1px; }
+.dolores .just { width: 32%; color: var(--tinta-media); }
+.dolores .carnada { width: 22%; font-style: italic; }
+.dolores .ie { width: 30px; text-align: center; white-space: nowrap; }
+
+.estrategia { margin-bottom: 10px; }
+.est-item { font-size: 8.6pt; margin-bottom: 5px; padding-left: 10px; border-left: 2px solid var(--linea); }
+.est-label {
+  display: block;
+  font-size: 6.8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tinta-suave);
+}
+
+.riesgo {
+  font-size: 8.2pt;
+  color: var(--tinta-media);
+  background: var(--fondo-suave);
+  padding: 6px 8px;
+  margin: 0 0 10px;
+}
+
+/* ---------- Resto de la cartera ---------- */
+
+.resto {
+  break-before: page;
+  page-break-before: always;
+}
+
+.resto > h2 {
+  font-size: 15pt;
+  border-bottom: 2px solid var(--tinta);
+  padding-bottom: 6px;
+}
+
+.resto-item {
+  border-bottom: 1px solid var(--linea);
+  padding: 8px 0;
+  break-inside: avoid;
+}
+
+.resto-item:last-child { border-bottom: none; }
+
+.resto-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.resto-head h3 {
+  font-size: 11pt;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: var(--tinta);
+}
+
+.resto-score {
+  font-size: 11pt;
+  font-weight: 600;
+  min-width: 30px;
+}
+
+.resto-ver {
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.resto-vertical {
+  font-size: 7.6pt;
+  color: var(--tinta-suave);
+  margin-left: auto;
+  text-align: right;
+}
+
+.resto-item p {
+  margin: 0 0 3px;
+  font-size: 8.6pt;
+  color: var(--tinta-media);
+  padding-left: 38px;
+  max-width: 78ch;
+}
+
+.desbloqueo { color: var(--tinta) !important; }
+
+.desbloqueo .db-label {
+  display: inline-block;
+  font-size: 6.8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tinta-suave);
+  margin-right: 6px;
+}
+
+.h-fuentes { margin-top: 12px; }
+.fuentes { font-size: 7.4pt; color: var(--tinta-media); margin: 0; padding-left: 16px; }
+.fuentes li { margin-bottom: 2px; }
+.fuentes .url { display: block; color: var(--tinta-suave); word-break: break-all; }
