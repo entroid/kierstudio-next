@@ -33,7 +33,12 @@ export function AboutAnimated() {
                         {/* {t('about.title3')} */}
                     </h2>
 
-                    <h3 className="pb-8  text-[1.125rem] md:text-[1.5rem]"><b>{t('about.description1Tag')}</b></h3>
+                    <h3
+                        className="font-archivo pb-8 text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white"
+                        style={{ fontWeight: 700 }}
+                    >
+                        {t('about.description1Tag')}
+                    </h3>
 
                     <div className="grid md:grid-cols-2 gap-6 md:gap-10 max-w-[1170px]">
                         <motion.div
@@ -50,12 +55,10 @@ export function AboutAnimated() {
                             </p>
 
                             <p
-                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
-                                style={{ fontWeight: 400 }}
+                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D] dark:text-white leading-[1.7]"
+                                style={{ fontWeight: 700 }}
                             >
-                                {t('about.description1b').split(t('about.description1Bold'))[0]}
-                                <b>{t('about.description1Bold')}</b>
-                                {t('about.description1').split(t('about.description1Bold'))[1]}
+                                {t('about.description1Bold')}
                             </p>
                         </motion.div>
 
@@ -64,22 +67,6 @@ export function AboutAnimated() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                        >
-                            <p
-                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
-                                style={{ fontWeight: 400 }}
-                            >
-                                {t('about.description2')}
-                            </p>
-                        </motion.div>
-
-
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="md:col-start-2"
                         >
                             <p
                                 className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] mb-10"
