@@ -214,7 +214,7 @@ export const projectsData: Project[] = [
             "/projects/barriv/02.jpg",
             "/projects/barriv/03.jpg",
         ],
-        url: "https://barrivell.com.ar/",
+        url: "https://www.barrivell.com.ar/",
     },
     {
         id: 7,
