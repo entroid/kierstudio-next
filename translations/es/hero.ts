@@ -1,10 +1,9 @@
 export const hero = {
-    location: "Diseño · Estrategia · Desarrollo",
-    title: "EL MUNDO AVANZA",
-    subtitle: "Nosotros nos encargamos de que tu negocio no se quede atrás.",
-    description: "Diseñamos y desarrollamos sitios, sistemas y herramientas digitales útiles para negocios",
-    /*descriptionBold: "Alineamos los objetivos de tu empresa, las necesidades tecnológicas y la estrategia de crecimiento a través de {bold}",*/
-    descriptionBoldText: " que quieren crecer.",
-    ctaTalk: "Consultanos sin cargo",
-    ctaWork: "Ver Trabajos",
+    location: "Automatización · Aplicaciones a medida · Consultoría",
+    title: "MENOS TAREAS A MANO",
+    subtitle: "Consultora de automatización y aplicaciones a medida para PyMEs.",
+    description: "Detectamos las tareas que le comen horas a tu equipo —cargar facturas, pasar pedidos, perseguir proveedores— y las automatizamos con IA,",
+    descriptionBoldText: " sin cambiar el sistema que ya usás.",
+    ctaTalk: "Hablemos sin cargo",
+    ctaWork: "Ver casos",
 };

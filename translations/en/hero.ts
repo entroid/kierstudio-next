@@ -1,10 +1,9 @@
 export const hero = {
-    location: "Design · Strategy · Development",
-    title: "THE WORLD MOVES",
-    subtitle: "We make sure your business does not stay behind.",
-    description: "We design and develop sites, systems, and useful digital tools for businesses",
-    /*descriptionBold: "We align your company's goals, technology needs, and growth direction through {bold}.",*/
-    descriptionBoldText: " that want to grow.",
-    ctaTalk: "Reach out for free",
-    ctaWork: "View Work",
+    location: "Automation · Custom Applications · Consulting",
+    title: "FEWER TASKS BY HAND",
+    subtitle: "Automation and custom applications consultancy for small and mid-sized businesses.",
+    description: "We find the tasks eating up your team's hours —entering invoices, keying in orders, chasing suppliers— and automate them with AI,",
+    descriptionBoldText: " without replacing the system you already use.",
+    ctaTalk: "Talk to us, free of charge",
+    ctaWork: "See case studies",
 };
