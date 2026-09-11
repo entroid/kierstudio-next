@@ -1,51 +1,38 @@
 export const contact = {
     tag: "(Let's Connect)",
-    title1: "READY TO",
-    title2: "START?",
-    subtitle: "If your business is working and you want technology to work for you, we can help. Ready to take it to the next level?",
+    title1: "LET'S TALK ABOUT",
+    title2: "YOUR OPERATION",
+    subtitle: "Tell us which task takes up most of your team's time. In a first conversation, free of charge, we'll see whether it's worth solving, with what, and where to start.",
 
     emailLabel: "Email Us",
     whatsappLabel: "WhatsApp",
     instagramLabel: "Instagram",
 
-    formTitle: "Request a free consultation",
-    formName: "Your Name",
+    formTitle: "Let's talk, free of charge",
+    formName: "Your name",
     formNamePlaceholder: "John Doe",
-    formEmail: "Email Address",
+    formEmail: "Email address",
     formEmailPlaceholder: "john@example.com",
-    formProject: "Project Type",
-    formProjectPlaceholder: "Select a project type…",
-    formProjectOptions: {
-        saas: "SaaS",
-        website: "Website",
-        ecommerce: "E-commerce",
-        mobileApp: "Mobile App",
-        uxui: "UX/UI consulting",
-        other: "Other",
-    },
-    formMessage: "Tell us about your project",
-    formMessagePlaceholder: "Share your vision with us...",
-    formSubmit: "Send Message",
+    formMessage: "What do you want to solve?",
+    formMessagePlaceholder: "For example: we enter hundreds of invoices by hand every month, orders come in over WhatsApp, we need a new website…",
+    formSubmit: "Send inquiry",
+    formSending: "Sending…",
+    formNote: "We reply within 48 hours.",
 
     formValidation: {
         nameRequired: "Please enter your name.",
         emailRequired: "Please enter your email address.",
         emailInvalid: "Please enter a valid email address.",
-        projectRequired: "Please select a project type.",
-        messageRequired: "Please enter a message.",
+        messageRequired: "Tell us what you want to solve.",
     },
 
     formSuccess: {
-        title: "Message sent successfully",
-        message: "Thanks! Your message has been sent. We will get back to you soon.",
+        title: "Thank you!",
+        message: "Thank you! We got your inquiry and will get back to you within 48 hours.",
     },
 
     formError: {
         title: "Something went wrong",
-        message: "Please try again later.",
+        message: "Something went wrong. Please try again or reach us on WhatsApp.",
     },
-
-    close: "Close",
-    scheduleCall: "Schedule a Call",
-    viewPortfolio: "View Portfolio",
 };
