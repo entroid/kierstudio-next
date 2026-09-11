@@ -26,8 +26,8 @@ export function ServicesAnimated() {
         { key: "automation", image: "/services/automatizacion.png" },
         { key: "customapp", image: "/services/0000.jpg" },
         { key: "strategy", image: "/services/02.jpg" },
-        { key: "websites", image: "/services/website2.jpg" },
-        { key: "ecommerce", image: "/services/01.png" },
+        // Sitio y tienda online son un solo servicio: la tienda va adentro.
+        { key: "websites", image: "/services/01.png" },
     ] as const).map(({ key, image }, index) => ({
         title: t(`services.${key}.title`),
         subtitle: t(`services.${key}.subtitle`),

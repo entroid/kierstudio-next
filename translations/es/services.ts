@@ -26,17 +26,10 @@ export const services = {
     },
 
     websites: {
-        title: "SITIO WEB",
-        tag: "Tu presencia digital que trabaja 24/7",
-        subtitle: "Tu primer punto de contacto con clientes nuevos. Diseñamos sitios que se ven bien, generan confianza y convierten visitas en consultas.",
-        items: ["Diseño a medida", "Rápido y optimizado", "Rediseños y actualizaciones"],
-    },
-
-    ecommerce: {
-        title: "TIENDA ONLINE",
-        tag: "Vendé mientras dormís",
-        subtitle: "Un canal de ventas que funciona. Nos encargamos del diseño, la configuración y el lanzamiento completo. Sin complicaciones técnicas de tu lado.",
-        items: ["Shopify", "Tiendanube", "WooCommerce", "Pasarelas de pago"],
+        title: "SITIOS WEB",
+        tag: "Tu presencia digital, trabajando 24/7",
+        subtitle: "Tu primer punto de contacto con clientes nuevos. Diseñamos sitios que generan confianza y convierten visitas en consultas. Y si vendés online, armamos tu tienda completa —diseño, configuración, medios de pago y lanzamiento—, sin complicaciones técnicas de tu lado.",
+        items: ["Diseño a medida", "Rápidos y optimizados", "Rediseños", "Tiendas online", "Shopify, Tiendanube y WooCommerce", "Pasarelas de pago"],
     },
 
     ctaButton: "Contanos tu proyecto",

@@ -26,17 +26,10 @@ export const services = {
     },
 
     websites: {
-        title: "WEBSITE",
-        tag: "Your digital presence working 24/7",
-        subtitle: "Your first point of contact with new clients. We design websites that look good, build trust, and convert visitors into inquiries.",
-        items: ["Custom design", "Fast and optimized", "Easy to update"],
-    },
-
-    ecommerce: {
-        title: "ONLINE STORE",
-        tag: "Sell while you sleep",
-        subtitle: "A sales channel that works. We handle the design, setup, and complete launch. No technical complications on your end.",
-        items: ["Shopify", "Tiendanube", "WooCommerce", "Payment gateways"],
+        title: "WEBSITES",
+        tag: "Your digital presence, working 24/7",
+        subtitle: "Your first point of contact with new clients. We design websites that build trust and turn visitors into inquiries. And if you sell online, we set up your complete store —design, configuration, payments and launch—, with no technical hassle on your end.",
+        items: ["Custom design", "Fast and optimized", "Redesigns", "Online stores", "Shopify, Tiendanube and WooCommerce", "Payment gateways"],
     },
 
     ctaButton: "Tell us about your project",
