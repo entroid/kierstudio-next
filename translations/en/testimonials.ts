@@ -6,17 +6,10 @@ export const testimonials = {
     prevTestimonial: "Previous testimonial",
     nextTestimonial: "Next testimonial",
     goToTestimonial: "Go to testimonial",
+    visitWebsite: "Visit website →",
 
     // Author info (shown after quote)
     atLabel: "at", // "John Doe, CEO at Company"
-
-    // Stats section
-    stats: {
-        projectsCompleted: "Projects Completed",
-        conversionRates: "Conversion Rates",
-        yearsExperience: "Years Experience",
-        clientSatisfaction: "Client Satisfaction",
-    },
 
     // Testimonials data
     items: [
@@ -26,7 +19,7 @@ export const testimonials = {
             author: "Alejandro C.",
             role: "OWNER",
             company: "Barrivell Gafas",
-            website: "https://barrivell.com.ar",
+            website: "https://www.barrivell.com.ar/",
         },
         {
             id: 2,
@@ -36,13 +29,5 @@ export const testimonials = {
             company: "MB Food Safety",
             website: "https://mbfoodsafety.com/",
         },
-        /*{
-            id: 3,
-            quote: "The professionalism and creativity of Kier Studio is unparalleled. They transformed our vision into an impressive digital reality that has generated a significant impact on our growth.",
-            author: "Ana Rodríguez",
-            role: "Marketing Director",
-            company: "Goldline",
-            website: "https://mbfoodsafety.com/",
-        },*/
     ],
 };

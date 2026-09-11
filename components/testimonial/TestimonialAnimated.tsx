@@ -45,7 +45,7 @@ export function TestimonialAnimated() {
                     className="mb-20"
                 >
                     <span
-                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
+                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-white/60 mb-8 block italic"
                         style={{ fontWeight: 400 }}
                     >
                         {t('testimonials.tag')}
@@ -126,7 +126,7 @@ export function TestimonialAnimated() {
                                             className="font-archivo text-[0.875rem] text-[#D52169] hover:text-[#E54079] transition-colors duration-300"
                                             style={{ fontWeight: 600 }}
                                         >
-                                            Visit Website →
+                                            {t('testimonials.visitWebsite')}
                                         </motion.a>
                                     )}
                                 </div>
