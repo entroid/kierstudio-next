@@ -18,41 +18,24 @@ export function ServicesAnimated() {
     });
     const titleOpacity = useTransform(titleProgress, [0, 1], [0, 1]);
 
-    const services = [
-        {
-            title: t('services.customapp.title'),
-            subtitle: t('services.customapp.subtitle'),
-            image: "/services/0000.jpg",
-            services: translations.services.customapp.items,
-            tag: t('services.customapp.tag'),
-            bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
-        },
-        {
-            title: t('services.strategy.title'),
-            subtitle: t('services.strategy.subtitle'),
-            image: "/services/02.jpg",
-            services: translations.services.strategy.items,
-            tag: t('services.strategy.tag'),
-            bgColor: "bg-[#28292D] dark:bg-black",
-        },
-        {
-            title: t('services.websites.title'),
-            subtitle: t('services.websites.subtitle'),
-            image: "/services/website2.jpg",
-            services: translations.services.websites.items,
-            tag: t('services.websites.tag'),
-            bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
-        },
-        {
-            title: t('services.ecommerce.title'),
-            subtitle: t('services.ecommerce.subtitle'),
-            image: "/services/01.png",
-            services: translations.services.ecommerce.items,
-            tag: t('services.ecommerce.tag'),
-            bgColor: "bg-[#28292D] dark:bg-black",
-        },
-
-    ];
+    // El orden es el argumento: primero lo que la consultora vende —automatizar
+    // y construir a medida—, después la presencia digital. El fondo alterna
+    // claro/oscuro según la posición, así que reordenar no rompe el ritmo.
+    const fondos = ["bg-[#F5F5F5] dark:bg-[#1a1a1a]", "bg-[#28292D] dark:bg-black"];
+    const services = ([
+        { key: "automation", image: "/services/automatizacion.png" },
+        { key: "customapp", image: "/services/0000.jpg" },
+        { key: "strategy", image: "/services/02.jpg" },
+        { key: "websites", image: "/services/website2.jpg" },
+        { key: "ecommerce", image: "/services/01.png" },
+    ] as const).map(({ key, image }, index) => ({
+        title: t(`services.${key}.title`),
+        subtitle: t(`services.${key}.subtitle`),
+        image,
+        services: translations.services[key].items,
+        tag: t(`services.${key}.tag`),
+        bgColor: fondos[index % 2],
+    }));
 
     return (
         <section

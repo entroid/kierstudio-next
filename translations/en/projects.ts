@@ -1,7 +1,7 @@
 export const projects = {
     tag: "PROJECTS",
     title: "Our Work",
-    subtitle: "Explore our portfolio of selected transformative digital experiences.",
+    subtitle: "Processes that stopped being done by hand, and systems that brought order to how each client operates. What hurt, what we did and what changed.",
 
     // UI Labels
     viewProject: "View Project →",
@@ -17,6 +17,7 @@ export const projects = {
     caseBack: "All work",
     caseProblem: "The problem",
     caseSolution: "What we did",
+    caseProcess: "How it works",
     caseResult: "What changed",
     caseGallery: "The work",
     caseCtaTitle: "Dealing with something similar?",

@@ -64,7 +64,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                     className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-6 block italic"
                     style={{ fontWeight: 600 }}
                 >
-                    ({project.category} - {project.year})
+                    ({project.category}{project.year && ` - ${project.year}`})
                 </span>
 
                 <h1
@@ -112,7 +112,11 @@ export function ProjectCase({ slug }: { slug: string }) {
                 un número sin de dónde salió no se publica. */}
             {project.metrics && project.metrics.length > 0 && (
                 <section className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-24">
-                    <div className="grid sm:grid-cols-3 gap-8 border-y border-[#28292D]/10 dark:border-white/10 py-12">
+                    {/* Las columnas siguen a la cantidad de números: un caso con
+                        una sola métrica no puede dejar dos tercios vacíos. */}
+                    <div
+                        className={`grid ${project.metrics.length >= 3 ? "sm:grid-cols-3" : project.metrics.length === 2 ? "sm:grid-cols-2" : ""} gap-8 border-y border-[#28292D]/10 dark:border-white/10 py-12`}
+                    >
                         {project.metrics.map((metric) => (
                             <div key={metric.label}>
                                 <span
@@ -155,6 +159,14 @@ export function ProjectCase({ slug }: { slug: string }) {
                 <Bloque titulo={t("projects.caseSolution")}>
                     <Lista items={project.solucion} />
                 </Bloque>
+
+                {/* En una automatización lo entregado es un proceso, no una
+                    pantalla: el paso a paso ocupa el lugar de la galería. */}
+                {project.proceso && project.proceso.length > 0 && (
+                    <Bloque titulo={t("projects.caseProcess")}>
+                        <Pasos pasos={project.proceso} />
+                    </Bloque>
+                )}
 
                 <Bloque titulo={t("projects.caseResult")}>
                     <Lista items={project.resultado} />
@@ -274,6 +286,38 @@ function Bloque({ titulo, children }: { titulo: string; children: React.ReactNod
             </div>
             <div className="lg:col-start-2 pb-10 lg:pb-14">{children}</div>
         </>
+    );
+}
+
+/** El recorrido del proceso, numerado: el orden es parte de la explicación. */
+function Pasos({ pasos }: { pasos: NonNullable<Project["proceso"]> }) {
+    return (
+        <ol className="space-y-8">
+            {pasos.map((paso, i) => (
+                <li key={paso.titulo} className="grid grid-cols-[3rem_1fr] gap-4">
+                    <span
+                        className="font-archivo text-[1.75rem] leading-[1] tracking-[-0.04em] text-[#D52169]"
+                        style={{ fontWeight: 900 }}
+                    >
+                        {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                        <h3
+                            className="font-archivo text-[1.25rem] md:text-[1.375rem] leading-[1.2] uppercase text-[#28292D] dark:text-white mb-2"
+                            style={{ fontWeight: 800 }}
+                        >
+                            {paso.titulo}
+                        </h3>
+                        <p
+                            className="font-archivo text-[1.0625rem] md:text-[1.1875rem] text-[#28292D]/80 dark:text-white/75 leading-[1.6]"
+                            style={{ fontWeight: 400 }}
+                        >
+                            {paso.detalle}
+                        </p>
+                    </div>
+                </li>
+            ))}
+        </ol>
     );
 }
 

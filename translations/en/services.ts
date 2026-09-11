@@ -2,21 +2,29 @@ export const services = {
     tag: "Services",
     title: "Our ",
     title2: "Solutions",
-    subtitle: "Every project is different, but the goal is always the same: to make your business work better.",
+    subtitle: "We automate the tasks that eat up your team's hours and build the tools your operation needs. Without changing what already works.",
+
+    automation: {
+        title: "AI PROCESS AUTOMATION",
+        tag: "Let the system handle the repetitive work",
+        subtitle: "Invoices someone types in by hand, orders arriving over WhatsApp that need to be entered into the system, suppliers you have to chase to find out when they'll deliver. We automate those tasks without replacing the system you already use: what's clear gets processed automatically, and anything uncertain goes to a person.",
+        items: ["Invoice and receipt entry", "WhatsApp and email orders", "Supplier follow-up", "Automatic alerts and reports"],
+    },
 
     customapp: {
-        title: "CUSTOM SYSTEM OR APP",
-        tag: "Fewer errors, more time",
-        subtitle: "Do you manage appointments via WhatsApp? Does your team work with Excel spreadsheets? We build simple digital tools that automate what you currently do by hand.",
-        items: ["Management dashboards", "Booking systems", "Internal tools", "Client portals"],
+        title: "CUSTOM APPLICATIONS",
+        tag: "Your operation, in one place",
+        subtitle: "Does your team rely on Excel spreadsheets only one person understands? Do you manage appointments, orders or clients over WhatsApp? We build the tool your business needs —an internal system, a dashboard, a client portal—, easy to use and designed around how you actually work.",
+        items: ["Internal management systems", "Dashboards", "Client portals", "Bookings and appointments"],
     },
 
     strategy: {
         title: "STRATEGIC CONSULTING",
         tag: "The map before the journey",
-        subtitle: "Not all businesses need the same thing. We analyze your business, your current digital situation, and tell you exactly what makes sense to do and in what order.",
-        items: ["Analysis and diagnosis", "Strategy", "Digital roadmap"],
+        subtitle: "Not everything is worth automating, and not all at once. We analyze how your company works today, find where the hours are lost, and tell you what to do first and what impact to expect. We start with a small pilot, to validate before scaling.",
+        items: ["Process diagnosis", "What to automate first", "Roadmap", "Scoped pilot"],
     },
+
     websites: {
         title: "WEBSITE",
         tag: "Your digital presence working 24/7",

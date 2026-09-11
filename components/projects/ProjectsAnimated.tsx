@@ -99,7 +99,7 @@ export function ProjectsAnimated() {
                                                     className="font-archivo text-[0.625rem] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
                                                     style={{ fontWeight: 400 }}
                                                 >
-                                                    ({project.category} - {project.year})
+                                                    ({project.category}{project.year && ` - ${project.year}`})
                                                 </span>
                                                 <h3
                                                     className="font-archivo text-[2.625rem] md:text-[3.25rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"

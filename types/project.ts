@@ -5,6 +5,13 @@ export interface ProjectMetric {
     label: string;
 }
 
+export interface ProjectStep {
+    /** Un verbo: "Recibe", "Controla". Es lo que se lee de un vistazo. */
+    titulo: string;
+    /** Qué pasa en ese paso, dicho en términos del negocio. */
+    detalle: string;
+}
+
 export interface Project {
     id: number;
     /**
@@ -15,7 +22,8 @@ export interface Project {
     slug: string;
     title: string;
     category: string;
-    year: string;
+    /** Se omite cuando no se conoce con certeza: no se inventa un año. */
+    year?: string;
     description: string;
     services: string[];
     image: string;
@@ -33,6 +41,12 @@ export interface Project {
     problema: string;
     /** Qué hicimos. Frases cortas, una idea por ítem. */
     solucion: string[];
+    /**
+     * Cómo funciona, paso a paso. Para los trabajos donde lo entregado es un
+     * proceso y no una pantalla —una automatización no tiene nada que
+     * capturar—: en esos casos ocupa el lugar de la galería.
+     */
+    proceso?: ProjectStep[];
     /** Qué cambió después. Sólo lo que se puede sostener. */
     resultado: string[];
     /** Números medidos. Se omite cuando no los hay: no se inventan. */

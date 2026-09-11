@@ -3,6 +3,85 @@ import { Project } from "@/types/project";
 export const projectsData: Project[] = [
     {
         id: 1,
+        slug: "carga-automatica-de-facturas",
+        title: "Automated invoice entry",
+        category: "AI Automation · Oil & Gas",
+        description:
+            "We automated the intake, reading and validation of supplier invoices for the accounts payable team of an Oil & Gas company. Using AI and document reading, the system extracts each invoice's data, checks it against the management system and only sends the exceptions to a person.",
+        summary:
+            "An Oil & Gas company received thousands of supplier invoices a month, as PDFs and photos, and a person entered and checked each one. Now the system reads them, compares them against what's already on record, and only hands a person the ones that don't add up.",
+        problema:
+            "The accounts payable team processed thousands of documents a month, from a broad supplier base and an operation spread across several sites. They arrived as PDFs or images, each supplier with its own format and very uneven quality. Someone had to read every one, key the data into the management system and check that it matched. Typos and discrepancies surfaced late, everyone checked things their own way, and meeting payment deadlines depended on how many people were available.",
+        solucion: [
+            "We brought documents arriving by email, through shared folders and from the management system itself into a single flow.",
+            "We set AI to read each document the way a person would, even when it's scanned or a photo, without needing a template per supplier.",
+            "We connected it to the management system the company already used: nothing had to be replaced.",
+            "We decided that anything uncertain isn't entered automatically: incomplete documents or ones with discrepancies go to a person.",
+        ],
+        proceso: [
+            { titulo: "Receives", detalle: "Picks up documents from email, shared folders or the management system, and sorts them by document type." },
+            { titulo: "Reads", detalle: "Digitizes the document, and AI identifies the key data: date, number, tax ID, amount and currency." },
+            { titulo: "Checks", detalle: "Compares every field against the management system and the supplier registry, and flags duplicates and inconsistencies." },
+            { titulo: "Records", detalle: "Leaves the data ready in the system, reports what was processed and keeps a history of each document. Anything that doesn't add up goes to review." },
+        ],
+        resultado: [
+            "The team stopped typing in documents and now only reviews the exceptions.",
+            "Fewer entry errors: the data reaching the system is more reliable.",
+            "A new supplier or a different format doesn't require reconfiguring anything.",
+            "The same team has more capacity, and payment deadlines are met more consistently.",
+            "Every document has its history on record —what arrived, what was checked and what was done—, ready for an audit.",
+        ],
+        metrics: [
+            { value: ">90%", label: "of documents read correctly" },
+        ],
+        metricsNota: "Estimate based on client feedback.",
+        services: ["AI Automation", "Document Reading", "Management System Integration"],
+        image: "/projects/automatizacion-facturas/portada.png",
+        images: [],
+        url: "",
+    },
+    {
+        id: 2,
+        slug: "seguimiento-de-ordenes-de-compra",
+        title: "Purchase order follow-up",
+        category: "Procurement automation · Oil & Gas",
+        description:
+            "We automated purchase order tracking and supplier management for the procurement team of an industrial Oil & Gas company: detecting overdue or soon-to-be-due orders, contacting suppliers, updating dates and reporting deviations.",
+        summary:
+            "The procurement team at an Oil & Gas company spent hours chasing suppliers to find out whether they'd deliver on time. Now the system spots which orders are at risk, asks the supplier and updates the status on its own.",
+        problema:
+            "With many open purchase orders, many suppliers and critical delivery dates, knowing what would arrive late was manual work: checking the system, building lists of pending orders, writing to each supplier, waiting for the answer and entering it again. It ate up the procurement team's hours, the information was scattered, and delays were discovered once they were already a problem. In an operation with sites and warehouses, what matters is having the material when it's needed.",
+        solucion: [
+            "We took a repetitive, well-defined process —check, ask, update— and turned it into a flow that runs on its own.",
+            "We connected it to the existing management system and other internal systems, without replacing them.",
+            "We gave suppliers a simple way to respond: a form or an email listing their pending orders.",
+            "We left the decisions with the team: breaches and critical cases are escalated to a person.",
+        ],
+        proceso: [
+            { titulo: "Detects", detalle: "Checks the management system and flags overdue or soon-to-be-due orders, taking already agreed new dates into account." },
+            { titulo: "Organizes", detalle: "Adds recent receipts and new orders, and groups everything by supplier, material, location and required date." },
+            { titulo: "Asks", detalle: "Sends each supplier a form or an email asking them to confirm dates and quantities." },
+            { titulo: "Updates", detalle: "Reads and classifies the replies, and updates each order's status, new date and comments." },
+            { titulo: "Reports", detalle: "Builds a report of progress, pending items and critical cases, and escalates breaches for a person to handle." },
+        ],
+        resultado: [
+            "The procurement team stopped chasing suppliers and now decides what to do about delays.",
+            "Critical orders are spotted before they're due, not once the material is already missing.",
+            "The status of every order is visible in real time.",
+            "On-time deliveries improved.",
+            "Every supplier's reply is recorded per order, for follow-up and audit.",
+        ],
+        metrics: [
+            { value: "+200 h", label: "of manual work avoided per month: more than one full-time person" },
+        ],
+        metricsNota: "Estimate based on client feedback.",
+        services: ["Process Automation", "Management System Integration", "Automated Reports"],
+        image: "/projects/seguimiento-oc/portada.png",
+        images: [],
+        url: "",
+    },
+    {
+        id: 3,
         slug: "hard-rock-marketing-planner",
         title: "Hard Rock Marketing Planner",
         category: "Offer planning system",
@@ -43,7 +122,7 @@ export const projectsData: Project[] = [
         url: "",
     },
     {
-        id: 2,
+        id: 4,
         slug: "muu",
         title: "Muu",
         category: "Mobile App for Livestock Marketplace",
@@ -75,7 +154,7 @@ export const projectsData: Project[] = [
         url: "https://www.muumercadoganadero.com/",
     },
     {
-        id: 3,
+        id: 5,
         slug: "mirai-fleet",
         title: "MIRAI FLEET",
         category: "Fleet management system",
@@ -107,7 +186,7 @@ export const projectsData: Project[] = [
         url: "https://miraifleet.com",
     },
     {
-        id: 4,
+        id: 6,
         slug: "barrivell",
         title: "Barrivell",
         category: "Fashion online store",
@@ -138,7 +217,7 @@ export const projectsData: Project[] = [
         url: "https://barrivell.com.ar/",
     },
     {
-        id: 5,
+        id: 7,
         slug: "holy-beer-hotel",
         title: "HOLY Beer Hotel",
         category: "Themed hostel landing page",
@@ -167,7 +246,7 @@ export const projectsData: Project[] = [
         url: "https://beerhoteles.com/",
     },
     {
-        id: 6,
+        id: 8,
         slug: "teamie",
         title: "TEAMIE.",
         category: "Product presentation landing page",
