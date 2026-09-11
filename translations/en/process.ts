@@ -1,35 +1,36 @@
 export const process = {
     tag: "Our PROCESS",
     title: "How We Work",
-    subtitle: "Our proven methodology ensures exceptional results every time at record speed.",
+    subtitle: "Understand before building, start small and scale what works.",
 
-    ctaButton: "Let´s Start",
+    ctaButton: "Let's start",
 
-    // Process steps
+    // Process steps. `services` are the tags on the right: what the client
+    // takes away from each stage.
     steps: {
         discovery: {
             number: "01",
-            title: "WE LISTEN TO YOU",
-            description: "Before doing anything, we analyze your business and your challenges to understand what you need to solve.",
-            services: [],
+            title: "UNDERSTAND",
+            description: "We look at how your company actually works today —not how it's written down— and find where hours are lost and where errors creep in.",
+            services: ["Assessment", "Bottlenecks"],
         },
         design: {
             number: "02",
-            title: "WE DESIGN IT",
-            description: "We show you how the solution will look and work before building it.",
-            services: [],
+            title: "PLAN",
+            description: "We tell you what's worth solving first, with which technology and what impact to expect. Before building, you see how it will work.",
+            services: ["Roadmap", "Priorities"],
         },
         develop: {
             number: "03",
-            title: "WE BUILD IT",
-            description: "We transform designs into functional and easy-to-use digital experiences.",
-            services: [],
+            title: "START SMALL",
+            description: "We begin with what has the most impact —a pilot process, a first version of the system or the site— connected to what you already use, and test it with your team.",
+            services: ["Pilot", "Measurement"],
         },
         deliver: {
             number: "04",
-            title: "WE LAUNCH IT",
-            description: "We accompany you in the launch and initial support of the solution.",
-            services: [],
+            title: "SCALE",
+            description: "Once the first piece is working, we extend it to more processes, train your team and stay close after launch.",
+            services: ["Scaling", "Training", "Support"],
         },
     },
 };

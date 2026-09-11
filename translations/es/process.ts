@@ -1,35 +1,36 @@
 export const process = {
     tag: "Cómo Trabajamos",
     title: "Proceso",
-    subtitle: "Nuestra metodología comprobada garantiza resultados excepcionales en toda situación a velocidad record.",
+    subtitle: "Entender antes de construir, empezar chico y ampliar lo que funciona.",
 
     ctaButton: "¿Empezamos?",
 
-    // Process steps
+    // Process steps. `services` son las etiquetas de la derecha: lo que el
+    // cliente se lleva de cada etapa.
     steps: {
         discovery: {
             number: "01",
-            title: "TE ESCUCHAMOS",
-            description: "Antes de hacer nada, analizamos tu negocio y tus desafíos para entender qué necesitás resolver",
-            services: [],
+            title: "ENTENDEMOS",
+            description: "Vemos cómo se trabaja hoy en tu empresa —no cómo está escrito— y detectamos dónde se pierden horas y dónde aparecen los errores.",
+            services: ["Relevamiento", "Cuellos de botella"],
         },
         design: {
             number: "02",
-            title: "LO DISEÑAMOS",
-            description: "Te mostramos cómo se va a ver y funcionar la solución antes de construirla",
-            services: [],
+            title: "PLANIFICAMOS",
+            description: "Te decimos qué conviene resolver primero, con qué tecnología y qué impacto esperar. Antes de construir, ves cómo va a funcionar.",
+            services: ["Hoja de ruta", "Prioridades"],
         },
         develop: {
             number: "03",
-            title: "LO CONSTRUIMOS",
-            description: "Transformamos diseños en experiencias digitales funcionales y simples de usar",
-            services: [],
+            title: "EMPEZAMOS CHICO",
+            description: "Arrancamos por lo que más impacto tiene —un proceso piloto, una primera versión del sistema o del sitio— conectado a lo que ya usás, y lo probamos con tu equipo.",
+            services: ["Piloto", "Medición"],
         },
         deliver: {
             number: "04",
-            title: "LO LANZAMOS",
-            description: "Te acompañamos en el lanzamiento y soporte inicial de la solución",
-            services: [],
+            title: "AMPLIAMOS",
+            description: "Con lo primero funcionando, lo extendemos a más procesos, capacitamos a tu equipo y seguimos cerca después del lanzamiento.",
+            services: ["Escalado", "Capacitación", "Soporte"],
         },
     },
 };
