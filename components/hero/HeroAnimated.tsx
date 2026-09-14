@@ -107,7 +107,7 @@ export function HeroAnimated() {
                                 className="mb-4"
                             >
                                 <h1
-                                    className="titulo text-[14vw] line-height-[14vw] sm:text-[12vw] sm:line-height-[12vw] md:text-[5.25rem] md:line-height-[5.875rem] xl:text-[6rem] xl:line-height-[6.875rem] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white"
+                                    className="titulo text-[12.25vw] line-height-[14vw] sm:text-[10.5vw] sm:line-height-[12vw] md:text-[4.594rem] md:line-height-[5.875rem] xl:text-[5.25rem] xl:line-height-[6.875rem] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white"
                                 >
                                     {t('hero.title')}
                                 </h1>

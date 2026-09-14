@@ -101,12 +101,12 @@ body {
   font-family: var(--font-geist-sans), sans-serif;
 }
 
-/* Títulos: Archivo al 125 % de ancho y peso 600. El ancho es lo que la hace
+/* Títulos: Archivo al 112,5 % de ancho y peso 700. El ancho es lo que la hace
    leer técnica en vez de editorial. */
 @utility titulo {
   font-family: var(--fuente-archivo), sans-serif;
-  font-stretch: 125%;
-  font-weight: 600;
+  font-stretch: 112.5%;
+  font-weight: 700;
 }
 
 /* Etiquetas de sección: mono, mayúsculas, con "//" delante. Reemplazan a las

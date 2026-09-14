@@ -101,13 +101,13 @@ export function CTAAnimated() {
                             </span>
 
                             <h2
-                                className="titulo text-[2rem] md:text-[4.5rem] lg:text-[4.25rem] xl:text-[4.5rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                                className="titulo text-[1.75rem] md:text-[3.938rem] lg:text-[3.719rem] xl:text-[3.938rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                             >
                                 {t('cta.title1')}
                                 <br />
                                 {/* En desktop la columna es la mitad del ancho: a 6.5rem "OPERACIÓN"
                                     sola no entraba. md sigue grande porque ahí la columna es completa. */}
-                                <span className="text-[#D52169] text-[2.5rem] md:text-[5.5rem] lg:text-[4rem] xl:text-[4.5rem]">{t('cta.title2')}</span>
+                                <span className="text-[#D52169] text-[2.188rem] md:text-[4.812rem] lg:text-[3.5rem] xl:text-[3.938rem]">{t('cta.title2')}</span>
                             </h2>
 
                             <p

@@ -23,17 +23,17 @@ export function AboutAnimated() {
                     </span>
 
                     <h2
-                        className="titulo text-[2.5rem] md:text-[5rem] lg:text-[5.5rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="titulo text-[2.188rem] md:text-[4.375rem] lg:text-[4.812rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
                     >
                         {t('about.title1')}
                         <br />
-                        <span className="text-[#D52169] text-[2.5rem] md:text-[6rem] lg:text-[6.25rem]">{t('about.title2')} </span>
+                        <span className="text-[#D52169] text-[2.188rem] md:text-[5.25rem] lg:text-[5.469rem]">{t('about.title2')} </span>
                         {/* {t('about.title3')} */}
                     </h2>
 
                     <h3
                         className="font-archivo pb-8 text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white"
-                        style={{ fontWeight: 700 }}
+                        style={{ fontWeight: 600 }}
                     >
                         {t('about.description1Tag')}
                     </h3>

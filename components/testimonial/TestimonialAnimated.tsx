@@ -51,7 +51,7 @@ export function TestimonialAnimated() {
                     </span>
 
                     <h2
-                        className="titulo text-[2.25rem] md:text-[5rem] lg:text-[6.25rem] leading-[1] tracking-[-0.04em] text-white mb-8"
+                        className="titulo text-[1.969rem] md:text-[4.375rem] lg:text-[5.469rem] leading-[1] tracking-[-0.04em] text-white mb-8"
                     >
                         {t('testimonials.title')}
                     </h2>
