@@ -95,19 +95,19 @@ export function CTAAnimated() {
                     >
                         <div className="mb-12">
                             <span
-                                className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                                style={{ fontWeight: 600 }}
+                                className="etiqueta text-[0.6875rem] text-[#28292D]/60 dark:text-white/60 mb-8 block"
                             >
                                 {t('cta.tag')}
                             </span>
 
                             <h2
-                                className="font-archivo text-[2rem] md:text-[4.5rem] lg:text-[5.2rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
-                                style={{ fontWeight: 900 }}
+                                className="titulo text-[1.75rem] md:text-[3.938rem] lg:text-[3.719rem] xl:text-[3.938rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                             >
                                 {t('cta.title1')}
                                 <br />
-                                <span className="text-[#D52169] text-[2.5rem] md:text-[5.5rem] lg:text-[6.5rem]">{t('cta.title2')}</span>
+                                {/* En desktop la columna es la mitad del ancho: a 6.5rem "OPERACIÓN"
+                                    sola no entraba. md sigue grande porque ahí la columna es completa. */}
+                                <span className="text-[#D52169] text-[2.188rem] md:text-[4.812rem] lg:text-[3.5rem] xl:text-[3.938rem]">{t('cta.title2')}</span>
                             </h2>
 
                             <p
@@ -324,7 +324,7 @@ export function CTAAnimated() {
                                 {submitting ? (
                                     <>
                                         <Loader2 className="animate-spin" size={18} />
-                                        Sending...
+                                        {t('cta.formSending')}
                                     </>
                                 ) : (
                                     <>
@@ -332,6 +332,15 @@ export function CTAAnimated() {
                                     </>
                                 )}
                             </motion.button>
+
+                            {/* Qué pasa después de enviar: para quien no nos
+                                conoce, saber cuándo le responden baja la barrera. */}
+                            <p
+                                className="font-archivo text-[0.8125rem] text-[#28292D]/60 dark:text-white/60 text-center"
+                                style={{ fontWeight: 500 }}
+                            >
+                                {t('cta.formNote')}
+                            </p>
                         </form>
                     </motion.div>
                 </div>

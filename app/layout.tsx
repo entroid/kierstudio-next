@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./tailwind.css";
 import "./performance.css";
 import { ThemeProvider } from "@/components/ThemeContext";
@@ -20,15 +22,21 @@ import { ConsentBanner } from "@/components/ConsentBanner";
 const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "600", "700", "800", "900"],
+  // Variable con el eje de ancho: los títulos usan la versión expandida
+  // (font-stretch 125%), que como archivo estático no existe.
+  axes: ["wdth"],
   variable: "--fuente-archivo",
 });
 
+// Geist y Geist Mono no están en los datos de next/font/google de Next 14.2,
+// así que vienen del paquete `geist`, que también las auto-hospeda.
+// Exponen --font-geist-sans y --font-geist-mono.
+
 // SEO Metadata
 export const metadata: Metadata = {
-  title: "Diseño Web y Sistemas a Medida | Kier Studio",
-  description: "¿Tu web no genera resultados o tus procesos internos son un caos? Diseñamos sitios y herramientas digitales que trabajan por tu negocio. Consultanos sin cargo.",
-  keywords: "diseño web profesional, páginas web para empresas, desarrollo web a medida, sistemas a medida Argentina, aplicaciones web para negocios, diseño web Argentina, hacer una página web para mi negocio, rediseño de sitio web, automatización de procesos digitales, agencia de diseño web Argentina",
+  title: "Automatización con IA y aplicaciones a medida | Kier Studio",
+  description: "Automatizamos las tareas repetitivas de tu PyME —facturas, pedidos, proveedores— con IA y sin cambiar tu sistema. Consultanos sin cargo.",
+  keywords: "automatización de procesos, automatización con IA, automatización para pymes, carga automática de facturas, automatizar pedidos de WhatsApp, seguimiento de proveedores, aplicaciones a medida, sistemas de gestión a medida, consultora de automatización Argentina, desarrollo de software a medida",
   authors: [{ name: "Kier Studio" }],
   creator: "Kier Studio",
   publisher: "Kier Studio",
@@ -40,22 +48,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: "https://kierstudio.com",
-    title: "Kier Studio — Diseño Web y Sistemas Digitales a Medida",
-    description: "Páginas web profesionales y sistemas a medida para negocios que quieren crecer. Trabajamos con negocios de todo el país. Consultanos sin cargo.",
+    title: "Kier Studio — Automatización con IA y aplicaciones a medida para PyMEs",
+    description: "Detectamos las tareas que le comen horas a tu equipo —facturas, pedidos, proveedores— y las automatizamos con IA, sin cambiar el sistema que ya usás. Consultanos sin cargo.",
     siteName: "Kier Studio",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Kier Studio — Diseño web y sistemas a medida",
+        alt: "Kier Studio — Automatización y aplicaciones a medida",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kier Studio — Diseño Web y Sistemas Digitales a Medida",
-    description: "Páginas web profesionales y sistemas a medida para negocios que quieren crecer. Trabajamos con negocios de todo el país. Consultanos sin cargo.",
+    title: "Kier Studio — Automatización con IA y aplicaciones a medida para PyMEs",
+    description: "Detectamos las tareas que le comen horas a tu equipo —facturas, pedidos, proveedores— y las automatizamos con IA, sin cambiar el sistema que ya usás. Consultanos sin cargo.",
     images: ["/og.png"],
     creator: "@kierstudio_",
   },
@@ -78,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={archivo.variable} suppressHydrationWarning>
+    <html lang="es" className={`${archivo.variable} ${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/k-logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -92,7 +100,7 @@ export default function RootLayout({
               "name": "Kier Studio",
               "url": "https://kierstudio.com",
               "logo": "https://kierstudio.com/k-logo.svg",
-              "description": "Diseñamos y desarrollamos sitios web, sistemas a medida y herramientas digitales para negocios que quieren crecer. Estudio de diseño y desarrollo con sede en Rosario, Argentina.",
+              "description": "Consultora de automatización con IA y aplicaciones a medida para PyMEs. Automatizamos tareas repetitivas —facturas, pedidos, seguimiento de proveedores— sin reemplazar los sistemas que la empresa ya usa. Con sede en Rosario, Argentina.",
               "inLanguage": "es-AR",
               "address": {
                 "@type": "PostalAddress",

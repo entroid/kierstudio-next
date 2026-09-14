@@ -1,11 +1,15 @@
 export const partners = {
-    // Partners section
-    partnersTag: "(Partnered With)",
+    partnersTag: "Our network",
 
-    // Partner taglines (if you want to translate them)
+    // Featured partner
+    partnerTag: "AI automation partner",
+    partnerText: "Nuvia is our technology partner in automation. Together we run automation projects, from diagnosis to go-live.",
+    partnerLink: "Visit nuviait.com",
+
+    // Collaborators
+    collaboratorsTitle: "Collaborators",
     advertising: "Advertising",
-    packagingDesign: "Packaging Design",
+    packagingDesign: "Packaging",
     branding: "Branding",
-    aiAutomation: "AI Automation",
-    marketingCommunication: "Marketing - Communication",
+    marketingCommunication: "Marketing & communication",
 };

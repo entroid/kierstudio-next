@@ -1,11 +1,15 @@
 export const partners = {
-    // Partners section
-    partnersTag: "(Colaboramos Con)",
+    partnersTag: "Nuestra red",
 
-    // Partner taglines
+    // Socio destacado
+    partnerTag: "Socio en automatización con IA",
+    partnerText: "Nuvia es nuestro socio tecnológico en automatización. Juntos llevamos adelante los proyectos de automatización, del diagnóstico a la puesta en marcha.",
+    partnerLink: "Visitar nuviait.com",
+
+    // Colaboradores
+    collaboratorsTitle: "Colaboradores",
     advertising: "Publicidad",
-    packagingDesign: "Diseño de Packaging",
+    packagingDesign: "Packaging",
     branding: "Branding",
-    aiAutomation: "Automatización IA",
-    marketingCommunication: "Marketing - Comunicación",
+    marketingCommunication: "Marketing y comunicación",
 };

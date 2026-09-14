@@ -62,12 +62,13 @@ diseño está pensado para que un desglose incompleto no se vea roto, solo más 
   "resumen": "Dos o tres líneas: por qué quedó donde quedó.",
   "desbloqueo": "Qué haría falta para que suba o para reconsiderarla.",
 
-  "dolores": [                              // solo para cuentas con desglose
+  "dolores": [                              // obligatorias en toda cuenta con desglose
     {
       "proceso": "Órdenes de servicio en campo",
       "descripcion": "Técnicos reportan por WhatsApp y alguien recarga en la oficina.",
       "justificacion": "Publican atención 24h en tres ciudades: alto volumen de partes diarios.",
       "carnada": "App de parte de trabajo",
+      "base": "citada",                     // citada = evidencia propia | inferida = deducida del rubro
       "impacto": 5,                         // 1-5
       "esfuerzo": 2                         // 1-5, menos es mejor
     }
@@ -95,7 +96,13 @@ diseño está pensado para que un desglose incompleto no se vea roto, solo más 
   capex, dato relevante) con el pie "Fuente: ...". Un campo vacío no ocupa lugar; un
   campo con `"—"` tampoco, el script lo descarta.
 - **`dolores`** es la tabla central del desglose. `impacto`/`esfuerzo` se muestran como
-  `5/2`, y ordenar la lista de mayor impacto a menor ayuda a leerla.
+  `5/2`, y ordenar la lista de mayor impacto a menor ayuda a leerla. El `base` se
+  renderiza como una marca al lado del proceso —`Cita` o `Rubro`— con su leyenda al pie
+  de la tabla: es lo que le dice al lector cuáles puede afirmar en una reunión y cuáles
+  tiene que preguntar. El validador avisa si falta.
+- **`dossier`** es opcional: sin él, el script desglosa toda cuenta que no esté
+  descartada y las agrupa en «Mayor potencial» (priorizar) y «A evaluar» (el resto).
+  Ponelo solo para forzar una excepción.
 - **`estrategia`** son las tres líneas del cierre. Si no tenés algo concreto para poner,
   dejá el campo afuera antes que escribir una generalidad.
 - **`fuentes`** va al pie del desglose, numerada. Es lo que hace auditable el informe:

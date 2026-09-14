@@ -23,11 +23,12 @@ export default function HomePage() {
       {/* SECTION: SERVICES */}
       <Services />
 
-      {/* SECTION: PARTNERS */}
-      <Partners />
-
       {/* SECTION: PROJECTS */}
       <Projects />
+
+      {/* SECTION: PARTNERS — después de los casos: primero qué hacemos y la
+          prueba, después con quién. */}
+      <Partners />
 
       {/* SECTION: PROCESS */}
       <Process />

@@ -39,15 +39,13 @@ export function ProjectsAnimated() {
                     className="mb-20"
                 >
                     <span
-                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                        style={{ fontWeight: 600 }}
+                        className="etiqueta text-[0.6875rem] text-[#28292D]/60 dark:text-white/60 mb-8 block"
                     >
                         {t('projects.tag')}
                     </span>
 
                     <h2
-                        className="font-archivo text-[#D52169] text-[3rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
-                        style={{ fontWeight: 900 }}
+                        className="titulo text-[#D52169] text-[2.625rem] md:text-[5.25rem] lg:text-[5.469rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                     >
                         {t('projects.title')}
                     </h2>
@@ -96,14 +94,12 @@ export function ProjectsAnimated() {
                                         <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                             <motion.div initial={{ opacity: 0.8 }} whileHover={{ opacity: 1 }}>
                                                 <span
-                                                    className="font-archivo text-[0.625rem] tracking-[0.3em] uppercase text-white/60 mb-2 block italic"
-                                                    style={{ fontWeight: 400 }}
+                                                    className="etiqueta text-[0.625rem] text-white/60 mb-2 block"
                                                 >
-                                                    ({project.category} - {project.year})
+                                                    {project.category}{project.year && ` · ${project.year}`}
                                                 </span>
                                                 <h3
-                                                    className="font-archivo text-[2.625rem] md:text-[3.25rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"
-                                                    style={{ fontWeight: 900 }}
+                                                    className="titulo text-[1.859rem] md:text-[2.297rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"
                                                 >
                                                     {project.title}
                                                 </h3>
@@ -115,8 +111,8 @@ export function ProjectsAnimated() {
 
                                         <div className="absolute top-8 right-8">
                                             <span
-                                                className="font-archivo text-[4rem] text-white/10 group-hover:text-white/20 transition-colors"
-                                                style={{ fontWeight: 900 }}
+                                                className="font-mono text-[4rem] text-white/10 group-hover:text-white/20 transition-colors"
+                                                style={{ fontWeight: 500 }}
                                             >
                                                 {String(project.id).padStart(2, "0")}
                                             </span>

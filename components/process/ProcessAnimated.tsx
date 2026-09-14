@@ -55,8 +55,7 @@ export function ProcessAnimated() {
                     className="mb-10 md:mb-20"
                 >
                     <span
-                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                        style={{ fontWeight: 600 }}
+                        className="etiqueta text-[0.6875rem] text-[#28292D]/60 dark:text-white/60 mb-8 block"
                     >
                         {t('process.tag')}
                     </span>
@@ -67,8 +66,8 @@ export function ProcessAnimated() {
                         whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="font-archivo text-[#D52169]  text-[3rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
-                        style={{ fontWeight: 900, opacity: titleOpacity }}
+                        className="titulo text-[#D52169]  text-[2.625rem] md:text-[5.25rem] lg:text-[5.469rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        style={{ opacity: titleOpacity }}
                     >
                         {t('process.title')}
                     </motion.h2>
@@ -95,8 +94,8 @@ export function ProcessAnimated() {
                                 <div className="lg:col-span-2">
                                     <motion.div
                                         whileHover={{ scale: 1.1 }}
-                                        className="font-archivo text-[3rem] md:text-[7.5rem] leading-[0.9] tracking-[-0.02em] text-[#D52169] group-hover:text-[#28292D] dark:group-hover:text-white transition-colors duration-300"
-                                        style={{ fontWeight: 900 }}
+                                        className="font-mono text-[3rem] md:text-[7.5rem] leading-[0.9] tracking-[-0.02em] text-[#D52169] group-hover:text-[#28292D] dark:group-hover:text-white transition-colors duration-300"
+                                        style={{ fontWeight: 500 }}
                                     >
                                         {step.number}
                                     </motion.div>
@@ -108,8 +107,7 @@ export function ProcessAnimated() {
                                         whileInView={{ x: 0, opacity: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.2 }}
-                                        className="font-archivo text-[1.875rem] md:text-[3.5rem] lg:text-[4rem] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
-                                        style={{ fontWeight: 900 }}
+                                        className="titulo text-[1.641rem] md:text-[3.062rem] lg:text-[2.844rem] xl:text-[3.5rem] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
                                     >
                                         {step.title}
                                     </motion.h3>

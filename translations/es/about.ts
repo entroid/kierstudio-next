@@ -1,30 +1,23 @@
 export const about = {
     tag: "Qué hacemos",
-    title1: "Menos fricción,",
-    title2: "más resultados.",
-    /* title3: " para tu negocio.",
-    title4: "usuarios?",*/
+    title1: "El problema no es tu equipo.",
+    title2: "Es el proceso.",
 
-    description1Tag: "Diseño y desarrollo digital estratégico, al servicio de tu negocio.",
+    description1Tag: "Tecnología aplicada a la operación de tu empresa.",
 
-    description1: "Cuando un negocio crece, también crecen sus problemas: más consultas sin responder, procesos que se hacen a mano, una web antigua que no es funcional ni ya no representa lo que son.",
+    description1: "Identificamos los cuellos de botella en tus procesos, automatizamos las tareas repetitivas, construimos los sistemas que tu operación necesita y diseñamos sitios que traen clientes. Siempre con el mismo criterio: que la tecnología le saque trabajo a tu equipo, no que le sume.",
 
-    description1b: "",
+    description1Bold: "Primero el diagnóstico, después la herramienta.",
 
-    description1Bold: "Eso tiene solución. Y no tiene que ser complicada.",
+    description3: "Empezamos chico, medimos y recién ahí ampliamos.",
 
+    ctaText: "Contanos dónde se te van las horas",
 
-    description2: "No llegamos con una solución genérica. Primero entendemos cómo funciona tu negocio, dónde está la fricción y qué resultado querés lograr. Después diseñamos y construimos exactamente lo que necesitás, ni más ni menos.",
-
-    description3: "En la estrategia está la diferencia.",
-
-    ctaText: "Contanos dónde está el problema",
-
-    benefitsTitle: "Beneficios",
+    benefitsTitle: "Qué ganás",
     benefits: [
-        "Menos tiempo en tareas repetitivas — más tiempo para lo que importa",
-        "Menos consultas sin responder — más clientes que avanzan solos",
-        "Menos imagen desactualizada — más confianza en cada contacto",
-        "Menos dependencia técnica — más control sobre tu negocio"
+        "Menos horas en tareas repetitivas — más tiempo para lo que hace crecer el negocio",
+        "Menos errores de carga — más datos en los que podés confiar",
+        "Menos dependencia de una sola persona — más procesos que funcionan aunque alguien falte",
+        "Menos depender del boca en boca — más clientes que te encuentran solos",
     ],
 };

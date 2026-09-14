@@ -94,8 +94,7 @@ export function HeroAnimated() {
                                 className="mb-4"
                             >
                                 <span
-                                    className="font-archivo text-[0.72rem] line-height-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/60 dark:text-white/60 block italic"
-                                    style={{ fontWeight: 600 }}
+                                    className="etiqueta text-[0.72rem] text-[#28292D]/60 dark:text-white/60 block"
                                 >
                                     {t('hero.location')}
                                 </span>
@@ -108,8 +107,7 @@ export function HeroAnimated() {
                                 className="mb-4"
                             >
                                 <h1
-                                    className="font-archivo text-[14vw] line-height-[14vw] sm:text-[12vw] sm:line-height-[12vw] md:text-[5.875rem] md:line-height-[5.875rem] xl:text-[6.875rem] xl:line-height-[6.875rem] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white"
-                                    style={{ fontWeight: 900 }}
+                                    className="titulo text-[12.25vw] line-height-[14vw] sm:text-[10.5vw] sm:line-height-[12vw] md:text-[4.594rem] md:line-height-[5.875rem] xl:text-[5.25rem] xl:line-height-[6.875rem] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white"
                                 >
                                     {t('hero.title')}
                                 </h1>

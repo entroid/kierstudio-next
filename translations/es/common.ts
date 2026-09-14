@@ -38,7 +38,7 @@ export const common = {
         contactUs: "Contáctanos",
 
         newsletter: {
-            tag: "(Mantente Actualizado)",
+            tag: "Mantente Actualizado",
             title: "Suscribite a nuestro boletín",
             description: "Recibí las últimas actualizaciones sobre tendencias de diseño y nuestro trabajo.",
             placeholder: "Tu correo electrónico",

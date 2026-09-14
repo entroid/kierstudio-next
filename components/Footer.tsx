@@ -42,8 +42,7 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <motion.h2
-              className="font-archivo text-[4rem] md:text-[6rem] leading-[0.85] tracking-[-0.03em] text-white mb-8"
-              style={{ fontWeight: 900 }}
+              className="titulo text-[3.5rem] md:text-[5.25rem] leading-[0.85] tracking-[-0.03em] text-white mb-8"
             >
               ©KIER
               <br />
@@ -174,14 +173,12 @@ export function Footer() {
           <div className="grid md:grid-cols-2 gap-8 items-end">
             <div>
               <span
-                className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                style={{ fontWeight: 400 }}
+                className="etiqueta text-[0.6875rem] text-[#28292D]/60 dark:text-white/60 mb-8 block"
               >
                 (Stay Updated)
               </span>
               <h3
-                className="font-archivo text-[2rem] md:text-[3rem] text-white leading-[1.1] mb-3"
-                style={{ fontWeight: 800 }}
+                className="titulo text-[1.75rem] md:text-[2.625rem] text-white leading-[1.1] mb-3"
               >
                 Subscribe to our newsletter
               </h3>

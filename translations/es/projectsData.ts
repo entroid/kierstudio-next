@@ -3,6 +3,85 @@ import { Project } from "@/types/project";
 export const projectsData: Project[] = [
     {
         id: 1,
+        slug: "carga-automatica-de-facturas",
+        title: "Carga automática de facturas",
+        category: "Automatización con IA · Oil & Gas",
+        description:
+            "Automatizamos la recepción, lectura y validación de comprobantes de proveedores en el área de cuentas a pagar de una empresa de la industria Oil & Gas. Con IA y lectura de documentos, el sistema extrae los datos de cada factura, los controla contra el sistema de gestión y deriva a una persona sólo las excepciones.",
+        summary:
+            "Una empresa de Oil & Gas recibía miles de facturas de proveedores por mes, en PDF y en foto, y cada una la cargaba y controlaba una persona. Hoy el sistema las lee, las compara con lo que ya estaba registrado y sólo le pasa a una persona las que no cierran.",
+        problema:
+            "El área de cuentas a pagar procesaba miles de comprobantes por mes, de una base amplia de proveedores y desde una operación repartida en distintos lugares. Llegaban en PDF o como imagen, cada proveedor con su formato y con calidad muy variable. Alguien tenía que leer cada uno, pasar los datos al sistema de gestión y controlar que coincidieran. Los errores de tipeo y las diferencias aparecían tarde, cada persona controlaba a su manera y cumplir los plazos de pago dependía de cuánta gente hubiera disponible.",
+        solucion: [
+            "Juntamos en un solo circuito los comprobantes que llegaban por mail, por carpetas compartidas y por el propio sistema de gestión.",
+            "Pusimos a la IA a leer cada documento como lo haría una persona, aunque venga escaneado o como foto, y sin depender de una plantilla por proveedor.",
+            "Lo conectamos con el sistema de gestión que la empresa ya usaba: no hubo que reemplazar nada.",
+            "Definimos que lo dudoso no se carga solo: los comprobantes incompletos o con diferencias pasan a una persona.",
+        ],
+        proceso: [
+            { titulo: "Recibe", detalle: "Toma los comprobantes del mail, de carpetas compartidas o del sistema de gestión, y los separa por tipo de documento." },
+            { titulo: "Lee", detalle: "Digitaliza el documento y la IA identifica los datos clave: fecha, número, CUIT, importe y moneda." },
+            { titulo: "Controla", detalle: "Compara cada dato contra el sistema de gestión y el padrón de proveedores, y detecta duplicados e inconsistencias." },
+            { titulo: "Registra", detalle: "Deja los datos listos en el sistema, avisa qué se procesó y guarda el historial de cada comprobante. Lo que no cierra, va a revisión." },
+        ],
+        resultado: [
+            "El equipo dejó de tipear comprobantes y pasó a revisar sólo las excepciones.",
+            "Menos errores de carga: los datos que llegan al sistema son más confiables.",
+            "Un proveedor nuevo o un formato distinto no obliga a reconfigurar nada.",
+            "El mismo equipo tiene más capacidad, y los plazos de pago se cumplen mejor.",
+            "Cada comprobante tiene su historia registrada —qué llegó, qué se controló y qué se hizo—, lista para una auditoría.",
+        ],
+        metrics: [
+            { value: ">90%", label: "de los comprobantes leídos correctamente" },
+        ],
+        metricsNota: "Estimación basada en el feedback del cliente.",
+        services: ["Automatización con IA", "Lectura de documentos", "Integración con sistema de gestión"],
+        image: "/projects/automatizacion-facturas/portada.png",
+        images: [],
+        url: "",
+    },
+    {
+        id: 2,
+        slug: "seguimiento-de-ordenes-de-compra",
+        title: "Seguimiento de órdenes de compra",
+        category: "Automatización de compras · Oil & Gas",
+        description:
+            "Automatizamos el seguimiento de órdenes de compra y la gestión de proveedores para el área de compras de una empresa industrial de Oil & Gas: detección de pedidos vencidos o por vencer, consulta a proveedores, actualización de fechas y reporte de desvíos.",
+        summary:
+            "El equipo de compras de una empresa de Oil & Gas pasaba horas persiguiendo proveedores para saber si iban a entregar a tiempo. Hoy el sistema detecta qué pedidos están en riesgo, le consulta al proveedor y actualiza el estado solo.",
+        problema:
+            "Con muchas órdenes de compra abiertas, muchos proveedores y fechas de entrega críticas, saber qué iba a llegar tarde era trabajo manual: revisar el sistema, armar listas de pendientes, escribirle a cada proveedor, esperar la respuesta y volver a cargarla. Le consumía horas al equipo de compras, la información quedaba dispersa y los atrasos se descubrían cuando ya eran un problema. En una operación con obras y depósitos, lo que importa es que el material esté cuando se lo necesita.",
+        solucion: [
+            "Tomamos un proceso repetitivo y ordenado —revisar, preguntar, actualizar— y lo convertimos en un circuito que corre solo.",
+            "Lo conectamos con el sistema de gestión y los demás sistemas internos que ya existían, sin reemplazarlos.",
+            "Le dimos al proveedor una forma simple de responder: un formulario o un mail con sus órdenes pendientes.",
+            "Dejamos las decisiones en manos del equipo: los incumplimientos y los casos críticos se escalan a una persona.",
+        ],
+        proceso: [
+            { titulo: "Detecta", detalle: "Revisa el sistema de gestión y marca las órdenes vencidas o por vencer, teniendo en cuenta las nuevas fechas ya pactadas." },
+            { titulo: "Ordena", detalle: "Suma las novedades de recepciones y pedidos nuevos, y agrupa todo por proveedor, material, lugar y fecha requerida." },
+            { titulo: "Pregunta", detalle: "Le envía a cada proveedor un formulario o un mail pidiéndole que confirme fechas y cantidades." },
+            { titulo: "Actualiza", detalle: "Lee y clasifica las respuestas, y actualiza el estado, la nueva fecha y los comentarios de cada orden." },
+            { titulo: "Avisa", detalle: "Arma un reporte de avance, pendientes y casos críticos, y escala los incumplimientos para que los gestione una persona." },
+        ],
+        resultado: [
+            "El equipo de compras dejó de perseguir proveedores y pasó a decidir qué hacer con los atrasos.",
+            "Los pedidos críticos se detectan antes de que venzan, no cuando el material ya falta.",
+            "El estado de cada pedido se ve en tiempo real.",
+            "Mejoró el cumplimiento de las entregas.",
+            "La respuesta de cada proveedor queda registrada por pedido, para seguimiento y auditoría.",
+        ],
+        metrics: [
+            { value: "+200 h", label: "por mes de trabajo manual evitado: más que una persona de jornada completa" },
+        ],
+        metricsNota: "Estimación basada en el feedback del cliente.",
+        services: ["Automatización de procesos", "Integración con sistema de gestión", "Reportes automáticos"],
+        image: "/projects/seguimiento-oc/portada.png",
+        images: [],
+        url: "",
+    },
+    {
+        id: 3,
         slug: "hard-rock-marketing-planner",
         title: "Hard Rock Marketing Planner",
         category: "Sistema de planificación de ofertas",
@@ -43,7 +122,7 @@ export const projectsData: Project[] = [
         url: "",
     },
     {
-        id: 2,
+        id: 4,
         slug: "muu",
         title: "Muu",
         category: "App Móvil para Marketplace Ganadero",
@@ -75,7 +154,7 @@ export const projectsData: Project[] = [
         url: "https://www.muumercadoganadero.com/",
     },
     {
-        id: 3,
+        id: 5,
         slug: "mirai-fleet",
         title: "MIRAI FLEET",
         category: "Sistema de gestión de flotas",
@@ -107,7 +186,7 @@ export const projectsData: Project[] = [
         url: "https://miraifleet.com",
     },
     {
-        id: 4,
+        id: 6,
         slug: "barrivell",
         title: "Barrivell",
         category: "Tienda online de moda",
@@ -135,10 +214,10 @@ export const projectsData: Project[] = [
             "/projects/barriv/02.jpg",
             "/projects/barriv/03.jpg",
         ],
-        url: "https://barrivell.com.ar/",
+        url: "https://www.barrivell.com.ar/",
     },
     {
-        id: 5,
+        id: 7,
         slug: "holy-beer-hotel",
         title: "HOLY Beer Hotel",
         category: "Landing page para hostel temático",
@@ -167,7 +246,7 @@ export const projectsData: Project[] = [
         url: "https://beerhoteles.com/",
     },
     {
-        id: 6,
+        id: 8,
         slug: "teamie",
         title: "TEAMIE.",
         category: "Landing page de presentación de producto",

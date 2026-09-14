@@ -61,15 +61,13 @@ export function ProjectCase({ slug }: { slug: string }) {
                 </Link>
 
                 <span
-                    className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-6 block italic"
-                    style={{ fontWeight: 600 }}
+                    className="etiqueta text-[0.6875rem] text-[#28292D]/60 dark:text-white/60 mb-6 block"
                 >
-                    ({project.category} - {project.year})
+                    {project.category}{project.year && ` · ${project.year}`}
                 </span>
 
                 <h1
-                    className="font-archivo text-[2.75rem] md:text-[6rem] lg:text-[7.3rem] leading-[0.95] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
-                    style={{ fontWeight: 900 }}
+                    className="titulo text-[1.969rem] md:text-[4.375rem] lg:text-[5.469rem] leading-[0.95] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
                 >
                     {project.title}
                 </h1>
@@ -112,12 +110,16 @@ export function ProjectCase({ slug }: { slug: string }) {
                 un número sin de dónde salió no se publica. */}
             {project.metrics && project.metrics.length > 0 && (
                 <section className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-24">
-                    <div className="grid sm:grid-cols-3 gap-8 border-y border-[#28292D]/10 dark:border-white/10 py-12">
+                    {/* Las columnas siguen a la cantidad de números: un caso con
+                        una sola métrica no puede dejar dos tercios vacíos. */}
+                    <div
+                        className={`grid ${project.metrics.length >= 3 ? "sm:grid-cols-3" : project.metrics.length === 2 ? "sm:grid-cols-2" : ""} gap-8 border-y border-[#28292D]/10 dark:border-white/10 py-12`}
+                    >
                         {project.metrics.map((metric) => (
                             <div key={metric.label}>
                                 <span
-                                    className="font-archivo block text-[3rem] md:text-[4rem] leading-[1] tracking-[-0.04em] text-[#D52169] mb-3"
-                                    style={{ fontWeight: 900 }}
+                                    className="font-mono block text-[3rem] md:text-[4rem] leading-[1] tracking-[-0.04em] text-[#D52169] mb-3"
+                                    style={{ fontWeight: 500 }}
                                 >
                                     {metric.value}
                                 </span>
@@ -132,7 +134,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                     </div>
                     {project.metricsNota && (
                         <p
-                            className="font-archivo text-[0.75rem] text-[#28292D]/50 dark:text-white/50 mt-4 italic"
+                            className="font-mono text-[0.75rem] text-[#28292D]/50 dark:text-white/50 mt-4"
                             style={{ fontWeight: 400 }}
                         >
                             {project.metricsNota}
@@ -155,6 +157,14 @@ export function ProjectCase({ slug }: { slug: string }) {
                 <Bloque titulo={t("projects.caseSolution")}>
                     <Lista items={project.solucion} />
                 </Bloque>
+
+                {/* En una automatización lo entregado es un proceso, no una
+                    pantalla: el paso a paso ocupa el lugar de la galería. */}
+                {project.proceso && project.proceso.length > 0 && (
+                    <Bloque titulo={t("projects.caseProcess")}>
+                        <Pasos pasos={project.proceso} />
+                    </Bloque>
+                )}
 
                 <Bloque titulo={t("projects.caseResult")}>
                     <Lista items={project.resultado} />
@@ -207,8 +217,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                 <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <h2
-                            className="font-archivo text-[2rem] md:text-[3rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-4 uppercase"
-                            style={{ fontWeight: 900 }}
+                            className="titulo text-[1.75rem] md:text-[2.625rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-4 uppercase"
                         >
                             {t("projects.caseCtaTitle")}
                         </h2>
@@ -236,14 +245,12 @@ export function ProjectCase({ slug }: { slug: string }) {
                         className="group block lg:justify-self-end"
                     >
                         <span
-                            className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/50 dark:text-white/50 mb-3 block italic"
-                            style={{ fontWeight: 600 }}
+                            className="etiqueta text-[0.6875rem] text-[#28292D]/50 dark:text-white/50 mb-3 block"
                         >
                             {t("projects.caseNext")}
                         </span>
                         <span
-                            className="font-archivo text-[2rem] md:text-[3rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white group-hover:text-[#D52169] transition-colors uppercase block"
-                            style={{ fontWeight: 900 }}
+                            className="titulo text-[1.75rem] md:text-[2.625rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white group-hover:text-[#D52169] transition-colors uppercase block"
                         >
                             {next.title}
                         </span>
@@ -257,8 +264,7 @@ export function ProjectCase({ slug }: { slug: string }) {
 function Titulo({ children }: { children: React.ReactNode }) {
     return (
         <h2
-            className="font-archivo text-[0.75rem] tracking-[0.25em] uppercase text-[#D52169] mb-4"
-            style={{ fontWeight: 700 }}
+            className="etiqueta text-[0.75rem] text-[#D52169] mb-4"
         >
             {children}
         </h2>
@@ -274,6 +280,37 @@ function Bloque({ titulo, children }: { titulo: string; children: React.ReactNod
             </div>
             <div className="lg:col-start-2 pb-10 lg:pb-14">{children}</div>
         </>
+    );
+}
+
+/** El recorrido del proceso, numerado: el orden es parte de la explicación. */
+function Pasos({ pasos }: { pasos: NonNullable<Project["proceso"]> }) {
+    return (
+        <ol className="space-y-8">
+            {pasos.map((paso, i) => (
+                <li key={paso.titulo} className="grid grid-cols-[3rem_1fr] gap-4">
+                    <span
+                        className="font-mono text-[1.75rem] leading-[1] tracking-[-0.04em] text-[#D52169]"
+                        style={{ fontWeight: 500 }}
+                    >
+                        {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                        <h3
+                            className="titulo text-[1.094rem] md:text-[1.203rem] leading-[1.2] uppercase text-[#28292D] dark:text-white mb-2"
+                        >
+                            {paso.titulo}
+                        </h3>
+                        <p
+                            className="font-archivo text-[1.0625rem] md:text-[1.1875rem] text-[#28292D]/80 dark:text-white/75 leading-[1.6]"
+                            style={{ fontWeight: 400 }}
+                        >
+                            {paso.detalle}
+                        </p>
+                    </div>
+                </li>
+            ))}
+        </ol>
     );
 }
 

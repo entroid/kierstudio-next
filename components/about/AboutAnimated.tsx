@@ -17,23 +17,26 @@ export function AboutAnimated() {
                     viewport={{ once: true }}
                 >
                     <span
-                        className="font-archivo text-[12px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                        style={{ fontWeight: 600 }}
+                        className="etiqueta text-[12px] text-[#28292D]/60 dark:text-white/60 mb-8 block"
                     >
                         {t('about.tag')}
                     </span>
 
                     <h2
-                        className="font-archivo text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
-                        style={{ fontWeight: 900 }}
+                        className="titulo text-[2.188rem] md:text-[4.375rem] lg:text-[4.812rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
                     >
                         {t('about.title1')}
                         <br />
-                        <span className="text-[#D52169] text-[2.5rem] md:text-[6rem] lg:text-[7.3rem]">{t('about.title2')} </span>
+                        <span className="text-[#D52169] text-[2.188rem] md:text-[5.25rem] lg:text-[5.469rem]">{t('about.title2')} </span>
                         {/* {t('about.title3')} */}
                     </h2>
 
-                    <h3 className="pb-8  text-[1.125rem] md:text-[1.5rem]"><b>{t('about.description1Tag')}</b></h3>
+                    <h3
+                        className="font-archivo pb-8 text-[1.125rem] md:text-[1.5rem] text-[#28292D] dark:text-white"
+                        style={{ fontWeight: 600 }}
+                    >
+                        {t('about.description1Tag')}
+                    </h3>
 
                     <div className="grid md:grid-cols-2 gap-6 md:gap-10 max-w-[1170px]">
                         <motion.div
@@ -50,12 +53,10 @@ export function AboutAnimated() {
                             </p>
 
                             <p
-                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
-                                style={{ fontWeight: 400 }}
+                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D] dark:text-white leading-[1.7]"
+                                style={{ fontWeight: 700 }}
                             >
-                                {t('about.description1b').split(t('about.description1Bold'))[0]}
-                                <b>{t('about.description1Bold')}</b>
-                                {t('about.description1').split(t('about.description1Bold'))[1]}
+                                {t('about.description1Bold')}
                             </p>
                         </motion.div>
 
@@ -64,22 +65,6 @@ export function AboutAnimated() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                        >
-                            <p
-                                className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7]"
-                                style={{ fontWeight: 400 }}
-                            >
-                                {t('about.description2')}
-                            </p>
-                        </motion.div>
-
-
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="md:col-start-2"
                         >
                             <p
                                 className="font-archivo text-[16px] md:text-[18px] text-[#28292D]/70 dark:text-white/60 leading-[1.7] mb-10"

@@ -18,41 +18,24 @@ export function ServicesAnimated() {
     });
     const titleOpacity = useTransform(titleProgress, [0, 1], [0, 1]);
 
-    const services = [
-        {
-            title: t('services.customapp.title'),
-            subtitle: t('services.customapp.subtitle'),
-            image: "/services/0000.jpg",
-            services: translations.services.customapp.items,
-            tag: t('services.customapp.tag'),
-            bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
-        },
-        {
-            title: t('services.strategy.title'),
-            subtitle: t('services.strategy.subtitle'),
-            image: "/services/02.jpg",
-            services: translations.services.strategy.items,
-            tag: t('services.strategy.tag'),
-            bgColor: "bg-[#28292D] dark:bg-black",
-        },
-        {
-            title: t('services.websites.title'),
-            subtitle: t('services.websites.subtitle'),
-            image: "/services/website2.jpg",
-            services: translations.services.websites.items,
-            tag: t('services.websites.tag'),
-            bgColor: "bg-[#F5F5F5] dark:bg-[#1a1a1a]",
-        },
-        {
-            title: t('services.ecommerce.title'),
-            subtitle: t('services.ecommerce.subtitle'),
-            image: "/services/01.png",
-            services: translations.services.ecommerce.items,
-            tag: t('services.ecommerce.tag'),
-            bgColor: "bg-[#28292D] dark:bg-black",
-        },
-
-    ];
+    // El orden es el argumento: primero lo que la consultora vende —automatizar
+    // y construir a medida—, después la presencia digital. El fondo alterna
+    // claro/oscuro según la posición, así que reordenar no rompe el ritmo.
+    const fondos = ["bg-[#F5F5F5] dark:bg-[#1a1a1a]", "bg-[#28292D] dark:bg-black"];
+    const services = ([
+        { key: "automation", image: "/services/automatizacion.png" },
+        { key: "customapp", image: "/services/0000.jpg" },
+        { key: "strategy", image: "/services/02.jpg" },
+        // Sitio y tienda online son un solo servicio: la tienda va adentro.
+        { key: "websites", image: "/services/01.png" },
+    ] as const).map(({ key, image }, index) => ({
+        title: t(`services.${key}.title`),
+        subtitle: t(`services.${key}.subtitle`),
+        image,
+        services: translations.services[key].items,
+        tag: t(`services.${key}.tag`),
+        bgColor: fondos[index % 2],
+    }));
 
     return (
         <section
@@ -68,8 +51,7 @@ export function ServicesAnimated() {
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
                 <motion.div className="mb-20">
                     <span
-                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                        style={{ fontWeight: 600 }}
+                        className="etiqueta text-[0.6875rem] text-[#28292D]/60 dark:text-white/60 mb-8 block"
                     >
                         {t('services.tag')}
                     </span>
@@ -80,12 +62,12 @@ export function ServicesAnimated() {
                         whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="font-archivo text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
-                        style={{ fontWeight: 900, opacity: titleOpacity }}
+                        className="titulo text-[2.188rem] md:text-[4.375rem] lg:text-[4.812rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        style={{ opacity: titleOpacity }}
                     >
                         {t('services.title')}
                         <br />
-                        <span className="text-[#D52169] text-[2.8rem] md:text-[6rem] lg:text-[7.3rem]">{t('services.title2')} </span>
+                        <span className="text-[#D52169] text-[2.188rem] md:text-[4.812rem] lg:text-[5.469rem]">{t('services.title2')} </span>
                     </motion.h2>
 
                     <motion.p
@@ -132,21 +114,20 @@ export function ServicesAnimated() {
                                     transition={{ delay: 0.3, duration: 0.6 }}
                                 >
                                     <span
-                                        className={`font-archivo text-[0.625rem] tracking-[0.3em] uppercase mb-8 block italic ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`etiqueta text-[0.625rem] mb-8 block ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white/50"
                                             : "text-[#28292D]/50 dark:text-white/50"
                                             }`}
                                         style={{ fontWeight: 400 }}
                                     >
-                                        ({service.tag})
+                                        {service.tag}
                                     </span>
 
                                     <h3
-                                        className={`font-archivo text-[2.2rem] md:text-[4rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`titulo text-[1.925rem] md:text-[3.5rem] lg:text-[1.859rem] xl:text-[2.406rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white"
                                             : "text-[#28292D] dark:text-white"
                                             }`}
-                                        style={{ fontWeight: 900 }}
                                     >
                                         {service.title}
                                         {/* {service.title.split(" ").map((word, wordIndex) => (
