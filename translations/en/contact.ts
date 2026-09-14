@@ -1,5 +1,5 @@
 export const contact = {
-    tag: "(Let's Connect)",
+    tag: "Let's Connect",
     title1: "LET'S TALK ABOUT",
     title2: "YOUR OPERATION",
     subtitle: "Tell us which task takes up most of your team's time. In a first conversation, free of charge, we'll see whether it's worth solving, with what, and where to start.",

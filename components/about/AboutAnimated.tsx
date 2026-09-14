@@ -17,19 +17,17 @@ export function AboutAnimated() {
                     viewport={{ once: true }}
                 >
                     <span
-                        className="font-archivo text-[12px] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                        style={{ fontWeight: 600 }}
+                        className="etiqueta text-[12px] text-[#28292D]/60 dark:text-white/60 mb-8 block"
                     >
                         {t('about.tag')}
                     </span>
 
                     <h2
-                        className="font-archivo text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
-                        style={{ fontWeight: 900 }}
+                        className="titulo text-[2.5rem] md:text-[5rem] lg:text-[5.5rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
                     >
                         {t('about.title1')}
                         <br />
-                        <span className="text-[#D52169] text-[2.5rem] md:text-[6rem] lg:text-[7.3rem]">{t('about.title2')} </span>
+                        <span className="text-[#D52169] text-[2.5rem] md:text-[6rem] lg:text-[6.25rem]">{t('about.title2')} </span>
                         {/* {t('about.title3')} */}
                     </h2>
 

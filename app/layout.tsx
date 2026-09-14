@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./tailwind.css";
 import "./performance.css";
 import { ThemeProvider } from "@/components/ThemeContext";
@@ -20,9 +22,15 @@ import { ConsentBanner } from "@/components/ConsentBanner";
 const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "600", "700", "800", "900"],
+  // Variable con el eje de ancho: los títulos usan la versión expandida
+  // (font-stretch 125%), que como archivo estático no existe.
+  axes: ["wdth"],
   variable: "--fuente-archivo",
 });
+
+// Geist y Geist Mono no están en los datos de next/font/google de Next 14.2,
+// así que vienen del paquete `geist`, que también las auto-hospeda.
+// Exponen --font-geist-sans y --font-geist-mono.
 
 // SEO Metadata
 export const metadata: Metadata = {
@@ -78,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={archivo.variable} suppressHydrationWarning>
+    <html lang="es" className={`${archivo.variable} ${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/k-logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />

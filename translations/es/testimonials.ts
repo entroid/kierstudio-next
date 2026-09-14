@@ -1,5 +1,5 @@
 export const testimonials = {
-    tag: "(Historias de Clientes)",
+    tag: "Historias de Clientes",
     title: "TESTIMONIOS",
 
     // Navigation

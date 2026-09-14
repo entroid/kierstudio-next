@@ -51,8 +51,7 @@ export function ServicesAnimated() {
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
                 <motion.div className="mb-20">
                     <span
-                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                        style={{ fontWeight: 600 }}
+                        className="etiqueta text-[0.6875rem] text-[#28292D]/60 dark:text-white/60 mb-8 block"
                     >
                         {t('services.tag')}
                     </span>
@@ -63,12 +62,12 @@ export function ServicesAnimated() {
                         whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="font-archivo text-[2.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
-                        style={{ fontWeight: 900, opacity: titleOpacity }}
+                        className="titulo text-[2.5rem] md:text-[5rem] lg:text-[5.5rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        style={{ opacity: titleOpacity }}
                     >
                         {t('services.title')}
                         <br />
-                        <span className="text-[#D52169] text-[2.8rem] md:text-[6rem] lg:text-[7.3rem]">{t('services.title2')} </span>
+                        <span className="text-[#D52169] text-[2.5rem] md:text-[5.5rem] lg:text-[6.25rem]">{t('services.title2')} </span>
                     </motion.h2>
 
                     <motion.p
@@ -115,21 +114,20 @@ export function ServicesAnimated() {
                                     transition={{ delay: 0.3, duration: 0.6 }}
                                 >
                                     <span
-                                        className={`font-archivo text-[0.625rem] tracking-[0.3em] uppercase mb-8 block italic ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`etiqueta text-[0.625rem] mb-8 block ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white/50"
                                             : "text-[#28292D]/50 dark:text-white/50"
                                             }`}
                                         style={{ fontWeight: 400 }}
                                     >
-                                        ({service.tag})
+                                        {service.tag}
                                     </span>
 
                                     <h3
-                                        className={`font-archivo text-[2.2rem] md:text-[4rem] lg:text-[3.5rem] xl:text-[4rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`titulo text-[2.2rem] md:text-[4rem] lg:text-[2.125rem] xl:text-[2.75rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white"
                                             : "text-[#28292D] dark:text-white"
                                             }`}
-                                        style={{ fontWeight: 900 }}
                                     >
                                         {service.title}
                                         {/* {service.title.split(" ").map((word, wordIndex) => (

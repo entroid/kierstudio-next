@@ -82,8 +82,7 @@ export function PartnersAnimated() {
                     viewport={{ once: true, amount: 0.1 }}
                 >
                     <span
-                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-[#28292D]/60 dark:text-white/60 mb-8 block italic"
-                        style={{ fontWeight: 600 }}
+                        className="etiqueta text-[0.6875rem] text-[#28292D]/60 dark:text-white/60 mb-8 block"
                     >
                         {t("partners.partnersTag")}
                     </span>

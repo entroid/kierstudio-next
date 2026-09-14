@@ -45,15 +45,13 @@ export function TestimonialAnimated() {
                     className="mb-20"
                 >
                     <span
-                        className="font-archivo text-[0.6875rem] tracking-[0.3em] uppercase text-white/60 mb-8 block italic"
-                        style={{ fontWeight: 400 }}
+                        className="etiqueta text-[0.6875rem] text-white/60 mb-8 block"
                     >
                         {t('testimonials.tag')}
                     </span>
 
                     <h2
-                        className="font-archivo text-[2.5rem] md:text-[6rem] lg:text-[7.3rem] leading-[1] tracking-[-0.04em] text-white mb-8"
-                        style={{ fontWeight: 900 }}
+                        className="titulo text-[2.25rem] md:text-[5rem] lg:text-[6.25rem] leading-[1] tracking-[-0.04em] text-white mb-8"
                     >
                         {t('testimonials.title')}
                     </h2>
@@ -96,8 +94,8 @@ export function TestimonialAnimated() {
                             >
                                 <div className="w-16 h-16 bg-[#D52169] rounded-full flex items-center justify-center">
                                     <span
-                                        className="font-archivo text-[1.5rem] text-white"
-                                        style={{ fontWeight: 900 }}
+                                        className="font-mono text-[1.5rem] text-white"
+                                        style={{ fontWeight: 500 }}
                                     >
                                         {testimonials[currentIndex].author.charAt(0)}
                                     </span>

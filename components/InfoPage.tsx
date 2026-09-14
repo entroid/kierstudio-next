@@ -37,8 +37,7 @@ export function InfoPage({
             </a>
           )}
           <h1
-            className="font-archivo text-[3rem] md:text-[4rem] leading-[1] tracking-[-0.02em] text-[#28292D] dark:text-white mt-8 md:mt-10 mb-6"
-            style={{ fontWeight: 900 }}
+            className="titulo text-[3rem] md:text-[4rem] leading-[1] tracking-[-0.02em] text-[#28292D] dark:text-white mt-8 md:mt-10 mb-6"
           >
             {title}
           </h1>

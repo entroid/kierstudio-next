@@ -1,5 +1,5 @@
 export const contact = {
-    tag: "(Conectemos)",
+    tag: "Conectemos",
     title1: "HABLEMOS DE",
     title2: "TU OPERACIÓN",
     subtitle: "Contanos qué tarea le come más tiempo a tu equipo. En una primera charla, sin cargo, vemos si conviene resolverla, con qué y por dónde empezar.",

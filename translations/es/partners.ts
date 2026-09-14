@@ -1,5 +1,5 @@
 export const partners = {
-    partnersTag: "(Nuestra red)",
+    partnersTag: "Nuestra red",
 
     // Socio destacado
     partnerTag: "Socio en automatización con IA",

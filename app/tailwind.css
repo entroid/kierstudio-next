@@ -10,9 +10,15 @@
   --color-primary: var(--primary);
   --color-dark-gray: var(--dark-gray);
 
-  --font-sans: var(--fuente-archivo), sans-serif;
-  --font-archivo: var(--fuente-archivo), sans-serif;
-  --font-inter: var(--fuente-archivo), sans-serif;
+  /* Sistema tipográfico (2026-09): títulos en Archivo expandida, texto en
+     Geist y detalles —etiquetas, números— en Geist Mono.
+     `font-archivo` quedó como nombre histórico: se usa en ~200 lugares para
+     el texto corrido, así que ahora apunta a Geist. Los títulos usan la
+     utilidad `titulo`, que es la única que carga Archivo. */
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-archivo: var(--font-geist-sans), sans-serif;
+  --font-inter: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   /* Aquí registramos la utilidad personalizada */
   --min-h-200: 200px;
@@ -92,5 +98,28 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+/* Títulos: Archivo al 125 % de ancho y peso 600. El ancho es lo que la hace
+   leer técnica en vez de editorial. */
+@utility titulo {
+  font-family: var(--fuente-archivo), sans-serif;
+  font-stretch: 125%;
+  font-weight: 600;
+}
+
+/* Etiquetas de sección: mono, mayúsculas, con "//" delante. Reemplazan a las
+   itálicas entre paréntesis, que eran la marca más clara de estudio de diseño. */
+@utility etiqueta {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  &::before {
+    content: "// ";
+    color: #D52169;
+  }
 }
