@@ -23,7 +23,7 @@ const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
   // Variable con el eje de ancho: los títulos usan la versión expandida
-  // (font-stretch 125%), que como archivo estático no existe.
+  // (font-stretch 112,5 %), que como archivo estático no existe.
   axes: ["wdth"],
   variable: "--fuente-archivo",
 });
@@ -116,6 +116,7 @@ export default function RootLayout({
               },
               "sameAs": [
                 "https://www.instagram.com/kierstudio_",
+                "https://www.linkedin.com/company/kier-studio/",
                 "https://www.facebook.com/kierstudio"
               ],
               "founder": {

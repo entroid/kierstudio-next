@@ -7,6 +7,7 @@ export const contact = {
     emailLabel: "Email Us",
     whatsappLabel: "WhatsApp",
     instagramLabel: "Instagram",
+    linkedinLabel: "LinkedIn",
 
     formTitle: "Let's talk, free of charge",
     formName: "Your name",
