@@ -66,7 +66,7 @@ export function ProcessAnimated() {
                         whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="titulo text-[#D52169]  text-[2.625rem] md:text-[5.25rem] lg:text-[5.469rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="titulo text-[2.625rem] md:text-[5.25rem] lg:text-[5.469rem] text-[#28292D] dark:text-white mb-8 uppercase"
                         style={{ opacity: titleOpacity }}
                     >
                         {t('process.title')}
@@ -107,7 +107,7 @@ export function ProcessAnimated() {
                                         whileInView={{ x: 0, opacity: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.2 }}
-                                        className="titulo text-[1.641rem] md:text-[3.062rem] lg:text-[2.844rem] xl:text-[3.5rem] leading-[0.9] tracking-[-0.02em] text-[#28292D] dark:text-white mb-6"
+                                        className="titulo text-[1.641rem] md:text-[3.062rem] lg:text-[2.844rem] xl:text-[3.5rem] text-[#28292D] dark:text-white mb-6"
                                     >
                                         {step.title}
                                     </motion.h3>

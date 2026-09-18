@@ -1,5 +1,5 @@
 /* Las fuentes ya no se importan acá: un `@import` de CSS bloquea el render.
-   Archivo la carga next/font en app/layout.tsx y llega por --fuente-archivo. */
+   Josefin Sans la carga next/font en app/layout.tsx y llega por --fuente-josefin. */
 @import "tailwindcss";
 
 @variant dark (&:where(.dark, .dark *));
@@ -10,15 +10,12 @@
   --color-primary: var(--primary);
   --color-dark-gray: var(--dark-gray);
 
-  /* Sistema tipográfico (2026-09): títulos en Archivo expandida, texto en
-     Geist y detalles —etiquetas, números— en Geist Mono.
-     `font-archivo` quedó como nombre histórico: se usa en ~200 lugares para
-     el texto corrido, así que ahora apunta a Geist. Los títulos usan la
-     utilidad `titulo`, que es la única que carga Archivo. */
+  /* Sistema tipográfico: títulos en Josefin Sans, texto en Geist y detalles en Geist Mono. */
   --font-sans: var(--font-geist-sans), sans-serif;
   --font-archivo: var(--font-geist-sans), sans-serif;
   --font-inter: var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-josefin: var(--fuente-josefin), sans-serif;
 
   /* Aquí registramos la utilidad personalizada */
   --min-h-200: 200px;
@@ -101,12 +98,12 @@ body {
   font-family: var(--font-geist-sans), sans-serif;
 }
 
-/* Títulos: Archivo al 112,5 % de ancho y peso 700. El ancho es lo que la hace
-   leer técnica en vez de editorial. */
+/* Títulos: Josefin Sans peso 700, line-height 100%, letter-spacing -3% */
 @utility titulo {
-  font-family: var(--fuente-archivo), sans-serif;
-  font-stretch: 112.5%;
+  font-family: var(--fuente-josefin), sans-serif;
   font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.03em;
 }
 
 /* Etiquetas de sección: mono, mayúsculas, con "//" delante. Reemplazan a las

@@ -101,7 +101,7 @@ export function CTAAnimated() {
                             </span>
 
                             <h2
-                                className="titulo text-[1.75rem] md:text-[3.938rem] lg:text-[3.719rem] xl:text-[3.938rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                                className="titulo text-[1.75rem] md:text-[3.938rem] lg:text-[3.719rem] xl:text-[3.938rem] text-[#28292D] dark:text-white mb-8 uppercase"
                             >
                                 {t('cta.title1')}
                                 <br />
@@ -198,6 +198,35 @@ export function CTAAnimated() {
                                         style={{ fontWeight: 500 }}
                                     >
                                         @kierstudio_
+                                    </div>
+                                </div>
+                            </motion.a>
+
+                            <motion.a
+                                href="https://www.linkedin.com/company/kier-studio/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => salidaExterna("linkedin", "contacto")}
+                                whileHover={{ x: 10 }}
+                                className="group flex items-center gap-4 p-6 border border-[#28292D]/10 dark:border-white/10 hover:border-[#D52169] transition-colors duration-300 backdrop-blur-sm"
+                            >
+                                <div className="w-12 h-12 bg-[#28292D]/5 dark:bg-white/5 rounded-full flex items-center justify-center group-hover:bg-[#D52169] transition-colors duration-300">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-[#28292D] dark:text-white group-hover:text-white">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div
+                                        className="font-archivo text-[0.75rem] tracking-[0.1em] uppercase text-[#28292D]/50 dark:text-white/50 mb-1"
+                                        style={{ fontWeight: 600 }}
+                                    >
+                                        {t('cta.linkedinLabel')}
+                                    </div>
+                                    <div
+                                        className="font-archivo text-[1.125rem] text-[#28292D] dark:text-white"
+                                        style={{ fontWeight: 500 }}
+                                    >
+                                        Kier Studio
                                     </div>
                                 </div>
                             </motion.a>

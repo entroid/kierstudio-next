@@ -23,7 +23,7 @@ export function AboutAnimated() {
                     </span>
 
                     <h2
-                        className="titulo text-[2.188rem] md:text-[4.375rem] lg:text-[4.812rem] leading-[1.1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="titulo text-[2.188rem] md:text-[4.375rem] lg:text-[4.812rem] text-[#28292D] dark:text-white mb-8 uppercase"
                     >
                         {t('about.title1')}
                         <br />

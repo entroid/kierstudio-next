@@ -271,6 +271,88 @@
         "eventos_conversion": 0,
         "consentimiento": false
       }
+    },
+    {
+      "fecha": "2026-09-14",
+      "periodo": "13 días (2026-09-01 → 2026-09-14)",
+      "nota": "Cierre del ciclo 01. La ventana de acumulación había arrancado el 2026-09-02 (ver analytics/ciclo-2026-09.md §3), no el día de apertura del ciclo.",
+      "posthog": {
+        "pageviews": 74,
+        "visitantes": 18,
+        "sesiones": 43,
+        "sesiones_1_pageview": 27,
+        "eventos_propios": 62,
+        "session_replay": "activo",
+        "dev_separado": true,
+        "semanal": [
+          {"semana":"31 ago","pageviews":41,"visitantes":10,"sesiones":23},
+          {"semana":"7 sep","pageviews":25,"visitantes":7,"sesiones":14},
+          {"semana":"14 sep","pageviews":8,"visitantes":5,"sesiones":6}
+        ],
+        "origenes": [
+          {"origen":"Directo","pageviews":53,"visitantes":15},
+          {"origen":"Referencia","pageviews":17,"visitantes":2},
+          {"origen":"Social orgánico","pageviews":4,"visitantes":2}
+        ],
+        "dispositivos": [
+          {"dispositivo":"Escritorio","pageviews":69,"visitantes":18},
+          {"dispositivo":"Móvil","pageviews":5,"visitantes":3}
+        ],
+        "rutas": [
+          {"ruta":"/","pageviews":54,"visitantes":12},
+          {"ruta":"/accounting","pageviews":5,"visitantes":5},
+          {"ruta":"/saludybienestar","pageviews":4,"visitantes":2},
+          {"ruta":"/trabajos/hard-rock-marketing-planner","pageviews":3,"visitantes":2},
+          {"ruta":"/trabajos/muu","pageviews":3,"visitantes":2}
+        ],
+        "profundidad": [
+          {"pv":"1 pageview","sesiones":27},
+          {"pv":"2 pageviews","sesiones":10},
+          {"pv":"3 pageviews","sesiones":2},
+          {"pv":"4 pageviews","sesiones":2},
+          {"pv":"5 pageviews","sesiones":1},
+          {"pv":"8 pageviews","sesiones":1}
+        ],
+        "eventos_30d": [
+          {"evento":"$autocapture","n":175,"personas":8},
+          {"evento":"$pageview","n":74,"personas":18},
+          {"evento":"seccion_vista","n":55,"personas":7},
+          {"evento":"$pageleave","n":40,"personas":10},
+          {"evento":"proyecto_abierto","n":7,"personas":3},
+          {"evento":"contacto_iniciado","n":0,"personas":0},
+          {"evento":"contacto_enviado","n":0,"personas":0},
+          {"evento":"salida_externa","n":0,"personas":0}
+        ]
+      },
+      "buscador": {
+        "periodo": "12 días (2026-09-01 → 2026-09-12, límite de datos disponibles en Search Console)",
+        "clics": 0,
+        "impresiones": 24,
+        "ctr": 0,
+        "posicion": 9.7,
+        "paginas_indexadas": 3,
+        "paginas_no_indexadas": 14,
+        "consultas": [
+          {"consulta":"kier","impresiones":4,"clics":0},
+          {"consulta":"kier design","impresiones":2,"clics":0},
+          {"consulta":"kier official website","impresiones":1,"clics":0}
+        ],
+        "no_indexadas": [
+          {"motivo":"Bloqueada por robots.txt","paginas":3,"estado":"esperado"},
+          {"motivo":"No encontrada (404)","paginas":2,"estado":"esperado"},
+          {"motivo":"Página con redirección (www)","paginas":2,"estado":"esperado"},
+          {"motivo":"Canónica alternativa","paginas":1,"estado":"esperado"},
+          {"motivo":"Descubierta: actualmente sin indexar — son las 6 páginas de caso; Google las vio por el sitemap pero todavía no las rastreó","paginas":6,"estado":"pendiente"}
+        ]
+      },
+      "meta": {
+        "estado": "activo",
+        "version": "2.9.390",
+        "pixel_id": "2551501831869054",
+        "eventos": ["PageView"],
+        "eventos_conversion": 0,
+        "consentimiento": true
+      }
     }
   ]
 }
@@ -434,23 +516,49 @@
   tile(tiles, "Eventos propios", ph.eventos_propios, pph && pph.eventos_propios);
 
   /* ---------- insights ---------- */
+  function eventoN(nombre){
+    var e = (ph.eventos_30d || []).filter(function(r){ return r.evento === nombre; })[0];
+    return e ? e.n : 0;
+  }
   var unaSola = ph.sesiones_1_pageview;
+  var contactoIniciado = eventoN("contacto_iniciado");
+  var contactoEnviado = eventoN("contacto_enviado");
+
+  var insight3;
+  if (ph.eventos_propios === 0) {
+    insight3 = {
+      t: "No se puede construir el embudo todavía",
+      p: "Hay " + ph.eventos_propios + " eventos propios y session replay " + ph.session_replay +
+         ". Es decir: se sabe cuánta gente llega, y nada de qué hace ni por qué se va. Es lo primero a resolver."
+    };
+  } else if (contactoIniciado === 0 && contactoEnviado === 0) {
+    insight3 = {
+      t: "Hay embudo para mirar, pero conversión cero",
+      p: "Se recolectan " + fmt(ph.eventos_propios) + " eventos propios y session replay está " + ph.session_replay +
+         ": ya se sabe cómo se mueve la gente por el sitio. Pero contacto_iniciado y contacto_enviado siguen en cero — " +
+         "nadie llegó a contactar todavía. Con este N, eso no es un problema de copy (ver primer punto)."
+    };
+  } else {
+    insight3 = {
+      t: "Ya hay conversión que leer",
+      p: "contacto_iniciado: " + fmt(contactoIniciado) + ". contacto_enviado: " + fmt(contactoEnviado) +
+         ". Con eventos propios (" + fmt(ph.eventos_propios) + ") y session replay " + ph.session_replay +
+         " ya se puede construir el embudo real, no sólo pageviews."
+    };
+  }
+
   var insights = [
     {
       t: "La adquisición es el cuello de botella, no la conversión",
       p: "El sitio recibió " + fmt(bs.clics) + " clics desde búsqueda sobre " + fmt(bs.impresiones) +
-         " impresiones en 90 días. Las consultas con volumen son todas de marca — y \"kier\" lo domina una constructora británica homónima. " +
+         " impresiones en " + (bs.periodo || "el período medido") + ". Las consultas con volumen son todas de marca — y \"kier\" lo domina una constructora británica homónima. " +
          "Sin presencia en búsquedas comerciales, ningún trabajo sobre la conversión del sitio va a ser medible: no hay N."
     },
     {
       t: "El " + Math.round(unaSola / ph.sesiones * 100) + "% de las sesiones ve una sola página (" + unaSola + " de " + ph.sesiones + ")",
       p: "No es rebote: es la forma de un one-pager. Por eso los pageviews no miden interés acá. La profundidad real de lectura no existe como dato hasta que estén los eventos de sección."
     },
-    {
-      t: "No se puede construir el embudo todavía",
-      p: "Hay " + ph.eventos_propios + " eventos propios y session replay " + ph.session_replay +
-         ". Es decir: se sabe cuánta gente llega, y nada de qué hace ni por qué se va. Es lo primero a resolver."
-    }
+    insight3
   ];
   var ih = document.getElementById("insights");
   insights.forEach(function(i){
@@ -477,12 +585,27 @@
   var phe = document.getElementById("ph-estado");
   statusRow(phe, "Recolección de datos",
     "Recibe pageviews, autocapture y pageleave desde producción.", "ok", "Funcionando");
-  statusRow(phe, "Eventos propios",
-    "Ninguno. Sin ellos no hay evento de conversión y el embudo no se puede reconstruir.", "bad", "Pendiente");
-  statusRow(phe, "Session replay",
-    "Desactivado en todas las sesiones. Con este volumen, mirar diez grabaciones vale más que cualquier porcentaje.", "bad", "Desactivado");
-  statusRow(phe, "Separación de desarrollo",
-    "El tráfico de localhost entra al mismo proyecto y ensucia la línea de base.", "warn", "Mezclado");
+  if (ph.eventos_propios > 0) {
+    statusRow(phe, "Eventos propios",
+      fmt(ph.eventos_propios) + " eventos recolectados este período. El embudo se puede reconstruir con esto.", "ok", "Recolectando");
+  } else {
+    statusRow(phe, "Eventos propios",
+      "Ninguno. Sin ellos no hay evento de conversión y el embudo no se puede reconstruir.", "bad", "Pendiente");
+  }
+  if (ph.session_replay === "activo") {
+    statusRow(phe, "Session replay",
+      "Grabando. Con este volumen, mirar diez grabaciones vale más que cualquier porcentaje.", "ok", "Activo");
+  } else {
+    statusRow(phe, "Session replay",
+      "Desactivado en todas las sesiones. Con este volumen, mirar diez grabaciones vale más que cualquier porcentaje.", "bad", "Desactivado");
+  }
+  if (ph.dev_separado) {
+    statusRow(phe, "Separación de desarrollo",
+      "PostHog no recolecta tráfico de localhost ni de previews de Vercel desde el 2026-09-01.", "ok", "Separado");
+  } else {
+    statusRow(phe, "Separación de desarrollo",
+      "El tráfico de localhost entra al mismo proyecto y ensucia la línea de base.", "warn", "Mezclado");
+  }
 
   /* ---------- barras ---------- */
   function bars(hostId, rows, labelKey, valKey){
@@ -586,8 +709,13 @@
     "Versión " + m.version + ", ID " + m.pixel_id + ". Cola drenada, dispara correctamente.", "ok", m.estado);
   statusRow(me, "Eventos de conversión",
     "Sólo envía " + m.eventos.join(", ") + ". Sin evento de contacto, una campaña no puede optimizar por resultado ni medir retorno.", "bad", "Ninguno");
-  statusRow(me, "Consentimiento",
-    "El píxel dispara antes de cualquier consentimiento, con una política de cookies publicada en el sitio.", "warn", "Sin banner");
+  if (m.consentimiento) {
+    statusRow(me, "Consentimiento",
+      "El píxel espera el consentimiento del banner de cookies antes de disparar.", "ok", "Con banner");
+  } else {
+    statusRow(me, "Consentimiento",
+      "El píxel dispara antes de cualquier consentimiento, con una política de cookies publicada en el sitio.", "warn", "Sin banner");
+  }
 
   /* ---------- tabs ---------- */
   (function(){

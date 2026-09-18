@@ -45,7 +45,7 @@ export function ProjectsAnimated() {
                     </span>
 
                     <h2
-                        className="titulo text-[#D52169] text-[2.625rem] md:text-[5.25rem] lg:text-[5.469rem] leading-[1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="titulo text-[2.625rem] md:text-[5.25rem] lg:text-[5.469rem] text-[#28292D] dark:text-white mb-8 uppercase"
                     >
                         {t('projects.title')}
                     </h2>
@@ -99,7 +99,7 @@ export function ProjectsAnimated() {
                                                     {project.category}{project.year && ` · ${project.year}`}
                                                 </span>
                                                 <h3
-                                                    className="titulo text-[1.859rem] md:text-[2.297rem] leading-[0.9] tracking-[-0.02em] text-white mb-2"
+                                                    className="titulo text-[1.859rem] md:text-[2.297rem] text-white mb-2"
                                                 >
                                                     {project.title}
                                                 </h3>

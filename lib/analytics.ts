@@ -30,7 +30,7 @@ export type Seccion = (typeof SECCIONES)[number];
 export type Origen = Seccion | "nav" | "footer";
 
 /** Por dónde intenta contactar la persona. */
-export type Canal = "form" | "whatsapp" | "email" | "instagram";
+export type Canal = "form" | "whatsapp" | "email" | "instagram" | "linkedin";
 
 /** Mapa de id del DOM → nombre de sección para analytics. */
 export const ID_A_SECCION: Record<string, Seccion> = {
