@@ -67,7 +67,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                 </span>
 
                 <h1
-                    className="titulo text-[1.969rem] md:text-[4.375rem] lg:text-[5.469rem] leading-[0.95] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                    className="titulo text-[1.969rem] md:text-[4.375rem] lg:text-[5.469rem] text-[#28292D] dark:text-white mb-8 uppercase"
                 >
                     {project.title}
                 </h1>
@@ -217,7 +217,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                 <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <h2
-                            className="titulo text-[1.75rem] md:text-[2.625rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white mb-4 uppercase"
+                            className="titulo text-[1.75rem] md:text-[2.625rem] text-[#28292D] dark:text-white mb-4 uppercase"
                         >
                             {t("projects.caseCtaTitle")}
                         </h2>
@@ -250,7 +250,7 @@ export function ProjectCase({ slug }: { slug: string }) {
                             {t("projects.caseNext")}
                         </span>
                         <span
-                            className="titulo text-[1.75rem] md:text-[2.625rem] leading-[1] tracking-[-0.03em] text-[#28292D] dark:text-white group-hover:text-[#D52169] transition-colors uppercase block"
+                            className="titulo text-[1.75rem] md:text-[2.625rem] text-[#28292D] dark:text-white group-hover:text-[#D52169] transition-colors uppercase block"
                         >
                             {next.title}
                         </span>

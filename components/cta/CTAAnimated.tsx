@@ -101,7 +101,7 @@ export function CTAAnimated() {
                             </span>
 
                             <h2
-                                className="titulo text-[1.75rem] md:text-[3.938rem] lg:text-[3.719rem] xl:text-[3.938rem] leading-[1.1] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                                className="titulo text-[1.75rem] md:text-[3.938rem] lg:text-[3.719rem] xl:text-[3.938rem] text-[#28292D] dark:text-white mb-8 uppercase"
                             >
                                 {t('cta.title1')}
                                 <br />

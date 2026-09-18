@@ -53,7 +53,7 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <motion.h2
-              className="titulo text-[3.5rem] md:text-[5.25rem] leading-[0.85] tracking-[-0.03em] text-white mb-8"
+              className="titulo text-[3.5rem] md:text-[5.25rem] text-white mb-8"
             >
               ©KIER
               <br />
@@ -193,7 +193,7 @@ export function Footer() {
                 (Stay Updated)
               </span>
               <h3
-                className="titulo text-[1.75rem] md:text-[2.625rem] text-white leading-[1.1] mb-3"
+                className="titulo text-[1.75rem] md:text-[2.625rem] text-white mb-3"
               >
                 Subscribe to our newsletter
               </h3>

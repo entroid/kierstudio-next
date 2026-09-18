@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./tailwind.css";
@@ -9,23 +9,11 @@ import { LanguageProvider } from "@/components/LanguageContext";
 import { PHProvider, PostHogPageViewWrapper } from "@/components/PostHogProvider";
 import { ConsentBanner } from "@/components/ConsentBanner";
 
-/**
- * Archivo es la única fuente que el sitio usa de verdad (207 usos; las demás
- * familias que aparecen en las clases vienen de exportar desde Figma con nombres
- * tipo `Inter:Regular`, que no son CSS válido y nunca cargaron nada).
- *
- * Se carga con next/font en vez de un `@import` de CSS: el `@import` bloqueaba
- * el render —el navegador tenía que ir a Google Fonts antes de pintar— y traía
- * los nueve pesos. Esto la auto-hospeda, la sirve desde el mismo dominio y sólo
- * con los pesos que se usan.
- */
-const archivo = Archivo({
+const josefinSans = Josefin_Sans({
   subsets: ["latin"],
+  weight: ["700"],
   display: "swap",
-  // Variable con el eje de ancho: los títulos usan la versión expandida
-  // (font-stretch 112,5 %), que como archivo estático no existe.
-  axes: ["wdth"],
-  variable: "--fuente-archivo",
+  variable: "--fuente-josefin",
 });
 
 // Geist y Geist Mono no están en los datos de next/font/google de Next 14.2,
@@ -86,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${archivo.variable} ${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+    <html lang="es" className={`${josefinSans.variable} ${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/k-logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />

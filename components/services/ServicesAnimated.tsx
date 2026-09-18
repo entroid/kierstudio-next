@@ -62,7 +62,7 @@ export function ServicesAnimated() {
                         whileInView={{ y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="titulo text-[2.188rem] md:text-[4.375rem] lg:text-[4.812rem] leading-[0.85] tracking-[-0.04em] text-[#28292D] dark:text-white mb-8 uppercase"
+                        className="titulo text-[2.188rem] md:text-[4.375rem] lg:text-[4.812rem] text-[#28292D] dark:text-white mb-8 uppercase"
                         style={{ opacity: titleOpacity }}
                     >
                         {t('services.title')}
@@ -124,7 +124,7 @@ export function ServicesAnimated() {
                                     </span>
 
                                     <h3
-                                        className={`titulo text-[1.925rem] md:text-[3.5rem] lg:text-[1.859rem] xl:text-[2.406rem] leading-[1] tracking-[-0.02em] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
+                                        className={`titulo text-[1.925rem] md:text-[3.5rem] lg:text-[1.859rem] xl:text-[2.406rem] mb-6 ${service.bgColor.includes("28292D") || service.bgColor.includes("black")
                                             ? "text-white"
                                             : "text-[#28292D] dark:text-white"
                                             }`}

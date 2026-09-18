@@ -41,7 +41,7 @@ export function HeroAnimated() {
             className="relative min-h-screen flex items-center py-16 md:pb-0 pt-24 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
         >
             <div className="mx-auto w-full">
-                <div className="grid lg:grid-cols-2 lg:min-h-[calc(100vh-6rem)]">
+                <div className="grid lg:grid-cols-[45%_55%] lg:min-h-[calc(100vh-6rem)]">
                     {/* Video.
                         En mobile va DEBAJO del texto (order-2): arriba ocupaba el 40%
                         del primer viewport y empujaba titular, subtítulo y los dos
@@ -107,7 +107,7 @@ export function HeroAnimated() {
                                 className="mb-4"
                             >
                                 <h1
-                                    className="titulo text-[12.25vw] line-height-[14vw] sm:text-[10.5vw] sm:line-height-[12vw] md:text-[4.594rem] md:line-height-[5.875rem] xl:text-[5.25rem] xl:line-height-[6.875rem] leading-[0.85] tracking-[-0.03em] text-[#28292D] dark:text-white"
+                                    className="titulo text-[12.25vw] sm:text-[10.5vw] md:text-[4.594rem] lg:text-[4.812rem] xl:text-[5.25rem] 2xl:text-[5.25rem] text-[#28292D] dark:text-white"
                                 >
                                     {t('hero.title')}
                                 </h1>
