@@ -4,19 +4,41 @@
 
 @variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-dark-gray: var(--dark-gray);
+/* FUENTES: cómo llegan y por qué se usan las variables de next/font.
+   ------------------------------------------------------------------
+   next/font registra cada fuente con un nombre INTERNO y hasheado
+   (@font-face { font-family: __Josefin_Sans_xxxx }) y expone una VARIABLE
+   (--fuente-josefin) cuyo valor es exactamente esa lista interna más su fallback
+   métrico. Los nombres "planos" —Josefin Sans, Geist Sans— NO quedan registrados:
+   pedirlos en un font-family cae a sans-serif. Verificado midiendo el ancho de un
+   mismo texto: con el nombre interno da 729px, con el plano 706px (idéntico a
+   sans-serif, o sea que no dibuja).
 
-  /* Sistema tipográfico: títulos en Josefin Sans, texto en Geist y detalles en Geist Mono. */
+   De ahí las dos reglas de este archivo:
+   1. Las utilidades y los tokens usan `var(--fuente-*)` / `var(--font-geist-*)`,
+      nunca nombres planos.
+   2. NADA sobrescribe esas variables en :root. Si se redeclaran acá, pisan el valor
+      que next/font monta en <html> y los títulos vuelven al fallback en silencio.
+
+   Los @theme son `inline` a propósito: emiten el `var()` tal cual en la regla final,
+   así el valor se resuelve en el navegador y no al compilar. */
+@theme inline {
+  /* Tipografía. `font-archivo` es un alias histórico (lo usan ~200 lugares para el
+     texto corrido); apunta a Geist porque Archivo ya no se carga. */
   --font-sans: var(--font-geist-sans), sans-serif;
   --font-archivo: var(--font-geist-sans), sans-serif;
   --font-inter: var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-josefin: var(--fuente-josefin), sans-serif;
 
+  /* Color: sí usa var() de :root, porque cambia con .dark en runtime. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-dark-gray: var(--dark-gray);
+}
+
+@theme {
   /* Aquí registramos la utilidad personalizada */
   --min-h-200: 200px;
 
@@ -28,6 +50,7 @@
   --breakpoint-xl: 1360px;
   --breakpoint-2xl: 1536px;
 }
+
 
 /* === Variables CSS === */
 :root {
@@ -95,12 +118,14 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* Títulos: Josefin Sans peso 700, line-height 100%, letter-spacing -3% */
+/* Títulos: Josefin Sans 700, line-height 100%, letter-spacing -3%.
+   `--font-josefin` resuelve a `var(--fuente-josefin)`, que next/font monta en <html>
+   con el nombre interno de la familia. Ese es el único nombre que dibuja. */
 @utility titulo {
-  font-family: var(--fuente-josefin), sans-serif;
+  font-family: var(--font-josefin);
   font-weight: 700;
   line-height: 100%;
   letter-spacing: -0.03em;
@@ -109,7 +134,7 @@ body {
 /* Etiquetas de sección: mono, mayúsculas, con "//" delante. Reemplazan a las
    itálicas entre paréntesis, que eran la marca más clara de estudio de diseño. */
 @utility etiqueta {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-weight: 500;
   font-style: normal;
   text-transform: uppercase;

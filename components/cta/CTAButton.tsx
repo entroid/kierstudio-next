@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import clsx from "clsx";
 import type { ReactNode } from "react";
-import { contactoIniciado, type Canal, type Origen } from "@/lib/analytics";
+import { contactoIniciado, type Canal, type Origen, type Producto } from "@/lib/analytics";
 
 export type CTAButtonProps = {
   /**
@@ -55,6 +55,12 @@ export type CTAButtonProps = {
    * saber qué caso genera contactos, y no sólo que los casos los generan.
    */
   proyecto?: string;
+  /**
+   * Producto desde el que se hace el click, dentro de Servicios. Sin esto los
+   * cuatro productos comparten `origen: "servicios"` y no se puede saber cuál
+   * genera el contacto.
+   */
+  producto?: Producto;
 };
 
 /**
@@ -73,6 +79,7 @@ export function CTAButton({
   origen,
   canal = "form",
   proyecto,
+  producto,
 }: CTAButtonProps) {
   const baseClasses =
     "inline-flex items-center gap-3 px-10 py-5 font-archivo text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 transition-all duration-300 cursor-pointer";
@@ -85,7 +92,7 @@ export function CTAButton({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (origen) contactoIniciado(origen, canal, proyecto);
+    if (origen) contactoIniciado(origen, canal, proyecto, producto);
     onClick?.(e);
   };
 
