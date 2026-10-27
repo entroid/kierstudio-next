@@ -24,9 +24,11 @@ export type CTAButtonProps = {
   className?: string;
   /**
    * Visual variant – "primary" matches the pink CTA used on the hero, "secondary"
-   * matches the outlined dark CTA.
+   * matches the outlined dark CTA. "onDark" es el mismo contorno pero en blanco,
+   * para cuando el botón cae sobre una superficie oscura (video, foto, bloque
+   * negro): el secundario normal escribe en #28292D y ahí desaparece.
    */
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "onDark";
   /**
    * Content inside the button – can be text, icons, or any JSX.
    */
@@ -84,11 +86,13 @@ export function CTAButton({
   const baseClasses =
     "inline-flex items-center gap-3 px-10 py-5 font-archivo text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 transition-all duration-300 cursor-pointer";
 
-  const variantMap: Record<"primary" | "secondary", string> = {
+  const variantMap: Record<"primary" | "secondary" | "onDark", string> = {
     primary:
       "bg-[#D52169] text-white border-transparent hover:bg-[#28292D] hover:border-[#28292D]",
     secondary:
       "bg-transparent text-[#28292D] border-[#28292D] hover:bg-[#28292D] hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-[#28292D]",
+    onDark:
+      "bg-white/5 text-white border-white/70 backdrop-blur-sm hover:bg-white hover:text-[#28292D] hover:border-white",
   };
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
