@@ -1,744 +1,511 @@
-# Kier Studio - Project Context Guide for AI Agents
+# Kier Studio — Project Context for AI Agents
 
-> **Last Updated**: November 2025  
-> **Purpose**: Quick reference for AI agents to understand project architecture, tech stack, conventions, and implementation status.
+> **Last updated**: rewrite of `AGENTS.md` against the verified state of the repo.
+> The previous version described the pre-repositioning site (Archivo fonts, the old
+> flat folder layout, English as the render language). None of that was true anymore.
+> If something here disagrees with the code, the code wins — and then fix this file.
+
+**Purpose**: everything an agent needs to work on this repo without re-reading it, plus
+the project's own working rules, which are not optional.
 
 ---
 
 ## Table of Contents
-1. [Tech Stack](#tech-stack)
-2. [Project Structure](#project-structure)
-3. [Design System](#design-system)
-4. [Implemented Features](#implemented-features)
-5. [State Management](#state-management)
-6. [Internationalization (i18n)](#internationalization-i18n)
-7. [Component Patterns](#component-patterns)
-8. [Styling Guidelines](#styling-guidelines)
-9. [Documentation](#documentation)
-10. [Development Workflow](#development-workflow)
-11. [Important Notes](#important-notes)
+
+1. [What this business is](#1-what-this-business-is)
+2. [How to work in this repo (project rules)](#2-how-to-work-in-this-repo-project-rules)
+3. [Tech stack](#3-tech-stack)
+4. [Project structure](#4-project-structure)
+5. [Routing](#5-routing)
+6. [Design system](#6-design-system)
+7. [Internationalization](#7-internationalization)
+8. [State management](#8-state-management)
+9. [Analytics & consent](#9-analytics--consent)
+10. [Component patterns](#10-component-patterns)
+11. [Styling guidelines](#11-styling-guidelines)
+12. [Documentation map](#12-documentation-map)
+13. [Build, deploy & verification](#13-build-deploy--verification)
+14. [Known debt & traps](#14-known-debt--traps)
 
 ---
 
-## Tech Stack
+## 1. What this business is
 
-### Core Framework
-- **Next.js** `14.2.0` - App Router (not Pages Router)
-- **React** `18.3.1` - Client-side rendering (`"use client"`)
-- **TypeScript** `5.7.0` - Strict mode enabled
+**Kier Studio** — an **AI automation and custom-applications consultancy for PyMEs**,
+based in Rosario, Argentina, working globally.
 
-### Styling
-- **Tailwind CSS** `4.1.16` - Utility-first CSS framework
-- **PostCSS** `8.5.6` - CSS processing
-- **Autoprefixer** `10.4.21` - Vendor prefixes
+The pitch is "menos tareas a mano": find the repetitive work eating a small company's
+hours — loading invoices, re-keying WhatsApp orders, chasing suppliers — and automate it
+**without replacing the systems the client already uses**. Plus custom internal systems,
+and websites/e-commerce when that's what the client needs.
 
-### Animation & Motion
-- **Motion** `11.0.0` (Framer Motion successor) - All animations
-  - Use `motion` from `"motion/react"` (NOT `framer-motion`)
-  - Common patterns: `initial`, `animate`, `whileHover`, `whileTap`, `transition`
+**This repositioning is recent and still in progress.** The work samples are mixed:
+automation cases (`carga-automatica-de-facturas`, `seguimiento-de-ordenes-de-compra`,
+both Oil & Gas) sit beside the older design/development portfolio (Hard Rock, Muu, MIRAI
+Fleet, Barrivell, HOLY, TEAMIE). Residual "design studio" language still exists in some
+copy — see [§14](#14-known-debt--traps). Treat the automation positioning as the target.
 
-### UI Components
-- **Radix UI** - Headless accessible components
-  - Dialog, Dropdown, Navigation Menu, Scroll Area, Tabs, etc.
-  - Always unstyled - style with Tailwind
-  
-### Forms & Validation
-- **React Hook Form** `7.55.0` - Form state management
-- **Email.js** `4.4.1` - Contact form submissions
-  - Endpoint: `formsubmit.co`
-
-### Utilities
-- **class-variance-authority** - Component variants
-- **clsx** / **tailwind-merge** - Conditional className handling
-- **lucide-react** `0.487.0` - Icon library
+Contact: `kierstudio.info@gmail.com` · `+54 9 341 7211814` · `kierstudio.com` (apex, not www).
 
 ---
 
-## Project Structure
+## 2. How to work in this repo (project rules)
+
+These come from the repo's own internal docs and are enforced by convention, not tooling.
+
+### 2.1 Measurement governs site changes
+
+`analytics/ciclo-2026-09.md` is the hand-off between work sessions. Read it before
+changing the site. As of its last entry:
+
+- The measurement cycle is **closed, and the next one is paused** — not because the
+  site failed, but because the diagnosis was **acquisition, not conversion**.
+- Evidence: 0 clicks, 24 impressions, 3 pages indexed, 6 pages in Google's
+  "Discovered: currently not indexed", and 248 of 254 backlinks from a single domain.
+  URL inspection showed `Último rastreo: N/D` — Google never even crawled the case pages.
+- **The rule while a cycle is open**: no changes to copy, design or structure, and no
+  A/B testing (at this traffic volume nothing reaches significance). If you must change
+  something, **log it with a date in the "Cortes registrados" section** — it resets the
+  counting window.
+- If you're asked to make a site change, check the cycle's status first and mention the
+  consequence rather than silently contaminating the window.
+
+### 2.2 No invented data — ever
+
+This is the deepest rule in the project, and it appears in three places
+(`auditorias/`, `analytics/`, and the `contact-xray` skill):
+
+- **A number without a source is not published.** If it isn't measured, it doesn't go on
+  the site. The old homepage's "50+ proyectos", "+32% en conversión" and "100% de
+  satisfacción" were removed precisely for being unfounded.
+- Project metrics carry `metricsNota` describing where they come from and how to read
+  them. `types/project.ts` omits optional fields (`year`, `metrics`) rather than filling
+  them with something plausible.
+- The same discipline applies to anything you write: leave the gap and say it's a gap.
+
+### 2.3 Closed documents are immutable
+
+An audit marked **cerrada** is never reopened or edited. New findings go in a new,
+dated file (`auditorias/README.md`). Findings are tracked by the `done` flag in the
+file's `HALLAZGOS` array and **committed** — the localStorage checkbox is personal and
+doesn't count for the team.
+
+### 2.4 Analytics events need a question behind them
+
+Every custom event exists to answer a specific question. An event without a question is
+debt. Don't add one speculatively — see [§9](#9-analytics--consent).
+
+### 2.5 Writing & code conventions
+
+- **Comments and internal docs are in Spanish**, and they explain **why**, not what.
+  Many comments document a decision that was tried and reversed, or a trap that cost
+  time. Match that register: a comment is for the next person's reasoning, not a
+  restatement of the line below it.
+- **Commit messages**: Conventional Commits, in Spanish, lowercase, describing the
+  user-visible outcome — e.g. `fix(trabajos): cada caso pasa a tener su propia URL`,
+  `perf: las imágenes y las fuentes dejan de viajar enteras`.
+- **Audio/visual assets and legal text** are content, not code: never fabricate a metric,
+  a client name, or a testimonial.
+
+---
+
+## 3. Tech stack
+
+| Area | Choice | Notes |
+|---|---|---|
+| Framework | **Next.js 14.2.0**, App Router | Not Pages Router. Static-first. |
+| UI | **React 18.3.1** | Almost everything is `"use client"`. |
+| Language | **TypeScript 5.7**, `strict: true` | Path alias `@/*` → repo root. |
+| Styling | **Tailwind CSS 4.1** + PostCSS 8 | CSS-first config in `app/tailwind.css`. |
+| Animation | **Motion 11** | Import from `"motion/react"` — **not** `framer-motion`. |
+| Headless UI | **Radix UI** (30 packages) + shadcn-style wrappers | Unstyled, styled with Tailwind. |
+| Forms | React Hook Form 7 + native `FormData` | Contact form posts via `fetch` to formsubmit.co. |
+| Icons | `lucide-react` | `optimizePackageImports` enabled in `next.config.mjs`. |
+| Analytics | **PostHog** (`posthog-js`) | Production only — see [§9](#9-analytics--consent). |
+| Chat | **Botpress** | Loaded by `components/Botpress.tsx`. |
+| Misc | `clsx`, `tailwind-merge`, `class-variance-authority`, `embla-carousel-react`, `recharts`, `sonner` | |
+
+**Not installed, on purpose**: Google Analytics. `analytics/README.md` records this as a
+decision, not an oversight — PostHog covers the role, and a third source means three
+numbers for the same question.
+
+---
+
+## 4. Project structure
 
 ```
 kierstudio-next/
 ├── app/
-│   ├── layout.tsx              # Root layout with providers
-│   ├── page.tsx                # Homepage
-│   ├── tailwind.css            # Global styles + Tailwind
-│   └── [routes]/               # Additional routes (cookies, privacy, terms)
+│   ├── layout.tsx                    # Root: metadata, JSON-LD, providers, fonts
+│   ├── tailwind.css                  # Tailwind 4 theme, tokens, @utility titulo/etiqueta
+│   ├── performance.css               # Scroll-behavior, scroll-margin, reduced-motion
+│   ├── robots.ts / sitemap.ts        # Generated route handlers
+│   ├── providers.tsx                 # ⚠ UNUSED — see §14
+│   ├── (main)/                       # Main site (Nav + Footer + FloatingControls + Botpress)
+│   │   ├── layout.tsx
+│   │   ├── page.tsx                  # The one-pager home
+│   │   ├── trabajos/[slug]/page.tsx  # Prerendered case pages
+│   │   └── cookies/ privacy/ terms/  # Legal (noindex)
+│   └── (landing-pages)/              # Isolated campaign landings — noindex
+│       ├── layout.tsx                # Own header/footer/controls, robots noindex
+│       └── accounting/ contacto/ saludybienestar/
 ├── components/
-│   ├── LanguageContext.tsx     # i18n state management
-│   ├── ThemeContext.tsx        # Dark/light mode state
-│   ├── Navigation.tsx          # Header navigation
-│   ├── Hero.tsx                # Hero section
-│   ├── Services.tsx            # Services showcase
-│   ├── Projects.tsx            # Portfolio/projects
-│   ├── Process.tsx             # Process/methodology
-│   ├── Testimonial.tsx         # Client testimonials
-│   ├── CTA.tsx                 # Contact section with form
-│   ├── Footer.tsx              # Site footer
-│   ├── FloatingControls.tsx    # Fixed bottom-right controls
-│   ├── Botpress.tsx            # Chat integration
-│   └── ui/                     # Reusable UI components (48 files)
+│   ├── <section>/                    # hero/, about/, services/, projects/, partners/,
+│   │                                 # process/, testimonial/, cta/ — each with index.tsx
+│   ├── landing-pages/                # LandingHeader/Hero/Problems/Reframe/Diagnostic/…
+│   ├── pages/                        # Cookies, PrivacyPolicy, Terms bodies
+│   ├── ui/                           # ~50 shadcn/Radix primitives
+│   ├── LanguageContext.tsx           # i18n state
+│   ├── ThemeContext.tsx              # Dark mode + accessibility settings
+│   ├── Navigation.tsx  Footer.tsx  FloatingControls.tsx  HashScroll.tsx
+│   ├── ConsentBanner.tsx  PostHogProvider.tsx  SeccionVista.tsx  Botpress.tsx
+│   └── projects/ProjectCase.tsx      # Case-study page body
 ├── translations/
-│   ├── en/                     # English translations (modular)
-│   │   ├── common.ts           # SEO, nav, footer, controls
-│   │   ├── hero.ts             # Hero section
-│   │   ├── services.ts         # Services section
-│   │   ├── contact.ts          # Contact/CTA section
-│   │   └── index.ts            # Combines all modules
-│   ├── es/                     # Spanish translations (modular)
-│   │   ├── common.ts           # SEO, nav, footer, controles
-│   │   ├── hero.ts             # Hero section
-│   │   ├── services.ts         # Services section
-│   │   ├── contact.ts          # Contact/CTA section
-│   │   └── index.ts            # Combines all modules
-│   └── index.ts                # Main export
-├── public/                     # Static assets
-├── .next/                      # Build output (gitignored)
-└── node_modules/               # Dependencies (gitignored)
+│   ├── en/ es/                       # 15 modules each — see §7
+│   └── index.ts
+├── lib/
+│   ├── analytics.ts                  # The five custom events + typed properties
+│   ├── consentimiento.ts             # Cookie consent gate for the Meta Pixel
+│   └── enlaces.ts                    # Hash links that work from non-home pages
+├── types/project.ts                  # Project / ProjectMetric / ProjectStep
+├── analytics/                        # Measurement report + cycle hand-off (see §12)
+├── auditorias/                       # Dated, self-contained HTML audits (see §12)
+├── .agents/skills/contact-xray/      # Internal commercial-prospecting skill
+└── public/                           # Images, video, og.png, schema/*.json
 ```
+
+`analytics/` and `auditorias/` contain **no build output** — they're standalone HTML
+files opened by double-click, versioned in git, and they are part of the product's
+working method. Don't "clean them up".
 
 ---
 
-## Design System
+## 5. Routing
 
-### Typography
-- **Font Family**: `Archivo` (sans-serif)
-- **Font Weights**: 
-  - 400 (Regular)
-  - 600 (Semi-bold)
-  - 700 (Bold)
-  - 800 (Extra-bold)
-  - 900 (Black)
-- **Font Loading**: Google Fonts (configured in layout)
+| Route | File | Notes |
+|---|---|---|
+| `/` | `app/(main)/page.tsx` | One-pager: Hero → About → Services → Projects → Partners → Process → Testimonial → CTA |
+| `/trabajos/[slug]` | `app/(main)/trabajos/[slug]/page.tsx` | **SSG**, `dynamicParams = false`, 8 pages, in the sitemap |
+| `/accounting`, `/contacto`, `/saludybienestar` | `app/(landing-pages)/*` | Campaign landings, `noindex`, reachable from nav dropdown |
+| `/cookies`, `/privacy`, `/terms` | `app/(main)/*` | `noindex` and deliberately **out of the sitemap** |
+| `/robots.txt`, `/sitemap.xml` | `app/robots.ts`, `app/sitemap.ts` | Generated |
 
-### Color Palette
+**Case pages are fully data-driven.** `generateStaticParams`, the metadata, the sitemap
+and the page body all derive from `translations/*/projectsData.ts`. Adding a case = adding
+an object there; the slug is identical in both languages on purpose (the language is
+chosen client-side, so a per-language slug would split the SEO).
+
+Note `robots.ts` allows everything and blocks nothing: `noindex` is declared in each
+page's metadata instead. Blocking the crawl would prevent Google from reading that
+`noindex` and lead to the URL being indexed anyway — the opposite of the intent.
+
+---
+
+## 6. Design system
+
+### Typography (three families)
+
+| Role | Family | How it's loaded | Utility |
+|---|---|---|---|
+| Headings | **Josefin Sans 700** | `next/font/google` → `--fuente-josefin` | `@utility titulo` |
+| Body | **Geist Sans** 400/600/700 | `geist/font/sans` → `--font-geist-sans` | `font-archivo` (legacy alias) |
+| Detail / labels | **Geist Mono** 500 | `geist/font/mono` → `--font-geist-mono` | `font-mono` |
+
+`@utility titulo` = Josefin Sans 700, `line-height: 100%`, `letter-spacing: -0.03em`.
+`@utility etiqueta` = mono, uppercase, `letter-spacing: 0.12em`, with a pink `// `
+prefix injected via `::before`.
+
+> **Trap**: the class `font-archivo` is still used everywhere for body text, but
+> `--font-archivo` is now aliased to **Geist Sans** in `app/tailwind.css`. Archivo is no
+> longer loaded. Don't reintroduce it.
+
+> **Trap (fuentes)**: next/font registra cada familia con un nombre **interno y hasheado**
+> (`@font-face { font-family: __Josefin_Sans_xxxx }`) y expone una variable
+> (`--fuente-josefin`) cuyo valor es esa lista interna. Los nombres planos —`Josefin Sans`,
+> `Geist Sans`— **no quedan registrados**: pedirlos en un `font-family` cae a `sans-serif`
+> sin ningún error. Verificado midiendo el ancho de un mismo texto: interno 729px, plano
+> 706px (idéntico a sans-serif). Por eso `titulo`, `etiqueta`, `body` y los `@theme` usan
+> `var(--fuente-*)` / `var(--font-geist-*)`, y **nada redeclara esas variables en `:root`**:
+> hacerlo pisa el valor que next/font monta en `<html>` y los títulos vuelven al fallback
+> en silencio. Los `@theme` son `inline` para que el `var()` llegue tal cual al navegador.
+
+### Color tokens
+
 ```css
-/* Primary */
---primary: #D52169        /* Pink/Magenta - primary brand color */
---dark: #28292D           /* Near-black - text and dark elements */
---white: #FFFFFF          /* Pure white */
-
-/* Backgrounds */
---bg-light: #FFFFFF       /* Light mode background */
---bg-dark: #0a0a0a        /* Dark mode background */
---bg-accent: #F5F5F5      /* Light gray accent */
---bg-dark-accent: #1a1a1a /* Dark gray accent */
-
-/* Semantic Colors */
---success: #22c55e        /* Green - success states */
---error: #ef4444          /* Red - error states */
---whatsapp: #25D366       /* WhatsApp green */
+--primary: #D52169        /* brand pink/magenta */
+--dark-gray: #28292D      /* near-black — text and dark surfaces */
+--background: #ffffff     /* light bg */    .dark → #0a0a0a
+--foreground: #171717     /* light fg */    .dark → #ededed
+--ring: #D52169
 ```
 
-### Spacing & Layout
-- **Max Width**: `1800px` (hero), `1600px` (services/footer), `1440px` (navigation)
-- **Padding**: `px-6 lg:px-12` (horizontal), `py-32` (section vertical)
-- **Border Radius**: Minimal - mostly square corners
-- **Transitions**: `duration-300` or `duration-500` for smooth color changes
+Dark mode is a `.dark` class on `<html>` (`@variant dark (&:where(.dark, .dark *))`).
+Inline hex usage (`bg-[#D52169]`, `dark:bg-[#0a0a0a]`) is common and expected — follow
+the surrounding file's style rather than introducing tokens mid-component.
 
-### Animation Principles
-- **Entrance**: `initial={{ opacity: 0, y: 30 }}` → `animate={{ opacity: 1, y: 0 }}`
-- **Delays**: Stagger with `delay: index * 0.1`
-- **Hover**: `whileHover={{ scale: 1.05 }}` or `whileHover={{ x: 5 }}`
-- **Tap**: `whileTap={{ scale: 0.95 }}`
-- **Easing**: `ease: "easeOut"` or `ease: "easeInOut"`
+### Breakpoints — **custom, do not assume Tailwind defaults**
+
+```css
+sm: 580px   md: 768px   lg: 1180px   xl: 1360px   2xl: 1536px
+```
+
+`lg` at **1180px** is load-bearing: `HeroAnimated` switches video source on exactly this
+breakpoint via `matchMedia`. Changing it changes which video gets downloaded.
+
+### Motion
+
+- Entrance: `initial={{ opacity: 0, y: 30 }}` → `animate`/`whileInView={{ opacity: 1, y: 0 }}`
+- Hover: `whileHover={{ scale: 1.05 }}` (primary CTAs also `x: 5`) · Tap: `whileTap={{ scale: 0.95 }}`
+- Scroll animations use `viewport={{ once: true }}`, durations 0.3–0.6s.
+- **Rule learned the hard way** (audit finding 07): if a text block is taller than the
+  viewport, it must not depend on entering the viewport to become visible. Nested
+  `whileInView` on an over-tall element leaves it at `opacity: 0` forever.
 
 ---
 
-## Implemented Features
+## 7. Internationalization
 
-### ✅ Core Features
-- [x] Responsive navigation with mobile menu
-- [x] Dark/Light mode toggle (persistent via localStorage)
-- [x] Bilingual support (English/Spanish) with browser detection
-- [x] Hero section with video background
-- [x] Services showcase (4 services)
-- [x] Portfolio/projects section
-- [x] Process methodology section
-- [x] Client testimonials carousel
-- [x] Contact form with validation & success/error states
-- [x] Footer with social links
-- [x] Floating controls (chat, scroll-to-top, language, dark mode)
-- [x] Botpress chat integration
-- [x] Meta Pixel integration (ID: 2551501831869054)
-- [x] PostHog analytics integration
-- [x] SEO metadata (title, description)
+**Spanish is the language of the render.** This was the #1 audit finding: the server used
+to emit `<html lang="en">` with English headings while the metadata was Spanish, because
+`LanguageContext` started in `en`. A crawler never runs the client logic, so the site was
+invisible for Spanish queries.
 
-### 🎨 Design Features
-- [x] Smooth scroll animations (Motion library)
-- [x] Scroll-based opacity transitions
-- [x] Hover effects and micro-interactions
-- [x] Responsive images with fallbacks
-- [x] Video backgrounds with posters
-- [x] Glassmorphism effects (backdrop-blur)
-- [x] Gradient overlays
+- `LanguageContext.tsx` → `DEFAULT_LANGUAGE = "es"`, unconditionally.
+- `app/layout.tsx` → `<html lang="es">`.
+- On mount, an **explicit** stored preference wins; otherwise it moves to `en` **only if
+  the browser is clearly not Spanish-speaking**. A Spanish-speaking visitor never sees a
+  switch.
+- The toggle only changes text client-side — **the URL and the server metadata stay
+  Spanish**. Case-page metadata is read from `es.projectsData` for this reason.
 
-### ♿ Accessibility
-- [x] Aria labels on interactive elements
-- [x] Keyboard navigation support
-- [x] Screen reader considerations
-- [x] Semantic HTML structure
-- [x] Focus states
-- [x] Alt text for images
+### Structure
+
+`translations/{en,es}/` each hold 15 modules combined by `index.ts`:
+`common` (nav/footer/controls), `hero`, `services`, `contact` (exported as `cta`), `about`,
+`partners`, `projects`, `process`, `testimonials`, `projectsData`, `accounting`,
+`saludybienestar`, `presentacion`, `consent`, `legal`.
+
+### Rules
+
+- **The two trees must stay structurally identical.** Keep keys, commas and placeholders
+  (`{year}`, `{bold}`) intact; never translate emails, URLs or placeholders.
+- **Use `t()` for strings, `translations.*` for arrays.** `t()` returns a string only and
+  warns + returns the key if you point it at an array or object.
+- Landing pages read their data defensively (`(translations as any).accounting`) because
+  they predate the typed context; if you touch one, prefer tightening it.
+- **Dead**: `translations/*/common.ts → seo` is never read — real metadata lives in
+  `app/layout.tsx`. See [§14](#14-known-debt--traps).
 
 ---
 
-## State Management
+## 8. State management
 
-### Theme Context (`ThemeContext.tsx`)
-**Purpose**: Manage dark/light mode and accessibility settings
+Two React contexts, both with SSR-safe mount guards (`mounted` state), so children render
+during SSR and client state applies after hydration. Don't read `window`/`localStorage`
+during render.
 
-```typescript
-interface ThemeContextType {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-  accessibility: AccessibilitySettings;
-  updateAccessibility: (settings: Partial<AccessibilitySettings>) => void;
-}
-```
+**`ThemeContext`** — `darkMode` + `toggleDarkMode`, and an `accessibility` object
+(`fontSize`, `highContrast`, `reducedMotion`, `screenReader`) with `updateAccessibility`.
+Persists theme to `localStorage["theme"]`; falls back to `prefers-color-scheme`. Applies
+`fontSize` to `<html>`. The accessibility panel exists in `FloatingControls` but is a
+secondary surface, not a core path.
 
-**Usage**:
-```tsx
-import { useTheme } from "@/components/ThemeContext";
+**`LanguageContext`** — `language`, `setLanguage`, `t`, `translations`. Persists to
+`localStorage["language"]`. See [§7](#7-internationalization).
 
-const { darkMode, toggleDarkMode } = useTheme();
-```
-
-**Features**:
-- Persists to `localStorage` as `"theme"` (`"light"` | `"dark"`)
-- Detects system preference on first visit
-- Syncs with `<html>` class (`dark` class added/removed)
-- Accessibility settings (font size, high contrast, reduced motion, screen reader)
+There is no global store, no server state layer, no data fetching. Content is static.
 
 ---
 
-### Language Context (`LanguageContext.tsx`)
-**Purpose**: Manage bilingual content (English/Spanish)
+## 9. Analytics & consent
 
-```typescript
-interface LanguageContextType {
-  language: "en" | "es";
-  setLanguage: (lang: "en" | "es") => void;
-  t: (key: string, params?: Record<string, string | number>) => string;
-  translations: typeof en | typeof es;
-}
-```
+### PostHog
 
-**Usage**:
-```tsx
-import { useLanguage } from "@/components/LanguageContext";
+Production only. `components/PostHogProvider.tsx` refuses to initialize when
+`NODE_ENV !== "production"`, on `localhost`/`127.0.0.1`, or on `*.vercel.app` — preview
+traffic used to pollute a project whose whole dataset is a few dozen sessions.
+Pageviews are captured manually on route change (`capture_pageview: false`), inside a
+`<Suspense>` boundary.
 
-const { t, language, translations } = useLanguage();
+Env: `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN`, `NEXT_PUBLIC_POSTHOG_HOST` (in `.env.local`).
 
-// For strings
-<h1>{t('hero.title')}</h1>
+### The five events — `lib/analytics.ts`
 
-// For arrays (access directly)
-const items = translations.services.productDesign.items;
-```
+Deliberately **five**. Each answers one question; a new event needs a new question.
 
-**Features**:
-- Detects browser language on first visit (defaults to English)
-- Persists to `localStorage` as `"language"` (`"en"` | `"es"`)
-- Parameter interpolation: `t('footer.copyright', { year: 2025 })`
-- Nested keys: `t('services.productDesign.title')`
-- Returns key if translation missing (helps debugging)
+| Event | Properties | Question |
+|---|---|---|
+| `seccion_vista` | `seccion` | How far down the argument do people get? |
+| `contacto_iniciado` | `origen`, `canal`, `producto?`, `proyecto?` | Which part generates contacts, by which channel and for which product? |
+| `contacto_enviado` | `origen` | How many finish? |
+| `proyecto_abierto` | `proyecto`, `origen` | Which case is seen, and how did they arrive? |
+| `salida_externa` | `canal`, `origen` | Who left to write on WhatsApp? |
 
-**Translation Files**: See [TRANSLATIONS_GUIDE.md](./TRANSLATIONS_GUIDE.md)
+Implementation notes that aren't obvious:
 
----
+- **`lib/analytics.ts` must not import `posthog-js`.** A static import dragged ~79 kB into
+  every route that has a CTA. `PostHogProvider` calls `registrarCliente()` after init
+  instead. With no client registered, capture is a silent no-op.
+- **In development, events log to console and are not sent.** That is the only way to
+  verify wiring without polluting production data.
+- `seccion_vista` fires once per section per session, deduped via `sessionStorage`.
+  `components/SeccionVista.tsx` observes sections by DOM id using `ID_A_SECCION`.
+- `proyecto_abierto` fires **on page mount, not on the card click**, because a case can be
+  reached from search or a shared link where there is no click to catch. The click only
+  writes the origin into `sessionStorage` (`marcarOrigenCaso`), because
+  `document.referrer` doesn't update under client-side navigation.
+- `proyecto_abierto.origen` is `trabajos | caso | directo` — **not** a section.
+  `directo` is the row that matters: it's the only proof the case pages live outside the
+  home. It was still 0 at the last review.
+- `proyecto` travels only from a case page, and the slug (not the title) is used, since
+  titles change with language and would split one case into two values.
 
-## Internationalization (i18n)
+### Consent — `lib/consentimiento.ts` + `components/ConsentBanner.tsx`
 
-### Overview
-Bilingual website supporting **English (default)** and **Spanish**.
-
-### Translation Structure
-**Modular folder-based organization** for easy editing:
-
-```
-translations/
-├── en/                    # English (modular files)
-│   ├── common.ts         # SEO, nav, footer, controls
-│   ├── hero.ts           # Hero section
-│   ├── services.ts       # Services section
-│   ├── contact.ts        # Contact/CTA section
-│   └── index.ts          # Combines all modules
-├── es/                    # Spanish (modular files)
-│   ├── common.ts         # SEO, nav, footer, controles
-│   ├── hero.ts           # Sección Hero
-│   ├── services.ts       # Sección Servicios
-│   ├── contact.ts        # Sección Contacto/CTA
-│   └── index.ts          # Combina todos los módulos
-└── index.ts              # Main export
-```
-
-### File Contents Example
-```typescript
-// translations/en/hero.ts
-export const hero = {
-  location: "(Based in Rosario, Argentina)",
-  title: "©KIER STUDIO",
-  subtitle: "We craft impactful SaaS...",
-  // ...
-};
-
-// translations/en/index.ts
-import { common } from './common';
-import { hero } from './hero';
-import { services } from './services';
-import { contact } from './contact';
-
-export const en = {
-  seo: common.seo,
-  nav: common.nav,
-  footer: common.footer,
-  controls: common.controls,
-  hero,
-  services,
-  cta: contact,
-};
-```
-
-### How to Add New Translations
-1. Create new files in both `en/` and `es/` folders (e.g., `projects.ts`)
-2. Export from corresponding `index.ts` files
-3. Use `t('your.new.key')` in component OR access via `translations.your.new.key` for arrays
-
-**Detailed Guide**: [TRANSLATIONS_GUIDE.md](./TRANSLATIONS_GUIDE.md)
+The Meta Pixel (`2551501831869054`) used to fire in `<head>`, before any choice was
+possible, while the site published a cookie policy. Now it is loaded **only** by the
+banner, **only** after an explicit accept, and the accept is persisted. There is no grey
+area: no accept means no pixel. The `noscript` tracking `<img>` was removed for the same
+reason. "Rechazar" is rendered first with equal visual weight to "Aceptar".
 
 ---
 
-## Component Patterns
+## 10. Component patterns
 
-### 1. All Components Are Client Components
-```tsx
-"use client";  // Always at the top
-```
+Every section is a client component. The conventional shape:
 
-### 2. Standard Import Order
-```tsx
-// External libraries
-import { motion } from "motion/react";
-import { useState } from "react";
-
-// Lucide icons
-import { ArrowRight, Mail } from "lucide-react";
-
-// Internal components
-import { useLanguage } from "@/components/LanguageContext";
-import { useTheme } from "@/components/ThemeContext";
-```
-
-### 3. Component Structure Template
 ```tsx
 "use client";
 
 import { motion } from "motion/react";
 import { useLanguage } from "@/components/LanguageContext";
 
-export function ComponentName() {
+export function Section() {
   const { t } = useLanguage();
-  
   return (
-    <section
-      id="section-id"
-      className="py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
-    >
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-        {/* Content */}
-      </div>
+    <section id="section-id" className="py-16 md:py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">{/* … */}</div>
     </section>
   );
 }
 ```
 
-### 4. Motion Patterns
+Conventions:
 
-**Fade In on Appear**:
-```tsx
-<motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ delay: 0.3, duration: 0.6 }}
->
-  {/* Content */}
-</motion.div>
-```
-
-**Button with Hover**:
-```tsx
-<motion.button
-  whileHover={{ scale: 1.05, x: 5 }}
-  whileTap={{ scale: 0.95 }}
-  className="bg-[#D52169] text-white px-10 py-5..."
->
-  Click Me
-</motion.button>
-```
-
-**Scroll-Based Opacity**:
-```tsx
-const { scrollYProgress } = useScroll({
-  target: ref,
-  offset: ["start 100%", "start 70%"],
-});
-const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-<motion.div style={{ opacity }}>
-  {/* Content */}
-</motion.div>
-```
+- Section folders export through `index.tsx` (e.g. `export { CTAAnimated as CTA } from "./CTAAnimated"`).
+- Section `id`s must match `ID_A_SECCION` in `lib/analytics.ts` for `seccion_vista` to fire.
+- Section label = `<span className="etiqueta …">`; heading = `<h2 className="titulo …">`.
+- Section max widths in play: `1400px` (most), `1600px` (footer/services).
+- **`CTAButton` is the analytics-carrying button.** Pass `origen` (and `canal`, `proyecto`)
+  or the click won't be measured. It renders `<a>` with `href`, `<button>` without.
+- **Hash links must go through `enlaceSeccion(href, pathname)`** from `lib/enlaces.ts`.
+  A bare `#contacto` resolves relative to the current path and silently does nothing on
+  any page that isn't `/`.
+- `ImageWithFallback` wraps `next/image` with a fallback; all images go through the
+  Next Image pipeline (webp/avif configured in `next.config.mjs`).
+- Accessibility: `aria-label` on every icon-only control, alt text on images, `aria-expanded`
+  on disclosure buttons.
 
 ---
 
-## Styling Guidelines
+## 11. Styling guidelines
 
-### Class Naming Conventions
-
-**DO**:
-```tsx
-className="font-['Archivo',sans-serif] text-[14px] tracking-[0.05em] uppercase"
-```
-
-**DON'T**:
-```tsx
-className="text-sm uppercase"  // Avoid Tailwind size utilities
-```
-
-### Font Styling Pattern
-**Always explicit**:
-```tsx
-<h1
-  className="font-['Archivo',sans-serif] text-[80px] leading-[0.85] tracking-[-0.03em]"
-  style={{ fontWeight: 900 }}
->
-```
-
-### Dark Mode Classes
-```tsx
-className="text-[#28292D] dark:text-white"
-className="bg-white dark:bg-[#0a0a0a]"
-className="border-[#28292D]/10 dark:border-white/10"
-```
-
-### Responsive Breakpoints
-```tsx
-className="text-[28px] md:text-[36px] lg:text-[42px]"
-className="grid lg:grid-cols-2"
-className="px-6 lg:px-12"
-```
-
-### Accessibility
-```tsx
-<button aria-label="Close menu">
-<img alt="Product design showcase" />
-<nav aria-label="Main navigation">
-```
+- Prefer **explicit arbitrary values** over Tailwind size shorthands, matching the codebase:
+  `text-[0.875rem]`, `tracking-[0.05em]`, `max-w-[1400px]`, `text-[2.625rem] md:text-[5.25rem]`.
+- Font weight is often set inline (`style={{ fontWeight: 700 }}`) because the base class
+  doesn't carry it. Follow the file you're editing.
+- Always ship both themes: `text-[#28292D] dark:text-white`,
+  `bg-white dark:bg-[#0a0a0a]`, `border-black/10 dark:border-white/10`, plus
+  `transition-colors duration-500`.
+- Mobile-first, `md:` and `lg:` (1180px) breakpoints.
+- Reduced motion is honored globally in `app/performance.css`.
+- Sections carry `scroll-margin-top: 6rem` to clear the fixed 96px header — keep it in
+  mind before adding fixed elements.
 
 ---
 
-## Documentation
+## 12. Documentation map
 
-### Available Guides
-1. **[TRANSLATIONS_GUIDE.md](./TRANSLATIONS_GUIDE.md)** - Complete i18n editing guide
-2. **[README.md](./README.md)** - Getting started & development setup
-3. **This file (AGENTS.md)** - Project context for AI agents
+| File | What it is | How to use it |
+|---|---|---|
+| `AGENTS.md` | This file | Entry point for any agent |
+| `PENDIENTES.md` | Backlog de frentes abiertos, en orden | Read before starting new work; it defines what goes first |
+| `analytics/README.md` | How measurement works: sources, reading rules | Read before interpreting numbers |
+| `analytics/ciclo-2026-09.md` | **Session hand-off** — baseline, what to check, hypothesis, result | Read before touching the site |
+| `analytics/ciclo-2026-10-revision.md` | Cierre del ciclo 01: las dos fuentes leídas juntas (PostHog + GSC) | El diagnóstico vigente y completo |
+| `analytics/reporte.html` | Accumulating measurements; add an object to the `mediciones` JSON array | Don't touch the HTML to add a measurement |
+| `auditorias/README.md` | Audit conventions and tracking | Read before writing an audit |
+| `auditorias/2026-09-01-auditoria-inicial.html` | Audits 1–12, all closed | Immutable record |
+| `TRANSLATIONS_GUIDE.md` | i18n editing guide | ⚠ Partly stale — see §14 |
+| `.agents/skills/contact-xray/` | Internal prospecting skill (scoring, research, report builder) | Load via the skill tool, not by hand |
 
-### Code Comments
-- Use JSX comments for sections: `{/* Section Title */}`
-- Document complex logic with inline comments
-- Keep comments concise and relevant
+**Reading rules for numbers** (`analytics/README.md`): never a percentage without its N
+("3 de 18", not "17%"); quantitative for *where*, qualitative (session replay) for *why*;
+no A/B testing at this volume; one change at a time, two weeks minimum.
 
 ---
 
-## Development Workflow
+## 13. Build, deploy & verification
 
-### Getting Started
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
+npm run dev      # localhost:3000
+npm run build    # production build, must pass before any commit
 npm start
-
-# Lint code
 npm run lint
 ```
 
-### Development Server
-- **URL**: http://localhost:3000
-- **Port**: 3000 (default)
-- **Hot Reload**: Enabled
-
-### File Watching
-Next.js watches all files in:
-- `app/`
-- `components/`
-- `translations/`
-- `public/`
-
-### Making Changes
-1. Edit files
-2. Save (auto-reload)
-3. Check browser for updates
-4. Check console for errors
+- **Deploy**: Vercel, auto-deploys from `main`, Node 20.x. No CI/CD beyond that.
+- **Prerendering**: 22 routes; the 8 case pages are SSG.
+- **Verify with**: `npx tsc --noEmit` (fast, clean) and `npm run build`.
+- ⚠ **`next build` cannot run inside the confined file sandbox** — Next's jest-workers
+  fork child processes with piped stdio and the sandbox rejects it (`spawn EPERM`). The
+  build is not broken; it needs full access. `tsc` runs fine either way.
 
 ---
 
-## Important Notes
+## 14. Known debt & traps
 
-### ⚠️ Common Pitfalls
+Accumulated from the audit, the git history, and the current file tree. Nothing here is
+hypothetical.
 
-1. **Don't use `t()` for arrays**
-   ```tsx
-   // ❌ WRONG
-   const items = t('services.items') as unknown as string[];
-   
-   // ✅ CORRECT
-   const { translations } = useLanguage();
-   const items = translations.services.productDesign.items;
-   ```
-
-2. **Always use "use client"**
-   ```tsx
-   // All components need this at the top
-   "use client";
-   ```
-
-3. **Import Motion correctly**
-   ```tsx
-   // ✅ CORRECT
-   import { motion } from "motion/react";
-   
-   // ❌ WRONG
-   import { motion } from "framer-motion";
-   ```
-
-4. **Dark mode transitions**
-   ```tsx
-   // Always add transition classes
-   className="bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
-   ```
-
-5. **Hydration errors**
-   - Both `ThemeContext` and `LanguageContext` have hydration protection
-   - They render `null` until mounted
-   - Don't access `window`/`localStorage` directly in render
-
-### 🎯 Best Practices
-
-1. **Animations**: Keep transitions under 1 second (0.3s - 0.6s typical)
-2. **Accessibility**: Always add `aria-label` to icon-only buttons
-3. **Responsive**: Mobile-first approach, use `md:` and `lg:` breakpoints
-4. **Images**: Always provide `alt` text and fallback images
-5. **Forms**: Use `required`, `onInvalid`, `placeholder` for better UX
-6. **Dark Mode**: Test both light and dark themes
-7. **i18n**: Test both English and Spanish languages
-8. **Performance**: Use `viewport={{ once: true }}` for scroll animations
-
-### 📋 Quick Checklist for New Features
-
-- [ ] Component exported from file
-- [ ] `"use client"` at top
-- [ ] Uses `useLanguage()` for text
-- [ ] Dark mode classes included
-- [ ] Responsive breakpoints added
-- [ ] Animations with Motion
-- [ ] Accessibility attributes
-- [ ] Tested in both languages
-- [ ] Tested in light/dark modes
-- [ ] Tested on mobile
+1. **`translations/*/common.ts → seo` is dead code.** Nothing reads it (verified by
+   search); real metadata is hardcoded in `app/layout.tsx`. It still contains the old
+   positioning ("Kier Studio | SaaS & Web Development Agency"). Either wire metadata to it
+   or delete it — leaving it means a stale, misleading copy lives in the repo.
+2. **`app/providers.tsx` is unused.** `app/layout.tsx` imports `ThemeProvider` directly.
+3. **Residual "design studio" copy** in `translations/{en,es}/presentacion.ts` ("CREATIVE
+   STUDIO", marquee of Websites/Applications/Strategy) and `common.ts → footer.description`
+   ("crafting your digital product"). This is the `/contacto` landing. Either update it or
+   accept it as legacy.
+4. **`FloatingControls` chat pulse is an un-cleaned `while(true)` loop** — flagged in audit
+   finding 05 and explicitly deferred ("los cuatro flotantes siguen ahí — es un cambio
+   aparte"). It never stops, including after unmount.
+5. **The accessibility panel** is wired through `ThemeContext` but is a secondary surface.
+   Changing accessibility state has no test coverage.
+6. **`TRANSLATIONS_GUIDE.md` is stale.** It documents the old flat `translations/en.ts`
+   layout and doesn't mention `projectsData` or the landing-page modules.
+7. **`build.log` and `tsconfig.tsbuildinfo` are committed** build artifacts.
+8. **The remote org is spelled `entroid`, not `entroid`** — full URL
+   `github.com/entroid/kierstudio-next.git`. Easy to mistype when copying. Current
+   working branch: `hernan`; `main` is deploy.
+9. **Section order changed recently** (Partners moved after Projects). If you compare
+   `seccion_vista` across time, the drop between consecutive sections depends on the order
+   in force during each period — use the order in `app/(main)/page.tsx` for the current one.
+10. **`analytics/` and `auditorias/` are product artifacts**, not scratch space. Never
+    delete, "regenerate", or reformat them.
 
 ---
 
-## Environment & Configuration
+## Quick checklist for a new feature
 
-### TypeScript Config
-- **Target**: ES2017
-- **Strict mode**: Enabled
-- **Path aliases**: `@/*` maps to project root
-
-### ESLint
-- Next.js recommended rules
-- Prettier integration (eslint-config-prettier)
-
-### Tailwind
-- **Version**: 4.x (new syntax)
-- **PostCSS**: Custom configuration
-- **Content**: Watches `app/**`, `components/**`, `pages/**`
-
-### Environment Variables
-- **Current**: None configured yet
-- **Environments**: Development (`npm run dev`) vs. Production (Vercel)
-- **Future**: May add analytics, API keys as needed
-
----
-
-## Git Workflow
-
-### Branch Strategy
-- **Main Branch**: `main`
-- **Feature Branches**: Create from `main`, name descriptively
-- **PR Process**: Required for merging into `main`
-- **Commit Messages**: Descriptive, present tense
-
-### Example Workflow
-```bash
-# Create feature branch
-git checkout -b feature/new-component
-
-# Make changes, commit
-git add .
-git commit -m "Add new hero variant component"
-
-# Push and create PR
-git push origin feature/new-component
-# Then create PR to main via GitHub/GitLab
-```
-
----
-
-## Deployment
-
-### Platform: Vercel
-- **Production**: Auto-deploys from `main` branch
-- **Preview**: Auto-generated for PRs
-- **Build Command**: `npm run build`
-- **Output Directory**: `.next`
-- **Node Version**: 20.x (default)
-
-### Environments
-- **Development**: `npm run dev` (localhost:3000)
-- **Production**: Deployed on Vercel
-
-### No CI/CD Pipeline
-- Vercel handles build and deployment automatically
-- No additional CI/CD tools configured
-
----
-
-## Content Strategy
-
-### Static Only
-- **No CMS**: All content managed in code
-- **Translations**: Static files in `translations/` directory
-- **Assets**: Images/videos in `public/` directory
-- **Updates**: Edit code directly, commit, deploy
-
-### Future Scalability
-If dynamic content needed:
-- Consider headless CMS (Strapi, Contentful, Sanity)
-- Would require API integration
-- Not currently planned
-
----
-
-## Performance & SEO
-
-### SEO Optimizations
-- [x] Meta tags (title, description) in translation files
-- [x] Semantic HTML structure
-- [x] Proper heading hierarchy (h1 → h2 → h3)
-- [x] Alt text on images
-- [x] Descriptive link text
-- [ ] Open Graph tags (social sharing)
-- [x] Sitemap.xml
-- [x] Robots.txt
-
-### Performance Optimizations
-- [x] Next.js automatic code splitting
-- [x] Motion library for smooth animations
-- [x] Lazy loading with `viewport={{ once: true }}`
-- [x] Responsive images
-- [x] Video with poster images
-- [ ] Next.js Image component (currently using `<img>`)
-- [ ] Web font optimization
-- [ ] Asset compression
-
-### Accessibility
-- [x] Aria labels on interactive elements
-- [x] Keyboard navigation
-- [x] Semantic HTML
-- [x] Focus states
-- [x] Screen reader considerations
-- [x] Color contrast (WCAG AA compliant)
-- [ ] Skip to content link
-- [ ] ARIA live regions for dynamic content
-
-### Targets
-- **Goal**: Good Lighthouse scores (80+)
-- **Focus**: SEO, Accessibility, Performance basics
-- **Not Required**: Perfect 100 scores, advanced optimizations
-
----
-
-## API Integrations
-
-### Current Integrations
-1. **Email.js** (FormSubmit.co)
-   - Contact form submissions
-   - Endpoint: `https://formsubmit.co/ajax/kierstudio.info@gmail.com`
-   - No API key required
-
-2. **Botpress**
-   - Chat widget integration
-   - Script loaded in `Botpress.tsx` component
-   - Configuration in component file
-
-3. **Meta Pixel**
-   - Tracking and analytics
-   - Script loaded in global `layout.tsx` head
-   - ID: `2551501831869054`
-
-4. **PostHog**
-   - Product analytics and event tracking
-   - Provider implemented in `components/PostHogProvider.tsx` and wrapped in global `layout.tsx`
-   - Configured via environment variables: `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST`
-
-### Future APIs
-- Analytics (Google Analytics, Plausible, etc.) - TBD
-- No other APIs planned at this time
-
----
-
-## Known TODOs & Future Enhancements
-
-### Content Enhancements
-- [ ] Newsletter subscription (currently hidden in Footer)
-- [ ] Blog section
-- [ ] Case studies/portfolio detail pages
-- [ ] Expanded project types in contact form
-
-### Feature Enhancements  
-- [ ] Accessibility panel in FloatingControls (currently hidden)
-- [ ] Additional languages (French, Portuguese?)
-- [ ] Client testimonials carousel
-- [ ] Animation on scroll library upgrade
-
-### Technical Improvements
-- [ ] Open Graph meta tags for social sharing
-- [x] Sitemap generation
-- [x] Robots.txt file
-- [ ] Next.js Image component migration
-- [x] Meta Pixel integration
-- [x] Analytics integration (PostHog)
-
----
-
-## Contact & Support
-
-**Project**: Kier Studio Website  
-**Based in**: Rosario, Argentina  
-**Tech Support**: Review this document first, then check specific guides
-
----
-
-**Last Updated**: November 2025  
-**Maintained by**: AI Agents & Development Team
+- [ ] Checked `analytics/ciclo-2026-09.md` for an open cycle; logged the change if needed
+- [ ] `"use client"` where hooks/animation are used
+- [ ] All text comes from `translations` (both `en` and `es`, structurally identical)
+- [ ] Dark mode classes on every new surface
+- [ ] Responsive at 580 / 768 / 1180 / 1360 / 1536
+- [ ] CTAs pass `origen` (and `canal`/`proyecto`) so the click is measured
+- [ ] Hash links go through `enlaceSeccion`
+- [ ] No number is published without a source; no placeholder data
+- [ ] `npx tsc --noEmit` clean, `npm run build` green
+- [ ] Tested in ES and EN, light and dark, and on mobile

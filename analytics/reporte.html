@@ -353,6 +353,105 @@
         "eventos_conversion": 0,
         "consentimiento": true
       }
+    },
+    {
+      "fecha": "2026-10-26",
+      "periodo": "PostHog 2026-09-01 → 2026-10-26 · Search Console 3 meses (2026-07-25 → 2026-10-24)",
+      "nota": "Cierre definitivo del ciclo 01. La revisión del 2026-09-14 había quedado incompleta por falta de Search Console; esta medición lee las dos fuentes juntas. Ver analytics/ciclo-2026-10-revision.md.",
+      "posthog": {
+        "pageviews": 182,
+        "sesiones": 100,
+        "session_replay": "activo",
+        "dev_separado": true,
+        "semanal": [
+          {"semana":"30 ago","pageviews":40,"sesiones":22},
+          {"semana":"6 sep","pageviews":25,"sesiones":14},
+          {"semana":"13 sep","pageviews":22,"sesiones":16},
+          {"semana":"20 sep","pageviews":15,"sesiones":8},
+          {"semana":"27 sep","pageviews":36,"sesiones":18},
+          {"semana":"4 oct","pageviews":7,"sesiones":4},
+          {"semana":"11 oct","pageviews":28,"sesiones":12},
+          {"semana":"18 oct","pageviews":7,"sesiones":4},
+          {"semana":"25 oct","pageviews":2,"sesiones":2}
+        ],
+        "origenes": [
+          {"origen":"Argentina directo","sesiones":44},
+          {"origen":"kierstudio.com (autorreferencia)","sesiones":21},
+          {"origen":"Google (AR 2, ES 1)","sesiones":3},
+          {"origen":"Alemania / EE.UU. / Suecia / otros — directo, patrón de bot","sesiones":37},
+          {"origen":"LinkedIn","sesiones":1},
+          {"origen":"hernanainsa.webflow.io","sesiones":1},
+          {"origen":"expoagronea.com","sesiones":1}
+        ],
+        "eventos_30d": [
+          {"evento":"$autocapture","n":484,"sesiones":48},
+          {"evento":"$pageview","n":182,"sesiones":100},
+          {"evento":"seccion_vista","n":180,"sesiones":48},
+          {"evento":"$web_vitals","n":104,"sesiones":44},
+          {"evento":"$pageleave","n":88,"sesiones":52},
+          {"evento":"proyecto_abierto","n":30,"sesiones":21},
+          {"evento":"$rageclick","n":1,"sesiones":1},
+          {"evento":"contacto_enviado","n":1,"sesiones":1},
+          {"evento":"contacto_iniciado","n":1,"sesiones":1},
+          {"evento":"salida_externa","n":0,"personas":0}
+        ],
+        "casos_por_origen": [
+          {"origen":"directo","eventos":18,"sesiones":14},
+          {"origen":"trabajos","eventos":10,"sesiones":8},
+          {"origen":"caso","eventos":2,"sesiones":2}
+        ],
+        "nota_trafico": "100 sesiones no son 100 personas: ~37 sesiones de un racimo de directos de Alemania, EE.UU., Suecia y otros países con patrón de bot. Audiencia humana estimada: 10-15 sesiones, de las cuales sólo 2 entran desde Google."
+      },
+      "buscador": {
+        "periodo": "3 meses (2026-07-25 → 2026-10-24). Indexación actualizada al 2026-10-22.",
+        "clics": 1,
+        "impresiones": 168,
+        "ctr": 0.6,
+        "posicion": 7.4,
+        "paginas_indexadas": 2,
+        "paginas_no_indexadas": 19,
+        "consultas": [
+          {"consulta":"kier","impresiones":50,"clics":0},
+          {"consulta":"kier official website","impresiones":5,"clics":0},
+          {"consulta":"kier design","impresiones":2,"clics":0},
+          {"consulta":"esteticas cerca de mi","impresiones":1,"clics":0},
+          {"consulta":"estéticas cerca de mí","impresiones":1,"clics":0},
+          {"consulta":"no","impresiones":1,"clics":0},
+          {"consulta":"udo kier actor","impresiones":1,"clics":0}
+        ],
+        "paginas_con_impresiones": [
+          {"pagina":"/","clics":1,"impresiones":164,"posicion":6.6},
+          {"pagina":"/contacto","clics":0,"impresiones":12,"posicion":17.8},
+          {"pagina":"www.kierstudio.com/accounting","clics":0,"impresiones":4,"posicion":7.3}
+        ],
+        "no_indexadas": [
+          {"motivo":"Excluida por una etiqueta noindex","paginas":4,"estado":"esperado"},
+          {"motivo":"Página con redirección","paginas":3,"estado":"esperado"},
+          {"motivo":"No se ha encontrado (404)","paginas":2,"estado":"esperado"},
+          {"motivo":"Bloqueada por robots.txt","paginas":2,"estado":"esperado","observacion":"confirmar que sean las landings de campaña y no algo real"},
+          {"motivo":"Descubierta: actualmente sin indexar — subió de 6 a 8; la validación figura como Iniciada","paginas":8,"estado":"pendiente"},
+          {"motivo":"Canónica alternativa","paginas":0,"estado":"esperado"}
+        ],
+        "enlaces": {
+          "externos_total": 286,
+          "sitios": [
+            {"sitio":"expoagronea.com","enlaces":274,"es_cliente":true},
+            {"sitio":"mbfoodsafety.com","enlaces":11,"es_cliente":true,"nota":"nuevo desde septiembre: era un sólo dominio entonces"},
+            {"sitio":"webflow.io","enlaces":1}
+          ],
+          "paginas_enlazadas": [{"pagina":"https://kierstudio.com/","enlaces":286}],
+          "internos_total": 6,
+          "enlaces_a_paginas_internas_de_servicio": 0
+        }
+      },
+      "meta": {
+        "estado": "activo",
+        "version": "2.9.390",
+        "pixel_id": "2551501831869054",
+        "eventos": ["PageView"],
+        "eventos_conversion": 0,
+        "consentimiento": true
+      }
     }
   ]
 }

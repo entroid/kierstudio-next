@@ -32,6 +32,20 @@ export type Origen = Seccion | "nav" | "footer";
 /** Por dónde intenta contactar la persona. */
 export type Canal = "form" | "whatsapp" | "email" | "instagram" | "linkedin";
 
+/**
+ * Qué producto generó el contacto.
+ *
+ * Desde que Servicios son dos etapas —diagnóstico de entrada, tres formas de
+ * ejecutar—, `origen` ya no alcanza: todos los CTA de la sección comparten
+ * `origen: "servicios"` y no se podría saber cuál de los cuatro productos vende.
+ * Es el mismo problema que resolvió `proyecto` en las páginas de caso, y se
+ * resuelve igual: con una propiedad que viaja sólo cuando el click sale de ahí.
+ *
+ * Se declara como tipo y no como string suelto porque un valor mal escrito no
+ * rompe nada en runtime: parte el embudo en dos en silencio.
+ */
+export type Producto = "diagnostico" | "automatizacion" | "aplicacion" | "sitio";
+
 /** Mapa de id del DOM → nombre de sección para analytics. */
 export const ID_A_SECCION: Record<string, Seccion> = {
   inicio: "hero",
@@ -109,9 +123,21 @@ export function seccionVista(seccion: Seccion) {
  * `proyecto` sólo viaja cuando el click sale de una página de caso. Sin él,
  * los seis trabajos caen todos en `origen: "trabajos"` y la pregunta pasa a
  * ser "¿los casos generan contactos?" en vez de "¿cuál?", que es la útil.
+ *
+ * `producto` hace lo mismo dentro de Servicios: distingue el diagnóstico de
+ * las tres formas de ejecutar. Las propiedades opcionales se omiten en vez de
+ * mandarse vacías — un null explícito ensucia los agrupados de PostHog.
  */
-export function contactoIniciado(origen: Origen, canal: Canal, proyecto?: string) {
-  capturar("contacto_iniciado", proyecto ? { origen, canal, proyecto } : { origen, canal });
+export function contactoIniciado(
+  origen: Origen,
+  canal: Canal,
+  proyecto?: string,
+  producto?: Producto,
+) {
+  const propiedades: Record<string, unknown> = { origen, canal };
+  if (proyecto) propiedades.proyecto = proyecto;
+  if (producto) propiedades.producto = producto;
+  capturar("contacto_iniciado", propiedades);
 }
 
 /** El formulario se envió correctamente. Es la conversión. */

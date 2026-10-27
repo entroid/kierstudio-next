@@ -86,7 +86,7 @@ export function HeroAnimated() {
                         className="order-1 lg:order-2 flex items-center justify-center px-6 py-10 lg:py-0 lg:px-20 bg-white dark:bg-[#0a0a0a]"
                         style={{ boxShadow: "inset 0 0 50px 20px rgba(255, 215, 0, 0.17)" }}
                     >
-                        <div className="max-w-[700px]">
+                        <div className="max-w-[700px] px-4 md:px-0">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
