@@ -41,21 +41,23 @@ import { ArrowRight } from "lucide-react";
  * clip, de modo que el cambio no se percibe.
  */
 /**
- * Hay dos clips en `public/`, los dos con el mismo tratamiento (≤10s, loop,
- * sin audio, `+faststart`, póster con el primer frame). Para comparar, se
- * cambia este bloque y nada más:
+ * Clip: una figura con un brazo robótico bajo luz azul y rosa. Se eligió por lo
+ * que dice, no por lo que muestra: refuerza la idea de automatizar sin cortar el
+ * vínculo con lo humano, y visualmente es más sutil que un data-viz abstracto,
+ * así que no compite con el titular.
  *
- *   globe (activo)  globo de datos cyan, 25fps, loop con crossfade de 1s
- *   tunnel          túnel radial blanco y negro, 24fps, corte seco
+ * No está recortado. Los clips anteriores se cortaban a 10s porque eran
+ * movimientos continuos sin relato; este es una toma con una persona y partirla
+ * deja el gesto por la mitad. Se queda con sus 14,32s y su loop nativo, que corta
+ * seco —costura medida en 6,12— pero pasa casi inadvertido porque la escena es
+ * lenta y las dos puntas son parecidas.
  *
- * El de tunnel pesa la mitad (1,23 MB contra 2,20 MB) pero tiene el loop
- * imperfecto: es un vuelo continuo y el corte se ve. El de globe no tenía
- * ningún punto de loop natural —se compararon todos los pares a 10s y 8s— así
- * que la costura se resuelve con el crossfade.
+ * Recomprimido de 3,4 MB a 636 KB (1080p) y 354 KB (720p): la fuente ya venía en
+ * 2 Mbps y el material es suave y oscuro, así que aguanta CRF 32 sin artefactos.
  */
-const VIDEO_MOBILE = "/hero-bg-globe-720.mp4";
-const VIDEO_DESKTOP = "/hero-bg-globe-1080.mp4";
-const POSTER = "/hero-bg-globe-poster.jpg";
+const VIDEO_MOBILE = "/hero-bg-720.mp4";
+const VIDEO_DESKTOP = "/hero-bg-1080.mp4";
+const POSTER = "/hero-bg-poster.jpg";
 
 const CONSULTA_TABLET = "(min-width: 768px)";
 const CONSULTA_SIN_MOVIMIENTO = "(prefers-reduced-motion: reduce)";
@@ -91,12 +93,11 @@ export function HeroAnimatedV2() {
             id="inicio"
             className="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#0b0b0d]"
         >
-            {/* Fondo. El scrim está calibrado por clip, no por gusto: el de
-                tunnel (blanco y negro, casi negro) se lee con 15%, pero el de
-                globe tiene trazas cyan que llegan a blanco y pasan justo por
-                detrás de la bajada, así que pide 50%. Con 40% el texto chico
-                todavía coqueteaba con el piso de contraste. Si se cambia de clip,
-                este es el número a revalidar. */}
+            {/* Fondo. El scrim está calibrado por clip: acá el material es oscuro
+                de por sí, pero la figura tiene el brazo y el hombro iluminados
+                justo detrás de la bajada, así que 40% es lo que hace que el video
+                acompañe sin competir con el mensaje. Menos que eso y el texto
+                chico pelea; más y el clip se apaga. */}
             <div className="absolute inset-0 -z-10">
                 {conVideo ? (
                     <video
@@ -123,7 +124,7 @@ export function HeroAnimatedV2() {
                     />
                 )}
 
-                <div className="absolute inset-0 bg-[#0a0a0a]/50" />
+                <div className="absolute inset-0 bg-[#0a0a0a]/40" />
             </div>
 
             {/* Contenido. El padding no es aire: `pt-24` es el alto del header
@@ -153,9 +154,9 @@ export function HeroAnimatedV2() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="mb-4"
+                    className="mb-6"
                 >
-                    <h1 className="titulo text-[12.25vw] text-white sm:text-[10.5vw] md:text-[4.594rem] lg:text-[4.812rem] xl:text-[5.25rem] 2xl:text-[5.25rem]">
+                    <h1 className="titulo text-[16.25vw] text-white sm:text-[10.5vw] md:text-[6.594rem] lg:text-[7.812rem] xl:text-[7.25rem] 2xl:text-[7.65rem]">
                         {t('hero.title')}
                     </h1>
                 </motion.div>
@@ -164,10 +165,10 @@ export function HeroAnimatedV2() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 }}
-                    className="mb-8"
+                    className="mb-10"
                 >
                     <h2
-                        className="font-archivo mb-4 text-[1.5rem] leading-[1.2] text-white/90 md:text-[1.5rem]"
+                        className="font-archivo mb-4 text-[1.5rem] leading-[1.2] text-white md:text-[1.5rem]"
                         style={{ fontWeight: 600 }}
                     >
                         {t('hero.subtitle')}
