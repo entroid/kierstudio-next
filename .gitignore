@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cerebro del estudio: notas de empresa, clientes, precios y decisiones.
+# El repo es público, así que esto vive sólo en la copia local.
+# NO sacar de acá, y no pegar su contenido en un archivo versionado.
+/cerebro/
