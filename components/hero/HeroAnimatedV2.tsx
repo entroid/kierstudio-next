@@ -40,9 +40,22 @@ import { ArrowRight } from "lucide-react";
  * ancho de pantalla se muestra el póster. El póster es el primer frame del
  * clip, de modo que el cambio no se percibe.
  */
-const VIDEO_MOBILE = "/hero-bg-720.mp4";
-const VIDEO_DESKTOP = "/hero-bg-1080.mp4";
-const POSTER = "/hero-bg-poster.jpg";
+/**
+ * Hay dos clips en `public/`, los dos con el mismo tratamiento (≤10s, loop,
+ * sin audio, `+faststart`, póster con el primer frame). Para comparar, se
+ * cambia este bloque y nada más:
+ *
+ *   globe (activo)  globo de datos cyan, 25fps, loop con crossfade de 1s
+ *   tunnel          túnel radial blanco y negro, 24fps, corte seco
+ *
+ * El de tunnel pesa la mitad (1,23 MB contra 2,20 MB) pero tiene el loop
+ * imperfecto: es un vuelo continuo y el corte se ve. El de globe no tenía
+ * ningún punto de loop natural —se compararon todos los pares a 10s y 8s— así
+ * que la costura se resuelve con el crossfade.
+ */
+const VIDEO_MOBILE = "/hero-bg-globe-720.mp4";
+const VIDEO_DESKTOP = "/hero-bg-globe-1080.mp4";
+const POSTER = "/hero-bg-globe-poster.jpg";
 
 const CONSULTA_TABLET = "(min-width: 768px)";
 const CONSULTA_SIN_MOVIMIENTO = "(prefers-reduced-motion: reduce)";
@@ -78,11 +91,12 @@ export function HeroAnimatedV2() {
             id="inicio"
             className="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#0b0b0d]"
         >
-            {/* Fondo. El scrim existe para que el titular blanco no pelee con
-                las líneas claras del clip, pero no hace falta más que un 15%:
-                el material es blanco y negro y ya viene oscuro, así que subirlo
-                solo apaga el video sin comprar contraste. Este es el número a
-                mover si algún día se cambia por un clip claro. */}
+            {/* Fondo. El scrim está calibrado por clip, no por gusto: el de
+                tunnel (blanco y negro, casi negro) se lee con 15%, pero el de
+                globe tiene trazas cyan que llegan a blanco y pasan justo por
+                detrás de la bajada, así que pide 50%. Con 40% el texto chico
+                todavía coqueteaba con el piso de contraste. Si se cambia de clip,
+                este es el número a revalidar. */}
             <div className="absolute inset-0 -z-10">
                 {conVideo ? (
                     <video
@@ -109,7 +123,7 @@ export function HeroAnimatedV2() {
                     />
                 )}
 
-                <div className="absolute inset-0 bg-[#0a0a0a]/15" />
+                <div className="absolute inset-0 bg-[#0a0a0a]/50" />
             </div>
 
             {/* Contenido. El padding no es aire: `pt-24` es el alto del header
