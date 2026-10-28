@@ -79,6 +79,17 @@ export default function RootLayout({
         <link rel="icon" href="/k-logo.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/k-logo.svg" />
+        {/* Títulos. Chillax viene de Fontshare (Indian Type Foundry): gratis para
+            uso comercial y se sirve con este único <link>. Solo se pide el 700
+            porque `@utility titulo` fija ese peso; el resto de los textos sigue en
+            Geist. Si el CDN no responde, el stack cae en Josefin Sans, que
+            next/font ya tiene auto-hospedada. */}
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=chillax@500&display=swap"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
