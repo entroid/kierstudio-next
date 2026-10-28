@@ -84,7 +84,7 @@ export function CTAButton({
   producto,
 }: CTAButtonProps) {
   const baseClasses =
-    "inline-flex items-center gap-3 px-10 py-5 font-archivo text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 transition-all duration-300 cursor-pointer";
+    "inline-flex items-center justify-center gap-3 px-10 py-5 font-archivo text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 rounded-full transition-all duration-300 cursor-pointer";
 
   const variantMap: Record<"primary" | "secondary" | "onDark", string> = {
     primary:
@@ -101,9 +101,11 @@ export function CTAButton({
   };
 
   // Hover offset (x) only for the primary pink button – matches original design.
+  // Desde que los CTAs son píldoras (`rounded-full`), el desplazamiento bajó de
+  // 5 a 3px: con la curva la forma se lee más pesada y 5 se sentía como salto.
   const hoverProps =
     variant === "primary"
-      ? { whileHover: { scale: 1.05, x: 5 } }
+      ? { whileHover: { scale: 1.05, x: 3 } }
       : { whileHover: { scale: 1.05 } };
 
   if (href) {
