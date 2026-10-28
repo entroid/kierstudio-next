@@ -156,7 +156,7 @@ export function HeroAnimatedV2() {
                     transition={{ delay: 0.5 }}
                     className="mb-6"
                 >
-                    <h1 className="titulo text-[16.25vw] text-white sm:text-[10.5vw] md:text-[6.594rem] lg:text-[7.812rem] xl:text-[7.25rem] 2xl:text-[7.65rem]">
+                    <h1 className="titulo text-balance text-[16.25vw] text-white sm:text-[10.5vw] md:text-[6.594rem] lg:text-[7.812rem] xl:text-[7.25rem] 2xl:text-[7.65rem]">
                         {t('hero.title')}
                     </h1>
                 </motion.div>
