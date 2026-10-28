@@ -55,8 +55,10 @@ export function Navigation() {
           <LogoCompact className="h-12 w-auto" />
         </motion.a>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-10">
+        {/* Desktop Navigation. El corte va en 860 y no en `md` (768): entre 768 y
+            860 los ítems del nav se tocan contra el logo y el desplegable, así
+            que abajo de 860 manda el menú hamburguesa. */}
+        <ul className="hidden min-[860px]:flex items-center gap-10">
           {navItems.map((item, index) => (
             <motion.li
               key={item.label}
@@ -105,7 +107,7 @@ export function Navigation() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 hover:bg-[#F5F5F5] dark:hover:bg-[#1a1a1a] rounded transition-colors cursor-pointer"
+          className="min-[860px]:hidden p-2 hover:bg-[#F5F5F5] dark:hover:bg-[#1a1a1a] rounded transition-colors cursor-pointer"
           aria-label={mobileMenuOpen ? t('nav.menuClose') : t('nav.menuOpen')}
           aria-expanded={mobileMenuOpen}
         >
@@ -118,7 +120,7 @@ export function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-24 left-0 right-0 bg-white dark:bg-[#0a0a0a] border-b border-black/10 dark:border-white/10 md:hidden"
+            className="absolute top-24 left-0 right-0 bg-white dark:bg-[#0a0a0a] border-b border-black/10 dark:border-white/10 min-[860px]:hidden"
           >
             <ul className="flex flex-col p-6">
               {navItems.map((item) => (
