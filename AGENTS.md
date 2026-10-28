@@ -436,6 +436,7 @@ Conventions:
 | `analytics/reporte.html` | Accumulating measurements; add an object to the `mediciones` JSON array | Don't touch the HTML to add a measurement |
 | `auditorias/README.md` | Audit conventions and tracking | Read before writing an audit |
 | `auditorias/2026-09-01-auditoria-inicial.html` | Audits 1–12, all closed | Immutable record |
+| `cerebro/` | **Second brain del estudio** — empresa, oferta y precio, clientes, SOPs, decisiones | **No versionado** (`.gitignore`): el repo es público. Sólo copia local. Empezá por `cerebro/AGENTS.md`. |
 | `TRANSLATIONS_GUIDE.md` | i18n editing guide | ⚠ Partly stale — see §14 |
 | `.agents/skills/contact-xray/` | Internal prospecting skill (scoring, research, report builder) | Load via the skill tool, not by hand |
 
@@ -485,7 +486,10 @@ hypothetical.
    Changing accessibility state has no test coverage.
 6. **`TRANSLATIONS_GUIDE.md` is stale.** It documents the old flat `translations/en.ts`
    layout and doesn't mention `projectsData` or the landing-page modules.
-7. **`build.log` and `tsconfig.tsbuildinfo` are committed** build artifacts.
+7. **`build.log` is still committed** (a build artifact), and `.tmp-shot/` — five working
+   screenshots, ~1.5 MB — landed in `0b9c526` on 2026-10-27. `tsconfig.tsbuildinfo` is
+   already covered by `*.tsbuildinfo` in `.gitignore`. `.tmp-shot/` is **not** ignored,
+   so it will keep coming back until it is added.
 8. **The remote org is spelled `entroid`, not `entroid`** — full URL
    `github.com/entroid/kierstudio-next.git`. Easy to mistype when copying. Current
    working branch: `hernan`; `main` is deploy.
@@ -494,6 +498,10 @@ hypothetical.
    in force during each period — use the order in `app/(main)/page.tsx` for the current one.
 10. **`analytics/` and `auditorias/` are product artifacts**, not scratch space. Never
     delete, "regenerate", or reformat them.
+11. **`cerebro/` is a local, gitignored second brain** — company notes, clients, pricing,
+    decisions. The repo is **public**, so it must never be added to git, not even
+    "temporarily", and no committed file may quote its contents. Entry point:
+    `cerebro/AGENTS.md`. It has no git history, so it needs its own backup.
 
 ---
 

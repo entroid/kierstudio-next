@@ -103,11 +103,14 @@ export function ServicesAnimated() {
                 </motion.div>
 
                 {/* ETAPA 1 — el producto de entrada.
-                    Layout horizontal: banda de imagen arriba (baja, para que no empuje el
-                    contenido fuera del viewport) y todo el texto abajo, con las tres fases
-                    en columnas. Antes era imagen|contenido en dos columnas y el bloque medía
-                    ~900px de alto: las fases quedaban en 2x2 y no se podían comparar de un
-                    vistazo. En mobile las fases se apilan. */}
+                    La foto dejó de ser una banda arriba del texto: ahora es el fondo
+                    del encabezado (rótulo + título + tag + subtítulo) y el texto se
+                    apoya encima. Antes banda y texto se sumaban (~600px en desktop);
+                    ahora el alto del encabezado es el del texto, así que la sección
+                    baja ~160px sin perder la imagen. El scrim va en dos capas porque
+                    la foto tiene zonas claras: una plana fija el piso de contraste y
+                    un degradé la funde con el bloque donde termina el encabezado.
+                    Las tres fases y el pie siguen sobre el fondo plano del bloque. */}
                 <motion.div
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -115,43 +118,45 @@ export function ServicesAnimated() {
                     transition={{ duration: 0.7 }}
                     className="bg-[#28292D] dark:bg-black transition-colors duration-500 mb-16 md:mb-24"
                 >
-                    <div className="relative overflow-hidden h-[130px] sm:h-[160px] md:h-[185px] lg:h-[205px]">
+                    <div className="relative overflow-hidden">
                         <ImageWithFallback
                             src={diagnosticImage}
                             alt={`${etapa1.title} — Kier Studio`}
                             sizes="100vw"
                             className="object-cover object-center"
                         />
-                        {/* Degradado hacia abajo para que la banda se funda con el bloque. */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#28292D]/20 to-[#28292D] dark:to-black" />
+                        <div className="absolute inset-0 bg-[#28292D]/70 dark:bg-black/70" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#28292D]/30 via-[#28292D]/55 to-[#28292D] dark:from-black/30 dark:via-black/55 dark:to-black" />
+
+                        <div className="relative px-6 pb-8 pt-10 md:px-12 md:pb-10 md:pt-12 lg:px-16 lg:pb-10 lg:pt-14">
+                            <span
+                                className="etiqueta text-[0.625rem] text-white/50 mb-5 block"
+                                style={{ fontWeight: 400 }}
+                            >
+                                {etapa1.rotulo}
+                            </span>
+
+                            <h3 className="titulo text-[1.925rem] md:text-[2.75rem] lg:text-[3.25rem] text-white mb-3">
+                                {etapa1.title}
+                            </h3>
+
+                            <p
+                                className="font-archivo text-[0.9375rem] md:text-[1rem] text-[#D52169] mb-5"
+                                style={{ fontWeight: 600 }}
+                            >
+                                {etapa1.tag}
+                            </p>
+
+                            <p
+                                className="font-archivo text-[1rem] md:text-[1.0625rem] leading-[1.6] text-white/80 mb-6 max-w-[760px]"
+                                style={{ fontWeight: 400 }}
+                            >
+                                {etapa1.subtitle}
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="p-6 py-10 md:p-12 md:py-12 lg:p-16 lg:py-14">
-                        <span
-                            className="etiqueta text-[0.625rem] text-white/50 mb-5 block"
-                            style={{ fontWeight: 400 }}
-                        >
-                            {etapa1.rotulo}
-                        </span>
-
-                        <h3 className="titulo text-[1.925rem] md:text-[2.75rem] lg:text-[3.25rem] text-white mb-3">
-                            {etapa1.title}
-                        </h3>
-
-                        <p
-                            className="font-archivo text-[0.9375rem] md:text-[1rem] text-[#D52169] mb-5"
-                            style={{ fontWeight: 600 }}
-                        >
-                            {etapa1.tag}
-                        </p>
-
-                        <p
-                            className="font-archivo text-[1rem] md:text-[1.0625rem] leading-[1.6] text-white/80 mb-10 max-w-[760px]"
-                            style={{ fontWeight: 400 }}
-                        >
-                            {etapa1.subtitle}
-                        </p>
-
+                    <div className="px-6 pb-10 md:px-12 md:pb-12 lg:px-16 lg:pb-14">
                         {/* Las tres fases, horizontales en desktop y apiladas en mobile.
                             Mismo patrón número-mono que la sección Proceso. */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-6 md:gap-y-0 mb-10">

@@ -121,14 +121,17 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Títulos: Josefin Sans 700, line-height 100%, letter-spacing -3%.
-   `--font-josefin` resuelve a `var(--fuente-josefin)`, que next/font monta en <html>
-   con el nombre interno de la familia. Ese es el único nombre que dibuja. */
+/* Títulos: Chillax 700, line-height 100%, letter-spacing -2%.
+   Chillax llega por CDN desde Fontshare (ver app/layout.tsx) y registra el nombre
+   literal 'Chillax', así que acá se pide por nombre: no pasa por next/font, que
+   es el caso que documenta la trampa de abajo.
+   Josefin queda detrás como red de seguridad: si el CDN no responde, next/font la
+   tiene auto-hospedada y expone el nombre interno por `--font-josefin`. */
 @utility titulo {
-  font-family: var(--font-josefin);
+  font-family: "Chillax", var(--font-josefin);
   font-weight: 700;
   line-height: 100%;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 /* Etiquetas de sección: mono, mayúsculas, con "//" delante. Reemplazan a las

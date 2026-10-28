@@ -81,9 +81,16 @@ export function CTAAnimated() {
     };
 
     return (
+        /* `overflow-hidden` no es decorativo: la tarjeta del formulario entra con
+           `x: 50` y, de tablet para abajo, ocupa el ancho completo; mientras no se
+           scrollea hasta acá se queda en esos 50px y ensancha el documento, que es
+           lo que hacía aparecer la barra horizontal en toda la página. Se recorta
+           en el borde del section en vez de tocar la animación. Se usa `hidden` y
+           no `overflow-x-clip` porque acá no hay nada sticky que romper y `clip`
+           no existe en Safari 15, donde el bug volvería. */
         <section
             id="contacto"
-            className="py-16 md:py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-500"
+            className="py-16 md:py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden"
             style={{ boxShadow: "inset 0 0 50px 20px rgba(255, 215, 0, 0.18)" }}
         >
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
