@@ -38,7 +38,7 @@ export function AboutAnimated() {
                         {t('about.description1Tag')}
                     </h3>
 
-                    <div className="grid md:grid-cols-2 gap-6 md:gap-10 max-w-[1170px]">
+                    <div className="grid md:grid-cols-2 gap-10 md:gap-30 max-w-[1170px]">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
