@@ -84,7 +84,7 @@ export function CTAButton({
   producto,
 }: CTAButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center gap-3 px-10 py-5 font-archivo text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 rounded-full transition-all duration-300 cursor-pointer";
+    "inline-flex items-center justify-center gap-3 px-10 py-5 font-archivo text-[0.8125rem] leading-[0.8125rem] tracking-[0.1em] uppercase border-2 rounded-full transition-all duration-300 cursor-pointer ";
 
   const variantMap: Record<"primary" | "secondary" | "onDark", string> = {
     primary:

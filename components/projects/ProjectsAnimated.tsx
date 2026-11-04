@@ -134,7 +134,7 @@ export function ProjectsAnimated() {
                         <motion.button
                             whileHover={{ scale: 1.05, x: 5 }}
                             whileTap={{ scale: 0.95 }}
-                            className="inline-flex items-center gap-3 px-10 py-5 bg-transparent text-[#28292D] dark:text-white border-2 border-[#28292D] dark:border-white  hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D] font-archivo text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 cursor-pointer"
+                            className="inline-flex items-center gap-3 px-10 py-5 bg-transparent text-[#28292D] dark:text-white border-2 border-[#28292D] dark:border-white  hover:bg-[#28292D] dark:hover:bg-white hover:text-white dark:hover:text-[#28292D] font-archivo text-[0.8125rem] tracking-[0.1em] uppercase transition-all duration-300 cursor-pointer rounded-full"
                             style={{ fontWeight: 700 }}
                             onClick={() => setShowAll((prev) => !prev)}
                             aria-expanded={showAll}

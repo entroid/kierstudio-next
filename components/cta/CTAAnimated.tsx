@@ -354,7 +354,7 @@ export function CTAAnimated() {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 disabled={submitting}
-                                className="w-full bg-[#D52169] text-white py-4 font-archivo text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                                className="w-full bg-[#D52169] text-white py-4 font-archivo text-[0.875rem] tracking-[0.1em] uppercase hover:bg-[#28292D] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer rounded-full"
                                 style={{ fontWeight: 700 }}
                             >
                                 {submitting ? (

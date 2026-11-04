@@ -126,7 +126,7 @@ export function ServicesAnimated() {
                             className="object-cover object-center"
                         />
                         <div className="absolute inset-0 bg-[#28292D]/70 dark:bg-black/70" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#28292D]/30 via-[#28292D]/55 to-[#28292D] dark:from-black/30 dark:via-black/55 dark:to-black" />
+                        
 
                         <div className="relative px-6 pb-8 pt-10 md:px-12 md:pb-10 md:pt-12 lg:px-16 lg:pb-10 lg:pt-14">
                             <span
