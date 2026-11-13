@@ -36,7 +36,7 @@ export const services = {
         // Datos comerciales decididos el 2026-10-26. Si cambia el precio, se cambia acá.
         detalles: ["2 a 3 semanas", "Reunión de presentación", "Informe en PDF incluido"],
         // La frase que evita que el diagnóstico se lea como un peaje obligatorio.
-        nota: "Después podés ejecutar con nosotros o no. El documento es tuyo.",
+        nota: "Después podés ejecutar con nosotros o no. Pero el mapa ya es tuyo.",
     },
 
     etapa2: {
