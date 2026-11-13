@@ -36,7 +36,7 @@ export const services = {
         // Commercial facts decided on 2026-10-26. If they change, they change here.
         detalles: ["2 to 3 weeks", "Presentation meeting", "PDF report included"],
         // The line that keeps the diagnostic from reading as a mandatory toll.
-        nota: "Afterwards you can execute with us or not. The document is yours.",
+        nota: "Afterwards you can execute with us or not. But the map will now be yours.",
     },
 
     etapa2: {
